@@ -1,20 +1,4 @@
-# C++ Study Sheet
-
-Modern features of C++ are used when possible.
-
-For example, we know how to write a for loop...
-
-```cpp
-for (int i = 0; i < 10; i++)
-    cout << i << endl;
-```
-
-But consider the following:
-
-```cpp
-for (auto i : views::iota(0, 10))
-    cout << i << endl;
-```
+# A Tour of C++
 
 ## Attribution
 
@@ -222,7 +206,28 @@ size_t DNA::length() const {
 
 ## Error Handling
 
-- exceptions
+### Exceptions
+
+You can throw custon exceptions after defining a class derived from
+std::exception. For example:
+
+```cpp
+class BadLengthException : public std::exception {
+private:
+    int length;
+    std::string message;
+
+public:
+    BadLengthException(int len) : length(len) {
+        message = std::to_string(length);
+    }
+
+    const char* what() const noexcept override {
+        return message.c_str();
+    }
+};
+```
+
 - invariants
 - error-handling alternatives
 - assertions
