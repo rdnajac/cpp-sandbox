@@ -1,0 +1,38 @@
+site_name: C++ Sandbox
+repo_url: https://github.com/rdnajac/cpp-sandbox
+edit_uri: blob/main/docs/
+site_description: A collection of C++ code snippets and examples.
+site_author: Ryan D. Najac
+copyright: Copyright &copy; 2024 <a href="https://rdnajac.tech">Ryan D. Najac</a>
+
+theme:
+  name: material
+  features:
+    - content.code.copy
+
+  font:
+    code: JetBrains Mono
+  palette:
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/lightbulb 
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to light mode
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
