@@ -1,0 +1,53 @@
+#ifndef UTILS_H
+#define UTILS_H
+
+#include <string>
+#include <system_error>
+#include <netdb.h>
+#include <span>
+#include <vector>
+#include <concepts>
+
+namespace utils {
+
+// Wrapper for socket operations to throw exceptions on errors
+int create_socket(int domain, int type, int protocol);
+void bind_socket(int sockfd, const struct sockaddr* addr, socklen_t addrlen);
+void listen_on_socket(int sockfd, int backlog);
+int accept_connection(int sockfd, struct sockaddr* addr, socklen_t* addrlen);
+void connect_to_server(int sockfd, const struct sockaddr* addr, socklen_t addrlen);
+
+// Helper function to get address info
+struct addrinfo* get_address_info(const char* node, const char* service, 
+                                  const struct addrinfo* hints);
+
+// Helper function to print IP address
+std::string get_ip_str(const struct sockaddr* sa);
+
+// New: Template function for sending any trivially copyable type
+template<std::trivially_copyable T>
+void send_data(int sockfd, const T& data) {
+    if (send(sockfd, &data, sizeof(T), 0) != sizeof(T)) {
+        throw std::system_error(errno, std::generic_category(), "send failed");
+    }
+}
+
+// New: Template function for receiving any trivially copyable type
+template<std::trivially_copyable T>
+T receive_data(int sockfd) {
+    T data;
+    if (recv(sockfd, &data, sizeof(T), 0) != sizeof(T)) {
+        throw std::system_error(errno, std::generic_category(), "recv failed");
+    }
+    return data;
+}
+
+// New: Function to send a vector of bytes
+void send_bytes(int sockfd, std::span<const std::byte> data);
+
+// New: Function to receive a vector of bytes
+std::vector<std::byte> receive_bytes(int sockfd, size_t size);
+
+}  // namespace utils
+
+#endif // UTILS_H
