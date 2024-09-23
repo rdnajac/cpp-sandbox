@@ -1,78 +1,64 @@
 #include <iostream>
 #include <string>
 #include <thread>
-#include <vector>
 #include <atomic>
-#include <format>
+#include <cstring>
 #include "utils.h"
-
-#include <sys/socket.h>
-#include <netdb.h>
-#include <unistd.h>
 
 class TCPEchoServer {
 public:
     TCPEchoServer(const std::string& port) : port_(port), running_(false) {}
 
     void start() {
-        addrinfo hints{};
-        hints.ai_family = AF_INET;
-        hints.ai_socktype = SOCK_STREAM;
-        hints.ai_protocol = IPPROTO_TCP;
-        hints.ai_flags = AI_PASSIVE;
-
-        addrinfo* info = utils::get_address_info(nullptr, port_.c_str(), &hints);
-
-        server_fd_ = utils::create_socket(info->ai_family, info->ai_socktype, info->ai_protocol);
-
-        utils::bind_socket(server_fd_, info->ai_addr, info->ai_addrlen);
-
-        freeaddrinfo(info);
-
-        utils::listen_on_socket(server_fd_, SOMAXCONN);
+        server_fd_ = open_listening_socket(port_.c_str(), SOMAXCONN);
+        if (server_fd_ == -1) {
+            std::cerr << "Failed to open listening socket" << std::endl;
+            return;
+        }
 
         running_ = true;
-        std::cout << std::format("Server listening on port {}\n", port_);
+        std::cout << "Server listening on port " << port_ << std::endl;
 
         while (running_) {
-            sockaddr_in client_addr{};
-            socklen_t client_addr_len = sizeof(client_addr);
-
-            try {
-                int client_fd = utils::accept_connection(server_fd_, reinterpret_cast<sockaddr*>(&client_addr), &client_addr_len);
-                std::cout << std::format("Accepted connection from {}\n", 
-                    utils::get_ip_str(reinterpret_cast<sockaddr*>(&client_addr)));
-
-                std::jthread client_thread(&TCPEchoServer::handle_client, this, client_fd);
-            } catch (const std::system_error& e) {
-                if (e.code().value() != EINTR) {
-                    std::cerr << std::format("Error accepting connection: {}\n", e.what());
-                }
+            int client_fd = Accept(server_fd_);
+            if (client_fd == -1) {
+                std::cerr << "Failed to accept connection" << std::endl;
+                continue;
             }
+
+            char* client_ip = ip_from_fd(client_fd);
+            if (client_ip) {
+                std::cout << "Accepted connection from " << client_ip << std::endl;
+                free(client_ip);
+            }
+
+            std::thread client_thread(&TCPEchoServer::handle_client, this, client_fd);
+            client_thread.detach();
         }
     }
 
     void stop() {
         running_ = false;
-        close(server_fd_);
+        close_socket(server_fd_);
     }
 
 private:
     void handle_client(int client_fd) {
-        try {
-            while (true) {
-                auto message = utils::receive_bytes(client_fd, 1024);
-                if (message.empty()) {
-                    break;
-                }
-                utils::send_bytes(client_fd, message);
-                std::cout << std::format("Echoed message: {}\n", utils::bytes_to_string(message));
+        char buffer[1024];
+        while (true) {
+            memset(buffer, 0, sizeof(buffer));
+            ssize_t received_bytes = recv(client_fd, buffer, sizeof(buffer) - 1, 0);
+            if (received_bytes <= 0) {
+                break;
             }
-        } catch (const std::exception& e) {
-            std::cerr << std::format("Error handling client: {}\n", e.what());
+            ssize_t sent_bytes = strsend(client_fd, buffer);
+            if (sent_bytes == -1) {
+                std::cerr << "Failed to send response" << std::endl;
+                break;
+            }
+            std::cout << "Echoed message: " << buffer << std::endl;
         }
-
-        close(client_fd);
+        close_socket(client_fd);
     }
 
     std::string port_;
@@ -82,17 +68,12 @@ private:
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
-        std::cerr << std::format("Usage: {} <server-port>\n", argv[0]);
+        std::cerr << "Usage: " << argv[0] << " <server-port>" << std::endl;
         return 1;
     }
 
-    try {
-        TCPEchoServer server(argv[1]);
-        server.start();
-    } catch (const std::exception& e) {
-        std::cerr << std::format("Error: {}\n", e.what());
-        return 1;
-    }
+    TCPEchoServer server(argv[1]);
+    server.start();
 
     return 0;
 }
