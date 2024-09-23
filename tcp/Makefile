@@ -1,4 +1,9 @@
-CXX = g++-14
+ifeq ($(shell uname), Darwin)
+	CXX = g++-14
+else 
+	CXX = clang++
+endif
+
 CXXFLAGS = -std=c++20 -Wall -Wextra -pedantic
 LDFLAGS = -pthread
 
