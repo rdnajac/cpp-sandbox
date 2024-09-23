@@ -23,5 +23,5 @@ client: client.cpp utils.cpp
 -include $(DEPS)
 
 clean:
-	rm -f server client $(DEPS)
+	rm -f server client $(DEPS) *.o *.d
 
