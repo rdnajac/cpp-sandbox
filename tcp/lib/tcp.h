@@ -1,8 +1,5 @@
-/* @file utils.h
- * @brief All the networking functions we need for a simple http-server
- */
-#ifndef _UTILS_H
-#define _UTILS_H
+#ifndef _TCP_H
+#define _TCP_H
 
 #include <netdb.h> /* struct addrinfo */
 #include <sys/types.h> /* ssize_t */
@@ -11,6 +8,20 @@
 extern "C" {
 #endif
 
+
+
+/*
+ * @brief Initializes addrinfo with the specified parameters.
+ * @param hostname The hostname or IP address.
+ * @param port The port number as a string.
+ * @param flags Address info flags (e.g., AI_PASSIVE).
+ * @param family Address family (e.g., AF_INET for IPv4).
+ * @param socktype Socket type (e.g., SOCK_STREAM for TCP).
+ * @param protocol Protocol (e.g., IPPROTO_TCP for TCP).
+ * @return Pointer to the allocated addrinfo structure or NULL on error.
+ */
+struct addrinfo *Getaddrinfo(const char *hostname, const char *port,
+		int flags, int family, int socktype, int protocol);
 /*
  * @brief Prints the details of an addrinfo structure in a formatted manner.
  * @param info Pointer to an addrinfo structure.
@@ -55,14 +66,6 @@ int Accept(int serv_sockfd);
 ssize_t strsend(int sock, const char *str);
 
 /*
- * @brief Send a file over a socket.
- * @param sockfd The socket descriptor.
- * @param fd The file descriptor for the file to be sent.
- * @return The total number of bytes sent on success, or -1 on error.
- */
-ssize_t serve_fd(int sockfd, int fd);
-
-/*
  * @brief Prints metadata about the socket then closes it.
  * @param sock The socket to be closed.
  */
@@ -79,4 +82,4 @@ char *ip_from_fd(int sockfd);
 }
 #endif
 
-#endif /* _UTILS_H */
+#endif /* _TCP_H */

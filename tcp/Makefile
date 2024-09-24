@@ -1,37 +1,30 @@
-ifeq ($(shell uname), Darwin)
-    CXX = g++-14
-    CC = gcc
-else 
-    CXX = clang++
-    CC = clang
-endif
-
-CXXFLAGS = -std=c++20 -Wall -Wextra -pedantic
+CC = gcc
+CXX = g++
+AR = ar
+ARFLAGS = rcs
 CFLAGS = -std=c11 -Wall -Wextra -pedantic
+CXXFLAGS = -std=c++20 -Wall -Wextra -pedantic
 LDFLAGS = -pthread
 
-SRCS = server.cpp client.cpp
-OBJS = $(SRCS:.cpp=.o) utils.o
-DEPS = $(SRCS:.cpp=.d)
+SRCS = server.cpp client.cpp tcp.c
+OBJS = $(SRCS:.cpp=.o) $(SRCS:.c=.o)
 
 .PHONY: all clean
 
 all: server client
 
-server: server.o utils.o
+server: server.o tcp.o
 	$(CXX) $(CXXFLAGS) $^ -o $@ $(LDFLAGS)
 
-client: client.o utils.o
+client: client.o tcp.o
 	$(CXX) $(CXXFLAGS) $^ -o $@ $(LDFLAGS)
 
 %.o: %.cpp
-	$(CXX) $(CXXFLAGS) -MMD -MP -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-utils.o: utils.c
+%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Include the dependency files
--include $(DEPS)
-
 clean:
-	rm -f server client $(OBJS) $(DEPS)
+	rm -f server client $(OBJS)
+

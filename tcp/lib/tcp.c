@@ -1,4 +1,3 @@
-#include "utils.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -7,11 +6,10 @@
 #include <sys/socket.h>
 #include <unistd.h>
 #include <netdb.h>
+#include "tcp.h"
 
 #define EXIT_ERR(msg) \
 	do { perror(msg); exit(EXIT_FAILURE); } while (0)
-
-#define CHUNK_SIZE 4096
 
 /*
  * @brief Macro for iterating through addrinfo structures.
@@ -32,17 +30,7 @@
 	 (void *)&(((struct sockaddr_in*)sa)->sin_addr) : \
 	 (void *)&(((struct sockaddr_in6*)sa)->sin6_addr))
 
-/*
- * @brief Initializes addrinfo with the specified parameters.
- * @param hostname The hostname or IP address.
- * @param port The port number as a string.
- * @param flags Address info flags (e.g., AI_PASSIVE).
- * @param family Address family (e.g., AF_INET for IPv4).
- * @param socktype Socket type (e.g., SOCK_STREAM for TCP).
- * @param protocol Protocol (e.g., IPPROTO_TCP for TCP).
- * @return Pointer to the allocated addrinfo structure or NULL on error.
- */
-static struct addrinfo *Getaddrinfo(const char *hostname, const char *port,
+struct addrinfo *Getaddrinfo(const char *hostname, const char *port,
 		int flags, int family, int socktype, int protocol)
 {
 	static struct addrinfo hints;
@@ -248,26 +236,6 @@ static inline ssize_t Send(int sockfd, const void *data, size_t len)
 		sent_total += sent_now;
 	}
 	return sent_total;
-}
-
-ssize_t serve_fd(int sockfd, int fd)
-{
-	char buffer[CHUNK_SIZE];
-	ssize_t n, total_sent = 0;
-
-	while ((n = read(fd, buffer, CHUNK_SIZE)) > 0) {
-		ssize_t tmp = Send(sockfd, buffer, n);
-		if (tmp == -1) {
-			close(fd);
-			return -1;
-		}
-		total_sent += tmp;
-	}
-	if (n == -1)
-		perror("read()");
-
-	close(fd);
-	return total_sent;
 }
 
 /*
