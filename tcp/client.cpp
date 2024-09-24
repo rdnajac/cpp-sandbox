@@ -1,70 +1,59 @@
 #include <iostream>
 #include <string>
-/*#include <vector>*/
+#include <cstring>
+#include "client.hpp"
 #include "utils.h"
-#include <format>
-
-#include <netdb.h>
-#include <sys/socket.h>
-#include <unistd.h>
 
 class TCPEchoClient {
 public:
-  TCPEchoClient(const std::string &server_ip, const std::string &server_port)
-      : server_ip_(server_ip), server_port_(server_port) {}
+    TCPEchoClient(const std::string &server_ip, const std::string &server_port)
+        : server_ip_(server_ip), server_port_(server_port) {}
 
-  void send_and_receive(const std::string &message) {
-    addrinfo hints{};
-    hints.ai_family = AF_INET;
-    hints.ai_socktype = SOCK_STREAM;
-    hints.ai_protocol = IPPROTO_TCP;
+    void send_and_receive(const std::string &message) {
+        int server_fd = connect_to_host(server_ip_.c_str(), server_port_.c_str());
+        if (server_fd == -1) {
+            std::cerr << "Failed to connect to server" << std::endl;
+            return;
+        }
 
-    addrinfo *info = utils::get_address_info(server_ip_.c_str(),
-                                             server_port_.c_str(), &hints);
+        ssize_t sent_bytes = strsend(server_fd, message.c_str());
+        if (sent_bytes == -1) {
+            std::cerr << "Failed to send message" << std::endl;
+            close_socket(server_fd);
+            return;
+        }
 
-    int server_fd = utils::create_socket(info->ai_family, info->ai_socktype,
-                                         info->ai_protocol);
+        char buffer[1024] = {0};
+        ssize_t received_bytes = recv(server_fd, buffer, sizeof(buffer) - 1, 0);
+        if (received_bytes == -1) {
+            std::cerr << "Failed to receive response" << std::endl;
+            close_socket(server_fd);
+            return;
+        }
 
-    utils::connect_to_server(server_fd, info->ai_addr, info->ai_addrlen);
+        std::cout << "Received: " << buffer << std::endl;
+        std::cout << "Sent " << sent_bytes << " bytes and received " << received_bytes << " bytes in total" << std::endl;
 
-    freeaddrinfo(info);
-
-    auto message_bytes = utils::string_to_bytes(message);
-    utils::send_bytes(server_fd, message_bytes);
-
-    auto received_bytes = utils::receive_bytes(server_fd, message.length());
-    std::string received_message = utils::bytes_to_string(received_bytes);
-
-    std::cout << std::format("Received: {}\n", received_message);
-    std::cout << std::format("Sent and received {} bytes in total\n",
-                             received_message.length());
-
-    close(server_fd);
-  }
+        close_socket(server_fd);
+    }
 
 private:
-  std::string server_ip_;
-  std::string server_port_;
+    std::string server_ip_;
+    std::string server_port_;
 };
 
 int main(int argc, char *argv[]) {
-  if (argc != 4) {
-    std::cerr << std::format(
-        "Usage: {} <echo-word> <server-addr> <server-port>\n", argv[0]);
-    return 1;
-  }
+    if (argc != 4) {
+        std::cerr << "Usage: " << argv[0] << " <echo-word> <server-addr> <server-port>" << std::endl;
+        return 1;
+    }
 
-  std::string echo_word = argv[1];
-  std::string server_ip = argv[2];
-  std::string server_port = argv[3];
+    std::string echo_word = argv[1];
+    std::string server_ip = argv[2];
+    std::string server_port = argv[3];
 
-  try {
     TCPEchoClient client(server_ip, server_port);
     client.send_and_receive(echo_word);
-  } catch (const std::exception &e) {
-    std::cerr << std::format("Error: {}\n", e.what());
-    return 1;
-  }
 
-  return 0;
+    return 0;
 }
