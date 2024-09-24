@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <cstring>
+#include "client.hpp"
 #include "utils.h"
 
 class TCPEchoClient {
