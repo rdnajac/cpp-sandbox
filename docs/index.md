@@ -282,7 +282,39 @@ public:
 
 ## Containers
 
-- `vector`
+### vector
+
+#### insert
+
+Insert expects an iterator and a value to insert:
+
+```cpp
+v.insert(v.begin() + 2, 5); // insert 5 at position 2
+```
+
+Use `v.begin()` to get an iterator to the beginning of the vector,
+then add an offset to get the desired position.
+
+#### append to end
+
+Use `push_back` to append to the end of a vector:
+
+```cpp
+v.push_back(7);
+```
+
+#### find and insert after
+
+Use `std::find` to find a value in a vector:
+
+```cpp
+auto it = std::find(v.begin(), v.end(), 5);
+if (it != v.end()) {
+    v.insert(it + 1, 6);
+}
+```
+
+
 - `list`
 - `forward_list`
 - `map`
