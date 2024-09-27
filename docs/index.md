@@ -1,9 +1,14 @@
 # A Tour of C++
 
+During my time at Columbia University, I had the privilege of taking
+[Bjarne Stroustrup's](https://www.stroustrup.com/) course, "Design using C++".
+Now that I have graduated, I've decided to compile all of my notes into a
+comprehensive guide. This document serves as an easy reference to accompany the
+repository of code snippets and examples I have been developing.
+
 ## Attribution
 
 The material in this document is based on concepts and information from:
-
 Stroustrup, B. (2022). A Tour of C++ (C++ In-Depth Series) (3rd ed.). Addison-Wesley Professional.
 
 ## Table of Contents
@@ -35,7 +40,7 @@ using namespace std;    // make names from std visible without std::
 
 ### Variables
 
-Use `auto` to let the compiler deduce the type of a variable 
+Use `auto` to let the compiler deduce the type of a variable
 unless there is a specific reason to specify the type.
 
 ```cpp
@@ -66,10 +71,16 @@ for (auto x : v) cout << x << '\n';
 Another example:
 
 ```cpp
-for auto& x : v) x *= 2;
+for (auto& x : v) x *= 2;
 ```
 
 ## User-Defined Types
+
+- Use 'class' to hide representation and provide an interface.
+- Use 'struct' to group related data without hiding.
+- Prefer 'enum class' over plain enums.
+- Consider std::variant as a type-safe alternative to unions.
+- Use user-defined literals for expressive value specification.
 
 ### Structures
 
@@ -105,6 +116,8 @@ dna.addNucleotide(Nucleotide::C);
 std::cout << "DNA length: " << dna.length() << '\n';
 ```
 
+Jump ahead to [Classes](#classes) for more information.
+
 ### Enumerations
 
 Use strongly typed enumerations:
@@ -132,7 +145,7 @@ genetic_info = DNA({Nucleotide::A, Nucleotide::T});
 genetic_info = "ATGC";  // Now contains a string
 ```
 
-### User-Defined Literals
+### User-Defined Literals:/
 
 Define custom literals:
 
@@ -161,48 +174,22 @@ Use 'using' for type aliases:
 
 using DNAStrand = std::vector<Nucleotide>;
 
-### Remember
-
-- Use 'class' to hide representation and provide an interface.
-- Use 'struct' to group related data without hiding.
-- Prefer 'enum class' over plain enums.
-- Consider std::variant as a type-safe alternative to unions.
-- Use user-defined literals for expressive value specification.
+> [!NOTE]
+> I don't like using these in C because they obscure the type of the variable.
+> However, I don't have enough experience with C++ to know if if this is best
+> practice.
 
 ## Modularity
 
-### Separate Compilation
+Declarations (interfaces, .h, .hpp) and definitions (implementations, .c, .cpp)
+should be separate. Where modules are supported (C++20), use them!
 
-C++ supports separate compilation.
-You can define interfaces in header files and implementations in source files:
+> [!TIP]
+> Header files should emphasize logical structure.
 
-```cpp
-// DNA.h
-class DNA {
-public:
-    DNA(std::string seq);
-    void addNucleotide(char n);
-    size_t length() const;
-private:
-    std::string sequence;
-};
+### namespaces
 
-// DNA.cpp
-#include "DNA.h"
-
-DNA::DNA(std::string seq) : sequence(std::move(seq)) {}
-
-void DNA::addNucleotide(char n) {
-    sequence += n;
-}
-
-size_t DNA::length() const {
-    return sequence.length();
-}
-```
-
-- namespaces
-- function arguments and return values
+### modules
 
 ## Error Handling
 
@@ -234,10 +221,72 @@ public:
 
 ## Classes
 
+Three important kinds of C++ classes are:
+
 - concrete types
 - abstract types
 - virtual functions
-- class hierarchies
+
+### Concrete Types
+
+> They behave "just like built-in types."!
+
+#### Classical user-defined arithmetic type
+
+```cpp
+class complex {
+    double re, im; // representation: two doubles
+public:
+    complex(double r, double i) :re{r}, im{i} {}    // construct complex from two scalars
+    complex(double r) :re{r}, im{0} {}              // construct complex from one scalar
+    complex() :re{0}, im{0} {}                      // default complex: {0,0}
+    complex(complex z) :re{z.re}, im{z.im} {}       // copy constructor
+
+    double real() const { return re; }
+    void real(double d) { re=d; }
+    double imag() const { return im; }
+    void imag(double d) { im=d; }
+
+    complex& operator+=(complex z)
+    {
+        re+=z.re;       // add to re and im
+        im+=z.im;
+        return *this;   // return the result
+    }
+
+    complex& operator-=(complex z)
+    {
+        re-=z.re;
+        im-=z.im;
+        return *this;
+    }
+
+    complex& operator*=(complex); // defined out-of-class somewhere
+    complex& operator/=(complex); // defined out-of-class somewhere
+};
+```
+
+### Abstract Types
+
+Insulates the user from implementation details by decoupling the interface from
+the representation.
+
+> Since we don’t know anything about the representation of an
+> abstract type (not even its size), we must allocate objects on the free store
+> and access them through references or pointers.
+
+```cpp
+class Container {
+public:
+    virtual double& operator[](int) = 0;    // pure virtual function
+    virtual int size() const = 0;           // const member function
+    virtual  ̃Container() {}                 // destructor
+
+    // const member function  // destructor (§5.2.2)
+};
+```
+
+### Heirarchies
 
 ## Essential Operations
 
@@ -314,7 +363,6 @@ if (it != v.end()) {
 }
 ```
 
-
 - `list`
 - `forward_list`
 - `map`
@@ -368,4 +416,3 @@ if (it != v.end()) {
 - waiting for events
 - communicating tasks
 - coroutines
-
