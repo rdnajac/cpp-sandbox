@@ -1,5 +1,0 @@
-9246604447411    C-style for-loop:              22 ms
-9246604447411    C-style for-loop (unsigned):   6 ms
-9246604447411    ranged for-loop                6 ms
-9246604447411    for_each() with a lambda       6 ms
-9246604447411    std::accumulate()              6 ms
