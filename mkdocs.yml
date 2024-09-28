@@ -24,7 +24,7 @@ theme:
         name: Switch to light mode
 
 not_in_nav: |
-  /vendor/*
+  /resources/*
 
 markdown_extensions:
   - pymdownx.highlight:

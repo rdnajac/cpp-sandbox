@@ -21,7 +21,7 @@ Stroustrup, B. (2022). A Tour of C++ (C++ In-Depth Series) (3rd ed.). Addison-We
 6. [Essential Operations](#essential-operations)
 7. [Templates](#templates)
 8. [Concepts and Generic Programming](#concepts-and-generic-programming)
-9. [Standard-Library](#library-overview)
+9. [Standard-Library](#standard-library)
 10. [Strings and Regular Expressions](#strings-and-regular-expressions)
 11. [Input and Output](#input-and-output)
 12. [Containers](#containers)
