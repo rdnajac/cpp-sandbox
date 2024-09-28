@@ -1,0 +1,873 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A collection of C++ code snippets and examples.">
+      
+      
+        <meta name="author" content="Ryan D. Najac">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.38">
+    
+    
+      
+        <title>GDB, Valgrind, and Debugging - C++ Sandbox</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.8c3ca2c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gdb-valgrind-and-debugging" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="C++ Sandbox" class="md-header__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            C++ Sandbox
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              GDB, Valgrind, and Debugging
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rdnajac/cpp-sandbox" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="C++ Sandbox" class="md-nav__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    C++ Sandbox
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rdnajac/cpp-sandbox" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../advprog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Advanced Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qsort/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quicksort
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tcp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TCP Echo Server and Client
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../time-complexity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time Complexity
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tour/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A Tour of C++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#printf" class="md-nav__link">
+    <span class="md-ellipsis">
+      printf
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#valgrind" class="md-nav__link">
+    <span class="md-ellipsis">
+      valgrind
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="valgrind">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aside-why-use-g-when-compiling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aside: why use -g when compiling?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      gdb
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="gdb">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#loading-a-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loading a program
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#breakpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Breakpoints
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#watchpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Watchpoints
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examining-the-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examining the program
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting values
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resuming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resuming
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-essential-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary: Essential Commands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tips
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-dumps-and-gdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Dumps and gdb
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#external-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      External Resources
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="gdb-valgrind-and-debugging">GDB, Valgrind, and Debugging</h1>
+<p>There are three commonly used debugging methods in this class. </p>
+<ol>
+<li><code>printf</code></li>
+<li>valgrind</li>
+<li>gdb</li>
+</ol>
+<h2 id="printf">printf</h2>
+<p>First, <code>printf</code>, which you probably use all the time.</p>
+<p>Imagine this program fragment, which is currently crashing.</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">foo</span><span class="p">();</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">printf</span><span class="p">(</span><span class="s">&quot;foo complete&quot;</span><span class="p">);</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">bar</span><span class="p">();</span>
+</span></code></pre></div>
+<p>We added the printf line to the program to determine if the program was crashing
+during <code>foo()</code> or during <code>bar()</code>. If we see "foo complete", we can determine
+that foo definitely completed.</p>
+<p>However, if we do <strong>not</strong> see "foo complete," <strong>we cannot determine anything!</strong>
+The C standard library may have buffered our standard output for us, so we need
+to make the debugging print statement <code>printf("foo complete\n");</code>. The newline
+encourages the C standard library to send the text to the display immediately.</p>
+<p>It would be even better to print debugging information to stderr. This is a bit
+advanced for right now, but you use a slightly different function, <code>fprintf</code>,
+which lets us specify the destination. It's fairly simple:
+<code>fprintf(stderr, "foo complete\n");</code>.</p>
+<h2 id="valgrind">valgrind</h2>
+<p>After compiler warnings, valgrind is the first tool you should turn to whenever
+you're dealing with possible memory problems. It analyzes your program
+<strong>as it runs</strong> for memory errors and leaks. </p>
+<p>Valgrind is very easy to use. All you do is call the program normally, but
+prepend <code>valgrind --leak-check=full</code> to the beginning.</p>
+<div class="language-text highlight"><pre><span></span><code>$ ./twecho hello world # Without valgrind
+$ valgrind --leak-check=full ./twecho hello world # With valgrind
+</code></pre></div>
+<p>Your program runs completely normally, including letting you type in as you
+wish. At the end, whether your program crashed or exited normally, it prints out
+a status report, which reports two problems:</p>
+<p><strong>Memory Errors</strong>. These are illegal memory accesses, which may result in weird
+behavior, and crashes. If your program is crashing or acting up, identifying and
+fixing these are your second priority (number 1 is fixing compiler warnings).</p>
+<p>What are examples of this? The simplest one is to imagine you have an array,
+<code>int arr[10];</code>, and you try to set <code>arr[11] = 11;</code>. The compiler won't
+warn you about it in any non-trivial case. However this is a memory error, and
+may cause your problem to crash or act weird. Luckily valgrind will report it,
+and even tell you which line of code it's happening on.</p>
+<p><strong>Lost Memory</strong>. You need to know about malloc and heap memory for this to make
+sense, but suffice it to say that you don't want to leak memory because the more
+memory you leak, the less memory other running programs will have to use.</p>
+<p>Let's try it on a sample program, <code>leaky.c</code>:</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">pint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pint</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="n">perror</span><span class="p">(</span><span class="s">&quot;malloc returned NULL&quot;</span><span class="p">);</span><span class="w"> </span><span class="cm">/* Jae often defines a die() to do this */</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="o">*</span><span class="n">pint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The value pointed to by pint is %d </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">pint</span><span class="p">);</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Notice that it says you definitely lost 1 block of 4 bytes. The 1 block is from
+the call to malloc on line 5. You can tell it's that file and line number
+because it says <code>(leaky.c:5)</code>. </p>
+<p>To fix this program we need to free the memory block we malloc'd. Immediately
+before the return, add <code>free(pint);</code>.</p>
+<p>If you need valgrind to give you even more debugging information, you can add
+two more flags:</p>
+<ul>
+<li><code>--show-reachable=yes</code> gives more information about memory</li>
+<li><code>--track-origins=yes</code> gives more information about uninitialized values.</li>
+</ul>
+<p>Thus, a more verbose valgrind command is:
+<code>valgrind --leak-check=full --show-reachable=yes --track-origins=yes ./leaky</code></p>
+<p>Note: You should <strong>ignore all suppressed errors.</strong> They're known problems with
+the standard library functions, and they're suppressed because there's nothing
+you can do about them.</p>
+<h3 id="aside-why-use-g-when-compiling">Aside: why use <code>-g</code> when compiling?</h3>
+<p>This is the perfect time to discuss something we glossed over in the first
+CLAC recitation. We told you to always compile your code with <code>gcc -g</code>. Why are
+you using <code>-g</code> though?</p>
+<p><code>-g</code> embeds debugging information into the object files, and then into the
+executable file. Debugging information includes which lines of source code are
+being executed, what variables are called, and all sorts of good stuff like
+that. Try recompiling leaky.c above, but without the <code>-g</code> flag. When you run
+valgrind it will only report file names, not line numbers, for your errors.</p>
+<p>Note: Valgrind is well-supported on Linux only. On OS X, clang's
+<a href="http://clang.llvm.org/docs/AddressSanitizer.html#usage">Address Sanitizer</a>
+offers something similar. On Windows, there are many Visual Studio plugins for
+memory checking.</p>
+<h2 id="gdb">gdb</h2>
+<p>gdb is a debugger. It lets you stop time, look around your program, and maybe
+even change things. It's incredibly powerful, but can be a little intimidating.
+Don't worry, the basics aren't so bad.</p>
+<p>gdb has very concise help, at any time just run <code>help foo</code> to get help about foo,
+or just type <code>help</code> alone to list all commands.</p>
+<h4 id="loading-a-program">Loading a program</h4>
+<p>To get started we just need to compile our program (using <code>-g</code> of course). You can go into our <code>code</code> directory, and simply call make. Then, run <code>gdb -tui [program name]</code></p>
+<p>In our case, </p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">$</span><span class="w"> </span><span class="n">gdb</span><span class="w"> </span><span class="o">-</span><span class="n">tui</span><span class="w"> </span><span class="n">main</span>
+</span></code></pre></div>
+<p>That opens gdb with a Text User Interface, TUI in short, which is a terminal interface which uses the curses library to show the source file, the assembly output, the program registers and GDB commands in separate text windows.</p>
+<p>You need to give gdb instructions now, which is where it gets scary.</p>
+<p>However it's really easy! Once you hit the enter key, you will see the source code of the main.c file. </p>
+<p>Type <code>run</code> and it will start (include any arguments
+after run if your program needs them, ie <code>run hello world</code>). You'll notice that
+the program just runs straight through, but I promised you could stop time!</p>
+<h4 id="breakpoints">Breakpoints</h4>
+<p>The main way of stopping time is a <strong>breakpoint.</strong> Breakpoints are points in the
+source code at which gdb will pause running your program. Setting breakpoints is
+the first, most important, step in debugging.</p>
+<p>There are three main types of breakpoints:</p>
+<ol>
+<li><code>break 10</code> to break on line 10 of the current source file</li>
+<li><code>break mymath.c:14</code> to break on line 14 of mymath.c</li>
+<li><code>break multiply</code> to break at the very beginning of the function <code>multiply</code></li>
+</ol>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">(</span><span class="n">gdb</span><span class="p">)</span><span class="w"> </span><span class="k">break</span><span class="w"> </span><span class="mi">10</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">Breakpoint</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="mh">0x6de</span><span class="o">:</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="n">main</span><span class="p">.</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="mf">10.</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">(</span><span class="n">gdb</span><span class="p">)</span><span class="w"> </span><span class="k">break</span><span class="w"> </span><span class="n">mymath</span><span class="p">.</span><span class="n">c</span><span class="o">:</span><span class="mi">14</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">Breakpoint</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="mh">0x78d</span><span class="o">:</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="n">mymath</span><span class="p">.</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="mf">14.</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">(</span><span class="n">gdb</span><span class="p">)</span><span class="w"> </span><span class="k">break</span><span class="w"> </span><span class="n">multiply</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="nl">Note</span><span class="p">:</span><span class="w"> </span><span class="n">breakpoint</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">also</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">pc</span><span class="w"> </span><span class="mh">0x78d</span><span class="p">.</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">Breakpoint</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="mh">0x78d</span><span class="o">:</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="n">mymath</span><span class="p">.</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="mf">15.</span>
+</span></code></pre></div>
+<p>Type <code>run</code> and it will start again and stop at the break point. If you want to go to the next break point, all you need to do is type <code>continue</code>. While you're at each break point, you can print the value of a specific variable by <code>print [variable name]</code></p>
+<p><img alt="gdb-continue" src="../../images/gdb-continue.png" /></p>
+<p>You can take your breakpoints to the next level with conditional breakpoints.
+You set these up just like normal breakpoints, but add <code>if expression</code> to only
+break if a certain thing is true. For example, if you have a loop that counts
+down from 100, but you only want to break near the end, you could do
+<code>break 10 if i &lt;= 2</code> to avoid breaking on the first 97 iterations. </p>
+<p>Deleting breakpoints is easy. Typically, you can do <code>clear</code> and then the line
+you used to create the breakpoint. You can also do <code>info breakpoints</code> to get a
+list of your current breakpoints, and then <code>delete i</code> to get rid of the ith one.</p>
+<h4 id="watchpoints">Watchpoints</h4>
+<p>You can also set a <strong>watchpoint</strong> on a variable. For example, <code>watch x</code> stops
+the program whenever the value of <code>x</code> changes. However you can only setup a
+watchpoint after the variable has been declared, so you'll first need to set a
+breakpoint.</p>
+<h4 id="examining-the-program">Examining the program</h4>
+<p>Once you're stopped, you need to see what's going on. There are a few commands
+that can let you examine the program.</p>
+<p>First, let's figure out what function you're in, and how you got here.</p>
+<p><code>backtrace</code> (or <code>bt</code>), prints the call stack, including arguments. This can be
+especially useful in recursive programs.</p>
+<p><code>frame [n]</code> moves you to the nth call shown in the output of <code>backtrace</code>. This
+can be helpful in determining how function arguments are generated.</p>
+<p><code>print expression</code> will print out an expression. For example <code>print x</code> prints
+out x, or <code>print *x</code> prints out the pointer x after dereferencing it. We can
+specify a format parameter with a slash, ie <code>p/t x</code> will print out x formatted
+as binary. The parameters are:</p>
+<ul>
+<li><code>d</code> for signed decimal</li>
+<li><code>u</code> for unsigned decimal</li>
+<li><code>x</code> for hexadecimal</li>
+<li><code>o</code> for octal</li>
+<li><code>t</code> for binary</li>
+<li><code>a</code> for address</li>
+<li><code>c</code> for character</li>
+<li><code>f</code> for floating point</li>
+</ul>
+<p>There is also a <code>x</code> command to print memory addresses and specify more complex
+formatting and print multiple values. For example, if we had <code>long y = -1;</code> in
+our program, and we were stopped in gdb, we could do <code>x/tl &amp;y</code> to print out the
+value of y in binary. We could also do <code>x/2xi &amp;y</code> to print out the value of y in
+hex, </p>
+<p><code>info locals</code> will print out all the locally defined variables. It doesn't
+include everything you might think: in particular, it doesn't include function
+parameters, so you'll have to use <code>print argumentName</code> to see those.</p>
+<p><code>ptype variable</code> prints the type of a variable! This can be nice with multiple
+pointers and such. For example, <code>ptype x</code> will say x is an int. This has a more
+powerful analog <code>whatis expression</code>, which lets you specify any arbitrary
+expression, for example <code>whatis &amp;x</code>, which will say <code>int *</code>.</p>
+<h4 id="setting-values">Setting values</h4>
+<p>Aaaarg, that's so close, except x should be 3, not 2, at the points! Fear not!
+With gdb you can set values! Just run</p>
+<p><code>set variable = expression</code>, for example <code>set x = 4</code>, and it will change it for
+you. (Unfortunately, it's not possible to change code.)</p>
+<h4 id="resuming">Resuming</h4>
+<p>Once you've stopped, after you're doing examining the code, you need to resume
+execution. There are basically 3 amounts that you can resume by. In order from
+smallest to largest they are:</p>
+<p><code>step</code> runs the code line by line, and steps <em>into</em> functions. That
+means if your code calls <code>foo()</code> on the next line, you'll continue going line by
+line through the code of foo. </p>
+<p><code>next</code> also runs the code line by line, but it goes <em>over</em> functions. So if you
+call <code>bar()</code>, it will skip over the call and continue within this block of code.
+Generally, for example, you want to use <code>next</code> over library functions.</p>
+<p>You can combine step and next with a number, eg, <code>step 4</code> to step 4 times at once.</p>
+<p><code>continue</code> resumes executing your program until you get to another breakpoint.</p>
+<p>There are a few more esoteric ones, such as <code>finish</code> to wait for the return, 
+Control-C to send sigint, and kill to end it. </p>
+<h4 id="summary-essential-commands">Summary: Essential Commands</h4>
+<ul>
+<li><code>break</code> <em><code>line</code> / <code>file:line</code> / <code>function</code></em></li>
+<li><code>run</code></li>
+<li><code>backtrace</code></li>
+<li><code>print</code> <em><code>variable/expression</code></em></li>
+<li><code>step</code></li>
+<li><code>next</code></li>
+<li><code>continue</code></li>
+</ul>
+<h4 id="tips">Tips</h4>
+<p>Almost all gdb commands can be abbreviated to a single letter. Instead
+of typing <code>break</code> you can just type <code>b</code>, instead of <code>continue</code>, <code>c</code>, etc. If you
+want to list all the breakpoints, you could type <code>info breakpoints</code>, but you
+could also just type <code>i b</code>.</p>
+<p>Pressing enter will repeat the most recent command.  No longer do you need to
+mash <code>s</code> or <code>n</code>!</p>
+<p>Control-L is a common keyboard shortcut to clean up the screen. It can be
+helpful if your program outputs some weird stuff and it all looks janky. Also
+works in bash.</p>
+<p>You can jump to arbitrary points in execution, but don't you already have enough
+rope to hang yourself?</p>
+<p><code>-tui</code> shows the source code in the top half. Use the arrow keys to navigate.</p>
+<p>You can quit with <code>quit</code>, <code>q</code>, and Control-D typically.</p>
+<h3 id="core-dumps-and-gdb">Core Dumps and gdb</h3>
+<p>Sometimes your program will encounter a segmentation fault. You'll see
+"Segmentation Fault (core dumped)" printed to the terminal. By default, this
+"core dumped" message doesn't do anything. This is because by default core dump
+files are limited to size 0. However, we can change this quite easily by running
+<code>ulimit -c unlimited</code>. Now when we segfault, we'll get a file called "core" in
+the working directory.</p>
+<p>This "core" file provides a picture of the memory at the time the segfault was
+encountered. Luckily all of these fancy UNIX tools work great together so we can
+used gdb to help us do some detective work! By running <code>gdb ./my_program core</code>,
+we're instructing <code>gdb</code> to load the memory picture at the time of the seg fault.
+We can then navigate around using the gdb commands we just learned (like <code>bt</code>
+and <code>info locals</code>) to figure out exactly what caused the segfault!</p>
+<h2 id="example">Example</h2>
+<p>It helps to have a concrete example in hand while doing this. Let's calculate 
+2^4, but let's do it the old fashioned way, where exponentiation is repeated
+multiplication, and multiplication is repeated addition. </p>
+<p>We're going to define our general math functions in a file called <code>mymath.c</code>,
+which of course has its associated <code>mymath.h</code>.</p>
+<p>Then we'll start our program in main.c. To make things a little more
+interesting, we're going to use some basic pointers. First we setup two basic
+integers, <code>a</code> and <code>b</code>. Then we take the memory address of <code>a</code>, and store it in
+the pointer-to-int <code>x</code> (and likewise with b and y).</p>
+<p>Then we pass the pointers into our exponentiation function. It performs the
+appropriate number of multiplications, each of which requires an appropriate number
+of additions, and then return the value to main.</p>
+<p>Main prints out <code>2^-1 = 16</code>. What's going on? That's crazy!</p>
+<p>Let's debug to find out!</p>
+<p><em>Spoiler: in the exponentiation, we do <code>(*y)--</code>, which permanently changes y!</em></p>
+<h2 id="external-resources">External Resources</h2>
+<ul>
+<li><a href="http://users.ece.utexas.edu/~adnan/gdb-refcard.pdf">Dense, incredibly helpful gdb reference card</a></li>
+<li><a href="http://web.cecs.pdx.edu/~jrb/cs201/lectures/handouts/gdbcomm.txt">Slightly slimmer gdb cheat sheet</a></li>
+<li>Look at Jae's emails "ANN: Doing lab 2", and "ANN: Debugging Tips"</li>
+<li><a href="https://sourceware.org/gdb/current/onlinedocs/gdb/Sample-Session.html#Sample-Session">Official GDB guide</a></li>
+<li><a href="http://cslibrary.stanford.edu/107/UnixProgrammingTools.pdf">Handy walkthrough pdf that covers unix basics, gcc, gdb, make, and basic shell</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 <a href="https://rdnajac.tech">Ryan D. Najac</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.copy"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.d6f25eb3.min.js"></script>
+      
+    
+  </body>
+</html>

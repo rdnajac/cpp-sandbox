@@ -1,0 +1,745 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A collection of C++ code snippets and examples.">
+      
+      
+        <meta name="author" content="Ryan D. Najac">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.38">
+    
+    
+      
+        <title>Git - C++ Sandbox</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.8c3ca2c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#git" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="C++ Sandbox" class="md-header__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            C++ Sandbox
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Git
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rdnajac/cpp-sandbox" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="C++ Sandbox" class="md-nav__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    C++ Sandbox
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rdnajac/cpp-sandbox" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../advprog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Advanced Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qsort/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quicksort
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tcp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TCP Echo Server and Client
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../time-complexity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time Complexity
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tour/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A Tour of C++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#version-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version Control
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Started
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-your-versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Updating Your Versioning
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Updating Your Versioning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#other-very-useful-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other Very Useful Commands
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Other Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gitignore" class="md-nav__link">
+    <span class="md-ellipsis">
+      gitignore
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bonus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bonus
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="git">Git</h1>
+<p>For this part of the recitation, we will follow Jae's "git-tutorial" which can
+be found on the mailing list and the course website. Here's a quick run through
+of the operations reviewed in the tutorial, along with some bonus operations.</p>
+<p>Git is version control software, where version control is "a system that records
+changes to a file or set of files over time so that you can recall specific
+versions later"
+(<a href="http://git-scm.com/book/en/v2/Getting-Started-About-Version-Control">source</a>).
+In other words, if you mess up your code really badly, you can use git to
+gracefully step back to an earlier version. To facilitate this, git needs you to
+take periodic snapshots of your code, called 'commits' in git parlance.</p>
+<p>In this class, we require that you make git commits to get full credit for your
+work. We want you to learn git because in industry, you will without a doubt be
+using version control.</p>
+<h2 id="version-control">Version Control</h2>
+<p>A Version Control System (VCS) records changes made to a set of files. This allows programmers to maintain backups of their previous work without manually copying their files</p>
+<h2 id="configuration">Configuration</h2>
+<p>You need to set your name and email so that your commits are associated with
+your identity:</p>
+<div class="language-text highlight"><pre><span></span><code>git config --global user.name &quot;Your Full Name&quot;
+git config --global user.email your_uni@columbia.edu
+</code></pre></div>
+<p>It's also nice to enable color in your console when using git:</p>
+<div class="language-text highlight"><pre><span></span><code>git config --global --add color.ui auto
+</code></pre></div>
+<p>And set your editor globally (here vim, if you prefer emacs use that). Note that
+using the graphical version, <code>gvim</code>, is trickier, so we recommend you stick
+to the command line version.</p>
+<div class="language-text highlight"><pre><span></span><code>echo &quot;EDITOR=vim&quot; &gt;&gt; ~/.bashrc
+</code></pre></div>
+<h2 id="getting-started">Getting Started</h2>
+<p>In order to version control a directory, you have to 'initialize' it:</p>
+<div class="language-text highlight"><pre><span></span><code>git init
+</code></pre></div>
+<p><strong>But in this class, we won't be using <code>git init</code></strong>. Instead, all students start by
+ making an exact copy of Jae's skeleton code. Git supports 'cloning', which does just 
+ that:</p>
+<div class="language-text highlight"><pre><span></span><code>git clone [source_directory] [destination_directory]
+</code></pre></div>
+<p>With the above command, you can take Jae's files and create your own copy. Neat!</p>
+<h2 id="updating-your-versioning">Updating Your Versioning</h2>
+<p>Not all the files in a version controlled directory have to be under version control.
+You have to explicitly tell git to watch for changes in certain files. For information
+on which files are version controled, which have changed, etc. run:</p>
+<div class="language-text highlight"><pre><span></span><code>git status
+</code></pre></div>
+<p>This will bring up file statuses. Remember that 'commiting' is equivalent to taking a
+snapshot at that time.</p>
+<p>There are 4 file statuses:</p>
+<ol>
+<li><strong>Untracked</strong>: git is not watching for changes in this file.</li>
+<li><strong>Tracked, unmodified</strong>:  git is watching this file for changes, but nothing has changed.</li>
+<li><strong>Tracked, modified, unstaged</strong>: git is watching this file and it has changed, but you haven't told git you want to include the file in your next commit.</li>
+<li><strong>Tracked, modified, staged</strong>: git is ready to commit the changes you've made.</li>
+</ol>
+<p>To move a file from status 3 to 4 (i.e. to ensure that the next commit you make registers 
+the changes you made to a file), you have to 'stage' it using the <code>add</code> command:</p>
+<div class="language-text highlight"><pre><span></span><code>git add file1 file2
+git add -p                      # individually pick for each set of changes whether to stage it
+</code></pre></div>
+<p>Once you have at least one file that is modified and staged, you can commit: </p>
+<div class="language-text highlight"><pre><span></span><code>git commit -m &quot;some message&quot;    # explain what changes you made between now and your previous commit
+</code></pre></div>
+<h3 id="other-very-useful-commands">Other Very Useful Commands</h3>
+<p>Checking up on your changes:</p>
+<div class="language-text highlight"><pre><span></span><code>git status
+git diff
+git diff file1
+git diff --cached
+git log
+git log --stat --summary
+git log -p
+</code></pre></div>
+<p>To only stage changes (including deletions) to already tracked files, without adding untracked files:</p>
+<div class="language-text highlight"><pre><span></span><code>git add -u
+</code></pre></div>
+<p>To remove a file from your git files, run:</p>
+<div class="language-text highlight"><pre><span></span><code>git rm file1
+</code></pre></div>
+<p>To change a filename in git: </p>
+<div class="language-text highlight"><pre><span></span><code>git mv oldfilename newfilename
+</code></pre></div>
+<p>Undoing changes:</p>
+<div class="language-text highlight"><pre><span></span><code>git checkout -- [filename]
+git reset HEAD [filename]
+</code></pre></div>
+<p>Going back in time:</p>
+<div class="language-text highlight"><pre><span></span><code>git checkout &lt;commit hash&gt;
+</code></pre></div>
+<h2 id="examples">Examples</h2>
+<p>Case 1: Adding a new file</p>
+<p><img alt="git-create-new-file.png" src="../../images/git-create-new-file.png" /></p>
+<p>Case 2: Working on an existing file from git repository</p>
+<p><img alt="git-existing-file.png" src="../../images/git-existing-file.png" /></p>
+<h2 id="other-tools">Other Tools</h2>
+<div class="language-text highlight"><pre><span></span><code>git grep [pattern]
+git help
+git help commit
+man git
+man gittutorial
+</code></pre></div>
+<p>Patches are rarely necessary, but the submit script for this class uses them.</p>
+<div class="language-text highlight"><pre><span></span><code>git format-patch --stdout origin &gt; mywork.mbox
+git am path/to/mywork.mbox
+</code></pre></div>
+<p>Remotes:</p>
+<div class="language-text highlight"><pre><span></span><code>git remote add
+git pull
+git fetch &amp;&amp; git merge
+git push
+</code></pre></div>
+<h3 id="gitignore">gitignore</h3>
+<p>Git wants to track everything, but you don't want it to track everything. In
+particular you want to ignore all your object (<code>.o</code>) files, and your compiled
+executables. You can tell git to ignore certain files by using a gitignore file.
+It's a list of file names (including wildcards [when you use an asterisk]) 
+for git to ignore when running commands like status.</p>
+<p>In your repository create a file named <code>.gitignore</code>, where each line is a
+pattern of filenames git should ignore. </p>
+<p>Example .gitignore file:</p>
+<div class="language-text highlight"><pre><span></span><code>a.out
+*.o
+*.a
+main
+*.mbox
+/labN-2015*
+</code></pre></div>
+<p>You can add the <code>.gitignore</code> file itself to the <code>.gitignore</code>, or you can add it
+to the repository. You may also create a global ignore file so you don't have to
+copy it to each repository. More details about that are in Github's help on
+<a href="https://help.github.com/articles/ignoring-files">ignoring files</a>.</p>
+<h3 id="bonus">Bonus</h3>
+<p>All of these recitation notes are tracked using git and hosted on GitHub. If we
+have time we'll come back to this during recitation, but here's some GitHub 101.</p>
+<ol>
+<li>
+<p>Create an account by going to <a href="http://github.com">github.com</a> and signing up.
+Then, <a href="https://docs.github.com/en/get-started/quickstart/set-up-git">configure git for use with remote
+servers</a>.</p>
+</li>
+<li>
+<p>Add your SSH keys to github. They have <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">a handy
+tutorial</a> to help out.
+All you should need to do is Step 4 - adding ssh keys.</p>
+</li>
+<li>
+<p>Try <a href="https://docs.github.com/en/get-started/quickstart/fork-a-repo">forking</a> <a href="https://github.com/cs3157/recitations">this
+repository</a>. Pull your fork to
+your local machine.</p>
+<p><strong>Digression</strong>: One of the reasons git is so great for working
+in distributed teams is a feature called branching. Branches are subsections of git
+commits that don't affect other branches. For example "master" is the branch
+that you'll do all your work on for this class. Let's say though you want to
+add more unix commands to recitation-1.md. You could create a branch called
+<code>improve_recitation1_unix</code> like so:</p>
+<div class="language-text highlight"><pre><span></span><code>git checkout -b improve_recitation1_unix
+</code></pre></div>
+<p>This would create a new branch, and switch to it. On this branch you would make
+and commit your changes. When finished, you could switch back to the master
+branch and merge your changes from the feature branch as follows:</p>
+<div class="language-text highlight"><pre><span></span><code>git checkout master
+git merge improve_recitation1_unix
+</code></pre></div>
+<p>The reason branching is so useful is that it allows for multiple people to work
+on their own issues, and then merge their changes in only <em>after</em> they are
+certain their changes will not cause problems to the master branch. In this way,
+the master branch always represents a completely functioning project, while the
+branches may have broken code.</p>
+<p>Anyway, all this was a bit of a digression to discuss branching, but now that
+you have a fork of my respository, you can make changes on the master branch.
+When you're done, use <code>git push origin master</code> to push your changes back up to
+your fork, and then go to github.com to pull-request your changes. If I like
+what you've done, I'll definitely accept your pull request.</p>
+</li>
+</ol>
+<p>And that's about it for GitHub. Forking and branching are crucial to working on
+teams, both private and open-source. GitHub and git are great tools for managing
+all sorts of things, even notes, so make sure you're familiar with them.
+Proficiency in git and github is a desirable trait to have when job-hunting.</p>
+<p>Other useful tutorials:</p>
+<ul>
+<li><a href="https://docs.github.com/en/get-started/quickstart/be-social">Be Social</a></li>
+<li><a href="https://docs.github.com/en/get-started/quickstart/create-a-repo">Create a Repository</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 <a href="https://rdnajac.tech">Ryan D. Najac</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.copy"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.d6f25eb3.min.js"></script>
+      
+    
+  </body>
+</html>

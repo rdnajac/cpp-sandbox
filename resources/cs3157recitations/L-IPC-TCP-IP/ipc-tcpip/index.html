@@ -1,0 +1,705 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A collection of C++ code snippets and examples.">
+      
+      
+        <meta name="author" content="Ryan D. Najac">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.38">
+    
+    
+      
+        <title>Ipc tcpip - C++ Sandbox</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.8c3ca2c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#interprocess-communication-pipes-fifos-and-sockets" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="C++ Sandbox" class="md-header__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            C++ Sandbox
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ipc tcpip
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rdnajac/cpp-sandbox" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="C++ Sandbox" class="md-nav__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    C++ Sandbox
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rdnajac/cpp-sandbox" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../advprog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Advanced Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qsort/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quicksort
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tcp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TCP Echo Server and Client
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../time-complexity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time Complexity
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tour/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A Tour of C++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#interprocess-communication-pipes-fifos-and-sockets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interprocess Communication: pipes, FIFOs, and sockets
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interprocess Communication: pipes, FIFOs, and sockets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pipes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pipes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#named-pipe-aka-fifo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Named Pipe (a.k.a. FIFO)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sockets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sockets
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sockets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tcpip" class="md-nav__link">
+    <span class="md-ellipsis">
+      TCP/IP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-does-tcpip-make-the-internet-happen" class="md-nav__link">
+    <span class="md-ellipsis">
+      How does TCP/IP make the Internet happen?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#but-why-dont-i-ever-use-ip-addresses-on-the-internet" class="md-nav__link">
+    <span class="md-ellipsis">
+      But why don't I ever use IP addresses on the Internet?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#and-why-dont-i-ever-use-port-numbers-on-the-internet" class="md-nav__link">
+    <span class="md-ellipsis">
+      And why don't I ever use port numbers on the Internet?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-sockets-relate-to-the-tcpip-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      How do sockets relate to the TCP/IP stack?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>Ipc tcpip</h1>
+
+<h2 id="interprocess-communication-pipes-fifos-and-sockets">Interprocess Communication: pipes, FIFOs, and sockets</h2>
+<p><em>How do processes running on the same system talk to each other? What about
+processes on different systems?</em></p>
+<h3 id="pipes">Pipes</h3>
+<p>Sometimes, we want two or more processes to be able to communicate with each 
+other. The most commonly used means of interprocess communication are pipes.
+<strong>Pipes</strong> allow one-way data flow and can connect processes having a common 
+ancestor. We can use a pipe to connect the stdout of one process to the stdin
+of another. For example, we can "pipe" the output of <code>program1</code> to <code>program2</code>
+like this:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>./program1<span class="w"> </span><span class="p">|</span><span class="w"> </span>./program2
+</span></code></pre></div>
+<p>Notice that data flows left to right. The idea is that this should feels
+intuitive, since we read left to right. Also, recall that this is different
+from <em>redirection</em> with the <code>&lt;</code> and <code>&gt;</code> characters. Redirection passes
+output to a file or a stream, while a pipe passes output between running
+processes. (A discussion on the motivation behind this distinction is
+available <a href="http://askubuntu.com/questions/172982">here</a>.)</p>
+<p>The way pipes are implemented is operating system-dependent, but in general,
+the processes that make up a <a href="https://en.wikipedia.org/wiki/Pipeline_%28Unix%29">pipeline</a>
+are started at the same time. The operating system then handles connecting
+streams and giving processes large buffers to avoid data loss.</p>
+<h3 id="named-pipe-aka-fifo">Named Pipe (a.k.a. FIFO)</h3>
+<p>A <strong>named pipe</strong> or <strong>FIFO (First In First Out)</strong>is a type of file used for
+interprocess communication. We can refer to FIFOs by name after they are created
+using the <code>mkfifo</code> command.</p>
+<p>Since <code>mkfifo</code> produces a file, we send output to FIFOs using the <code>&gt;</code> and <code>&lt;</code>
+characters, rather than the <code>|</code> character used above.</p>
+<p>This example from <em>Advanced Programming in the Unix Environment</em> by W. Richard
+Stevens and Steven A. Rago illustrates how a script uses a FIFO called 
+<code>myfifo</code> to execute a complex operation involving redirecting input and output
+to and from the named pipe:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>mkfifo<span class="w"> </span>myfifo
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>./program3<span class="w"> </span>&lt;<span class="w"> </span>myfifo<span class="w"> </span><span class="p">&amp;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>./program1<span class="w"> </span>&lt;<span class="w"> </span>input.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>myfifo<span class="w"> </span><span class="p">|</span><span class="w"> </span>./program2
+</span></code></pre></div>
+<p>Note that we need to run <code>./program3 &lt; myfifo</code> in the background (using <code>&amp;</code>) 
+because opening a FIFO for reading normally blocks until another process opens
+the FIFO for writing and vice versa. <code>input.txt</code> is passed as input to <code>program1</code>,
+and <code>program1</code>'s output is piped to the <code>tee</code> command. The <code>tee</code> command transmits
+its stdin both to stdout and to the file(s) specified in the argument, in this
+case, <code>myfifo</code>. Since we pass <code>myfifo</code> as an input to <code>program3</code>, <code>program3</code> 
+is able to receive <code>program1</code>'s output. The stdout of <code>tee</code> is piped to <code>program2</code>, 
+allowing <code>program2</code> to receive <code>program1</code>'s output as well. Nifty!</p>
+<p>If you'd like to run this example, programs 1, 2, 3, and <code>input.txt</code> can be found
+in the <a href="https://github.com/cs3157/recitations/tree/master/L-IPC-TCP-IP/code">recitation-L-code directory</a>.</p>
+<h3 id="sockets">Sockets</h3>
+<p>Pipes and FIFOs are fine for local, one-way data flow, but oftentimes we want
+our interprocess communication to be even more flexible. That's when we can use
+sockets.</p>
+<p>A <strong>socket</strong> is a more general form of a pipe that can do two additional important
+things:</p>
+<ol>
+<li>Sockets can communicate across a network, meaning that they can connect two
+machines (e.g. your laptop with a server hosting <code>facebook.com</code>).</li>
+<li>Sockets allow for <em>two-way</em> interprocess communication, unlike pipes.</li>
+</ol>
+<p>We'll be discussing sockets in conjunction with the TCP/IP protocol: the
+standard for communication over the Internet. You'll use sockets in labs
+6 and 7, but we won't go over example code here.</p>
+<h4 id="tcpip">TCP/IP</h4>
+<p>TCP/IP is the protocol that makes the world go 'round. The Internet is powered by
+IP, and almost all the traffic is TCP (some is UDP, mostly games and
+video/voice calls where a small amount of data loss is acceptable).</p>
+<p><a href="https://en.wikipedia.org/wiki/Internet_protocol_suite">TCP/IP</a> is another name
+for the Internet protocol suite, which describes the protocols used to make
+the Internet and other networks function.</p>
+<h4 id="how-does-tcpip-make-the-internet-happen">How does TCP/IP make the Internet happen?</h4>
+<p>There are four protocol layers of TCP/IP, where each successive layer is
+a higher level of abstraction:</p>
+<ol>
+<li>Application <em>(highest level of abstraction)</em></li>
+<li>Transport, TCP (and UDP)</li>
+<li>Internet, IP</li>
+<li>Link <em>(we won't talk about this one much)</em></li>
+</ol>
+<p>Here is a quick pass over the 4 layers: at the bottom are simply bits on
+physical wires aggregated into frames, in the physical and data layer. Above
+that, IP deals with packets and routing packets to the correct IP address.
+Above that, TCP and UDP use IP packets to manage sending meaningful amounts of
+data, for example connecting to a specific port on a server. Finally on top
+of TCP you use specific protocols like HTTP, FTP, IMAP, DNS, and SSH. </p>
+<p>The IP protocol handles finding where on the planet a machine with a particular
+IP address is. The TCP protocol handles finding which process on that machine
+to go to, once IP has brought it to the correct location.</p>
+<p>If it helps, you can consider 
+<a href="http://beej.us/guide/bgnet/output/html/multipage/index.html">Beej's</a> analogy: 
+an IP address is like a hotel address and a port number is like a room number in 
+that hotel. Port numbers range from 0 to 65535, but we can only use ports 1024 
+and above.</p>
+<h3 id="but-why-dont-i-ever-use-ip-addresses-on-the-internet">But why don't I ever use IP addresses on the Internet?</h3>
+<p>Good catch. We just said that IP sends packets toward IP addresses. But instead
+of typing <code>160.39.63.50</code>, you use a hostname, like <code>clac.cs.columbia.edu</code>
+or <code>google.com</code>.</p>
+<p>DNS, <strong>Domain Name Service</strong>, is a protocol and server setup that translates
+hostnames into IP addresses. Every time your laptop joins a network, it gets
+its own IP address, the IP address of 1-3 DNS servers, and the IP address of a
+router that can forward packets on to the rest of the world. Your laptop
+translates hostnames to IP addresses by talking to the DNS servers, and
+communicates with the Internet by speaking to the forwarding router.</p>
+<p>Want to find out your IP address and DNS info? From a Linux or OS X machine, run
+<code>ifconfig</code> in a terminal (on Windows, use <code>ipconfig</code>). You should see something
+like this:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>en1: flags=8863&lt;UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST&gt; mtu 1500
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    ether 58:b0:35:7d:33:7e
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    inet 192.168.1.183 netmask 0xffffff00 broadcast 192.168.1.255
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    media: autoselect
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    status: active
+</span></code></pre></div>
+<p>In this case <code>192.168.1.183</code> is my IP address on the <code>en1</code> network interface.</p>
+<h3 id="and-why-dont-i-ever-use-port-numbers-on-the-internet">And why don't I ever use port numbers on the Internet?</h3>
+<p>As for port numbers on the Internet, the Internet's application protocol, HTTP,
+specifies that we should use port 80. For HTTPS, we use port 443. Since these
+ports are established by convention, we can omit them when we navigate to a
+webpage.</p>
+<h3 id="how-do-sockets-relate-to-the-tcpip-stack">How do sockets relate to the TCP/IP stack?</h3>
+<p>The sockets API sits between the transport and application layers. All the code
+we write in this class sits at the application layer. Your browser and netcat
+also sit at the application layer. <em>How the IP and TCP protocols work is outside
+the scope of this class.</em></p>
+<p>We'll go more in depth about the sockets API later on, but our journey into 
+network programming will begin with the <code>netcat</code> tool, which deals with all the 
+socket connection stuff under the hood. To quote the man page description: "The 
+nc (or netcat) utility is used for just about anything under the sun involving 
+TCP or UDP.  It can open TCP connections, send UDP packets, listen on arbitrary 
+TCP and UDP ports, do port scanning, and deal with both IPv4 and IPv6." One of 
+the many uses for netcat is building a basic client/server model. The server will 
+listen on a particular port number, passively waiting. The client will connect to 
+the host on which the server is running, using that host's IP address, on the 
+port on which the server is listening.</p>
+<p>We can achieve this using the following shell commands:</p>
+<p>Server:</p>
+<p><code>nc -l &lt;port&gt;</code></p>
+<p>Client:</p>
+<p><code>nc &lt;hostname or IP address&gt; &lt;port&gt;</code></p>
+<p><em>Note that <code>&lt;port&gt;</code> and <code>&lt;hostname or IP address&gt;</code> need to be replaced with the
+appropriate values.</em></p>
+<p>In this example, <code>netcat</code> takes whatever it receives from stdin and sends it
+out to whomever is connected to it. It also reads whatever it gets from whomever
+is connected to it and outputs it to stdout. So, effectively, the <code>stdin</code> of the 
+client is sent to the <code>stdout</code> of the server, and the stdin of the server is sent
+to the stdout of the client. </p>
+<p>Now that we've learned about <code>netcat</code> and FIFOs, we have all the tools we need
+to turn <code>mdb-lookup-cs3157</code> into a network server. Yippee!</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 <a href="https://rdnajac.tech">Ryan D. Najac</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.copy"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.d6f25eb3.min.js"></script>
+      
+    
+  </body>
+</html>

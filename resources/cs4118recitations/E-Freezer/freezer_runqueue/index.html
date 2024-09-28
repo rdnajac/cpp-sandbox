@@ -1,0 +1,602 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A collection of C++ code snippets and examples.">
+      
+      
+        <meta name="author" content="Ryan D. Najac">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.38">
+    
+    
+      
+        <title>Freezer runqueue - C++ Sandbox</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.8c3ca2c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#freezer-runqueue" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="C++ Sandbox" class="md-header__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            C++ Sandbox
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Freezer runqueue
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rdnajac/cpp-sandbox" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="C++ Sandbox" class="md-nav__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    C++ Sandbox
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rdnajac/cpp-sandbox" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../advprog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Advanced Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qsort/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quicksort
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tcp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TCP Echo Server and Client
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../time-complexity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time Complexity
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tour/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A Tour of C++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tldr" class="md-nav__link">
+    <span class="md-ellipsis">
+      TLDR
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-a-tasks-timeslice-is-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      When a task's timeslice is up
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-a-task-voluntarily-yields-but-is-runnable" class="md-nav__link">
+    <span class="md-ellipsis">
+      When a task voluntarily yields, but is RUNNABLE
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-a-task-voluntarily-yields-and-is-not-runnable" class="md-nav__link">
+    <span class="md-ellipsis">
+      When a task voluntarily yields, and is not RUNNABLE
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="freezer-runqueue">Freezer runqueue</h1>
+<blockquote>
+<p>This guide was written by Ryan Wee in Spring 2024. The code snippets and links
+in this post correspond to Linux v5.10.205.</p>
+</blockquote>
+<h2 id="introduction">Introduction</h2>
+<p>First of all, it is entirely possible (and probable) that there are mistakes in
+this guide. If so, feel free to contact the TA team.</p>
+<p>This guide is meant to complement <a href="../freezer_sched_class/">Mitchell's guide</a>
+-- it's a good idea to read both of them. Mitchell's guide explains what each of
+the <code>sched_class</code> functions do. The aim of this guide is to provide an
+event-driven perspective of how these functions are invoked. In particular, how
+is the freezer runqueue modified in response to different events?</p>
+<h2 id="tldr">TLDR</h2>
+<ul>
+<li>Freezer's <code>pick_next_task()</code> implementation does NOT modify the freezer
+  runqueue. It only picks the task at the front of the freezer runqueue.</li>
+<li>When a task is preempted because its timeslice is up, freezer's <code>task_tick()</code>
+  implementation is responsible for modifying the freezer runqueue.</li>
+<li>When a task voluntarily yields the CPU, there are two possibilities:<ul>
+<li>The task's state is <code>RUNNABLE</code>, i.e. it would like to stay on the
+    run queue: In this case, freezer's <code>yield_task()</code> and <code>task_tick()</code>
+    implementations are responsible for modifying the freezer runqueue.</li>
+<li>The task's state is NOT <code>RUNNABLE</code>, i.e. it would like to leave the
+    run queue: In this case, freezer's <code>dequeue_task()</code> implementation is responsible for modifying the freezer runqueue.</li>
+</ul>
+</li>
+</ul>
+<h2 id="when-a-tasks-timeslice-is-up">When a task's timeslice is up</h2>
+<ul>
+<li>The timer interrupt code calls <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/sched/core.c#L4005"><code>scheduler_tick()</code></a>.</li>
+<li>This function invokes <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/sched/core.c#L4021"><code>curr-&gt;sched_class-&gt;task_tick()</code></a>.</li>
+<li>Freezer's <code>task_tick()</code> implementation should decrement the current task's
+  timeslice. (Note that the timeslice should therefore use jiffies as the unit.)</li>
+<li>If the current task's timeslice is down to 0:<ul>
+<li>Freezer's <code>task_tick()</code> implementation should move the current task to the
+  end of the runqueue. At this point, the task is still running on the CPU!
+  We've just modified its position on the runqueue.</li>
+<li>Freezer's <code>task_tick()</code> implementation should call <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/sched/core.c#L608"><code>resched_curr()</code></a>, which
+  sets the <code>TIF_NEED_RESCHED</code> flag. Again, at this point, the task is still running on the CPU!</li>
+</ul>
+</li>
+<li>The kernel checks <code>TIF_NEED_RESCHED</code> on interrupt and userspace return paths.
+  When it's safe (e.g. the process isn't holding any spinlocks), the kernel
+  calls <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/sched/core.c#L4619"><code>schedule()</code></a>, which in turn invokes <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/sched/core.c#L4430"><code>__schedule()</code></a>.</li>
+<li>This huge <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/sched/core.c#L4483"><code>if</code> block</a> is NOT executed.<ul>
+<li>In particular, recall that the <code>task_struct</code> has a <a href="https://elixir.bootlin.com/linux/v5.10.205/source/include/linux/sched.h#L653"><code>state</code> field</a>. When a task is <code>RUNNABLE</code>, the state field is zero. When a task is not <code>RUNNABLE</code>, the state field is non-zero.</li>
+<li>In this case, the task is still <code>RUNNABLE</code>, i.e. <code>prev_state</code> is zero. So the <code>if</code> block is not executed.</li>
+</ul>
+</li>
+<li><code>schedule()</code> eventually calls <code>pick_next_task()</code> <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/sched/core.c#L4516">here</a>, which calls Freezer's <code>pick_next_task()</code> implementation.</li>
+<li>Freezer's <code>pick_next_task()</code> implementation should return a new task from the
+  front of the feezer runqueue.</li>
+<li><code>__schedule()</code> also eventually calls <code>context_switch()</code> <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/sched/core.c#L4548">here</a>, which is where the actual context switch happens.</li>
+</ul>
+<h2 id="when-a-task-voluntarily-yields-but-is-runnable">When a task voluntarily yields, but is RUNNABLE</h2>
+<p>In this case, the task wants to be remain on the runqueue. It's just telling
+the kernel: "Okay, you can shift me to the back of the runqueue because I'm
+nice. But feel free to select me again when you want to!"</p>
+<ul>
+<li>The task calls the <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/sched/core.c#L6120"><code>sched_yield</code> syscall</a>, which in turn invokes <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/sched/core.c#L6103"><code>do_sched_yield()</code></a>.</li>
+<li><code>do_sched_yield</code> calls <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/sched/core.c#L6111"><code>current-&gt;sched_class-&gt;yield_task()</code></a>.</li>
+<li>Freezer's <code>yield_task()</code> implementation should set the timeslice of the
+  task to 0.</li>
+<li>Now the next time we have a timer interrupt, the task is 'pre-empted' as described above by freezer's <code>task_tick()</code> implementation. (I put that in quotation marks because the task voluntarily decided to let itself be pre-empted.)</li>
+</ul>
+<h2 id="when-a-task-voluntarily-yields-and-is-not-runnable">When a task voluntarily yields, and is not RUNNABLE</h2>
+<p>In this case, the task wants to be taken off the runqueue. This could be because the task called <code>__wait_event_interruptible()</code>, or <code>sleep()</code>, or anything that basically indicates it wants to suspend its execution for the near future. Another common case would be when the task finishes its execution.</p>
+<ul>
+<li>The task starts by modifying its state so that it is no longer <code>RUNNABLE</code>. It then calls <code>__schedule()</code> with <code>false</code> as an argument.<ul>
+<li>In the case of a task finishing its execution:<ul>
+<li>The task calls the <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/exit.c#L947"><code>exit()</code> syscall</a>, which calls <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/exit.c#L760"><code>do_exit()</code></a>.</li>
+<li>This in turn calls <code>do_task_dead()</code> <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/exit.c#L909">here</a>.</li>
+<li><code>do_task_dead()</code> modifies the task state <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/sched/core.c#L4560">here</a>, and then calls <code>__schedule()</code> <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/sched/core.c#L4565">here</a>.</li>
+</ul>
+</li>
+<li>In the case of a task calling <code>sleep()</code>:<ul>
+<li>The task calls the <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/time/hrtimer.c#L2016"><code>nanosleep()</code> syscall</a>, which calls <code>hrtimer_nanosleep()</code> and then <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/time/hrtimer.c#L1933"><code>do_nanosleep()</code></a>.</li>
+<li><code>do_nanosleep()</code> modifies the task state <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/time/hrtimer.c#L1938">here</a>, and then calls <code>freezable_schedule()</code> <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/time/hrtimer.c#L1942">here</a>. This in turn calls <code>schedule()</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>In all of these cases, when <code>__schedule()</code> is called, the <code>state</code> field of the <code>task_struct</code> is no longer <code>RUNNABLE</code>, i.e. it is non-zero. Since <code>state</code> is non-zero and since the <code>preempt</code> argument was <code>false</code> as mentioned above, we go into this <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/sched/core.c#L4483"><code>if</code> block</a>.</li>
+<li>This in turn calls <code>deactivate_task()</code> <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/sched/core.c#L4506">here</a>.</li>
+<li><code>deactivate_task()</code> calls <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/sched/core.c#L1588"><code>dequeue_task()</code></a>, which in turn calls the <code>dequeue_task()</code> implementation of the current scheduling class.</li>
+<li>Freezer's <code>dequeue_task()</code> implementation should remove the current task from the freezer runqueue.</li>
+<li>Recall that we're still within an earlier invocation of <code>__schedule()</code>. This invocation calls <code>pick_next_task()</code> and <code>context_switch()</code> as mentioned above. Since the current task has been removed from the freezer runqueue, this causes the next task in the runqueue to be run.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 <a href="https://rdnajac.tech">Ryan D. Najac</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.copy"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.d6f25eb3.min.js"></script>
+      
+    
+  </body>
+</html>

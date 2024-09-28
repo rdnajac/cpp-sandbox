@@ -1,0 +1,1189 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A collection of C++ code snippets and examples.">
+      
+      
+        <meta name="author" content="Ryan D. Najac">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.38">
+    
+    
+      
+        <title>Mid-Semester Review 1 - C++ Sandbox</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8c3ca2c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mid-semester-review-1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="C++ Sandbox" class="md-header__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            C++ Sandbox
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Mid-Semester Review 1
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rdnajac/cpp-sandbox" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="C++ Sandbox" class="md-nav__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    C++ Sandbox
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rdnajac/cpp-sandbox" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../advprog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Advanced Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qsort/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quicksort
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TCP Echo Server and Client
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../time-complexity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time Complexity
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tour/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A Tour of C++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bits-bytes-and-binary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bits, Bytes, and Binary
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bits, Bytes, and Binary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#twos-complement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Two's Complement
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      C Basics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="C Basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-types-numbers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Types: Numbers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ascii" class="md-nav__link">
+    <span class="md-ellipsis">
+      ASCII
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#different-notations-for-integer-literals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Different notations for integer literals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#floating-point-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Floating point types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitwise-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitwise Operators
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#order-of-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Order of Operations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-yourself-c-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test yourself: C Basics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git" class="md-nav__link">
+    <span class="md-ellipsis">
+      Git
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#makefiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Makefiles
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#function-pointers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function Pointers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#memory-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Errors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Memory Errors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#illegal-read-write-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Illegal read / write errors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#illegal-frees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Illegal frees
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-of-uninitialized-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use of uninitialized values
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-exam-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other exam tips!
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="mid-semester-review-1">Mid-Semester Review 1</h1>
+<p>This document is an outline of what's covered in our mid-semester review
+session. If you'd like more detail, use the link in each section to see the full
+review session notes for that topic.</p>
+<h2 id="bits-bytes-and-binary">Bits, Bytes, and Binary</h2>
+<p><em>Main article: <a href="../D-Bits-Binary-C-Basics/bits-and-binary/">Bits, Bytes, and Binary</a></em></p>
+<p>Let's refresh our memory about memory:</p>
+<ul>
+<li><strong>Bit</strong> (b)</li>
+<li>A single digit in binary</li>
+<li>Two possible values: 1 or 0</li>
+<li><strong>Byte</strong> (B)</li>
+<li>8 bits make a byte</li>
+<li>Can take on 2^8 = 256 different values (from 0 to 255, inclusive)</li>
+<li><strong>Hexadecimal</strong></li>
+<li>A base-16 numerical notation that can represent up to 15 in a single digit</li>
+<li>Uses base-10 + first 5 letters of alphabet:
+    { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, a, b, c, d, e, f }</li>
+<li>2 hexadecimal digits make a byte</li>
+<li><strong>Least significant bit</strong> (LSB)</li>
+<li>Right-most binary digit</li>
+<li><strong>Most significant bit</strong> (MSB)</li>
+<li>Left-most binary digit</li>
+<li>Indicates positive or negative for signed integers</li>
+</ul>
+<h3 id="twos-complement">Two's Complement</h3>
+<ul>
+<li>MSB indicates whether number is positive (0) or negative (1)</li>
+<li>If negative, invert all bits and add 1 to find out what number is
+    represented</li>
+</ul>
+<p>The table shows the same bit pattern interpreted as unsigned and signed
+integers, assuming that integers are 3 bits long:</p>
+<table>
+<thead>
+<tr>
+<th>Binary</th>
+<th>unsigned decimal</th>
+<th>two's complement decimal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>000</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>001</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>010</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>011</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>100</td>
+<td>4</td>
+<td>-4</td>
+</tr>
+<tr>
+<td>101</td>
+<td>5</td>
+<td>-3</td>
+</tr>
+<tr>
+<td>110</td>
+<td>6</td>
+<td>-2</td>
+</tr>
+<tr>
+<td>111</td>
+<td>7</td>
+<td>-1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="c-basics">C Basics</h2>
+<p><em>Main article: <a href="../D-Bits-Binary-C-Basics/c-basics/">C Basics</a></em></p>
+<h3 id="data-types-numbers">Data Types: Numbers</h3>
+<p>Memory size for each type depends on system, and only restrictions are that</p>
+<div class="language-text highlight"><pre><span></span><code>char &lt;= short &lt;= int &lt;= long &lt;= long long
+</code></pre></div>
+<p>CLAC machines follow:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>char</code></td>
+<td>1 byte</td>
+</tr>
+<tr>
+<td><code>short</code></td>
+<td>2 bytes</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td>4 bytes</td>
+</tr>
+<tr>
+<td><code>long</code></td>
+<td>8 bytes</td>
+</tr>
+<tr>
+<td><code>long long</code></td>
+<td>8 bytes</td>
+</tr>
+</tbody>
+</table>
+<p>Use the <code>sizeof</code> operator to find the size of a data type in bytes:</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// sizeof on a data type</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">printf</span><span class="p">(</span><span class="s">&quot;ints are %d bytes&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1">// Works on variable names too</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">printf</span><span class="p">(</span><span class="s">&quot;pointers are %d bytes&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">p</span><span class="p">));</span>
+</span></code></pre></div>
+<h3 id="ascii">ASCII</h3>
+<ul>
+<li>The "character" or <code>char</code> data type is simply a very small integer</li>
+<li>C uses a system called ASCII encoding to assign a number to each character<ul>
+<li>For example, <code>'a'</code> is 97</li>
+</ul>
+</li>
+<li>See <a href="http://man7.org/linux/man-pages/man7/ascii.7.html">ASCII table</a> for the
+    complete list<ul>
+<li>Focus on understanding relationships between values rather than trying
+    to memorize the whole thing</li>
+<li>For example, capital letters have smaller numerical values than
+    lowercase ones</li>
+</ul>
+</li>
+</ul>
+<p>Here are some integer declarations and the corresponding values of the
+variables:</p>
+<table>
+<thead>
+<tr>
+<th>Declaration</th>
+<th>x (dec)</th>
+<th>y (dec)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>int x;</code></td>
+<td>undefined</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>int x, y;</code></td>
+<td>undefined</td>
+<td>undefined</td>
+</tr>
+<tr>
+<td><code>int x = 0, y;</code></td>
+<td>0</td>
+<td>undefined</td>
+</tr>
+<tr>
+<td><code>char x = 'x';</code></td>
+<td>120</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>char x = '\n';</code></td>
+<td>10</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>char x = '\13';</code></td>
+<td>11</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>char x = '0';</code></td>
+<td>48</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>char x = '\0';</code></td>
+<td>0</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>char x = 0;</code></td>
+<td>0</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="different-notations-for-integer-literals">Different notations for integer literals</h3>
+<ul>
+<li>Single quote <code>'</code> means character (double quotes <code>"</code> are for strings)</li>
+<li><code>0x</code> at the beginning means hexadecimal notation</li>
+<li><code>0</code> at the beginning means octal notation</li>
+</ul>
+<p>So, the following literals all have the same value:</p>
+<div class="language-text highlight"><pre><span></span><code>&#39;@&#39;   // character literal
+0x40  // hexadecimal
+0100  // octal
+64    // decimal
+</code></pre></div>
+<p>Some more hex and octal examples:</p>
+<div class="language-text highlight"><pre><span></span><code>(0xFFFFFFFF == -1)    // equal to 1 (which is true, but C doesn&#39;t have true)
+(037777777777 == -1)  // 1 (true)
+0xFFFFU               // 65535
+0177777U              //  65535
+</code></pre></div>
+<h3 id="floating-point-types">Floating point types</h3>
+<p>The only implementation constraint is that</p>
+<div class="language-text highlight"><pre><span></span><code>float &lt;= double &lt;= long double
+</code></pre></div>
+<p>Floating point types can be expressed with a decimal point or scientific
+notation:</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kt">float</span><span class="w"> </span><span class="n">miles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.8</span><span class="p">;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kt">double</span><span class="w"> </span><span class="n">avogadro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">6.02e23</span><span class="p">;</span><span class="w"> </span><span class="c1">// 6.02 x 10^23</span>
+</span></code></pre></div>
+<h3 id="strings">Strings</h3>
+<ul>
+<li>No string object in C</li>
+<li>C "strings" are an array of characters</li>
+<li>Have a null byte (<code>'\0'</code> or <code>0</code>) at the end</li>
+</ul>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;cs3157&quot;</span><span class="p">;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1">// similar to the array { &#39;c&#39;, &#39;s&#39;, &#39;3&#39;, &#39;1&#39;, &#39;5&#39;, &#39;7&#39;, &#39;\0&#39; }</span>
+</span></code></pre></div>
+<h3 id="bitwise-operators">Bitwise Operators</h3>
+<ul>
+<li><code>&amp;</code> can be used to "mask" or turn off all bits except certain ones. For
+  example:</li>
+</ul>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mo">0177</span><span class="p">;</span><span class="w"> </span><span class="c1">// n bitwise-and 00000001111111</span>
+</span></code></pre></div>
+<ul>
+<li><code>|</code> can be used to ensure that bits are set:</li>
+</ul>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mo">0177</span><span class="p">;</span><span class="w"> </span><span class="c1">// n bitwise-or 00000001111111</span>
+</span></code></pre></div>
+<ul>
+<li>It's easy to confuse bitwise and <code>&amp;</code> with logical and <code>&amp;&amp;</code>:</li>
+</ul>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w">  </span><span class="c1">// 0</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="c1">// 1</span>
+</span></code></pre></div>
+<ul>
+<li>
+<p><code>^</code> is a bitwise exclusive or. The resulting bit is 1 if the inputs were
+  different, and 0 if they were the same.</p>
+</li>
+<li>
+<p><code>~</code> flips all the bits.</p>
+</li>
+<li>
+<p><code>&lt;&lt;</code> and <code>&gt;&gt;</code> shift their left operand by the number of digits specified by
+  the right operand. Left shifting fills vacated bits by zero. Right shifting
+  typically fills with whatever the MSB was.</p>
+</li>
+</ul>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c1">// y == 8</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="kt">int</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// z == 1</span>
+</span></code></pre></div>
+<h3 id="order-of-operations">Order of Operations</h3>
+<p>Make sure you're familiar with <a href="http://en.cppreference.com/w/c/language/operator_precedence">operator precedence in C</a>.</p>
+<p>Based on the precedence rules, what does <code>*p++</code> do?</p>
+<h2 id="test-yourself-c-basics">Test yourself: C Basics</h2>
+<p>On midterm 1, a common type of question provides a C program, then asks you to
+evaluate some expressions based on what was declared or run in that program.</p>
+<p>The instructions will typically say:</p>
+<ul>
+<li>For integer expressions, write the actual number value in decimal notation.<ul>
+<li>Remember — <code>char</code> is a type of integer!</li>
+<li>Boolean expressions, such as <code>x == 1</code>, are also integer expressions.
+    This means you should never write "true" or "false."</li>
+</ul>
+</li>
+<li>For non-integer expressions, write the type name, in the format that you use
+    to declare a variable of that type.</li>
+<li>Write "INVALID" if a given expression is not a valid C expression.</li>
+</ul>
+<p>On the front of the exam, you might find useful information like:</p>
+<blockquote>
+<p>Language: C<br>
+Compiler: gcc<br>
+Platform: Ubuntu Linux 16.04, 64-bit version<br>
+Primitive type sizes: <code>sizeof(int)</code> is 4 and <code>sizeof(int *)</code> is 8</p>
+</blockquote>
+<p>Now you know tons about the other types!</p>
+<p>Consider the following program:</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">Node</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">;</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">Node</span><span class="w"> </span><span class="o">*</span><span class="n">next</span><span class="p">;</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="p">};</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="p">{</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">Node</span><span class="w"> </span><span class="n">arr</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">arr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">arr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">arr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">};</span>
+</span></code></pre></div>
+<p>Some tricky (maybe not) questions now:</p>
+<ul>
+<li><code>b[2]</code></li>
+<li><code>sizeof(b)</code></li>
+<li><code>sizeof(b[2])</code></li>
+<li><code>sizeof(&amp;b[0])</code></li>
+<li><code>"hello"</code></li>
+<li><code>arr[1].data[4]</code></li>
+<li><code>arr[0].data[4]</code></li>
+<li><code>sizeof(arr[3].next)</code></li>
+</ul>
+<h2 id="git">Git</h2>
+<p><em>Main article: <a href="../C-Git/git/">Git</a></em></p>
+<p>Some key Git commands to understand the basic usage of:</p>
+<div class="language-text highlight"><pre><span></span><code>git clone
+git status
+git add
+git commit
+</code></pre></div>
+<p>Use <code>git help &lt;command&gt;</code> to see the manual page for a command.</p>
+<p>Make sure you know what levels of tracking exist:</p>
+<ul>
+<li>untracked</li>
+<li>tracked, unmodified</li>
+<li>tracked, modified, but unstaged</li>
+<li>tracked, modified, staged</li>
+<li>tracked, committed</li>
+</ul>
+<h2 id="makefiles">Makefiles</h2>
+<p><em>Main article: <a href="../B-Makefiles/makefiles/">Makefiles</a></em></p>
+<p>Let's review Jae's sample Makefile piece by piece:</p>
+<blockquote>
+<div class="language-make highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nv">CC</span><span class="w">  </span><span class="o">=</span><span class="w"> </span>gcc
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nv">CXX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>g++
+</span></code></pre></div>
+</blockquote>
+<p>Make has a pre-configured rules for how to compile C programs. We just need to
+set Makefile variables for the C compiler (<code>CXX</code>) and C++ compiler (<code>CXX</code>).</p>
+<blockquote>
+<div class="language-make highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nv">INCLUDES</span><span class="w"> </span><span class="o">=</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nv">CFLAGS</span><span class="w">   </span><span class="o">=</span><span class="w"> </span>-g<span class="w"> </span>-Wall<span class="w"> </span><span class="k">$(</span>INCLUDES<span class="k">)</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="nv">CXXFLAGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>-g<span class="w"> </span>-Wall<span class="w"> </span><span class="k">$(</span>INCLUDES<span class="k">)</span>
+</span></code></pre></div>
+</blockquote>
+<p>Here we define our own variable, <code>INCLUDES</code>, which use to specify directories
+to search for header files during compilation. For example, the value
+<code>-I/home/jae/cs3157</code> would tell the compiler to look in <code>/home/jae/cs3157</code> for
+header files.</p>
+<p>Also set the flags we want each compilation to run with. What do these flags
+mean? We also reference our <code>INCLUDES</code> to add those flags as well.</p>
+<blockquote>
+<div class="language-make highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nv">LDFLAGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>-g
+</span></code></pre></div>
+</blockquote>
+<p>Flags to pass during the linking step.</p>
+<blockquote>
+<div class="language-make highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nv">LDLIBS</span><span class="w"> </span><span class="o">=</span>
+</span></code></pre></div>
+</blockquote>
+<p><code>LDLIBS</code> will automatically be appended to the linker commands. These are flags
+like <code>-lm</code> for linking the math library. It's analogous to our <code>INCLUDES</code> from
+the compilation step.</p>
+<p>Now we define the dependencies of our files. The first target we specify is
+run if we simply type <code>make</code>:</p>
+<blockquote>
+<div class="language-make highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nf">main</span><span class="o">:</span><span class="w"> </span><span class="n">main</span>.<span class="n">o</span> <span class="n">myadd</span>.<span class="n">o</span>
+</span></code></pre></div>
+</blockquote>
+<p>This rule means that make should produce an executable <code>main</code> by linking
+<code>main.o</code> and <code>myadd.o</code>. When either <code>.o</code> file is modified, it will regenerate
+<code>main</code> the next time we run <code>make</code>.</p>
+<p>If we don't provide a command to run, make follows this implied linking rule:</p>
+<div class="language-text highlight"><pre><span></span><code>$(CC) $(LDFLAGS) &lt;all-dependent-.o-files&gt; $(LDLIBS)
+</code></pre></div>
+<p>It also assumes that <code>main</code> depends on <code>main.o</code>, so we could have omitted
+<code>main.o</code> like this:</p>
+<div class="language-make highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nf">main</span><span class="o">:</span><span class="w"> </span><span class="n">myadd</span>.<span class="n">o</span>
+</span></code></pre></div>
+<p>(Take a moment to understand how all of that works. Makefile dependencies are an
+important topic!)</p>
+<blockquote>
+<div class="language-make highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nf">main.o</span><span class="o">:</span><span class="w"> </span><span class="n">main</span>.<span class="n">c</span> <span class="n">myadd</span>.<span class="n">h</span>
+</span></code></pre></div>
+</blockquote>
+<p>Again, we don't specify a command here because make assumes the implicit rule:</p>
+<div class="language-text highlight"><pre><span></span><code>$(CC) -c $(CFLAGS) &lt;the-.c-file&gt;
+</code></pre></div>
+<p>Just as before, the dependency of <code>main.o</code> on <code>main.c</code> is implicit. So we could
+have omitted <code>main.c</code>.</p>
+<p>Why does main.o depend on main.h?</p>
+<blockquote>
+<div class="language-make highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nf">myadd.o</span><span class="o">:</span><span class="w"> </span><span class="n">myadd</span>.<span class="n">c</span> <span class="n">myadd</span>.<span class="n">h</span>
+</span></code></pre></div>
+</blockquote>
+<p>Same as previous.</p>
+<blockquote>
+<div class="language-make highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nf">.PHONY</span><span class="o">:</span><span class="w"> </span><span class="n">clean</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="nf">clean</span><span class="o">:</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">        </span>rm<span class="w"> </span>-f<span class="w"> </span>*.o<span class="w"> </span>a.out<span class="w"> </span>core<span class="w"> </span>main
+</span></code></pre></div>
+</blockquote>
+<p>Since the <code>clean</code> target is "phony," make won't look for a file named <code>clean</code> to
+decide whether it should run the commands in the target. So <code>make clean</code> will
+always run, even if there is a file named <code>clean</code> in the directory.</p>
+<p>The first phony target removes the compiler-generated files so that only the
+source code is left.</p>
+<blockquote>
+<div class="language-make highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nf">.PHONY</span><span class="o">:</span><span class="w"> </span><span class="n">all</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="nf">all</span><span class="o">:</span><span class="w"> </span><span class="n">clean</span> <span class="n">main</span>
+</span></code></pre></div>
+</blockquote>
+<p>Make runs its dependencies left-to-right. So the <code>all</code> target will first run
+<code>clean</code>, then generate <code>main</code>. Run <code>make all</code> when you want to completely
+recompile the program from scratch, without using any previously compiled files.</p>
+<h2 id="function-pointers">Function Pointers</h2>
+<p><em>Main article: <a href="../F-Function-Pointers/function-pointers/">Function Pointers</a></em></p>
+<ul>
+<li>Problem: want to write an algorithm then let users customize its
+    functionality<ul>
+<li>Example: a sorting algorithm may let users specify whether characters
+    should be compared lexicographically, or by Unicode value</li>
+</ul>
+</li>
+<li>Solution: The caller passes a pointer to a function that implements the
+    desired feature</li>
+</ul>
+<p>Example of accepting a function as an parameter to your function:</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">notifier</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">fn</span><span class="p">)())</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Starting</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">  </span><span class="n">fn</span><span class="p">();</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Finished</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="p">}</span>
+</span></code></pre></div>
+<ul>
+<li>Basic layout for a function pointer type is
+    <code>returnType (*functionName)(parameterType1, parameterType2, ...)</code><ul>
+<li>More examples: <a href="http://goshdarnfunctionpointers.com">goshdarnfunctionpointers.com</a></li>
+</ul>
+</li>
+<li>This denotes the return and parameter types of functions you can accept</li>
+<li>Parentheses are necessary even if there are no arguments</li>
+<li>What does the function do?</li>
+</ul>
+<p>Passing a function as a parameter:</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">wasteTime</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1000000</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Finished counting to %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="p">}</span>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="w">  </span><span class="n">wasteTime</span><span class="p">();</span><span class="w"> </span><span class="c1">// Calling the function directly</span>
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="w">  </span><span class="n">notifier</span><span class="p">(</span><span class="n">wasteTime</span><span class="p">);</span><span class="w"> </span><span class="c1">// Passing a pointer to the function</span>
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>
+</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-19-13"><a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="p">}</span>
+</span></code></pre></div>
+<ul>
+<li>Notice the difference between calling a function directly and passing it as
+    a function pointer</li>
+<li>Everything in the program is stored in memory — this means the <code>wasteTime</code>
+    function's code also has an address</li>
+<li>Calling a function causes the program to start executing code at that
+    address</li>
+<li>Getting a pointer to the function instead gets the value of that address<ul>
+<li>Value can be stored in a variable or passed as a parameter</li>
+</ul>
+</li>
+</ul>
+<p>Storing a function pointer in a variable (this example is equivalent to the one above):</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">f1</span><span class="p">)();</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">  </span><span class="n">f1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wasteTime</span><span class="p">;</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="w">  </span><span class="n">f1</span><span class="p">();</span><span class="w"> </span><span class="c1">// Calling the function through the function pointer</span>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="w">  </span><span class="n">notifier</span><span class="p">(</span><span class="n">f1</span><span class="p">);</span><span class="w"> </span><span class="c1">// Passing a pointer to the function</span>
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="p">}</span>
+</span></code></pre></div>
+<ul>
+<li>Call function pointers by adding parentheses to the end of the variable name</li>
+<li>Check out Jae's notes (lecture 7) for more complicated examples</li>
+</ul>
+<h2 id="memory-errors">Memory Errors</h2>
+<p><em>Main article: <a href="../E-Memory-Pointers/memory-pointers/">Memory and Pointers</a></em></p>
+<p>Here are some common Valgrind errors:</p>
+<h3 id="illegal-read-write-errors">Illegal read / write errors</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span><span class="w"> </span><span class="c1">// wrote past the end of the array</span>
+</span></code></pre></div>
+<h3 id="illegal-frees">Illegal frees</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="n">free</span><span class="p">(</span><span class="n">p</span><span class="p">);</span><span class="w"> </span><span class="c1">// p was already freed, so you can&#39;t free it again</span>
+</span></code></pre></div>
+<h3 id="use-of-uninitialized-values">Use of uninitialized values</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w"> </span><span class="c1">// nothing was written to p[0] before reading from it</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"> </span><span class="c1">// nothing was written to n before passing it as an argument</span>
+</span></code></pre></div>
+<p>You can find a full list of errors and more detailed explanations in the
+<a href="http://valgrind.org/docs/manual/mc-manual.html#mc-manual.errormsgs">Valgrind manual, Section 4.2: Explanation of error messages from Memcheck</a>.</p>
+<h2 id="other-exam-tips">Other exam tips!</h2>
+<p>Just some things it might pay to know well:</p>
+<ul>
+<li>What <code>MdbRec</code> structs look like and how to use them</li>
+<li>How to use the functions from lab3 and what they return</li>
+<li>What the pipeline for lab5 looked like and how it worked</li>
+<li><strong>Please follow directions!</strong> The exam will be graded in the same way your
+    labs are graded if not less lenient. Read all the directions. Take your time
+    to understand them. If it says "write the line number and the code that
+    should be on that line," do just that!</li>
+</ul>
+<p>Thanks for reading these notes. Good luck on the exam!</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 <a href="https://rdnajac.tech">Ryan D. Najac</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d6f25eb3.min.js"></script>
+      
+    
+  </body>
+</html>

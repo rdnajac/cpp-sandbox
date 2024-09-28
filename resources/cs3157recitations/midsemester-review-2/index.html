@@ -1,0 +1,1043 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A collection of C++ code snippets and examples.">
+      
+      
+        <meta name="author" content="Ryan D. Najac">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.38">
+    
+    
+      
+        <title>Mid-Semester Review 2 - C++ Sandbox</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8c3ca2c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mid-semester-review-2" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="C++ Sandbox" class="md-header__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            C++ Sandbox
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Mid-Semester Review 2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rdnajac/cpp-sandbox" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="C++ Sandbox" class="md-nav__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    C++ Sandbox
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rdnajac/cpp-sandbox" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../advprog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Advanced Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qsort/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quicksort
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TCP Echo Server and Client
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../time-complexity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time Complexity
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tour/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A Tour of C++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Files
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3-channels" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 channels
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 channels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#redirecting-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redirecting I/O
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      File I/O
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buffering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Buffering
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#forkexec" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fork/Exec
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fork/Exec">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quick-unix-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick UNIX overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick UNIX overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#users-and-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Users and Permissions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Processes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      fork()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exec" class="md-nav__link">
+    <span class="md-ellipsis">
+      exec()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dealing-with-terminated-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dealing with Terminated Processes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pipes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fifo-aka-named-pipe" class="md-nav__link">
+    <span class="md-ellipsis">
+      FIFO, aka Named Pipe
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sockets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sockets
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sockets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tcpip" class="md-nav__link">
+    <span class="md-ellipsis">
+      TCP/IP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#back-to-sockets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Back to sockets
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#netcat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Netcat
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#http" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      C++ Basics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="C++ Basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#whats-different" class="md-nav__link">
+    <span class="md-ellipsis">
+      What's different?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stack-and-heap-allocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stack and Heap Allocation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-basic-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Basic 4
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="mid-semester-review-2">Mid-Semester Review 2</h1>
+<p>This is a quick summary of topics leading up to the second midterm.
+It is by no means fully comprehensive; use the rest of the lecture notes and
+recitation notes to help if you're unclear on anything.</p>
+<h2 id="files">Files</h2>
+<p><em>Main article: <a href="../K-File-IO/file-io/">File I/O</a></em></p>
+<h3 id="3-channels">3 channels</h3>
+<p>Remember that all C programs are automatically given 3 channels for input and
+output: <code>stdin</code> (0), <code>stdout</code> (1), and <code>stderr</code> (2). Make sure you understand
+their purposes and how to interact with them using function such as <code>fprintf()</code>.</p>
+<h4 id="redirecting-io">Redirecting I/O</h4>
+<p>It is possible to redirect the source of <code>stdin</code> or the destination of <code>stderr</code> and
+<code>stdout</code>. Make sure you understand how to use <code>&gt;</code>, <code>&lt;</code>, and <code>&gt;&gt;</code>.</p>
+<p>Remember <code>|</code>? We'll talk about that in the Pipes section below.</p>
+<h3 id="file-io">File I/O</h3>
+<p><code>FILE *</code>'s (file handles) are your best friends; they're just fancy pointers
+for files. As noted above, all C programs start with <code>FILE *</code>s <code>stdin</code>,
+<code>stdout</code>, and <code>stderr</code>.</p>
+<p>You open a file with <code>fopen()</code>, which takes two strings: the name of the file
+you want to open and the mode in which you want to open it. Modes include
+<code>r</code>, <code>w</code>, <code>a</code>, <code>r+</code>, <code>w+</code>, <code>a+</code>, and all of the previous with a <code>b</code> tacked on
+the end. Do you remember the differences? (Hint: check out the <code>man</code> page.)</p>
+<p>You read from and write to the file with functions <code>fgets()</code>/<code>fputs()</code>,
+<code>fprintf()</code>/<code>fscanf()</code>, and <code>fread()</code>/<code>fwrite()</code>. Hopefully you're familiar
+with these functions by now; if not, reviewing the <code>man</code> pages is a great idea.</p>
+<p>Don't forget that you need to close the file when you're done by using
+<code>fclose()</code>. Before closing, you can use <code>feof()</code> or <code>ferror()</code> to see if
+anything weird happened while you were interacting with the file.</p>
+<h3 id="buffering">Buffering</h3>
+<p>Buffering determines how often the contents of a stream are sent to their
+destination. Unbuffered streams are constantly flushed to its destination.
+Line-buffered streams are only flushed to its destination after a newline
+character is written. Block-buffered streams are flushed when they reach a
+certain size. You can use <code>fflush(fp)</code> to manually flush the buffer for any file
+pointer.</p>
+<ul>
+<li><code>stderr</code> is unbuffered - remember why? (hint: debugging!)</li>
+<li><code>stdout</code> is line-buffered when it's connected to the terminal</li>
+<li>everything else is block-buffered</li>
+</ul>
+<h2 id="forkexec">Fork/Exec</h2>
+<p><em>Main article: <a href="../J-Fork-Exec/fork-exec/">Fork / Exec</a></em></p>
+<h3 id="quick-unix-overview">Quick UNIX overview</h3>
+<p>Before we can talk about <code>fork()</code> and <code>exec()</code>, here's a quick review of the
+UNIX system.</p>
+<h4 id="users-and-permissions">Users and Permissions</h4>
+<p>Unix systems have three different ways to allocate permissions: owner (a user),
+group, and everyone else.</p>
+<ul>
+<li><strong>Owner</strong> The owner is always a user and the owner can own both files and directories.</li>
+<li><strong>Group</strong> A file or directory is assigned to a group, usually but not always the user group that the owner belongs to.</li>
+<li><strong>Others</strong> Those who are not in the assigned group, nor an owner, belong to the others.</li>
+</ul>
+<p>There are also three UNIX file permissions: read, write, and execute. Make sure
+you're comfortable with the binary and octal representations of these
+permissions. For example: 100 is the ability to only read, and has a value of 4.
+111 is read, write, and execute, and has value 7. These numbers can be combined
+for owner, group, and others as well, like <code>chmod 644</code>. (Exercise: who has what
+permissions on a file after <code>chmod 644</code>?)</p>
+<h4 id="processes">Processes</h4>
+<p>A program is a packaged set of instructions, whereas a process is an instance
+of a program. A program can have many processes associated with it. For
+example, we can run multiple instances of an executable independently, thereby
+initiating multiple processes that run that program. We can create more
+processes associated with the executable by splitting a process with the fork
+system call, as we'll soon see.</p>
+<p>Confused? Here's an analogy: Let's say you have a recipe for an amazing soup.
+While you only have one recipe, you can have multiple pots cooking at once.
+A program is like that recipe; you can have multiple processes (pots) running at
+once.</p>
+<p>Each process has a unique, non-negative numeric identifier known as the
+<strong>process ID</strong> (<code>pid</code>).</p>
+<h3 id="fork"><code>fork()</code></h3>
+<p>We can create new processes using the <code>fork()</code> system call. The process that
+calls <code>fork()</code> is the <strong>parent process</strong>; this creates a second process called
+the <strong>child process</strong>, essentially splitting your original process into two
+processes.</p>
+<p>After <code>fork()</code>, the parent and child process both execute all code after the
+<code>fork()</code> statement. <code>fork()</code> is called once in the parent, but returns twice:
+once in the parent and once in the child. The return value of <code>fork()</code>
+depends on if it's executing within the child process or parent process.</p>
+<ul>
+<li>If <code>fork()</code> is returning in the <strong>parent process</strong>, it returns the <strong>child's <code>pid</code></strong></li>
+<li>If <code>fork()</code> is returning in the <strong>child process</strong>, it returns <strong>0</strong></li>
+</ul>
+<p>This means you can identify which process you are in simply by checking the
+return value of <code>fork()</code>.</p>
+<p>Note that the process ID of the child process is NOT equal to 0. Also note
+that the order of execution of the child and parent processes relative
+to each other is unpredictable.</p>
+<h3 id="exec"><code>exec()</code></h3>
+<p>Now that you've used <code>fork()</code>, you have two exact copies of the same process.
+That's great, but it can be limiting. The <code>exec()</code> family of functions lets you
+turn your current process into an instance of <em>another</em> program. Cool!</p>
+<p>You create the new program with <code>exec()</code> by specifying arguments, which include
+things like the new program name and any command line arguments. (Check out the
+<code>man</code> page for more info.) Once the call to <code>exec()</code> has been made, the
+process running <code>exec()</code> stops executing the code of its original program and
+begins executing the code of the new program. Your process has no memory
+(ha-ha) of the previously running program: its program code, data, heap, and
+stack are replaced with those of the new program. If the new program ends, the
+process exits and never returns to the code of your old program. This means
+that any code following a call to <code>exec()</code> will only be executed if the call to
+<code>exec()</code> fails.</p>
+<h3 id="dealing-with-terminated-processes">Dealing with Terminated Processes</h3>
+<p>When a child process terminates before the parent process, the parent is
+responsible for ensuring the child process is <strong>reaped</strong>. In other words, the
+system resources associated with the child process need to be released,
+otherwise the child will become a <strong>zombie</strong>.</p>
+<p>But what if a parent process terminates before the child? Then the child
+becomes an <strong>orphan</strong>; it is usually then "adopted" by <code>init</code> (<code>pid</code>=1).
+(<code>init</code> is the first process started by an operating system; everything else
+is <code>fork</code>/<code>exec</code>'d from there.)</p>
+<h2 id="pipes">Pipes</h2>
+<p><em>Main article: <a href="IPC-TCP-IP/ipc-tcpip.md">IPC and TCP/IP</a></em></p>
+<p><strong>Pipes</strong> allow one-way data flow and can connect processes having a common
+ancestor. We can use a pipe to connect the <code>stdout</code> of one process to the
+<code>stdin</code> of another. For example, we can "pipe" the output of <code>program1</code> to
+<code>program2</code> like this:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>./program1 | ./program2
+</span></code></pre></div>
+<p>Note that pipes and file redirects are <em>not</em> directly interchangeable. <code>&gt;</code> is
+used to direct <code>stdout</code> into a file; <code>|</code> is used to direct <code>stdout</code> into
+<em>another process's</em> <code>stdin</code>. Look at the difference between the following
+examples:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>cat hello.txt &gt; goodbye.txt     // puts contents of hello.txt into a file called goodbye.txt
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>cat hello.txt &gt; less            // puts contents of hello.txt into a __file__ called less
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>cat hello.txt | less            // puts contents of hello.txt as stdin to the program less
+</span></code></pre></div>
+<p>You can, however, combine <code>|</code> and redirects (<code>&gt;</code>, <code>&lt;</code>, <code>&gt;&gt;</code>). Give it a try!
+And check out the next section.</p>
+<h2 id="fifo-aka-named-pipe">FIFO, aka Named Pipe</h2>
+<p>A <strong>FIFO (First In First Out)</strong> or <strong>named pipe</strong> provides a slightly more
+flexible form of communication than a regular pipe. Since we can refer to FIFOs
+by name, we can get a bit more creative with how we use them.</p>
+<p>Recall the pipeline from Lab 5:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>mkfifo mypipe
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>cat mypipe | nc -l &lt;port #&gt; | /home/jae/.../mdb-lookup-cs3157 &gt; mypipe
+</span></code></pre></div>
+<p><code>mypipe</code> serves as a link between <code>nc</code> and <code>mdb-lookup-cs3157</code>. This
+accomplishes a circular pipeline:
+* <code>cat</code> pulls contents out of <code>mypipe</code>
+* The first <code>|</code> sends contents from <code>cat mypipe</code> to <code>nc</code>
+* The second <code>|</code> sends the output of <code>nc</code> as input to <code>mdb-lookup-cs3157</code>
+* <code>&gt;</code> sends output of <code>mdb-lookup-cs3157</code> into <code>mypipe</code>
+* Now there's something in <code>mypipe</code> for <code>cat</code> to pull out, and we start all over again</p>
+<p>Note that we redirect (<code>&gt;</code>) into <code>mypipe</code>, not <code>|</code> into it. <code>mypipe</code> itself is
+not a program or process, it's more like a file that we can read from and write to.</p>
+<h2 id="sockets">Sockets</h2>
+<p><em>Main article: <a href="IPC-TCP-IP/ipc-tcpip.md">IPC and TCP/IP</a></em></p>
+<p>Pipes and FIFOs are fine for local, one-way data flow, but often we want to
+communicate between processes that may not even be on the same machine.
+<strong>Sockets</strong> are a way to do just that. A socket is a type of file used for
+network communication between processes. Sockets are generalizations of pipes:
+with sockets, we can achieve both intramachine communication, as with our
+above examples, and intermachine communication. Additionally, sockets allow for
+<strong>two-way</strong> interprocess communication, unlike pipes. To talk about sockets,
+let's take a quick detour to TCP/IP.</p>
+<h3 id="tcpip">TCP/IP</h3>
+<p>TCP/IP is the protocol that makes the world go 'round. The internet is powered by
+IP (Internet Protocol), and almost all the traffic is TCP (Transmission Control
+Protocol). IP sends bundles of bytes called packets toward IP addresses. Instead
+of having to memorize IP addresses, we can use DNS to translate between IP
+addresses and hostnames.</p>
+<p>There are five protocol layers of TCP/IP networking:
+1. Physical
+2. Link
+3. IP
+4. Transport
+5. Application
+The sockets API connects Transport and Application layers. We're mostly
+concerned with the Application layer.</p>
+<h3 id="back-to-sockets">Back to sockets</h3>
+<p>In order to send data via a socket connection, we need a few means of
+identification to figure out where the data needs to go: an IP address and a
+port number. The IP address is a unique identifier that is assigned to a
+computer or device on a TCP/IP network. A port number works together with an
+IP address to identify the application or process on the host to which data must
+be transmitted. If it helps, you can consider
+<a href="http://beej.us/guide/bgnet/output/html/multipage/index.html">Beej</a>'s analogy:
+an IP address is like a hotel address and a port number is like a room number in
+that hotel. Port numbers range from 0 to 65535, but we can only use ports 1024
+and above.</p>
+<p>We won't go over the socket API in depth here, but make sure you understand
+all the steps to create a server socket and a client socket. Definitely use the
+<a href="http://cs.baylor.edu/~donahoo/practical/CSockets/PracticalSocketC.pdf">Donahoo slides</a>
+to help you out.</p>
+<h2 id="netcat">Netcat</h2>
+<p><code>nc</code> is the Swiss army knife of the networking world. You can set up a
+server-client connection with the following commands:</p>
+<p>Set up a server listening on <code>&lt;port&gt;</code>:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>nc -l &lt;port&gt;
+</span></code></pre></div></p>
+<p>Connect a client to the server above:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>nc &lt;hostname or IP address of server&gt; &lt;server port&gt;
+</span></code></pre></div></p>
+<p>Vanilla <code>nc</code> has two jobs: get connected and share information. The server waits
+until a client connects to it. After that happens, some neat <code>stdin</code>/<code>stdout</code>
+redirecting happens. The server sends all of its <code>stdin</code> to the client, and prints
+everything it receives from the client to <code>stdout</code>. The same happens with the
+client: its <code>stdin</code> is sent to the server, and it prints what it receives from the
+server to <code>stdout</code>. So, effectively, the <code>stdin</code> of the client is sent to the
+<code>stdout</code> of the server, and the <code>stdin</code> of the server is sent to the <code>stdout</code>
+of the client. You can think of it as a super simple instant messenger!</p>
+<p><code>nc</code> can obviously do more complex things when used in conjunction with pipes,
+named pipes, redirects, etc. Take another look at the pipeline from Lab 5 and
+make sure you fully understand it.</p>
+<h2 id="http">HTTP</h2>
+<p>Make sure you understand HTTP in depth (to the extent that you
+needed it for Lab 6). You can read more about HTTP/1.0
+<a href="http://www.jmarshall.com/easy/http/">here</a>.</p>
+<p>To request information from a server, you can formulate a GET request as follows:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>GET /path/file.html HTTP/1.0
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>[zero or more headers ...]
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>[a blank line, must be &#39;\r\n&#39;]
+</span></code></pre></div>
+The response from the web server looks something like this:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>HTTP/1.0 200 OK
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Date: Fri, 31 Dec 1999 23:59:59 GMT
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>Content-Type: text/html
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>Content-Length: 1354
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>&lt;html&gt;
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>&lt;body&gt;
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>&lt;h1&gt;Happy New Millennium!&lt;/h1&gt;
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>(more file contents)
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>.
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>.
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>.
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>&lt;/body&gt;
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>&lt;/html&gt;
+</span></code></pre></div></p>
+<h2 id="c-basics">C++ Basics</h2>
+<p><em>Main article: <a href="../M-cpp/cpp/">Introducing C++</a></em></p>
+<h3 id="whats-different">What's different?</h3>
+<ul>
+<li>Classes/structs: default constructor</li>
+<li>References</li>
+<li>Stack allocation and heap allocation (<code>new</code>/<code>delete</code>)</li>
+<li>The Basic 4</li>
+<li>Function overloading</li>
+<li>"Real" strings (<code>MyString</code>)</li>
+</ul>
+<h3 id="references">References</h3>
+<p>In C, when you call a function, you pass arguments by value: a brand new copy
+of the argument is made for the function to use. That's why we needed pointers.
+Remember the following example?
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>void swap(int x, int y) {
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    int tmp = x;
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    x = y;
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    y = tmp;
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    return;
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>}
+</span></code></pre></div>
+This doesn't actually work, because <code>swap()</code> gets its own copies of the
+parameters. <code>swap()</code> never even touches the "original" <code>x</code> and <code>y</code> that it
+is called with. Instead, you needed to do something like this:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>void swap(int *x, int *y) {
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    int tmp = *x;
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    *x = *y;
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    *y = tmp;
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    return;
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>}
+</span></code></pre></div>
+C++ has something new: a construct known as a <strong>reference</strong>. You can think of
+a reference as a dereferenced pointer to something. Here's a quick example:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>int x = 5;
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>int&amp; y = x; //y is a reference to x
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>x = 6; //y is now 6
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>y = 7; //x is now 7
+</span></code></pre></div>
+<code>y</code> and <code>x</code> are essentially the same thing. You could write <code>swap()</code> in C++
+like this:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>void swap(int&amp; x, int&amp; y) {
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    int tmp = x;
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    x = y;
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>    y = tmp;
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>}
+</span></code></pre></div>
+Cool, right?</p>
+<h3 id="stack-and-heap-allocation">Stack and Heap Allocation</h3>
+<p>Allocating space on the stack for a struct in C++ looks exactly the same as it
+does in C, e.g.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>struct Pt myPt; // you can omit the &quot;struct&quot; in C++
+</span></code></pre></div>
+Even though they look the same, though, they actually don't operate the same
+way. In C++, classes and structs have special functions called <strong>constructors</strong>
+that initialize all data members and base classes when the class/struct is
+allocated.</p>
+<p>Heap allocation is also different in C++. You can still use <code>malloc()</code> and
+<code>free()</code>, but <code>malloc()</code> doesn't allow you to call the constructor. Instead,
+you can use the <code>new</code> keyword, like this:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Pt *myPt = new Pt; //allocates sizeof(Pt) space on heap, calls constructor
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>Pt *someArray = new Pt[10]; //heap-allocated array of Pts
+</span></code></pre></div>
+Just like every <code>malloc()</code> must have a <code>free()</code>, every <code>new</code> must have a
+<code>delete</code>:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>delete myPt;
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>delete [] someArray;
+</span></code></pre></div></p>
+<p>Don't mix up <code>malloc()</code>/<code>free()</code> and <code>new</code>/<code>delete</code>.</p>
+<h3 id="the-basic-4">The Basic 4</h3>
+<ol>
+<li>Constructor<ul>
+<li>Called when an object is allocated on stack/heap</li>
+</ul>
+</li>
+<li>Destructor<ul>
+<li>Called when an object goes out of scope/<code>delete</code> is used</li>
+</ul>
+</li>
+<li>Copy Constructor<ul>
+<li>Called when object needs to be copied (e.g. passed as argument)</li>
+</ul>
+</li>
+<li>Operator=()<ul>
+<li>Called when an object is assigned to a variable</li>
+</ul>
+</li>
+</ol>
+<p>Make sure you understand why all of the above are necessary when you're writing
+a class or struct.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 <a href="https://rdnajac.tech">Ryan D. Najac</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d6f25eb3.min.js"></script>
+      
+    
+  </body>
+</html>

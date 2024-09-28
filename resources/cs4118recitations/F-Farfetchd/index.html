@@ -1,0 +1,739 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A collection of C++ code snippets and examples.">
+      
+      
+        <meta name="author" content="Ryan D. Najac">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.38">
+    
+    
+      
+        <title>Understanding Page Tables in Linux - C++ Sandbox</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8c3ca2c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#understanding-page-tables-in-linux" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="C++ Sandbox" class="md-header__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            C++ Sandbox
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Understanding Page Tables in Linux
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rdnajac/cpp-sandbox" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="C++ Sandbox" class="md-nav__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    C++ Sandbox
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rdnajac/cpp-sandbox" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../advprog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Advanced Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qsort/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quicksort
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TCP Echo Server and Client
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../time-complexity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time Complexity
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tour/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A Tour of C++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-shape-of-a-page-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      The shape of a page table
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-page-tables-in-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Working with page tables in Linux
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Working with page tables in Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-fifth-level-of-dantes-page-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      The fifth level of Dante's page table
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-structures-functions-and-macros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data structures, functions, and macros
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#page-dirty-and-refcount" class="md-nav__link">
+    <span class="md-ellipsis">
+      Page dirty and refcount
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="understanding-page-tables-in-linux">Understanding Page Tables in Linux</h1>
+<p>The goal of this recitation is to provide a high-level overview of x86/arm64 paging as
+well as the data structures and functions the Linux kernel uses to manipulate
+page tables.</p>
+<p>Before we dive into the details, here's a quick refresher on what a page table
+does and how it does it. Page tables allow the operating system to virtualize
+the entire address space for each process by providing a mapping between virtual
+addresses and physical addresses. What is a virtual address? Every address that
+application code references is a virtual address. For the most part this is true
+of kernel code as well, except for code that executes before paging is enabled
+(think bootloader). Once paging is enabled in the CPU it cannot be disabled.
+Every address referenced by an application is translated transparently by the
+hardware via the page table.</p>
+<p>A virtual address is usually different than the physical address it maps to, but
+it is also possible for virtual addresses to be "identity" mapped to their
+corresponding physical address or mapped to no address at all in cases where the
+kernel swapped out a page or never allocated one in the first place.</p>
+<h2 id="the-shape-of-a-page-table">The shape of a page table</h2>
+<p>Recall that the structure of the page table is rigidly specified by the CPU
+architecture. This is necessary since the CPU hardware directly traverses the
+page table to transparently map virtual addresses to physical addresses. The
+hardware does this by using the virtual address as a set of indices into the
+page table.</p>
+<div align='center'>
+    <img src='./x86_address_structure.png'/>
+</div>
+
+<p><a href="https://os.phil-opp.com/page-tables">Source</a></p>
+<p>This diagram shows how the bits of a 64 bit virtual address specify the indices
+into a 4-level x86 page table (you can expect something similar in arm64).
+With 4-level paging only bits 0 through 47 are used. Bits 48 through 63 are sign
+extension bits that must match bit 47; this prevents clever developers from
+stuffing extra information into addresses that might interfere with future addressing
+schemes, like 5-level page tables.</p>
+<p>As you can see, there are 9 bits specifying the index into each page table and a
+12 bit offset into the physical page frame. Since 2^9 = 512, each level of the
+page table has 512 64 bit entries, which fits perfectly in one 4096 byte frame.
+The last 12 bits allow the virtual address to specify a specific byte offset
+within the page frame.</p>
+<div align='center'>
+    <img src='./x86_paging_64bit.png'/>
+</div>
+
+<p>For clarity, we're using the naming scheme in the diagram (P4, P3,...), which
+differs slightly from the names used in Linux. Linux also implements 5-level
+paging, which we describe in the next section. For reference, here is how the
+names above mapped to Linux before it added 5-level paging:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Diagram: P4  -&gt; P3  -&gt; P2  -&gt; P1  -&gt; page frame
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Linux:   PGD -&gt; PUD -&gt; PMD -&gt; PTE -&gt; page frame
+</span></code></pre></div>
+<p>Each entry in the P4 table is the address of a <em>different</em> P3 table such that
+each page table can have up to 512 different P3 tables. In turn, each entry in a
+P3 table points to a different P2 table such that there are 512 * 512 = 262,144
+P2 tables. Since most of the virtual address space is unused for a given
+process, the kernel does not allocate frames for most of the intermediary tables
+comprising the page table.</p>
+<p>I've been using the word frame since each page table entry (in any table, P4,
+P3, etc) is the address of a physical 4096 byte memory frame (except for huge
+pages). These addresses cannot be virtual addresses since the hardware accesses
+them directly to translate virtual addresses to physical addresses. Furthermore,
+since frames are page aligned, the last 12 bits of a frame address are all
+zeros. The hardware takes advantage of this by using these bits to store
+information about the frame in its page table entry.</p>
+<div align='center'>
+<img src='./Page_table.png'/>
+</div>
+
+<p><a href="https://wiki.osdev.org/Paging">Source</a></p>
+<p>This diagram shows the bit flags for a page table entry, which in our diagram
+above corresponds to an entry in the P1 table. A similar but slightly different
+set of flags exists for the intermediary entries as well.</p>
+<h2 id="working-with-page-tables-in-linux">Working with page tables in Linux</h2>
+<p>In this section we'll take a look at the data structures and functions the Linux
+kernel defines to manage page tables.</p>
+<h3 id="the-fifth-level-of-dantes-page-table">The fifth level of Dante's page table</h3>
+<p>We just finished discussing 4-level page tables, but Linux actually implements
+5-level paging and exposes a 5-level paging interface, even when the kernel is
+built with 5-level paging disabled. Luckily 5-level paging is similar to the
+4-level scheme we discussed, is simply adds another level of indirection and
+uses 9 previously unused bits of the 64 bit virtual address to index it.</p>
+<p>Here's what the page table hierarchy looks like in Linux:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>4-Level Paging (circa 2016)
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Diagram Above
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    P4  -&gt; P3  -&gt; P2  -&gt; P1  -&gt; page frame
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>Linux
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    PGD -&gt; PUD -&gt; PMD -&gt; PTE -&gt; page frame
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>5-Level Paging (current)
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>Linux
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    PGD -&gt; P4D -&gt; PUD -&gt; PMD -&gt; PTE -&gt; page frame
+</span></code></pre></div>
+<p>What does this mean for us in light of the fact that our kernel config specifies
+4 level paging?</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>CONFIG_PGTABLE_LEVELS=4
+</span></code></pre></div>
+<p>If we look at the output from an example program that reports the physical
+addresses of the process' page frame and of the intermediate page tables,
+it shows that the <code>p4d_paddr</code> and <code>pud_paddr</code> are identical.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>[405] inspect_physical_address():
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>paddr: 0x115a3c069
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>pf_paddr: 0x115a3c000
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>pte_paddr: 0x10d2c7000
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>pmd_paddr: 0x10d623000
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>pud_paddr: 0x10c215000
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>p4d_paddr: 0x10c215000
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>pgd_paddr: 0x10c90a000
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>dirty: no
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>refcount: 57
+</span></code></pre></div>
+<p>Digging into <code>arch/x86/include/asm/pgtable_types.h</code>, we see the following:</p>
+<p><div class="language-C highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="cp">#if CONFIG_PGTABLE_LEVELS &gt; 4</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">p4dval_t</span><span class="w"> </span><span class="n">p4d</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="n">p4d_t</span><span class="p">;</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">p4d_t</span><span class="w"> </span><span class="nf">native_make_p4d</span><span class="p">(</span><span class="n">pudval_t</span><span class="w"> </span><span class="n">val</span><span class="p">)</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">{</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">p4d_t</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="p">}</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">p4dval_t</span><span class="w"> </span><span class="nf">native_p4d_val</span><span class="p">(</span><span class="n">p4d_t</span><span class="w"> </span><span class="n">p4d</span><span class="p">)</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="p">{</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">p4d</span><span class="p">.</span><span class="n">p4d</span><span class="p">;</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="p">}</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="cp">#else</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;asm-generic/pgtable-nop4d.h&gt;</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">p4d_t</span><span class="w"> </span><span class="nf">native_make_p4d</span><span class="p">(</span><span class="n">pudval_t</span><span class="w"> </span><span class="n">val</span><span class="p">)</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="p">{</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">p4d_t</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">pgd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">native_make_pgd</span><span class="p">((</span><span class="n">pgdval_t</span><span class="p">)</span><span class="n">val</span><span class="p">)</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="p">}</span>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">p4dval_t</span><span class="w"> </span><span class="nf">native_p4d_val</span><span class="p">(</span><span class="n">p4d_t</span><span class="w"> </span><span class="n">p4d</span><span class="p">)</span>
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="p">{</span>
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">native_pgd_val</span><span class="p">(</span><span class="n">p4d</span><span class="p">.</span><span class="n">pgd</span><span class="p">);</span>
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="p">}</span>
+</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="cp">#endif</span>
+</span></code></pre></div>
+<a href="https://elixir.bootlin.com/linux/v5.10.158/source/arch/x86/include/asm/pgtable_types.h#L332">x86 Source</a></p>
+<p>Interesting. Looking at <code>pgtable-nop4d.h</code> we find that <code>p4d_t</code> is defined as
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>typedef struct { pgd_t pgd; } p4d_t;
+</span></code></pre></div></p>
+<p>With 4-level paging the p4d folds into the pgd. p4d entries, which are
+represented by <code>p4d_t</code>, essentially become a type alias for <code>pgd_t</code>. The kernel
+does this so that it has a standard 5-level page table interface to program
+against regardless of how many levels of page tables actually exist.</p>
+<p>As of writing, arm64 (for linux 5.10.158) directly includes <code>pgtable-nop4d.h</code>.</p>
+<p>To summarize, with 4-level paging there are no "real" p4d tables. Instead, pgd
+entries contain the addresses of pud tables, and the kernel "pretends" the p4d
+exists by making it appear that the p4d is a mirror copy of the pgd.</p>
+<p>If you read on in <code>arch/x86/include/asm/pgtable_types.h</code> you'll see that the kernel uses the same
+scheme for 3 and 2 level page table configurations as well. arm64 follows a similar scheme in <code>arch/arm64/include/asm/pgtable-types.h</code></p>
+<p>NOTE that you cannot make use of this equivalence directly. Your Farfetch'd
+implementation must work correctly for any page table configuration and
+therefore must use the macros defined by the kernel.</p>
+<h3 id="data-structures-functions-and-macros">Data structures, functions, and macros</h3>
+<p>In this section we'll take a step back and discuss the data structures
+and functions the kernel uses to manage page tables in more detail.</p>
+<p>To encapsulate memory management information for each task, <code>struct task_struct</code> contains
+a <code>struct mm_struct*</code>.</p>
+<div class="language-C highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">mm_struct</span><span class="w">                </span><span class="o">*</span><span class="n">mm</span><span class="p">;</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">struct</span><span class="w"> </span><span class="nc">mm_struct</span><span class="w">                </span><span class="o">*</span><span class="n">active_mm</span><span class="p">;</span>
+</span></code></pre></div>
+<p>We won't go into the details of <code>active_mm</code>, which is used for kernel threads that do not
+have their own <code>struct_mm</code>. Check out <code>context_switch()</code> in core.c if you want to read
+more.</p>
+<p>Looking in <code>struct mm_struct</code>, we find the member <code>pgd_t *pgd;</code>. This is a
+pointer to the first entry in the pgd for this <code>mm_struct</code>. Do you think that
+this is a virtual address or a physical address? Remember that all memory
+references are translated from virtual addresses to physical addresses by the
+CPU, so any address the kernel code uses directly must be a virtual address.</p>
+<p>However, it's easy to recover the physical address since all kernel addresses
+are linearly mapped to physical addresses. <code>virt_to_phys</code> recovers the physical
+address using this linear mapping.</p>
+<p>Section 3.3 in Gordman's <a href="https://www.kernel.org/doc/gorman/html/understand/understand006.html">chapter on page table
+management</a>
+provides a good overview of the functions / macros used to navigate the page table.</p>
+<p>A common source of confusion arises from a misunderstanding of what macros like <code>pud_offset</code>
+return. </p>
+<div class="language-C highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="cm">/* Find an entry in the third-level page table.. */</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="c1">// From include/linux/pgtable.h. Note that this definition is shared between x86 and arm64.</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">pud_t</span><span class="w"> </span><span class="o">*</span><span class="nf">pud_offset</span><span class="p">(</span><span class="n">p4d_t</span><span class="w"> </span><span class="o">*</span><span class="n">p4d</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">address</span><span class="p">)</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="p">{</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">pud_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">p4d_page_vaddr</span><span class="p">(</span><span class="o">*</span><span class="n">p4d</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">pud_index</span><span class="p">(</span><span class="n">address</span><span class="p">);</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="p">}</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="c1">// x86: arch/x86/include/asm/pgtable_types.h</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="c1">// arm64: arch/arm64/include/asm/pgtable-types.h</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">pudval_t</span><span class="w"> </span><span class="n">pud</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="n">pud_t</span><span class="p">;</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="c1">// x86: arch/x86/include/asm/pgtable_64_types.h</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="k">typedef</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w">   </span><span class="n">pudval_t</span><span class="p">;</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="c1">// arm64: arch/arm64/include/asm/pgtable-types.h</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="k">typedef</span><span class="w"> </span><span class="n">u64</span><span class="w"> </span><span class="n">pudval_t</span><span class="p">;</span>
+</span></code></pre></div>
+<p>We touched on this briefly above. A <code>pud_t</code> is just a struct containing an
+unsigned long, which means it compiles down to an unsigned long. Recall from our
+earlier discussion that each entry is the address of a physical page frame and
+that the last 12 bits are reserved for flags since each page frame is page
+aligned. The macros that Gordman discusses, like <code>pte_none()</code> and
+<code>pmd_present()</code>, check these flag bits to determine information about the entry.</p>
+<p>If you want to recover the actual value of the entry, the type casting macros
+Gordman discussed in section 3.2 are useful. Although the Gordman reading is x86-specific,
+arm64 defines similar, if not indentical, macros. Keep in mind that if you want the
+physical address the entry points to you'll need to bitwise-and the value with the
+correct mask.</p>
+<p>x86 and arm64 either define functions/macros for the mask so you can
+manually perform the bitwise-and or define function/macros that outright do the correct
+bitwise-and for you. Either way, recovering the physical address the entry points to is possible in
+both x86 and arm64, it just may look slightly different depending which architecture you're on and
+which function/macros you choose.</p>
+<h3 id="page-dirty-and-refcount">Page dirty and refcount</h3>
+<p>Recall from before that a flag in the page table entry indicates whether the
+page frame is dirty or not. Do not read the flag directly; the kernel provides
+a macro for this purpose.</p>
+<p>You will find section 3.4 of Gordman useful for figuring out how to retrieve
+the refcount of a page frame. Hint: every physical frame has a <code>struct page</code> in
+the kernel, which is defined
+<a href="https://elixir.bootlin.com/linux/v5.10.158/source/include/linux/mm_types.h#L70">here</a>.
+Be sure to use the correct kernel functions / macros to access any information
+in <code>struct page</code>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 <a href="https://rdnajac.tech">Ryan D. Najac</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d6f25eb3.min.js"></script>
+      
+    
+  </body>
+</html>

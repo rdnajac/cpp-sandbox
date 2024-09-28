@@ -1,0 +1,688 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A collection of C++ code snippets and examples.">
+      
+      
+        <meta name="author" content="Ryan D. Najac">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.38">
+    
+    
+      
+        <title>Reading list - C++ Sandbox</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8c3ca2c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#the-descent-to-c" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="C++ Sandbox" class="md-header__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            C++ Sandbox
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Reading list
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rdnajac/cpp-sandbox" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="C++ Sandbox" class="md-nav__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    C++ Sandbox
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rdnajac/cpp-sandbox" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../advprog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Advanced Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../qsort/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quicksort
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TCP Echo Server and Client
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../time-complexity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time Complexity
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tour/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A Tour of C++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-descent-to-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Descent to C
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-c-type-declarations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reading C Type Declarations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-perils-of-java-schools" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Perils of Java Schools
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#standard-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      Standard Input
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learn-c-the-hard-way" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learn C the Hard Way
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-mobile-web-apps-are-slow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Mobile Web Apps are Slow
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c-vs-c-linus-perspective" class="md-nav__link">
+    <span class="md-ellipsis">
+      C vs C++: Linus' perspective
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#att-labs-video-on-unix" class="md-nav__link">
+    <span class="md-ellipsis">
+      AT&amp;T Labs Video on UNIX
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wwwdaemon" class="md-nav__link">
+    <span class="md-ellipsis">
+      WWWDaemon
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stanford-cs106l-course-reader" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stanford CS106L Course Reader
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#you-cant-dig-upwards" class="md-nav__link">
+    <span class="md-ellipsis">
+      You Can't Dig Upwards
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#valgrind-is-not-a-leak-checker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Valgrind is NOT a Leak Checker
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#to-add" class="md-nav__link">
+    <span class="md-ellipsis">
+      To Add
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#to-vet" class="md-nav__link">
+    <span class="md-ellipsis">
+      To Vet
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h3 id="the-descent-to-c"><a href="http://www.chiark.greenend.org.uk/~sgtatham/cdescent/">The Descent to C</a></h3>
+<p>by Simon Tatham (author of PuTTY)</p>
+<p>An "orientation" to C for those coming from a higher level language (e.g., Java
+or Python). It helps explain why C is different, and how that's good (at least
+for some things). Probably most useful around lab 2, once you've actually 
+writen some C code. May also be useful as a review for midterm #1.</p>
+<h3 id="reading-c-type-declarations"><a href="http://unixwiz.net/techtips/reading-cdecl.html">Reading C Type Declarations</a></h3>
+<p>Strategy for dissecting complex C declarations.</p>
+<h3 id="the-perils-of-java-schools"><a href="http://www.joelonsoftware.com/articles/ThePerilsofJavaSchools.html"><em>The Perils of Java Schools</em></a></h3>
+<p>Jae's favorite article on CS education. It talks about why Java is a dangerous language to learn with, and C is important for education. </p>
+<h3 id="standard-input"><a href="http://www.linfo.org/standard_input.html">Standard Input</a></h3>
+<p>Totally confused by UNIX stdin, stdout, etc? This short article may help clarify
+how standard input and output work for processes in UNIX.</p>
+<h3 id="learn-c-the-hard-way"><a href="http://c.learncodethehardway.org/book/">Learn C the Hard Way</a></h3>
+<h3 id="why-mobile-web-apps-are-slow"><a href="http://sealedabstract.com/rants/why-mobile-web-apps-are-slow/"><em>Why Mobile Web Apps are Slow</em></a></h3>
+<p>by Drew Crawford</p>
+<p>This is a lonng article, probably best to read toward the end of the class.
+Comments by Jonathan Balsano.</p>
+<p>Why?</p>
+<p>It touches on some really important technical aspects of mobile programming
+that you'll learn about as part of your CS education here. (Also, you probably
+didn't think you were going to need those concepts in the developer world -
+they're probably only useful for academia, right?) After AP you should be able
+to get through it, but you might be a little confused. I encourage you to hold
+onto the article, though, because after you take courses like Fundamentals, OS,
+and PLT, more and more of the article will make sense and tie together the
+ideas you've learned in a very real and applicable way. In a really nerdy way,
+I was excited while reading it because I could feel all these seemingly
+unrelated things coming together in a very technical way.</p>
+<p>Also, I've heard people complain you learn things you'll never use again in
+this class, like C, memory management, etc. "Garbage collected languages like
+Ruby, Python, and Java are the way of the future" they say. My response to this
+has always been that its still important to learn the languages because its not
+just about the language, but the abstractions C and C++ are built around. In
+particular, C's (and in turn C++'s) syntax and constructs are so tightly linked
+to the OS underneath its impossible to learn pointers and arrays without
+understanding some essential OS concepts (like memory).</p>
+<p>What?</p>
+<p>A lot of things, but the last part about memory management is most applicable
+to what we've learned in this class.</p>
+<p>"Why's he keep bringing up memory?" you're thinking. It's because the third
+argument in the article, the part about Garbage Collection and Automatic
+Reference Counting (ARC, basically smart pointers in Objective C). Here's my
+quick summary that's surely missing about 95% of the information in the
+article:</p>
+<p>In a world that's becoming increasingly mobile, we're hitting up against a lot
+of the boundaries of processing power, in part because of the need for
+portability. Over the past decade, our answer to making things faster has often
+been "Just throw more CPUs/servers/computers at it" but that's not really
+possible in the mobile world due to size and power constraints. Unfortunately,
+in memory constricted environments (like your phone) being oblivious to memory
+isn't going to work. </p>
+<p>In these cases, you're going to have to understand how memory works. Whether
+you're working on Android (with garbage collection) or iOS (ARC), you need to
+know how much memory you're using underneath, because for the next 5-10 years
+(at least) the mobile memory problem seems unlikely to change.</p>
+<h3 id="c-vs-c-linus-perspective">C vs C++: Linus' perspective</h3>
+<p>Linus Torvalds, the man who wrote Git and Linux kernel, is a famous
+C++ hater.  Here is his famous hate mail on C++: http://article.gmane.org/gmane.comp.version-control.git/57918</p>
+<h3 id="att-labs-video-on-unix">AT&amp;T Labs Video on UNIX</h3>
+<p>http://www.youtube.com/watch?v=tc4ROCJYbm0</p>
+<p>It is a 1982 video from AT&amp;T introducing their shinny new invention: UNIX.  It talks about some of the things we covered/will cover this week and next week, but you get to hear it from the true giants in the field: the late Dennis Ritchie (the inventor of C &amp; co-inventor of UNIX), Ken Thompson (co-inventor of UNIX), Brian Kernighan (the K in K&amp;R), and our own Professor Al Aho (the A in AWK, the grand daddy of all modern scripting languages).</p>
+<h3 id="wwwdaemon"><a href="https://github.com/NotTheRealTimBL/WWWDaemon/blob/master/old/V0.1/daemon.c">WWWDaemon</a></h3>
+<p>The original (ok, a very early version, 0.1) HTTP web server by Tim Berner's Lee. Very similar to lab7 server.</p>
+<h3 id="stanford-cs106l-course-reader"><a href="http://web.stanford.edu/class/cs106l/course_reader.html">Stanford CS106L Course Reader</a></h3>
+<p>Stanford's intro C++ class has a lab section, 106L. They've written a ~600 page textbook, but it's an incredibly good resource for learning all about everything we've done. For example, they have pages and pages on how linking works. Highly recommended, but be aware it's focused only on C++, so most of the stuff applies to C, but not all.</p>
+<h3 id="you-cant-dig-upwards"><a href="http://www.evanmiller.org/you-cant-dig-upwards.html">You Can't Dig Upwards</a></h3>
+<p>An article about why only knowing Python is like only knowing how to drive an automatic transmission car. Basically, python is too easy, and you don't understand how a computer actually works.</p>
+<h3 id="valgrind-is-not-a-leak-checker"><a href="http://maintainablecode.logdown.com/posts/245425-valgrind-is-not-a-leak-checker">Valgrind is NOT a Leak Checker</a></h3>
+<p>An article about why leak checking is one of the less useful features Valgrind offers. </p>
+<h1 id="to-add">To Add</h1>
+<ul>
+<li>Heartbleed and goto fail writeups</li>
+<li><a href="http://damienkatz.net/2013/01/the_unreasonable_effectiveness_of_c.html">The Unreasonable Effectiveness of C</a></li>
+</ul>
+<h1 id="to-vet">To Vet</h1>
+<ul>
+<li>C++ Value Semantics: http://akrzemi1.wordpress.com/2012/02/03/value-semantics/</li>
+<li>Integer Represenations: http://pages.cs.wisc.edu/~smoler/x86text/lect.notes/represent.html</li>
+<li>Why should I use a pointer, rather than an object?: http://stackoverflow.com/questions/22146094/why-should-i-use-a-pointer-rather-than-the-object-itself</li>
+<li>How to debug small programs: http://ericlippert.com/2014/03/05/how-to-debug-small-programs/#</li>
+<li>C structure packing http://www.catb.org/esr/structure-packing/</li>
+<li>
+<ul>
+<li>Implementing malloc: http://danluu.com/malloc-tutorial/</li>
+</ul>
+</li>
+<li>21st Century C: O'Reilly book about how we're all dinosaurs for returning 0 from main http://clio.columbia.edu/catalog/10816384?counter=1</li>
+<li><a href="http://timkellogg.me/blog/2015/02/08/history-of-C/">Was C for Hipsters?</a></li>
+<li><a href="http://www.jmarshall.com/easy/http/">HTTP Made Really Easy</a></li>
+<li><a href="http://blog.regehr.org/archives/213">A Guide to Undefined Behavior in C and C++</a></li>
+<li><a href="http://kukuruku.co/hub/programming/i-do-not-know-c">I Do Not Know C</a> -- Q&amp;A with some tricky undefined behavior questions.</li>
+<li><a href="http://marek.vavrusa.com/c/memory/2015/02/20/memory/">What a C programmer should know about memory</a></li>
+<li><a href="http://eli.thegreenplace.net/2009/10/21/are-pointers-and-arrays-equivalent-in-c">Are pointers and arrays equivalent in C?</a></li>
+<li><a href="http://www.joelonsoftware.com/articles/fog0000000319.html">Back to Basics</a> Joel Spolsky of Joel on Software writes about C strings being awful, and why malloc is slow, etc.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 <a href="https://rdnajac.tech">Ryan D. Najac</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d6f25eb3.min.js"></script>
+      
+    
+  </body>
+</html>

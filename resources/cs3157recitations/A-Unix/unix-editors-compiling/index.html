@@ -1,0 +1,966 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A collection of C++ code snippets and examples.">
+      
+      
+        <meta name="author" content="Ryan D. Najac">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.38">
+    
+    
+      
+        <title>Unix, Text Editors, and Compiling - C++ Sandbox</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.8c3ca2c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#unix-text-editors-and-compiling" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="C++ Sandbox" class="md-header__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            C++ Sandbox
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Unix, Text Editors, and Compiling
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rdnajac/cpp-sandbox" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="C++ Sandbox" class="md-nav__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    C++ Sandbox
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rdnajac/cpp-sandbox" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../advprog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Advanced Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qsort/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quicksort
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tcp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TCP Echo Server and Client
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../time-complexity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time Complexity
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tour/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A Tour of C++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#logging-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logging in
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Logging in">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changing-your-password" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changing your password
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-about-clic" class="md-nav__link">
+    <span class="md-ellipsis">
+      What about CLIC?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-unix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic UNIX
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic UNIX">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paths
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Navigation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#useful-tricks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Useful Tricks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Useful Tricks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tab-completion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tab completion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#previous-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      Previous command
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reverse-intelligent-search-reverse-i-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reverse intelligent search (reverse-i-search)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#text-editors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Text Editors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Text Editors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vim" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vim
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emacs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Emacs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compiling-and-linking-a-c-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compiling and Linking a C Program
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="unix-text-editors-and-compiling">Unix, Text Editors, and Compiling</h1>
+<h2 id="logging-in">Logging in</h2>
+<ul>
+<li>If you're on a Mac, open up the Terminal app.</li>
+<li>If you're on Windows, install <a href="http://mobaxterm.mobatek.net/">MobaXterm</a>.</li>
+<li>Type <code>ssh your_uni@clac.cs.columbia.edu</code>. You will be prompted for your CLAC
+password.</li>
+<li>If you want to share graphical programs as well as the shell with the remote
+machine, enable X11 Forwarding: <code>ssh -Y your_uni@clac.cs.columbia.edu</code></li>
+</ul>
+<h3 id="changing-your-password">Changing your password</h3>
+<p>Earlier this week, we generated a password and emailed it to you. You may want
+to change your password by entering the command:</p>
+<div class="language-text highlight"><pre><span></span><code>passwd
+</code></pre></div>
+<p>Enter your current password and hit return. Then, enter your new password. For
+security reasons, your keystrokes are not displayed when typing passwords.</p>
+<h3 id="what-about-clic">What about CLIC?</h3>
+<p>You might've heard about CLIC, the CS department's computing service. We used to
+require CLIC accounts for this course, but we are now running our own computing
+infrastructure called CLAC. It stands for "<strong>C</strong> <strong>L</strong>anguage is <strong>A</strong>wesome and
+<strong>C</strong>ool."</p>
+<h2 id="basic-unix">Basic UNIX</h2>
+<h3 id="paths">Paths</h3>
+<p>A good place to start with UNIX is the filesystem structure. Our CLAC machines
+run Ubuntu Linux. Unlike Windows machines, UNIX uses forward slashes to separate
+each part of the file path.</p>
+<p>An example file path in UNIX might be <code>/usr/bin/dict</code>. The path <code>/</code> by itself
+denotes <em>the highest level directory</em>. If you start any path with a forward
+slash, it will assumed to be a path relative to the root directory <code>/</code>.</p>
+<p>Alternatively, your current directory is represented by <code>./</code>. In most cases you
+can leave this off. You can find out your current directory using the command
+<code>pwd</code>.</p>
+<p>If your current directory is <code>/students/alice</code> and you wish to reference the
+directory <code>/students</code> in a path, you can do so in two ways:</p>
+<ul>
+<li><code>/students</code> — an <strong>absolute path</strong> (begins with <code>/</code>)</li>
+<li><code>../</code> — a <strong>relative path</strong> (does not begin with <code>/</code>)</li>
+</ul>
+<p><code>../</code> denotes the directory above the current directory. You could reference the
+root directory <code>/</code> from the directory <code>/students/alice</code> using the relative path
+<code>../../</code>.</p>
+<h3 id="basic-navigation">Basic Navigation</h3>
+<p>When you log into CLAC, your current (working) directory will be
+<code>/students/your_uni</code>. Check this by typing:</p>
+<div class="language-text highlight"><pre><span></span><code>pwd
+</code></pre></div>
+<p>This is your home directory. All of your files on CLAC are stored in this
+directory, and you can do pretty much whatever you want to them. You own the
+place.</p>
+<p>Let's view all the files in the current directory:</p>
+<div class="language-text highlight"><pre><span></span><code>ls
+</code></pre></div>
+<p>Let's make some new directories here for your work in this class. Use the
+<code>mkdir</code> command to make a new directory:</p>
+<div class="language-text highlight"><pre><span></span><code>mkdir cs3157
+mkdir cs3157/learning
+</code></pre></div>
+<p>Now let's move into your working directory. Use the change directory command,
+<code>cd</code>. All three commands below will do the same thing. (Which paths are
+relative, and which ones are absolute?)</p>
+<div class="language-text highlight"><pre><span></span><code>cd cs3157/learning
+cd ./cs3157/learning
+cd /students/your_uni/cs3157/learning
+</code></pre></div>
+<p>Let's create a new text file using the <code>touch</code> command. This will create
+a new empty file if one does not exist, or update the last modified date if the
+file exists.</p>
+<div class="language-text highlight"><pre><span></span><code>touch testing.txt
+touch .hidden.txt
+</code></pre></div>
+<p>Did both commands work? Try the <code>ls</code> command again.</p>
+<p>Some commands in UNIX take flags. These are special arguments preceded by a
+dash. The two flags we use the most with <code>ls</code> are:</p>
+<ul>
+<li><code>-l</code> shows more information about each file, such as the size, owner, and
+permissions.</li>
+<li><code>-a</code> includes files that are hidden. In UNIX, these are files whose names
+start with a period, such as <code>.hidden.txt</code>.</li>
+</ul>
+<p>Try these commands. Notice how the output changes for each one.</p>
+<div class="language-text highlight"><pre><span></span><code>ls
+ls -l
+ls -a
+</code></pre></div>
+<p>We can also combine flags for <code>ls</code>:</p>
+<div class="language-text highlight"><pre><span></span><code>ls -la
+</code></pre></div>
+<p>Now let's delete our hidden file using the remove command, <code>rm</code>.</p>
+<div class="language-text highlight"><pre><span></span><code>rm .hidden.txt
+ls -la
+</code></pre></div>
+<p>Alright, now let's get rid of the directory we created here. Just as with
+<code>.hidden.txt</code>, we'll use the <code>rm</code> command.</p>
+<p>However, <code>rm</code> doesn't let you delete directories unless you specify to run it
+recursively (<code>-r</code>) (repeatedly go into each subdirectory and delete all files). It will
+also ask for confirmation that you want to delete files unless you tell it to
+force the delete (<code>-f</code>).</p>
+<div class="language-text highlight"><pre><span></span><code>cd ../
+rm -rf learning
+ls -la
+</code></pre></div>
+<p>One last thing as a side note: if you ever don't know how to use a command in
+UNIX (or even a function in the standard C library) you can use the <code>man</code>
+command. It will bring up the manual pages for the command you ask it for. Try
+to learn more about the ls command:</p>
+<div class="language-text highlight"><pre><span></span><code>man ls
+</code></pre></div>
+<p>Use <code>q</code> to quit out of a man page.</p>
+<h3 id="useful-tricks">Useful Tricks</h3>
+<h4 id="tab-completion">Tab completion</h4>
+<p>Tab completion is a feature that auto-completes your commands when you press the
+tab key. For example, typing <code>tou</code> followed by the tab key will complete to
+<code>touch</code>. Tab completion also works for directory and file names.</p>
+<h4 id="previous-command">Previous command</h4>
+<p>You can go through your history by pressing the up and down arrows in terminal.
+This will navigate between previously used commands so that you can easily use
+the same commands over and over.</p>
+<h4 id="reverse-intelligent-search-reverse-i-search">Reverse intelligent search (reverse-i-search)</h4>
+<p>You can also search through your command history. Press Ctrl-R to bring up the
+search prompt. Start typing until you find the command you're looking for.</p>
+<p>This feature is especially useful for long, complicated commands that you rarely
+use. Instead of memorizing them, you can simply search your history.</p>
+<h2 id="text-editors">Text Editors</h2>
+<p>There are two main text editors that you can use from inside terminal: <code>emacs</code>
+and <code>vim</code>. Although we are teaching the course with <code>vim</code>, which editor you use
+is ultimately your decision. (You could even write everything in <code>nano</code> if you
+really wanted, but it might get annoying.)</p>
+<h3 id="vim">Vim</h3>
+<p>Vim is a difficult to use text editor and can be confusing at first. Its goal is
+to be incredibly efficient by preventing unnecessary movement of your hands
+around the keyboard. It operates in different modes, the most important of
+which will be <strong>normal (command) mode</strong> and <strong>insert mode.</strong></p>
+<p>Launch Vim and tell it the filename you want to edit:</p>
+<div class="language-text highlight"><pre><span></span><code>vim myfile
+</code></pre></div>
+<p>When you open vim, it will be in Normal mode. Typing will cause a variety of
+different operations to happen. For now switch to Insert Mode by pressing <code>i</code>.
+You should see <code>-- INSERT --</code> appear at the bottom of the screen. At this point
+anything you type will appear as text in the text file. This is fine for basic
+editing.</p>
+<p>Now let's switch back to Normal mode. Press the <code>esc</code> key to switch back.</p>
+<p>Most vim commands execute as soon as you type them. Here are some basic commands
+that will execute immediately:</p>
+<ul>
+<li><code>h</code> (left), <code>j</code> (down), <code>k</code> (up), and <code>l</code> (right) are how you move while in
+    Normal mode. You may also use the arrow keys.</li>
+<li><code>dd</code> deletes the current line</li>
+<li><code>D</code> deletes from the current location to the end of the line</li>
+<li><code>yy</code> copies the current line</li>
+<li><code>p</code> pastes whatever has been previously copied or deleted</li>
+<li><code>0</code> jumps to the beginning of the line</li>
+<li><code>$</code> jumps to the end of the current line</li>
+<li><code>w</code> jumps to the beginning of the next word (<code>W</code> uses a broader definition of word)</li>
+<li><code>b</code> jumps to the end of the previous word (likewise <code>B</code>)</li>
+<li><code>u</code> undoes the last change</li>
+<li><code>Ctrl-R</code> redoes the last change</li>
+</ul>
+<p>Some vim commands will not be executed until you press enter. These begin with a
+colon.</p>
+<ul>
+<li><code>:w [optional filename]</code> — save the current file if no file name is passed,
+    or write the current file to specified location.</li>
+<li><code>:x</code> or <code>:wq</code> — save and quit</li>
+<li><code>:e filename</code> — open the filename specified</li>
+<li><code>:q</code> — quit vim and return to the shell</li>
+<li><code>:[line number]</code> — jump to that line</li>
+</ul>
+<p>In vim, most commands work with some sort of combination between prepositions
+and actions. For example, <code>gg=G</code> would indent the entire file, as <code>gg</code> takes you
+to the beginning of the file, <code>=</code> auto-indents a line, and <code>G</code> jumps to the end
+of the file.</p>
+<p>To practice the above commands and learn some more, try running the built-in
+tutorial:</p>
+<div class="language-text highlight"><pre><span></span><code>vimtutor
+</code></pre></div>
+<p>Alternatively, check out <a href="http://www.openvim.com/tutorial.html">Open Vim's Tutorial</a>
+for another interactive vim lesson. Or play a little NES Zelda type game while
+learning vim, with <a href="http://vim-adventures.com/">Vim Adventures</a>.</p>
+<p>After learning vim, you might want to configure it. This is done by editing the
+.vimrc file in your home directory. Let's check out our current settings.</p>
+<div class="language-text highlight"><pre><span></span><code>vim ~/.vimrc
+</code></pre></div>
+<p>There should be default settings there already, but you can look to make changes
+here in the future. Jae and the TAs will send out their configurations later,
+but a good starting point is to enable line numbers and syntax highlighting by
+adding this to your .vimrc:</p>
+<div class="language-text highlight"><pre><span></span><code>set number
+syntax on
+</code></pre></div>
+<h3 id="emacs">Emacs</h3>
+<p><em>May be skipped for time</em></p>
+<p>Emacs is an easier to pick up text editor, and many of its commands are identical
+to those of the shell.</p>
+<p>Let's start by editing a new file in emacs:</p>
+<div class="language-text highlight"><pre><span></span><code>emacs myfile
+</code></pre></div>
+<p>As soon as emacs starts running, you will be able to type into it. There is no
+special insert mode like in vim. You can backspace at any time without having to
+switch between modes.</p>
+<p>Emacs has the same functionality as vim, and we present the basics below:</p>
+<ul>
+<li>'Ctrl-f' will move your cursor forward, 'Ctrl-b' will move it back, 'Ctrl-p'
+    will move it up, 'Ctrl-n' will move it down; the arrow keys work as well</li>
+<li>'Ctrl-s' will search for a word forward, 'Ctrl-r' will search for a word backward</li>
+<li>'Ctrl-a' goes to beginning of line, 'Ctrl-e' goes to end</li>
+<li>'Ctrl-k' will delete the portion of the current line after the cursor</li>
+<li>'Ctrl-spacebar' to select text to manipulate</li>
+<li>'Esc-w' to copy text, 'Ctrl-w' to cut text, Ctrl-y' will paste your most
+    recently copied/deleted text</li>
+<li>'Esc-g g' then enter a line number to jump to a particular line in the buffer</li>
+</ul>
+<p>To exit and save we will use Ctrl-X + Ctrl-C. If you just want to save then use
+Ctrl-X + Ctrl-S.</p>
+<p>Just like vim, emacs also has a configuration file that you can edit. This is
+.emacs file within your home directory. Let's check out our emacs settings.</p>
+<div class="language-text highlight"><pre><span></span><code>emacs ~/.emacs
+</code></pre></div>
+<p>There should be default settings there already, but feel free to add more for
+shortcuts.</p>
+<p><em>Note that backspaces can be a little funky when ssh-ing into CLAC and your
+</em>backspace button might actually be sending "Ctrl + H" instead! To fix this you
+*will have to add the following lines to your .emacs file.</p>
+<div class="language-text highlight"><pre><span></span><code>;; make sure backspace deletes backwards
+(normal-erase-is-backspace-mode 1)
+;; make sure your backspace is mapped correctly
+(global-set-key &quot;\C-h&quot; &#39;backward-delete-char)
+</code></pre></div>
+<p>And if you want mouse support, you'll have to add the following:</p>
+<div class="language-text highlight"><pre><span></span><code>(require &#39;mouse) ; mouse support
+(xterm-mouse-mode t) ; Turn on mouse mode
+(defun track-mouse (e)) ; Track the mouse
+(setq mouse-sel-mode t) ; Mouse selection
+(delete-selection-mode 1) ; For deleting the current selection
+(global-set-key [mouse-4] (lambda () (interactive) (scroll-down 1))) ; For scrolling up
+(global-set-key [mouse-5] (lambda () (interactive) (scroll-up 1))) ; For scrolling down
+</code></pre></div>
+<h2 id="compiling-and-linking-a-c-program">Compiling and Linking a C Program</h2>
+<p>Just like Java code, C code can't be run directly on the CPU. It's converted to
+an executable in these three steps:</p>
+<ol>
+<li>
+<p><strong>Pre-processing:</strong> This is when the compiler processes lines that start
+     with a hashmark <code>#</code>. For example, a line like <code>#include "somefile.h"</code> would
+     be replaced with the contents of somefile.h. All other lines are passed
+     onto the next step without modification.</p>
+</li>
+<li>
+<p><strong>Compiling:</strong> This converts the C source code into a lower level language
+     that's specific to the operating system and type of CPU in the computer. It
+     reads C source code files (such as <code>foo.c</code>) and saves its output to object
+     files (<code>foo.o</code>).</p>
+</li>
+<li>
+<p><strong>Linking:</strong> The previous step may have produced several .o files that each
+     contain part of our program's code. Linking puts all of that code together
+     into a single file that we can execute.</p>
+</li>
+</ol>
+<p>Let's take a look at this process in an actual program. We'll create a
+simple program that computes 1 + 2 by calling a function in another file.</p>
+<p>main.c</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;myadd.h&quot;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The sum is: %d </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">));</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>myadd.h</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">#ifndef __MYADD_H__</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="cp">#define __MYADD_H__</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="cp">#endif</span>
+</span></code></pre></div>
+<p>Now let's try to compile myadd. First we'll build the object file for main.c.
+Notice the compiler directive <code>#include</code>. This tells the compiler to
+just copy paste the specified file into the current file at that location. The
+reason we include this line in main.c is so that if we reference a function in
+either of these files before it is defined, the compiler can know its header.</p>
+<p>As an example, in main.c we have <code>add(1, 2);</code>. The compiler wants to make sure
+that this is a valid function call, but knows nothing of the function "add",
+what type it will return, or what its explicit parameters are. Including myadd.h
+will tell the compiler that "add" returns type int, and accepts two integer
+parameters.</p>
+<p>Let's compile <code>main.c</code>:</p>
+<div class="language-text highlight"><pre><span></span><code>gcc -g -Wall -c main.c
+</code></pre></div>
+<p>What do these parameters mean?</p>
+<ul>
+<li><code>-g</code> — include extra information so that, if the program crashes, we can
+    know which line and function caused the crash</li>
+<li><code>-Wall</code> — turns on a lot of compile-time warnings. Warnings are likely
+    problems with your code, but they aren't so severe as to be errors that mean
+    it won't run at all. These can be small problems now that cause big crashes
+    later, so it's best to turn this on when compiling and fix all warnings.</li>
+<li><code>-c</code> — only preprocess and compile the files (do not link them yet)</li>
+</ul>
+<p>After running the command above, you should have a main.o in your directory.</p>
+<p>There was one other set of directives that we've used now. The <code>#ifndef</code>
+<code>#define</code> and <code>#endif</code> directives. The first and the last define a block of code
+that should only be included if a pre-processor variable is <em>not</em> defined. This
+will prevent multiple header files from conflicting. If myadd.h is included more
+than once, the first time the pre-processor will define _<em>MYADD_H</em> and each
+time thereafter will skip over the entire file.</p>
+<p>Pause here for a moment, and think: what haven't we done yet?</p>
+<p>We haven't even written the <code>add()</code> function yet. It's nowhere at all. However,
+gcc let us compile main.c without even giving us a warning! That's because we
+included <code>myadd.h</code>, which gives a prototype for the add function, so gcc knows
+that the function call in <code>main()</code> is valid. That's all the compiler needs, it
+doesn't care how <code>add()</code> works, just that it will exist and is being validly
+used.</p>
+<p>However if we try to link it into an executable, we get an error because during
+linking, it actually needs the code for <code>add()</code>:</p>
+<div class="language-text highlight"><pre><span></span><code>gcc -g main.o -o main
+</code></pre></div>
+<ul>
+<li><code>-o filename</code> — tells GCC what to name the output file</li>
+</ul>
+<p>myadd.c</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;myadd.h&quot;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kt">int</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">{</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>It's a good idea to `#include "myadd.h" in myadd.c even though we aren't
+required to. Doing this allows the compiler to make sure the functions we write
+in the .c file match the prototypes from the .h file. This feature will become
+more useful as our programs become more complicated.</p>
+<p>Now let's compile <code>myadd.c</code></p>
+<div class="language-text highlight"><pre><span></span><code>gcc -g -Wall -c myadd.c
+ls
+</code></pre></div>
+<p>And then finally link our two object files into the executable <code>main</code>.</p>
+<div class="language-text highlight"><pre><span></span><code>gcc -g myadd.o main.o -o main
+ls
+</code></pre></div>
+<p>You should now have an executable file in your directory <code>main</code>. Running
+<code>./main</code> will run your program.</p>
+<p>In this case, you must use <code>./</code> to indicate that you want to execute the program
+main in the current directory. Otherwise, it will try to look for a system
+program named "main," which doesn't exist on our system.</p>
+<p>Building C programs by hand is extremely tedious. In the next review session,
+we'll learn how to automate compilation and linking with Makefiles.</p>
+<p>For more on compiling, linking, and debugging, see
+<a href="http://cslibrary.stanford.edu/107/UnixProgrammingTools.pdf">this article</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 <a href="https://rdnajac.tech">Ryan D. Najac</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.copy"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.d6f25eb3.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,863 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A collection of C++ code snippets and examples.">
+      
+      
+        <meta name="author" content="Ryan D. Najac">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.38">
+    
+    
+      
+        <title>File io - C++ Sandbox</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.8c3ca2c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#file-io" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="C++ Sandbox" class="md-header__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            C++ Sandbox
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              File io
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rdnajac/cpp-sandbox" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="C++ Sandbox" class="md-nav__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    C++ Sandbox
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rdnajac/cpp-sandbox" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../advprog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Advanced Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../qsort/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quicksort
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tcp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TCP Echo Server and Client
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../time-complexity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time Complexity
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tour/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A Tour of C++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#file-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      File I/O
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="File I/O">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3-channels" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 channels
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redirecting-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redirecting I/O
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formatting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Formatting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-topic-functions-with-variable-arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional Topic: Functions with Variable Arguments
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#size_t" class="md-nav__link">
+    <span class="md-ellipsis">
+      size_t
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-io_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      File I/O
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="File I/O">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file" class="md-nav__link">
+    <span class="md-ellipsis">
+      FILE *
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-descriptors" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Descriptors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fopen-and-fclose" class="md-nav__link">
+    <span class="md-ellipsis">
+      fopen and fclose
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fgets-and-fputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      fgets and fputs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fread-and-fwrite" class="md-nav__link">
+    <span class="md-ellipsis">
+      fread and fwrite
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fseek" class="md-nav__link">
+    <span class="md-ellipsis">
+      fseek
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feof-and-ferror" class="md-nav__link">
+    <span class="md-ellipsis">
+      feof and ferror
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fprintf-and-fscanf" class="md-nav__link">
+    <span class="md-ellipsis">
+      fprintf and fscanf
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whats-buffering" class="md-nav__link">
+    <span class="md-ellipsis">
+      What's Buffering?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>File io</h1>
+
+<h2 id="file-io">File I/O</h2>
+<h3 id="3-channels">3 channels</h3>
+<p>By convention, every C program is given 3 channels for input/output operations,
+often called I/O. I/O refers to anything that involves data coming into the 
+program from outside (such as getting user input with <code>scanf</code>) and writing data 
+to the outside (such as printing data to the console with <code>printf</code>). </p>
+<p>The 3 basic channels (often called "streams") as well as their corresponding
+integer representations are:
+- <strong>(0) stdin (standard input)</strong>
+  This stream is for incoming data, which often comes from the keyboard but can 
+  also be from other sources.
+- <strong>(1) stdout (standard output)</strong>
+  This stream is for outgoing data, and normally goes to the terminal
+  screen but does not necessarily have to. (see below) This stream is buffered
+  which means it is not sent to the terminal until a new line character is sent.
+  This means if you use <code>printf("hello")</code> you likely will not see it until the
+  end of your program is reached.
+- <strong>(2) stderr (standard error)</strong>
+  This stream is for error messages and is not buffered, meaning any characters
+  written to it will immediately be flushed to their destination. This
+  destination is often the terminal screen, but can be other locations as
+  well.</p>
+<p>If you wish to interact with these buffers you will need to <code>#include &lt;stdio.h&gt;</code>.
+This library defines standard functions such as <code>printf()</code> <code>scanf()</code> and others 
+which you may or may not have already used.</p>
+<h3 id="redirecting-io">Redirecting I/O</h3>
+<p>Lots of input and output to/from programs is visible in the shell (your terminal 
+screen). That being said, it's possible to redirect the source of stdin or the 
+destination of stderr and stdout. </p>
+<p>There are several kinds of redirection possible from the console:
+- <code>&gt;</code> redirects the standard output of the left argument to the right argument.
+  For example <code>echo "hello world" &gt; hi.txt</code> will write the words 'hello world'
+  to a file called <code>hi.txt</code>.
+- <code>2&gt;</code> is similar, except that it takes the standard error and redirects it,
+  rather than the standard output.
+- <code>&lt;</code> does 'input redirection', meaning that the contents of the file on the 
+  right of the operator serves as the standard input of the left argument. For 
+  example, after running the example above, <code>cat &lt; hi.txt</code> will print "hello
+  world" to the console.
+ - <code>2&gt;&amp;1</code> will redirect stderr to the same location as stdout. 
+ - <code>&gt;&gt;</code> will append the output to a file instead of overwriting the file. </p>
+<p>Here are some examples to try out from your UNIX console:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>     [1] $ cat myfile.c 
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>     [2] $ cat &lt; myfile.c 
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>     [3] $ cat myfile.c &gt; cat
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>     [4] $ cat myfile.c &gt; myfilecopy.c
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>     [5] $ cat myfile.c &gt;&gt; myfilecopy.c
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>     [6] $ valgrind ./myprogram 2&gt; myerrors
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>     [7] $ valgrind ./myprogram &gt; myoutput
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>     [8] $ valgrind ./anotherprogram 2&gt;&gt; myerrors
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>     [9] $ valgrind ./anotherprogram &gt;&gt; myoutput
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    [10] $ valgrind ./myprogram &gt; ALLthethings 2&gt;&amp;1
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    [11] $ valgrind ./anotherprogram &gt;&gt; ALLthethings 2&gt;&amp;1
+</span></code></pre></div></p>
+<p>Each of the above expressions build on each other. If you can tell what the
+effect of each expression above is, then you're set. If not, try them out and
+see what happens.</p>
+<h3 id="formatting">Formatting</h3>
+<p>printf and scanf both use format strings to specify what how to format their
+output. They also both accept variable arguments. All arguments to scanf
+<strong>must</strong> be pointers whereas arguments to printf should be values (in the case
+of numbers) or <code>char *</code> in the case of strings. Pages 153-154 in the K&amp;R explain
+how to format your format strings for <code>printf()</code> and 157-158 explain formatting
+for <code>scanf()</code>. Make sure you can identify the following two format strings:</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%-15.10s&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hello, world&quot;</span><span class="p">);</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">sscanf</span><span class="p">(</span><span class="s">&quot;25 Dec 1988&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%d %s %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">day</span><span class="p">,</span><span class="w"> </span><span class="n">month</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">year</span><span class="p">);</span>
+</span></code></pre></div>
+<h3 id="optional-topic-functions-with-variable-arguments">Optional Topic: Functions with Variable Arguments</h3>
+<p><code>printf()</code> and <code>scanf()</code> family of functions accept a variable number of
+arguments. You can do this too! Once you've enumerated all the required
+arguments, you can specify that you would like to also accept variable arguments
+with <code>...</code>:</p>
+<div class="language-text highlight"><pre><span></span><code>int myFWithVarArgs(int a, int b, ...);
+</code></pre></div>
+<p>The declaration means that the number and types of all arguments after the
+integer b can vary. If you want to be able to actually access these arguments
+you'll need to <code>#include &lt;stdarg.h&gt;</code> whose implementation is system dependent,
+but interface is the same. To access the values, you will have to do the
+following:</p>
+<ol>
+<li>Declare a variable of type <code>va_list</code> that will point to each argument.
+<div class="language-c highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kt">va_list</span><span class="w"> </span><span class="n">my_arg</span><span class="p">;</span>
+</span></code></pre></div></li>
+<li>Call <code>va_start()</code> with the last named argument, and your variable that will
+     point to each argument.
+<div class="language-c highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">va_start</span><span class="p">(</span><span class="n">my_arg</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+</span></code></pre></div></li>
+<li>Call <code>va_arg()</code> with the variable that will point to the argument as well
+     as the type of the argument (you'll need some way to figure out the type of
+     this argument from your other arguments). Assign the return value to a
+     variable. Repeat this step for each argument you want to read.
+<div class="language-c highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">myvarInt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">va_arg</span><span class="p">(</span><span class="n">my_arg</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">);</span>
+</span></code></pre></div></li>
+<li>Clean up by calling <code>va_end()</code> with the variable list of args variable.
+<div class="language-c highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">va_end</span><span class="p">(</span><span class="n">my_arg</span><span class="p">);</span>
+</span></code></pre></div></li>
+</ol>
+<h2 id="size_t">size_t</h2>
+<p><code>size_t</code> shows up all over the place in memory operations. <code>malloc</code> expects its
+parameters to be of this form, and certain file operation functions will return
+the number of bytes read in this formed. What you need to know about <code>size_t</code> is
+that it's an unsigned integer type. This means it works like an integer but
+<strong>cannot represent negative values</strong>. So, while the following is okay:</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kt">size_t</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kt">size_t</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="kt">size_t</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+</span></code></pre></div>
+<p>The following is not (and wouldn't be a good idea even if the value was
+positive):</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kt">size_t</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kt">size_t</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="kt">size_t</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+</span></code></pre></div>
+<p>Other than that you can treat <code>size_t</code> as any other integer type.</p>
+<h2 id="file-io_1">File I/O</h2>
+<p>When writing your C programs, you will often be interacting with files in
+various forms.  The standard library provides a simplified interface for
+interacting with those files through the <code>stdio</code> header and the <em>FILE pointer</em>.</p>
+<h3 id="file">FILE *</h3>
+<p><code>FILE</code> is a typedef'ed structure in <code>stdio.h</code>. Whenever you use it, you'll use a
+<code>FILE *</code> though because you'll always be getting a value back from/passing it to
+common file operating functions. Why a pointer? Because these functions will
+modify the internal values of the <code>FILE</code> value. So while you could copy them
+because it's a struct and C would be fine with passing it by value, things like
+your place in the file would not be maintained.  A <code>FILE *</code> is given as an
+<em>opaque type</em>, meaning you should never be accessing it's internals directly.</p>
+<h3 id="file-descriptors">File Descriptors</h3>
+<p>Among other things, a FILE wraps a file descriptor, an integer used by the
+operating system to keep track of open files.  As you'll see below, a FILE
+provides a nicer interface than a file descriptor for interacting with files.
+You can use function like <code>fopen</code> and <code>fclose</code> instead of the more low-level
+<code>open</code> and <code>close</code>.</p>
+<h3 id="fopen-and-fclose">fopen and fclose</h3>
+<p><code>fopen()</code> is how you'll open files. It takes two arguments, both strings. The
+first is a string representing the path to the file you want to open, and the
+second is the mode with which you will open it. The mode tells whether or not
+you are going to be reading, writing, or appending to the file and also how you
+want to read the file in. The list of different modes and their uses are listed below. If <code>fopen()</code>
+fails it will return a NULL pointer. This can happen because a file doesn't
+exist (in the case of r's) or because you don't have permissions to
+access the file. If you fopen a non-existent file with the 'a' or 'w' option, the file will, however, be created. <code>fclose()</code> will close the file when you're done.</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">fopen</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">mode</span><span class="p">);</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kt">int</span><span class="w"> </span><span class="nf">fclose</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">fp</span><span class="p">);</span>
+</span></code></pre></div>
+<p>The above structure should look a tiny bit familiar. Knowing what we know about
+<code>FILE *</code>s you might see the likeness here to:</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">malloc</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">);</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kt">int</span><span class="w"> </span><span class="nf">free</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">);</span>
+</span></code></pre></div>
+<p>That's because fopen and fclose create a new <code>FILE</code> structure on the heap so
+that the status of the open file can be maintained. This means that <strong>if you
+don't <code>fclose</code> your <code>FILE *</code>s, you'll have memory leaks</strong>. Be careful about
+this.</p>
+<p><strong>Modes</strong>
+* <code>"r"</code> read only (file must already exist) 
+* <code>"w"</code> write only. Creates new text file and discards previous contents if file already exists
+* <code>"a"</code> append only; opens text file or creates file, all writes go to end of the file
+* <code>"r+"</code> read and write. Opens file for update (file must already exist)
+* <code>"w+"</code> read and write. Creates new text file and discards previous contents if file already exists
+* <code>"a+"</code> append; can read and append. Adds to end in the same behavior as <code>"a"</code> <strong>regardless</strong> of file position
+* <code>"rb"</code>, <code>"wb"</code>, <code>"ab"</code>, <code>"rb+"</code>, <code>"wb+"</code>, <code>"ab+"</code>  indicates binary file. If using Windows OS, these modes suppresse the Windows addition of <code>"\r"</code> to <code>"\n"</code>. The order of "b" and "+" does not matter (i.e.<code>"rb+"</code> and <code>"r+b"</code> are equivalent).</p>
+<h3 id="fgets-and-fputs">fgets and fputs</h3>
+<p><strong>THESE FUNCTIONS ARE FOR LINE INPUT AND LINE OUTPUT</strong></p>
+<p>What's that you ask? It means they're really good at reading in strings, but bad
+for everything else. Only use these functions if lines are a logical way to
+delimit chunks of the file you're reading.</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="nf">fgets</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">line</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">maxline</span><span class="p">,</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">fp</span><span class="p">);</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kt">int</span><span class="w"> </span><span class="nf">fputs</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">line</span><span class="p">,</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">fp</span><span class="p">);</span>
+</span></code></pre></div>
+<p><code>fgets</code> reads the next <em>line</em> from the input file in <code>fp</code> into the memory
+location pointed to by <code>line</code>. If all is successful, it reads at most
+<code>maxline-1</code> characters out of the file, and returns <code>line</code> as well. If something
+goes wrong (on end of file, or error) it returns <code>NULL</code>. It will keep the
+newline character it reads if it gets to one before it reaches <code>maxline-1</code>
+characters. It also ALWAYS appends the null character to the end of the string.
+<code>fgets</code> will advance the file position after each read by the space read into
+<code>line</code>.</p>
+<p><code>fputs</code> returns EOF if there's an error and 0 otherwise. This will not append a
+newline to the file, nor does your string need to contain a newline character.</p>
+<p><strong>Watch out!</strong> <code>gets</code> and <code>puts</code> work very similarly for <code>stdin</code> and <code>stdout</code>
+but <code>gets</code> will not give you the newline character.  But you shouldn't have to
+worry about that because you should NEVER use <code>gets</code>.  It does not perform any
+bounds checking on the input, so you're just asking for memory errors.</p>
+<h3 id="fread-and-fwrite">fread and fwrite</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kt">size_t</span><span class="w"> </span><span class="nf">fread</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">nmemb</span><span class="p">,</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stream</span><span class="p">);</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="kt">size_t</span><span class="w"> </span><span class="nf">fwrite</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">nmemb</span><span class="p">,</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stream</span><span class="p">);</span>
+</span></code></pre></div>
+<p>Each of these functions accept pointers of type <code>void</code>. So if you want each item
+to be read into the right size memory space, you'll need to tell it the <code>size</code>
+of each item, and the number of items <code>nmemb</code> to read/write from/to the
+<code>stream</code>. <code>fwrite</code> promises not to modify the data that <code>ptr</code> references as
+well. These return the number of items succesfully read/written. If it's anything less than
+what you expected, you should check what happened using <code>ferror</code> or <code>feof</code>. <code>fread</code>
+and <code>fwrite</code> advances the position of the file to the end of the space read or written. </p>
+<h3 id="fseek">fseek</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">fseek</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stream</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">offset</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">origin</span><span class="p">);</span>
+</span></code></pre></div>
+<p>This handy dandy function lets you hop through a file without doing anything
+other than changing the position in the <code>FILE</code> structure. You can use any
+<code>stream</code> of your choosing, but pay attention to whether or not it's a binary
+stream. If it's a binary stream, <code>offset</code> can be any number of bytes/characters from
+<code>origin</code> which should be set to either <code>SEEK_SET</code> (a constant representing the
+beginning of the file), <code>SEEK_CUR</code> (a constant representing the current
+position), or <code>SEEK_END</code> (the end of the file).</p>
+<p>If you're reading a text stream, <code>offset</code> must either be zero or the current
+position as returned by a call to <code>ftell</code> (see below). In this case, always set
+origin to <code>SEEK_SET</code>.</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fopen</span><span class="p">(</span><span class="s">&quot;myfile&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;r&quot;</span><span class="p">);</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">binary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fopen</span><span class="p">(</span><span class="s">&quot;myfile&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;rb&quot;</span><span class="p">);</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="n">fseek</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="n">ftell</span><span class="p">(</span><span class="n">text</span><span class="p">),</span><span class="w"> </span><span class="n">SEEK_SET</span><span class="p">);</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="n">fseek</span><span class="p">(</span><span class="n">binary</span><span class="p">,</span><span class="w"> </span><span class="mi">-100</span><span class="p">,</span><span class="w"> </span><span class="n">SEEK_END</span><span class="p">);</span>
+</span></code></pre></div>
+<h3 id="feof-and-ferror">feof and ferror</h3>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">feof</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stream</span><span class="p">);</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="kt">int</span><span class="w"> </span><span class="nf">ferror</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stream</span><span class="p">);</span>
+</span></code></pre></div>
+<p>So you didn't get what you were expecting from one of the above functions. What
+do you do? You call <code>feof</code> or <code>ferror</code>. These two functions let you know what
+happened. <code>feof</code> returns true if the end of the <code>stream</code> has been reached, and
+<code>ferror</code> returns true if there was an error reading the <code>stream</code>.</p>
+<h3 id="fprintf-and-fscanf">fprintf and fscanf</h3>
+<p>These functions work just like their counterparts <code>printf</code> and <code>scanf</code>,
+respectively, except you specify which FILE to write to, rather than defaulting
+to <code>stdout</code> and <code>stdin</code>, respectively.</p>
+<h3 id="whats-buffering">What's Buffering?</h3>
+<p>Buffering determines how often the contents of a stream are sent to their
+destination. There's some low level stuff going on at this point, but just
+understand that its not very efficient to send data one character at a time, so
+buffering happens. Unbuffered streams are constantly flushed to their destination.
+Line-buffered streams are only flushed to its destination after a newline
+character is written. Block-buffered streams are flushed when they reach a
+certain size. You can use <code>fflush(fp)</code> to manually flush the buffer for any file
+pointer.</p>
+<ul>
+<li>stderr is unbuffered (why?)</li>
+<li>stdout is line-buffered when it's connected to terminal</li>
+<li>everything else is block-buffered</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 <a href="https://rdnajac.tech">Ryan D. Najac</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.copy"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.d6f25eb3.min.js"></script>
+      
+    
+  </body>
+</html>
