@@ -33,3 +33,5 @@ site/
 *.exe
 *.out
 *.app
+
+*.dSYM/
