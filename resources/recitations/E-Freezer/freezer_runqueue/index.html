@@ -13,25 +13,21 @@
       
       
       
-        <link rel="prev" href="../qsort/">
       
       
-        <link rel="next" href="../time-complexity/">
-      
-      
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.38">
     
     
       
-        <title>TCP Echo Server and Client - C++ Sandbox</title>
+        <title>Freezer runqueue - C++ Sandbox</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.8c3ca2c6.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.8c3ca2c6.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -50,7 +46,7 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tcp-echo-server-and-client" class="md-skip">
+        <a href="#freezer-runqueue" class="md-skip">
           Skip to content
         </a>
       
@@ -92,7 +88,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="C++ Sandbox" class="md-header__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+    <a href="../../../.." title="C++ Sandbox" class="md-header__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -112,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              TCP Echo Server and Client
+              Freezer runqueue
             
           </span>
         </div>
@@ -225,7 +221,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="C++ Sandbox" class="md-nav__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+    <a href="../../../.." title="C++ Sandbox" class="md-nav__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -255,7 +251,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -275,7 +271,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../qsort/" class="md-nav__link">
+      <a href="../../../../qsort/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -292,30 +288,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    TCP Echo Server and Client
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../../tcp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -324,89 +300,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisites
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#project-structure" class="md-nav__link">
-    <span class="md-ellipsis">
-      Project Structure
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#building-the-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      Building the Project
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#running-the-server" class="md-nav__link">
-    <span class="md-ellipsis">
-      Running the Server
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#running-the-client" class="md-nav__link">
-    <span class="md-ellipsis">
-      Running the Client
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cleaning-up" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cleaning Up
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#note" class="md-nav__link">
-    <span class="md-ellipsis">
-      Note
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -418,7 +311,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../time-complexity/" class="md-nav__link">
+      <a href="../../../../time-complexity/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -438,7 +331,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tour/" class="md-nav__link">
+      <a href="../../../../tour/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -478,63 +371,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
+  <a href="#introduction" class="md-nav__link">
     <span class="md-ellipsis">
-      Prerequisites
+      Introduction
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#project-structure" class="md-nav__link">
+  <a href="#tldr" class="md-nav__link">
     <span class="md-ellipsis">
-      Project Structure
+      TLDR
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#building-the-project" class="md-nav__link">
+  <a href="#when-a-tasks-timeslice-is-up" class="md-nav__link">
     <span class="md-ellipsis">
-      Building the Project
+      When a task's timeslice is up
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#running-the-server" class="md-nav__link">
+  <a href="#when-a-task-voluntarily-yields-but-is-runnable" class="md-nav__link">
     <span class="md-ellipsis">
-      Running the Server
+      When a task voluntarily yields, but is RUNNABLE
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#running-the-client" class="md-nav__link">
+  <a href="#when-a-task-voluntarily-yields-and-is-not-runnable" class="md-nav__link">
     <span class="md-ellipsis">
-      Running the Client
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cleaning-up" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cleaning Up
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#note" class="md-nav__link">
-    <span class="md-ellipsis">
-      Note
+      When a task voluntarily yields, and is not RUNNABLE
     </span>
   </a>
   
@@ -558,61 +433,95 @@
   
 
 
-<h1 id="tcp-echo-server-and-client">TCP Echo Server and Client</h1>
-<p>This project implements a simple TCP echo server and client in C++. The server listens for incoming connections and echoes back any data it receives. The client connects to the server, sends a message, and prints the response.</p>
-<h2 id="prerequisites">Prerequisites</h2>
+<h1 id="freezer-runqueue">Freezer runqueue</h1>
+<blockquote>
+<p>This guide was written by Ryan Wee in Spring 2024. The code snippets and links
+in this post correspond to Linux v5.10.205.</p>
+</blockquote>
+<h2 id="introduction">Introduction</h2>
+<p>First of all, it is entirely possible (and probable) that there are mistakes in
+this guide. If so, feel free to contact the TA team.</p>
+<p>This guide is meant to complement <a href="../freezer_sched_class/">Mitchell's guide</a>
+-- it's a good idea to read both of them. Mitchell's guide explains what each of
+the <code>sched_class</code> functions do. The aim of this guide is to provide an
+event-driven perspective of how these functions are invoked. In particular, how
+is the freezer runqueue modified in response to different events?</p>
+<h2 id="tldr">TLDR</h2>
 <ul>
-<li>C++17 compatible compiler (e.g., GCC 7+ or Clang 5+)</li>
-<li>Make build system</li>
-<li>POSIX-compatible operating system (Linux, macOS, etc.)</li>
+<li>Freezer's <code>pick_next_task()</code> implementation does NOT modify the freezer
+  runqueue. It only picks the task at the front of the freezer runqueue.</li>
+<li>When a task is preempted because its timeslice is up, freezer's <code>task_tick()</code>
+  implementation is responsible for modifying the freezer runqueue.</li>
+<li>When a task voluntarily yields the CPU, there are two possibilities:<ul>
+<li>The task's state is <code>RUNNABLE</code>, i.e. it would like to stay on the
+    run queue: In this case, freezer's <code>yield_task()</code> and <code>task_tick()</code>
+    implementations are responsible for modifying the freezer runqueue.</li>
+<li>The task's state is NOT <code>RUNNABLE</code>, i.e. it would like to leave the
+    run queue: In this case, freezer's <code>dequeue_task()</code> implementation is responsible for modifying the freezer runqueue.</li>
 </ul>
-<h2 id="project-structure">Project Structure</h2>
-<p>The project consists of the following files:</p>
+</li>
+</ul>
+<h2 id="when-a-tasks-timeslice-is-up">When a task's timeslice is up</h2>
 <ul>
-<li><code>server.cpp</code>: Implementation of the TCP echo server</li>
-<li><code>client.cpp</code>: Implementation of the TCP echo client</li>
-<li><code>utils.h</code>: Header file for utility functions</li>
-<li><code>utils.cpp</code>: Implementation of utility functions</li>
-<li><code>Makefile</code>: Build script for compiling the project</li>
+<li>The timer interrupt code calls <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/sched/core.c#L4005"><code>scheduler_tick()</code></a>.</li>
+<li>This function invokes <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/sched/core.c#L4021"><code>curr-&gt;sched_class-&gt;task_tick()</code></a>.</li>
+<li>Freezer's <code>task_tick()</code> implementation should decrement the current task's
+  timeslice. (Note that the timeslice should therefore use jiffies as the unit.)</li>
+<li>If the current task's timeslice is down to 0:<ul>
+<li>Freezer's <code>task_tick()</code> implementation should move the current task to the
+  end of the runqueue. At this point, the task is still running on the CPU!
+  We've just modified its position on the runqueue.</li>
+<li>Freezer's <code>task_tick()</code> implementation should call <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/sched/core.c#L608"><code>resched_curr()</code></a>, which
+  sets the <code>TIF_NEED_RESCHED</code> flag. Again, at this point, the task is still running on the CPU!</li>
 </ul>
-<h2 id="building-the-project">Building the Project</h2>
-<p>To build the project, follow these steps:</p>
-<ol>
-<li>Open a terminal and navigate to the project directory.</li>
-<li>Run the following command:</li>
-</ol>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>make
-</span></code></pre></div>
-<p>This will compile both the server and client executables.</p>
-<h2 id="running-the-server">Running the Server</h2>
-<p>To start the echo server, use the following command:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>./server &lt;port&gt;
-</span></code></pre></div>
-<p>Replace <code>&lt;port&gt;</code> with the port number you want the server to listen on (e.g., 8080).</p>
-<p>Example:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>./server 8080
-</span></code></pre></div></p>
-<p>The server will start and listen for incoming connections on the specified port.</p>
-<h2 id="running-the-client">Running the Client</h2>
-<p>To run the client and send a message to the server, use the following command:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>./client &lt;message&gt; &lt;server-ip&gt; &lt;server-port&gt;
-</span></code></pre></div>
+</li>
+<li>The kernel checks <code>TIF_NEED_RESCHED</code> on interrupt and userspace return paths.
+  When it's safe (e.g. the process isn't holding any spinlocks), the kernel
+  calls <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/sched/core.c#L4619"><code>schedule()</code></a>, which in turn invokes <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/sched/core.c#L4430"><code>__schedule()</code></a>.</li>
+<li>This huge <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/sched/core.c#L4483"><code>if</code> block</a> is NOT executed.<ul>
+<li>In particular, recall that the <code>task_struct</code> has a <a href="https://elixir.bootlin.com/linux/v5.10.205/source/include/linux/sched.h#L653"><code>state</code> field</a>. When a task is <code>RUNNABLE</code>, the state field is zero. When a task is not <code>RUNNABLE</code>, the state field is non-zero.</li>
+<li>In this case, the task is still <code>RUNNABLE</code>, i.e. <code>prev_state</code> is zero. So the <code>if</code> block is not executed.</li>
+</ul>
+</li>
+<li><code>schedule()</code> eventually calls <code>pick_next_task()</code> <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/sched/core.c#L4516">here</a>, which calls Freezer's <code>pick_next_task()</code> implementation.</li>
+<li>Freezer's <code>pick_next_task()</code> implementation should return a new task from the
+  front of the feezer runqueue.</li>
+<li><code>__schedule()</code> also eventually calls <code>context_switch()</code> <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/sched/core.c#L4548">here</a>, which is where the actual context switch happens.</li>
+</ul>
+<h2 id="when-a-task-voluntarily-yields-but-is-runnable">When a task voluntarily yields, but is RUNNABLE</h2>
+<p>In this case, the task wants to be remain on the runqueue. It's just telling
+the kernel: "Okay, you can shift me to the back of the runqueue because I'm
+nice. But feel free to select me again when you want to!"</p>
 <ul>
-<li>Replace <code>&lt;message&gt;</code> with the text you want to send to the server.</li>
-<li>Replace <code>&lt;server-ip&gt;</code> with the IP address of the server (use 127.0.0.1 for localhost).</li>
-<li>Replace <code>&lt;server-port&gt;</code> with the port number the server is listening on.</li>
+<li>The task calls the <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/sched/core.c#L6120"><code>sched_yield</code> syscall</a>, which in turn invokes <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/sched/core.c#L6103"><code>do_sched_yield()</code></a>.</li>
+<li><code>do_sched_yield</code> calls <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/sched/core.c#L6111"><code>current-&gt;sched_class-&gt;yield_task()</code></a>.</li>
+<li>Freezer's <code>yield_task()</code> implementation should set the timeslice of the
+  task to 0.</li>
+<li>Now the next time we have a timer interrupt, the task is 'pre-empted' as described above by freezer's <code>task_tick()</code> implementation. (I put that in quotation marks because the task voluntarily decided to let itself be pre-empted.)</li>
 </ul>
-<p>Example:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>./client &quot;Hello, Server!&quot; 127.0.0.1 8080
-</span></code></pre></div></p>
-<p>The client will connect to the server, send the message, receive the echo response, and display it.</p>
-<h2 id="cleaning-up">Cleaning Up</h2>
-<p>To remove all compiled files and start fresh, run:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>make clean
-</span></code></pre></div>
-<p>This will remove the server and client executables, as well as any object files.</p>
-<h2 id="note">Note</h2>
-<p>This project is designed for educational purposes and may not be suitable for production environments without further enhancements.</p>
+<h2 id="when-a-task-voluntarily-yields-and-is-not-runnable">When a task voluntarily yields, and is not RUNNABLE</h2>
+<p>In this case, the task wants to be taken off the runqueue. This could be because the task called <code>__wait_event_interruptible()</code>, or <code>sleep()</code>, or anything that basically indicates it wants to suspend its execution for the near future. Another common case would be when the task finishes its execution.</p>
+<ul>
+<li>The task starts by modifying its state so that it is no longer <code>RUNNABLE</code>. It then calls <code>__schedule()</code> with <code>false</code> as an argument.<ul>
+<li>In the case of a task finishing its execution:<ul>
+<li>The task calls the <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/exit.c#L947"><code>exit()</code> syscall</a>, which calls <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/exit.c#L760"><code>do_exit()</code></a>.</li>
+<li>This in turn calls <code>do_task_dead()</code> <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/exit.c#L909">here</a>.</li>
+<li><code>do_task_dead()</code> modifies the task state <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/sched/core.c#L4560">here</a>, and then calls <code>__schedule()</code> <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/sched/core.c#L4565">here</a>.</li>
+</ul>
+</li>
+<li>In the case of a task calling <code>sleep()</code>:<ul>
+<li>The task calls the <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/time/hrtimer.c#L2016"><code>nanosleep()</code> syscall</a>, which calls <code>hrtimer_nanosleep()</code> and then <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/time/hrtimer.c#L1933"><code>do_nanosleep()</code></a>.</li>
+<li><code>do_nanosleep()</code> modifies the task state <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/time/hrtimer.c#L1938">here</a>, and then calls <code>freezable_schedule()</code> <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/time/hrtimer.c#L1942">here</a>. This in turn calls <code>schedule()</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>In all of these cases, when <code>__schedule()</code> is called, the <code>state</code> field of the <code>task_struct</code> is no longer <code>RUNNABLE</code>, i.e. it is non-zero. Since <code>state</code> is non-zero and since the <code>preempt</code> argument was <code>false</code> as mentioned above, we go into this <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/sched/core.c#L4483"><code>if</code> block</a>.</li>
+<li>This in turn calls <code>deactivate_task()</code> <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/sched/core.c#L4506">here</a>.</li>
+<li><code>deactivate_task()</code> calls <a href="https://elixir.bootlin.com/linux/v5.10.205/source/kernel/sched/core.c#L1588"><code>dequeue_task()</code></a>, which in turn calls the <code>dequeue_task()</code> implementation of the current scheduling class.</li>
+<li>Freezer's <code>dequeue_task()</code> implementation should remove the current task from the freezer runqueue.</li>
+<li>Recall that we're still within an earlier invocation of <code>__schedule()</code>. This invocation calls <code>pick_next_task()</code> and <code>context_switch()</code> as mentioned above. Since the current task has been removed from the freezer runqueue, this causes the next task in the runqueue to be run.</li>
+</ul>
 
 
 
@@ -663,10 +572,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.copy"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.d6f25eb3.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.d6f25eb3.min.js"></script>
       
     
   </body>
