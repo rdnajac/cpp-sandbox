@@ -3,7 +3,7 @@ repo_url: https://github.com/rdnajac/cpp-sandbox
 edit_uri: blob/main/docs/
 site_description: A collection of C++ code snippets and examples.
 site_author: Ryan D. Najac
-copyright: Copyright &copy; 2024 <a href="https://rdnajac.tech">Ryan D. Najac</a>
+copyright: Copyright &copy; 2023&ndash;2024 <a href="https://rdnajac.tech">Ryan D. Najac</a>
 
 theme:
   name: material
