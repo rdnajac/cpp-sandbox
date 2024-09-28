@@ -17,7 +17,7 @@ private:
 public:
     Timer();
     void start();
-    void logTime(const std::string& label = "", long long result = 0);
+    void logTime(const std::string &label = "", long long result = 0);
     void printLogs() const;
     long long getDuration(size_t index) const;
     void printResults() const;

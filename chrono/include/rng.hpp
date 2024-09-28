@@ -2,7 +2,6 @@
 #define RNG_HPP
 
 #include <random>
-#include <limits>
 
 class RandomNumberGenerator {
 private:
