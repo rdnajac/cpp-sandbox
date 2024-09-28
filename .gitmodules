@@ -1,0 +1,6 @@
+[submodule "docs/resources/modern-cpp-features"]
+	path = docs/resources/modern-cpp-features
+	url = https://github.com/AnthonyCalandra/modern-cpp-features
+[submodule "docs/resources/recitations"]
+	path = docs/resources/recitations
+	url = https://github.com/columbia-os/recitations
