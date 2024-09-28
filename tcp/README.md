@@ -42,6 +42,7 @@ To start the echo server, use the following command:
 Replace `<port>` with the port number you want the server to listen on (e.g., 8080).
 
 Example:
+
 ```
 ./server 8080
 ```
@@ -61,6 +62,7 @@ To run the client and send a message to the server, use the following command:
 - Replace `<server-port>` with the port number the server is listening on.
 
 Example:
+
 ```
 ./client "Hello, Server!" 127.0.0.1 8080
 ```

@@ -16,7 +16,8 @@ pip install -r requirements.txt
 mkdocs serve
 open http:localhost:8000
 ```
-> [!NOTE] 
+
+> [!NOTE]
 > Each subdirectory in this repository contains a `README.md` file that is
 > symlinked to the `docs/` directory so that the markdown is compiled into
 > an HTML page that can be viewed in a browser with the rest of the docs.
@@ -58,4 +59,3 @@ that sent me down a years-long rabbit hole of vim plugins and configurations.
 Access it [here](resources/modern-cpp-features/README.md).
 
 When in doubt, check out the [C++ Reference](https://en.cppreference.com/w/).
-
