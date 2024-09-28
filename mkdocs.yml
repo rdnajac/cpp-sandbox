@@ -9,24 +9,22 @@ theme:
   name: material
   features:
     - content.code.copy
-
   font:
     code: JetBrains Mono
   palette:
-
-    # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
       toggle:
-        icon: material/lightbulb 
+        icon: material/lightbulb
         name: Switch to dark mode
-
-    # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       toggle:
         icon: material/lightbulb-outline
         name: Switch to light mode
+
+not_in_nav: |
+  /vendor/*
 
 markdown_extensions:
   - pymdownx.highlight:
