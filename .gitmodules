@@ -2,5 +2,8 @@
 	path = docs/resources/modern-cpp-features
 	url = https://github.com/AnthonyCalandra/modern-cpp-features
 [submodule "docs/resources/recitations"]
-	path = docs/resources/recitations
+	path = docs/resources/cs4118recitations
 	url = https://github.com/columbia-os/recitations
+[submodule "docs/resources/cs3157recitations"]
+	path = docs/resources/cs3157recitations
+	url = https://github.com/cs3157/recitations.git
