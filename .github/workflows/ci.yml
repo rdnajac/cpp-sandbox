@@ -11,35 +11,36 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          submodules: "recursive" # This will checkout all submodules
-          fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
-
+          submodules: "recursive"
+          fetch-depth: 0
       - name: Update submodules
         run: |
           git submodule update --init --recursive
           git submodule update --remote
-
       - name: Configure Git Credentials
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-
+      - name: Create symlinks for README files
+        run: |
+          cd docs
+          for readme in ../*/README.md; do
+            dir=$(dirname "$readme")
+            base=$(basename "$dir")
+            ln -sf "$readme" "${base,,}.md"
+          done
+          ln -sf ../README.md index.md
       - uses: actions/setup-python@v5
         with:
           python-version: 3.x
-
       - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
-
       - uses: actions/cache@v4
         with:
           key: mkdocs-material-${{ env.cache_id }}
           path: .cache
           restore-keys: |
             mkdocs-material-
-
       - run: pip install -r requirements.txt
-
-      - name: List docs contents # This step is for debugging
+      - name: List docs contents
         run: ls -R docs
-
       - run: mkdocs gh-deploy --force
