@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../tcp/">
+        <link rel="prev" href="../advprog/">
       
       
-        <link rel="next" href="../tour/">
+        <link rel="next" href="../pimpl/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Time Complexity - C++ Sandbox</title>
+        <title>CUDA - C++ Sandbox</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#time-complexity" class="md-skip">
+        <a href="#cuda" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Time Complexity
+              CUDA
             
           </span>
         </div>
@@ -292,6 +292,104 @@
       
   
   
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    CUDA
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    CUDA
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#using-cuda" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using CUDA
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Further Reading
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pimpl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pointer to Implementation (PImpl)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
   
   
     <li class="md-nav__item">
@@ -324,93 +422,6 @@
   
 
       </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Time Complexity
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    Time Complexity
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#big-o-notation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Big-O notation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#common-time-complexities" class="md-nav__link">
-    <span class="md-ellipsis">
-      Common time complexities
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#comparing-time-complexities" class="md-nav__link">
-    <span class="md-ellipsis">
-      Comparing time complexities
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -462,27 +473,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#big-o-notation" class="md-nav__link">
+  <a href="#using-cuda" class="md-nav__link">
     <span class="md-ellipsis">
-      Big-O notation
+      Using CUDA
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#common-time-complexities" class="md-nav__link">
+  <a href="#further-reading" class="md-nav__link">
     <span class="md-ellipsis">
-      Common time complexities
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#comparing-time-complexities" class="md-nav__link">
-    <span class="md-ellipsis">
-      Comparing time complexities
+      Further Reading
     </span>
   </a>
   
@@ -506,121 +508,39 @@
   
 
 
-<h1 id="time-complexity">Time Complexity</h1>
-<p>Time complexity is a measure of the amount of time an algorithm takes to
-complete as a function of the size of the input. It is often expressed using
-big-O notation, which describes the upper bound of the time taken by an
-algorithm as a function of the size of the input.</p>
-<h2 id="big-o-notation">Big-O notation</h2>
-<p>Big-O notation describes the upper bound of the time taken by an algorithm as a
-function of the size of the input. It is used to describe the worst-case
-performance of an algorithm. For example, an algorithm with a time complexity
-of O(n) will take at most n steps to complete, where n is the size of the input.</p>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">{</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span><span class="n">total</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">total</span><span class="p">;</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="p">}</span>
+<h1 id="cuda">CUDA</h1>
+<p>CUDA is a general-purpose parallel computing platform and programming
+model developed by NVIDIA to leverage the massive parallel processing
+power of GPUs. It allows developers to use C++ and other programming
+languages to solve complex computational problems more efficiently than
+on CPUs. CUDA's scalable programming model uses abstractions like thread
+group hierarchies, shared memories, and barrier synchronization to enable
+fine-grained and coarse-grained parallelism. This model allows CUDA
+programs to automatically scale across various GPU architectures,
+from high-performance devices to mainstream GPUs, by adjusting the
+number of multiprocessors and memory partitions.</p>
+<h2 id="using-cuda">Using CUDA</h2>
+<p>This repository contains several CUDA examples demonstrating various concepts:</p>
+<ol>
+<li><code>vector_add.cu</code>: Basic vector addition kernel</li>
+<li><code>matrix_multiply.cu</code>: Matrix multiplication using shared memory</li>
+<li><code>reduction.cu</code>: Parallel reduction using shared memory</li>
+<li><code>stream_example.cu</code>: Using CUDA streams for concurrent execution</li>
+<li><code>unified_memory.cu</code>: Using Unified Memory</li>
+</ol>
+<p>To compile and run these examples, use the provided Makefile:</p>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>make
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>./vector_add
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>./matrix_multiply
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>./reduction
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>./stream_example
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>./unified_memory
 </span></code></pre></div>
-<p>The <code>sum</code> function has a time complexity of O(n) because it takes at most n
-steps to complete, where n is the input to the function.</p>
-<h2 id="common-time-complexities">Common time complexities</h2>
-<table>
-<thead>
-<tr>
-<th>Notation</th>
-<th>Name</th>
-<th>Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O(1)</td>
-<td>Constant time</td>
-<td>Accessing an element in an array by index (index arithmetic)</td>
-</tr>
-<tr>
-<td>O(log n)</td>
-<td>Logarithmic time</td>
-<td>Binary search (if the input is sorted)</td>
-</tr>
-<tr>
-<td>O(n)</td>
-<td>Linear time</td>
-<td>Finding the maximum element in an array (one-pass)</td>
-</tr>
-<tr>
-<td>O(n log n)</td>
-<td>Linearithmic time</td>
-<td>Quicksort, mergesort (average case)</td>
-</tr>
-<tr>
-<td>O(n^2)</td>
-<td>Quadratic time</td>
-<td>Bubble sort, selection sort (use of nested loops)</td>
-</tr>
-<tr>
-<td>O(2^n)</td>
-<td>Exponential time</td>
-<td>Recursive Fibonacci calculation</td>
-</tr>
-<tr>
-<td>O(n!)</td>
-<td>Factorial time</td>
-<td>Generating all permutations of a set</td>
-</tr>
-</tbody>
-</table>
-<h2 id="comparing-time-complexities">Comparing time complexities</h2>
-<p>The following table shows how the time complexity of different algorithms
-compares as the size of the input grows.</p>
-<table>
-<thead>
-<tr>
-<th>Input size</th>
-<th>O(log n)</th>
-<th>O(n)</th>
-<th>O(n log n)</th>
-<th>O(n^2)</th>
-<th>O(2^n)</th>
-<th>O(n!)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>10</td>
-<td>3</td>
-<td>10</td>
-<td>30</td>
-<td>100</td>
-<td>1024</td>
-<td>3628800</td>
-</tr>
-<tr>
-<td>100</td>
-<td>7</td>
-<td>100</td>
-<td>664</td>
-<td>10000</td>
-<td>1.27e+30</td>
-<td>9.33e+157</td>
-</tr>
-<tr>
-<td>1000</td>
-<td>10</td>
-<td>1000</td>
-<td>9965</td>
-<td>1000000</td>
-<td>1.07e+301</td>
-<td>4.02e+2567</td>
-</tr>
-</tbody>
-</table>
-<p>You get the idea.</p>
+<h2 id="further-reading">Further Reading</h2>
+<ul>
+<li><a href="https://docs.nvidia.com/cuda/index.html">CUDA Toolkit Documentation</a></li>
+<li><a href="https://docs.nvidia.com/cuda/cuda-c-programming-guide/">CUDA C++ Programming Guide</a></li>
+</ul>
 
 
 
