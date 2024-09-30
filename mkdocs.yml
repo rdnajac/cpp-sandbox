@@ -23,10 +23,6 @@ theme:
         icon: material/lightbulb-outline
         name: Switch to light mode
 
-not_in_nav: |
-  /resources/*
-  /res,s
-
 markdown_extensions:
   - github-callouts
   - pymdownx.snippets

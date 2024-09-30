@@ -1,9 +1,9 @@
 [submodule "docs/resources/modern-cpp-features"]
 	path = docs/resources/modern-cpp-features
 	url = https://github.com/AnthonyCalandra/modern-cpp-features
-[submodule "docs/resources/recitations"]
-	path = docs/resources/cs4118recitations
-	url = https://github.com/columbia-os/recitations
-[submodule "docs/resources/cs3157recitations"]
-	path = docs/resources/cs3157recitations
-	url = https://github.com/cs3157/recitations.git
+[submodule "gscs/cs4118"]
+	path = gscs/cs4118
+	url = https://github.com/rdnajac/cs4118
+[submodule "gscs/cs3157"]
+	path = gscs/cs3157
+	url = https://github.com/rdnajac/cs3157
