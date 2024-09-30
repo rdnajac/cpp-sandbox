@@ -25,10 +25,10 @@ theme:
 
 not_in_nav: |
   /resources/*
+  /res,s
 
 markdown_extensions:
   - github-callouts
-  # - markdown_gfm_admonition
   - pymdownx.snippets
   - pymdownx.superfences
   - pymdownx.inlinehilite
