@@ -24,12 +24,18 @@ jobs:
       - name: Create symlinks for README files
         run: |
           cd docs
+          ln -sf ../README.md index.md
           for readme in ../*/README.md; do
             dir=$(dirname "$readme")
             base=$(basename "$dir")
             ln -sf "$readme" "${base,,}.md"
           done
-          ln -sf ../README.md index.md
+          mkdir columbia-os
+          for readme in ../gscs/cs4118/*/README.md; do
+            dir=$(dirname "$readme")
+            base=$(basename "$dir")
+            ln -sf "$readme" "columbia-os/${base,,}.md"
+          done
       - uses: actions/setup-python@v5
         with:
           python-version: 3.x
