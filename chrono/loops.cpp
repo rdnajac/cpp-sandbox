@@ -1,10 +1,11 @@
-#include "../include/rng.hpp"
-#include "../include/timer.hpp"
 #include <algorithm>
 #include <iomanip>
 #include <iostream>
 #include <numeric>
 #include <vector>
+
+#include "rng.hpp"
+#include "timer.hpp"
 
 int main() {
     const int SIZE = 100'000'000;

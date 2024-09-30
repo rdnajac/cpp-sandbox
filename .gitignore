@@ -1,5 +1,10 @@
 */compile_commands.json
 site/
+scratch/
+build/
+.idea/
+.vscode/
+cmake-build-debug/
 
 # Prerequisites
 *.d

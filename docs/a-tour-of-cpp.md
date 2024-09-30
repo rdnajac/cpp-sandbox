@@ -187,9 +187,57 @@ should be separate. Where modules are supported (C++20), use them!
 > [!TIP]
 > Header files should emphasize logical structure.
 
-### namespaces
+### Namespaces
 
-### modules
+Namespaces help prevent name collisions and organize code:
+
+```cpp
+namespace genetics {
+    class DNA { /* ... */ };
+    class RNA { /* ... */ };
+}
+
+// Use with qualification
+genetics::DNA myDNA;
+
+// Or bring specific names into scope
+using genetics::RNA;
+RNA myRNA;
+
+// Avoid bringing entire namespaces into global scope
+// using namespace genetics; // Not recommended
+```
+
+Use namespaces to group related functionality and avoid polluting the global namespace.
+
+### Modules
+
+Modules (C++20) offer better encapsulation and faster compilation than header files:
+
+```cpp
+// genetics.ixx
+export module genetics;
+
+export class DNA { /* ... */ };
+export class RNA { /* ... */ };
+
+// Not exported, internal to module
+class Ribosome { /* ... */ };
+```
+
+Usage:
+
+```cpp
+import genetics;
+genetics::DNA myDNA;
+```
+
+Benefits:
+
+- Faster compilation (parsed once, not per translation unit)
+- No need for include guards
+- Better control over what's exported
+- Fewer macro-related issues
 
 ## Error Handling
 
@@ -286,33 +334,291 @@ public:
 };
 ```
 
+> [!NOTE]
+> The curious `=0` syntax says the function is pure virtual;
+> that is, some class derived from Container must define the function.
+
 ### Heirarchies
+
+Syntax:
+
+```cpp
+class Vector_container : public Container {
+    std::vector<double> v;
+    public:
+    double& operator[](int i) override { return v[i]; }
+    int size() const override { return v.size(); }
+};
+```
+
+> [!NOTE]
+> We use override to indicate that we are overriding a virtual function.
 
 ## Essential Operations
 
-- copy and move
-- resource management
-- operator overloading
-- conventional operations
-- user-defined literals
+### Copy and Move
+
+```cpp
+class Vector {
+public:
+    Vector(const Vector& a);              // copy constructor
+    Vector& operator=(const Vector& a);   // copy assignment
+
+    Vector(Vector&& a);                   // move constructor
+    Vector& operator=(Vector&& a);        // move assignment
+};
+
+Vector::Vector(const Vector& a)           // copy constructor
+    :elem{new double[a.sz]},              // allocate space for elements
+     sz{a.sz}
+{
+    for (int i=0; i!=sz; ++i)             // copy elements
+        elem[i] = a.elem[i];
+}
+
+Vector::Vector(Vector&& a)                // move constructor
+    :elem{a.elem},                        // "grab the elements" from a
+     sz{a.sz}
+{
+    a.elem = nullptr;                     // now a has no elements
+    a.sz = 0;
+}
+```
+
+### Resource Management
+
+```cpp
+template<typename T>
+class Vector {
+private:
+    T* elem;   // elem points to an array of sz elements of type T
+    int sz;
+public:
+    Vector(int s) :elem{new T[s]}, sz{s}  // constructor: acquire resources
+    {
+        for (int i=0; i!=s; ++i)          // initialize elements
+            elem[i] = T{};
+    }
+    ~Vector() { delete[] elem; }          // destructor: release resources
+    // ... copy and move operations ...
+};
+```
+
+### Operator Overloading
+
+```cpp
+complex& complex::operator+=(complex z)
+{
+    re+=z.re;    // add to the real part
+    im+=z.im;    // add to the imaginary part
+    return *this;
+}
+
+complex operator+(complex a, complex b)
+{
+    return a+=b;
+}
+// and so on...
+```
+
+### Conventional Operations
+
+```cpp
+class Vector {
+public:
+    T& operator[](int i) { return elem[i]; }              // for non-const Vectors
+    const T& operator[](int i) const { return elem[i]; }  // for const Vectors
+    int size() const { return sz; }
+};
+
+bool operator==(const Vector& a, const Vector& b)
+{
+    if (a.size() != b.size()) return false;
+    for (int i=0; i!=a.size(); ++i)
+        if (a[i]!=b[i]) return false;
+    return true;
+}
+
+bool operator!=(const Vector& a, const Vector& b)
+{
+    return !(a==b);
+}
+```
+
+### User-Defined Literals
+
+```cpp
+constexpr complex<double> operator""i(long double d)
+{
+    return {0,d};  // complex is a literal type
+}
+```
 
 ## Templates
 
-- parameterized types
-- parameterized operations
-- template mechanisms
+`<T>`
+
+### Parameterized Types
+
+```cpp
+template<typename T>
+class Vector {
+private:
+    T* elem;   // elem points to an array of sz elements of type T
+    int sz;
+public:
+    explicit Vector(int s);
+    ~Vector() { delete[] elem; }
+
+    // ... copy and move operations ...
+
+    T& operator[](int i);
+    const T& operator[](int i) const;
+    int size() const { return sz; }
+};
+
+Vector<char> vc(200);          // vector of 200 characters
+Vector<string> vs(17);         // vector of 17 strings
+Vector<list<int>> vli(45);     // vector of 45 lists of integers
+```
+
+### Parameterized Operations
+
+```cpp
+template<typename Container, typename Value>
+Value sum(const Container& c, Value v)
+{
+    for (auto x : c)
+        v += x;
+    return v;
+}
+
+void user(Vector<int>& vi, std::list<double>& ld, std::vector<complex<double>>& vc)
+{
+    int x = sum(vi,0);              // the sum of a vector of ints (add ints)
+    double d = sum(vi,0.0);         // the sum of a vector of ints (add doubles)
+    double dd = sum(ld,0.0);        // the sum of a list of doubles
+    auto z = sum(vc,complex{0.0});  // the sum of a vector of complex<double>
+}
+```
+
+### Template Mechanisms
+
+```cpp
+// Variable templates
+template<typename T>
+constexpr T pi = T{3.1415926535897932385};  // variable template
+
+// Template aliases
+template<typename Value>
+using String_map = Map<string,Value>;  // Map is some map template
+
+String_map<int> m;  // m is a Map<string,int>
+
+// Variadic templates
+template<typename T, typename... Tail>
+void print(T head, Tail... tail)
+{
+    cout << head << ' ';
+    if constexpr(sizeof...(tail) > 0)
+        print(tail...);
+}
+
+print(42, "hello", 3.14, "world");
+
+// Fold expressions
+template<typename... T>
+int sum(T... v)
+{
+    return (v + ... + 0);  // add all elements of v starting with 0
+}
+
+int x = sum(1, 2, 3, 4, 5);  // x becomes 15
+```
 
 ## Concepts and Generic Programming
 
-- concepts
-- generic programming
-- variadic templates
-- template compilation model
+### Concepts
+
+Concepts define requirements on template arguments,
+enabling better error messages and overload resolution.
+
+```cpp
+template<typename T>
+concept Arithmetic = requires(T x, T y) {
+    { x + y } -> std::convertible_to<T>;
+    { x - y } -> std::convertible_to<T>;
+    { x * y } -> std::convertible_to<T>;
+    { x / y } -> std::convertible_to<T>;
+};
+
+template<Arithmetic T>
+T sum(std::vector<T> const& v) {
+    T result = 0;
+    for (auto const& z : v) result += z;
+    return result;
+}
+```
+
+### Generic Programming
+
+Generic programming allows writing algorithms that
+work with any type satisfying certain requirements.
+
+```
+template<typename Iter, typename T>
+Iter find(Iter first, Iter last, const T& value) {
+    while (first != last && *first != value) ++first;
+    return first;
+}
+
+std::vector<int> v = {1, 2, 3, 4, 5};
+auto it = find(v.begin(), v.end(), 3);
+```
+
+### Variadic Templates
+
+Variadic templates allow functions and classes to accept any number of arguments of any type.
+
+```cpp
+template<typename T>
+void print(T arg) {
+    std::cout << arg << '\n';
+}
+
+template<typename T, typename... Args>
+void print(T first, Args... rest) {
+    std::cout << first << ' ';
+    print(rest...);
+}
+
+print(1, "hello", 3.14);
+```
+
+### Template Compilation Model
+
+Templates are compiled when instantiated, which happens in the translation unit where they are used. This requires template definitions to be available in headers.
+
+```cpp
+// mylibrary.h
+template<typename T>
+T square(T x) { return x * x; }
+
+// main.cpp
+#include "mylibrary.h"
+int main() {
+    auto result = square(5);
+}
+```
 
 ## Standard-Library
 
-- components
-- organization
+> Provides the most common fundamental data structures together with
+> the fundamental algorithms used on them.
+
+> [!TIP]
+> There are no standard library modules for C++20, but check out
+> [Make Your Own `module std`](module-std.md) for a workaround.
 
 ## Strings and Regular Expressions
 
@@ -372,7 +678,10 @@ if (it != v.end()) {
 
 ## Algorithms
 
-- iterators
+### Iterators
+
+Example:
+
 - use of predicates
 - algorithm overview
 - parallel algorithms

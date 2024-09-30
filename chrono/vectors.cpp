@@ -1,16 +1,11 @@
-/* @file vectors.cpp
- * @author Ryan David Najac <rdn2108>
- * @brief std::list vs. std::vector vs. std::set comparison
- */
-
-#include "include/rng.hpp"
-#include "include/timer.hpp"
 #include <algorithm>
 #include <iostream>
 #include <list>
 #include <set>
 #include <unordered_set>
 #include <vector>
+#include "rng.hpp"
+#include "timer.hpp"
 
 template <typename Container>
 void insertOrdered(Container &container, const std::unordered_set<int> &elements, Timer &timer) {

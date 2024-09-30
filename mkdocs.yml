@@ -27,10 +27,10 @@ not_in_nav: |
   /resources/*
 
 markdown_extensions:
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - pymdownx.superfences
