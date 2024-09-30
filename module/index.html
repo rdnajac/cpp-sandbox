@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../advprog/">
+        <link rel="prev" href="../cuda/">
       
       
-        <link rel="next" href="../module/">
+        <link rel="next" href="../pimpl/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>CUDA - C++ Sandbox</title>
+        <title>Make Your Own modulestd` - C++ Sandbox</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cuda" class="md-skip">
+        <a href="#make-your-own-modulestd" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              CUDA
+              Make Your Own modulestd`
             
           </span>
         </div>
@@ -312,6 +312,26 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../cuda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CUDA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -328,7 +348,7 @@
           
   
   <span class="md-ellipsis">
-    CUDA
+    Make Your Own modulestd`
   </span>
   
 
@@ -339,7 +359,7 @@
         
   
   <span class="md-ellipsis">
-    CUDA
+    Make Your Own modulestd`
   </span>
   
 
@@ -361,18 +381,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#using-cuda" class="md-nav__link">
+  <a href="#stdh-header" class="md-nav__link">
     <span class="md-ellipsis">
-      Using CUDA
+      std.h Header
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#further-reading" class="md-nav__link">
+  <a href="#std-module" class="md-nav__link">
     <span class="md-ellipsis">
-      Further Reading
+      std "Module"
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import-a-header-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Import a header unit
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actually-defining-the-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actually defining the module
     </span>
   </a>
   
@@ -382,26 +420,6 @@
   
 </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../module/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Make Your Own modulestd`
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -493,18 +511,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#using-cuda" class="md-nav__link">
+  <a href="#stdh-header" class="md-nav__link">
     <span class="md-ellipsis">
-      Using CUDA
+      std.h Header
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#further-reading" class="md-nav__link">
+  <a href="#std-module" class="md-nav__link">
     <span class="md-ellipsis">
-      Further Reading
+      std "Module"
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import-a-header-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Import a header unit
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actually-defining-the-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actually defining the module
     </span>
   </a>
   
@@ -528,39 +564,78 @@
   
 
 
-<h1 id="cuda">CUDA</h1>
-<p>CUDA is a general-purpose parallel computing platform and programming
-model developed by NVIDIA to leverage the massive parallel processing
-power of GPUs. It allows developers to use C++ and other programming
-languages to solve complex computational problems more efficiently than
-on CPUs. CUDA's scalable programming model uses abstractions like thread
-group hierarchies, shared memories, and barrier synchronization to enable
-fine-grained and coarse-grained parallelism. This model allows CUDA
-programs to automatically scale across various GPU architectures,
-from high-performance devices to mainstream GPUs, by adjusting the
-number of multiprocessors and memory partitions.</p>
-<h2 id="using-cuda">Using CUDA</h2>
-<p>This repository contains several CUDA examples demonstrating various concepts:</p>
-<ol>
-<li><code>vector_add.cu</code>: Basic vector addition kernel</li>
-<li><code>matrix_multiply.cu</code>: Matrix multiplication using shared memory</li>
-<li><code>reduction.cu</code>: Parallel reduction using shared memory</li>
-<li><code>stream_example.cu</code>: Using CUDA streams for concurrent execution</li>
-<li><code>unified_memory.cu</code>: Using Unified Memory</li>
-</ol>
-<p>To compile and run these examples, use the provided Makefile:</p>
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>make
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>./vector_add
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>./matrix_multiply
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>./reduction
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>./stream_example
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>./unified_memory
+<h1 id="make-your-own-modulestd">Make Your Own <code>module</code>std`</h1>
+<p>If an implementation does not currently support modules or lacks a standard module equivalent,
+we can revert to using traditional headers, which are widely available and standardized.
+The challenge lies in identifying the necessary headers to include.</p>
+<blockquote>
+<p>[!CAUTION]
+Modules deliberately don’t export macros.
+If you need macros, use <code>#include</code> instead.</p>
+</blockquote>
+<h2 id="stdh-header"><code>std.h</code> Header</h2>
+<p>We can cram all the headers we want into a single header file, <code>std.h</code>, then include
+it in our source files, but <code>#include</code>ing so much can give very slow compiles [Stroustrup,2021b].</p>
+<h2 id="std-module"><code>std</code> "Module"</h2>
+<p>It includes all necessary headers in the global module fragment (before <code>export module std;</code>),
+then exports specific entities from the standard library.</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">module</span><span class="p">;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;list&gt;</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;algorithms&gt;</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1">// ...</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="k">export</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="n">std</span><span class="p">;</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="k">export</span><span class="w"> </span><span class="n">istream</span><span class="p">;</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">export</span><span class="w"> </span><span class="n">ostream</span><span class="p">;</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="k">export</span><span class="w"> </span><span class="n">iostream</span><span class="p">;</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="c1">// ...</span>
 </span></code></pre></div>
-<h2 id="further-reading">Further Reading</h2>
+<h2 id="import-a-header-unit">Import a header unit</h2>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">export</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="n">std</span><span class="p">;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">export</span><span class="w"> </span><span class="k">import</span><span class="w"> </span><span class="s">&quot;iostream&quot;</span><span class="p">;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">export</span><span class="w"> </span><span class="k">import</span><span class="w"> </span><span class="s">&quot;string&quot;</span><span class="p">;</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">export</span><span class="w"> </span><span class="k">import</span><span class="w"> </span><span class="s">&quot;vector&quot;</span><span class="p">;</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="k">export</span><span class="w"> </span><span class="k">import</span><span class="w"> </span><span class="s">&quot;list&quot;</span><span class="p">;</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">export</span><span class="w"> </span><span class="k">import</span><span class="w"> </span><span class="s">&quot;memory&quot;</span><span class="p">;</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="k">export</span><span class="w"> </span><span class="k">import</span><span class="w"> </span><span class="s">&quot;algorithms&quot;</span><span class="p">;</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1">// ...</span>
+</span></code></pre></div>
+<blockquote>
+<p>[!WARNING]
+This approach has several drawbacks:</p>
 <ul>
-<li><a href="https://docs.nvidia.com/cuda/index.html">CUDA Toolkit Documentation</a></li>
-<li><a href="https://docs.nvidia.com/cuda/cuda-c-programming-guide/">CUDA C++ Programming Guide</a></li>
+<li>It treats each header as a separate module-like entity.</li>
+<li>It can inject names into the global namespace.</li>
+<li>It may leak macros, which regular modules don't do.
+  But it's still pretty cool.</li>
 </ul>
+</blockquote>
+<h2 id="actually-defining-the-module">Actually defining the module</h2>
+<p>File: <code>std.cppm</code></p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">export</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="n">std</span><span class="p">;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;algorithm&gt;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="k">export</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="p">;</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="k">export</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="p">;</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="k">export</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">;</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="k">export</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="p">;</span>
+</span></code></pre></div>
+<p>Command:</p>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>clang++<span class="w"> </span>-std<span class="o">=</span>c++20<span class="w"> </span>-fmodules-ts<span class="w"> </span>-c<span class="w"> </span>std.cppm
+</span></code></pre></div>
+<p>Error:</p>
+<div class="language-console highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="go">std.cppm:8:19: error: using declaration referring to &#39;cout&#39; with module linkage cannot be exported</span>
+</span></code></pre></div>
+<p>It looks like we can't export <code>using</code> declarations on Apple clang version 15.0.0 (clang-1500.3.9.4)</p>
 
 
 
