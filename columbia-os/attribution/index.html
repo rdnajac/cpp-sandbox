@@ -13,25 +13,25 @@
       
       
       
-        <link rel="prev" href="../cuda/">
+        <link rel="prev" href="../../time-complexity/">
       
       
-        <link rel="next" href="../pimpl/">
+        <link rel="next" href="../../modern-cpp-features/">
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
     
     
       
-        <title>Make Your Own modulestd` - C++ Sandbox</title>
+        <title>Columbia OS Dev Guide - C++ Sandbox</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.8c3ca2c6.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8c3ca2c6.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -50,7 +50,7 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#make-your-own-modulestd" class="md-skip">
+        <a href="#columbia-os-dev-guide" class="md-skip">
           Skip to content
         </a>
       
@@ -92,7 +92,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="C++ Sandbox" class="md-header__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+    <a href="../.." title="C++ Sandbox" class="md-header__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Make Your Own modulestd`
+              Columbia OS Dev Guide
             
           </span>
         </div>
@@ -225,7 +225,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="C++ Sandbox" class="md-nav__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+    <a href="../.." title="C++ Sandbox" class="md-nav__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -255,7 +255,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -275,7 +275,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../a-tour-of-cpp/" class="md-nav__link">
+      <a href="../../a-tour-of-cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -295,7 +295,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../advprog/" class="md-nav__link">
+      <a href="../../advprog/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -315,7 +315,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cuda/" class="md-nav__link">
+      <a href="../../cuda/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -330,6 +330,143 @@
     
       
       
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Make Your Own modulestd`
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pimpl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pointer to Implementation (PImpl)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qsort/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quicksort
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tcp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TCP Echo Server and Client
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../time-complexity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time Complexity
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Columbia os
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Columbia os
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
   
   
     
@@ -348,7 +485,7 @@
           
   
   <span class="md-ellipsis">
-    Make Your Own modulestd`
+    Columbia OS Dev Guide
   </span>
   
 
@@ -359,7 +496,7 @@
         
   
   <span class="md-ellipsis">
-    Make Your Own modulestd`
+    Columbia OS Dev Guide
   </span>
   
 
@@ -381,36 +518,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#stdh-header" class="md-nav__link">
+  <a href="#recitations" class="md-nav__link">
     <span class="md-ellipsis">
-      std.h Header
+      Recitations
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#std-module" class="md-nav__link">
+  <a href="#vim-config" class="md-nav__link">
     <span class="md-ellipsis">
-      std "Module"
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#import-a-header-unit" class="md-nav__link">
-    <span class="md-ellipsis">
-      Import a header unit
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#actually-defining-the-module" class="md-nav__link">
-    <span class="md-ellipsis">
-      Actually defining the module
+      vim config
     </span>
   </a>
   
@@ -420,141 +539,6 @@
   
 </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../pimpl/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Pointer to Implementation (PImpl)
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../qsort/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Quicksort
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../tcp/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    TCP Echo Server and Client
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../time-complexity/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Time Complexity
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
-        
-          
-          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Columbia os
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_10">
-            <span class="md-nav__icon md-icon"></span>
-            Columbia os
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../columbia-os/attribution/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Columbia OS Dev Guide
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -609,7 +593,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../modern-cpp-features/" class="md-nav__link">
+      <a href="../../modern-cpp-features/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -630,7 +614,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../modern-cpp-features/CONTRIBUTING/" class="md-nav__link">
+      <a href="../../modern-cpp-features/CONTRIBUTING/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -651,7 +635,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../modern-cpp-features/CPP11/" class="md-nav__link">
+      <a href="../../modern-cpp-features/CPP11/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -672,7 +656,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../modern-cpp-features/CPP14/" class="md-nav__link">
+      <a href="../../modern-cpp-features/CPP14/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -693,7 +677,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../modern-cpp-features/CPP17/" class="md-nav__link">
+      <a href="../../modern-cpp-features/CPP17/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -714,7 +698,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../modern-cpp-features/CPP20/" class="md-nav__link">
+      <a href="../../modern-cpp-features/CPP20/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -762,36 +746,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#stdh-header" class="md-nav__link">
+  <a href="#recitations" class="md-nav__link">
     <span class="md-ellipsis">
-      std.h Header
+      Recitations
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#std-module" class="md-nav__link">
+  <a href="#vim-config" class="md-nav__link">
     <span class="md-ellipsis">
-      std "Module"
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#import-a-header-unit" class="md-nav__link">
-    <span class="md-ellipsis">
-      Import a header unit
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#actually-defining-the-module" class="md-nav__link">
-    <span class="md-ellipsis">
-      Actually defining the module
+      vim config
     </span>
   </a>
   
@@ -815,78 +781,18 @@
   
 
 
-<h1 id="make-your-own-modulestd">Make Your Own <code>module</code>std`</h1>
-<p>If an implementation does not currently support modules or lacks a standard module equivalent,
-we can revert to using traditional headers, which are widely available and standardized.
-The challenge lies in identifying the necessary headers to include.</p>
-<div class="admonition danger">
-<p class="admonition-title">Caution</p>
-<p>Modules deliberately don’t export macros.
-If you need macros, use <code>#include</code> instead.</p>
-</div>
-<h2 id="stdh-header"><code>std.h</code> Header</h2>
-<p>We can cram all the headers we want into a single header file, <code>std.h</code>, then include
-it in our source files, but <code>#include</code>ing so much can give very slow compiles [Stroustrup,2021b].</p>
-<h2 id="std-module"><code>std</code> "Module"</h2>
-<p>It includes all necessary headers in the global module fragment (before <code>export module std;</code>),
-then exports specific entities from the standard library.</p>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">module</span><span class="p">;</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;list&gt;</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;algorithms&gt;</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1">// ...</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="k">export</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="n">std</span><span class="p">;</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="k">export</span><span class="w"> </span><span class="n">istream</span><span class="p">;</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">export</span><span class="w"> </span><span class="n">ostream</span><span class="p">;</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="k">export</span><span class="w"> </span><span class="n">iostream</span><span class="p">;</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="c1">// ...</span>
-</span></code></pre></div>
-<h2 id="import-a-header-unit">Import a header unit</h2>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">export</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="n">std</span><span class="p">;</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">export</span><span class="w"> </span><span class="k">import</span><span class="w"> </span><span class="s">&quot;iostream&quot;</span><span class="p">;</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">export</span><span class="w"> </span><span class="k">import</span><span class="w"> </span><span class="s">&quot;string&quot;</span><span class="p">;</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">export</span><span class="w"> </span><span class="k">import</span><span class="w"> </span><span class="s">&quot;vector&quot;</span><span class="p">;</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="k">export</span><span class="w"> </span><span class="k">import</span><span class="w"> </span><span class="s">&quot;list&quot;</span><span class="p">;</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">export</span><span class="w"> </span><span class="k">import</span><span class="w"> </span><span class="s">&quot;memory&quot;</span><span class="p">;</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="k">export</span><span class="w"> </span><span class="k">import</span><span class="w"> </span><span class="s">&quot;algorithms&quot;</span><span class="p">;</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1">// ...</span>
-</span></code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This approach has several drawbacks:</p>
-<ul>
-<li>It treats each header as a separate module-like entity.</li>
-<li>It can inject names into the global namespace.</li>
-<li>It may leak macros, which regular modules don't do.
-  But it's still pretty cool.</li>
-</ul>
-</div>
-<h2 id="actually-defining-the-module">Actually defining the module</h2>
-<p>File: <code>std.cppm</code></p>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">export</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="n">std</span><span class="p">;</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;algorithm&gt;</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="k">export</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="p">;</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="k">export</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="p">;</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="k">export</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">;</span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="k">export</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="p">;</span>
-</span></code></pre></div>
-<p>Command:</p>
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>clang++<span class="w"> </span>-std<span class="o">=</span>c++20<span class="w"> </span>-fmodules-ts<span class="w"> </span>-c<span class="w"> </span>std.cppm
-</span></code></pre></div>
-<p>Error:</p>
-<div class="language-console highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="go">std.cppm:8:19: error: using declaration referring to &#39;cout&#39; with module linkage cannot be exported</span>
-</span></code></pre></div>
-<p>It looks like we can't export <code>using</code> declarations on Apple clang version 15.0.0 (clang-1500.3.9.4)</p>
+<h1 id="columbia-os-dev-guide">Columbia OS Dev Guide</h1>
+<p>I took an Operating Systems class at Columbia and the TA staff wrote some really
+helpful guides that I found myself referring to a lot, even after graduating.
+They're publicly available <a href="https://columbia-os.github.io/dev-guides/">here</a>,
+but I'm unsure if this is the most up-to-date version.</p>
+<h2 id="recitations">Recitations</h2>
+<p>I've included the recitations from the class in the resources folder.
+If someone from the CU CS departments finds this and wants me to take it down,
+please let me know.</p>
+<h2 id="vim-config">vim config</h2>
+<p>Special shoutout to <a href="https://columbia-os.github.io/dev-guides/vim-workflow.html">this page</a>
+that sent me down a years-long rabbit hole of vim plugins and configurations.</p>
 
 
 
@@ -937,10 +843,10 @@ then exports specific entities from the standard library.</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.525ec568.min.js"></script>
+      <script src="../../assets/javascripts/bundle.525ec568.min.js"></script>
       
     
   </body>
