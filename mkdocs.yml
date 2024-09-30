@@ -27,6 +27,8 @@ not_in_nav: |
   /resources/*
 
 markdown_extensions:
+  - github-callouts
+  # - markdown_gfm_admonition
   - pymdownx.snippets
   - pymdownx.superfences
   - pymdownx.inlinehilite
