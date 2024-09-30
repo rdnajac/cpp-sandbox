@@ -484,6 +484,194 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../time-complexity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time Complexity
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Modern cpp features
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Modern cpp features
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modern-cpp-features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++20/17/14/11
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modern-cpp-features/CONTRIBUTING/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modern-cpp-features/CPP11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++11
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modern-cpp-features/CPP14/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++14
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modern-cpp-features/CPP17/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++17
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modern-cpp-features/CPP20/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++20
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -568,11 +756,11 @@
 <p>If an implementation does not currently support modules or lacks a standard module equivalent,
 we can revert to using traditional headers, which are widely available and standardized.
 The challenge lies in identifying the necessary headers to include.</p>
-<blockquote>
-<p>[!CAUTION]
-Modules deliberately don’t export macros.
+<div class="admonition danger">
+<p class="admonition-title">Caution</p>
+<p>Modules deliberately don’t export macros.
 If you need macros, use <code>#include</code> instead.</p>
-</blockquote>
+</div>
 <h2 id="stdh-header"><code>std.h</code> Header</h2>
 <p>We can cram all the headers we want into a single header file, <code>std.h</code>, then include
 it in our source files, but <code>#include</code>ing so much can give very slow compiles [Stroustrup,2021b].</p>
@@ -605,16 +793,16 @@ then exports specific entities from the standard library.</p>
 </span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="k">export</span><span class="w"> </span><span class="k">import</span><span class="w"> </span><span class="s">&quot;algorithms&quot;</span><span class="p">;</span>
 </span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1">// ...</span>
 </span></code></pre></div>
-<blockquote>
-<p>[!WARNING]
-This approach has several drawbacks:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This approach has several drawbacks:</p>
 <ul>
 <li>It treats each header as a separate module-like entity.</li>
 <li>It can inject names into the global namespace.</li>
 <li>It may leak macros, which regular modules don't do.
   But it's still pretty cool.</li>
 </ul>
-</blockquote>
+</div>
 <h2 id="actually-defining-the-module">Actually defining the module</h2>
 <p>File: <code>std.cppm</code></p>
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">export</span><span class="w"> </span><span class="k">module</span><span class="w"> </span><span class="n">std</span><span class="p">;</span>
