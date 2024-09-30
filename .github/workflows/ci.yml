@@ -30,7 +30,6 @@ jobs:
             base=$(basename "$dir")
             ln -sf "$readme" "${base,,}.md"
           done
-          mkdir columbia-os
           for readme in ../gscs/cs4118/*/README.md; do
             dir=$(dirname "$readme")
             base=$(basename "$dir")
