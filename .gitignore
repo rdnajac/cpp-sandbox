@@ -5,7 +5,7 @@ build/
 .idea/
 .vscode/
 cmake-build-debug/
-*/compile_commands.json
+**/compile_commands.json
 
 # Prerequisites
 *.d

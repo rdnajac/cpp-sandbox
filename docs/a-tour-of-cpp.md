@@ -618,7 +618,7 @@ int main() {
 
 > [!TIP]
 > There are no standard library modules for C++20, but check out
-> [Make Your Own `module std`](module-std.md) for a workaround.
+> [Make Your Own `module std`](module.md) for a workaround.
 
 ## Strings and Regular Expressions
 
