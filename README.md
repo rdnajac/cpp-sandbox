@@ -2,6 +2,27 @@
 
 A collection of C++ code snippets and examples.
 
+## Building with CMake
+
+This project uses CMake to build the examples. To build the project, run the
+following commands:
+
+```sh
+mkdir build
+cd build
+cmake ..
+make
+```
+
+### Testing
+
+We use [Catch2](https://github.com/catchorg/Catch2) for testing. To run the
+tests, run the following command:
+
+```sh
+
+```
+
 ## Projects
 
 - TCP client/server
