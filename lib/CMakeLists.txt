@@ -1,13 +1,10 @@
 # lib/CMakeLists.txt
-add_library(timer STATIC
-        timer.cpp
-        ${CMAKE_SOURCE_DIR}/include/timer.hpp
-)
 
-add_library(rng STATIC
-        rng.cpp
-        ${CMAKE_SOURCE_DIR}/include/rng.hpp
-)
+macro(add_single_library lib_name)
+    add_library(${lib_name} STATIC ${lib_name}.cpp)
+    target_include_directories(${lib_name} PUBLIC ${CMAKE_SOURCE_DIR}/include)
+endmacro()
 
-target_include_directories(timer PUBLIC ${CMAKE_SOURCE_DIR}/include)
-target_include_directories(rng PUBLIC ${CMAKE_SOURCE_DIR}/include)
+add_single_library(rng)
+add_single_library(timer)
+

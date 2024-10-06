@@ -4,7 +4,9 @@
 
 Timer::Timer() { start(); }
 
-void Timer::start() { m_startTime = std::chrono::high_resolution_clock::now(); }
+void Timer::start() {
+    m_startTime = std::chrono::high_resolution_clock::now();
+}
 
 void Timer::logTime(const std::string &label, long long result) {
     auto endTime = std::chrono::high_resolution_clock::now();
