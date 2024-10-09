@@ -613,12 +613,12 @@ int main() {
 
 ## Standard-Library
 
-> Provides the most common fundamental data structures together with
-> the fundamental algorithms used on them.
+Provides the most common fundamental data structures together with
+the fundamental algorithms used on them.
 
 > [!TIP]
 > There are no standard library modules for C++20, but check out
-> [Make Your Own `module std`](module.md) for a workaround.
+> [Make Your Own `module std`](https://youtu.be/dQw4w9WgXcQ) for a workaround.
 
 ## Strings and Regular Expressions
 
