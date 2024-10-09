@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../advprog/">
+        <link rel="prev" href="../src_algorithms/">
       
       
-        <link rel="next" href="../module/">
+        <link rel="next" href="../src_pimpl/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>CUDA - C++ Sandbox</title>
+        <title>Loops in C++ - C++ Sandbox</title>
       
     
     
@@ -49,6 +49,8 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
       
     
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -76,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cuda" class="md-skip">
+        <a href="#loops-in-c" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              CUDA
+              Loops in C++
             
           </span>
         </div>
@@ -295,93 +297,15 @@
   
   
     <li class="md-nav__item">
-      <a href="../advprog/" class="md-nav__link">
+      <a href="../docs_modern-cpp-features/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Advanced Programming
+    C++20/17/14/11
   </span>
   
 
       </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    CUDA
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    CUDA
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#using-cuda" class="md-nav__link">
-    <span class="md-ellipsis">
-      Using CUDA
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#further-reading" class="md-nav__link">
-    <span class="md-ellipsis">
-      Further Reading
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -413,51 +337,191 @@
   
   
     <li class="md-nav__item">
-      <a href="../pimpl/" class="md-nav__link">
+      <a href="../rev/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++ LeetCode Cheat Sheet
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../src/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Src
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../src_algorithms/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Algorithms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Loops in C++
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Loops in C++
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#loop-over-half-the-elements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loop over half the elements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iterate-over-a-vector" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iterate over a vector
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Iterate over a vector">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-const-auto-element-vector" class="md-nav__link">
+    <span class="md-ellipsis">
+      for (const auto &amp;element : vector)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-auto-element-vector" class="md-nav__link">
+    <span class="md-ellipsis">
+      for (auto element : vector)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-auto-element-vector_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      for (auto &amp;element : vector)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-auto-it-vectorbegin-it-vectorend-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      for (auto it = vector.begin(); it != vector.end(); it++)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../src_pimpl/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Pointer to Implementation (PImpl)
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../qsort/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Quicksort
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../tcp/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    TCP Echo Server and Client
   </span>
   
 
@@ -500,10 +564,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
         
           
-          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -514,8 +578,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_10">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
             <span class="md-nav__icon md-icon"></span>
             Columbia os
           </label>
@@ -563,10 +627,410 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
         
           
-          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Docs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            Docs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_12_1" id="__nav_12_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Code
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_12_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12_1">
+            <span class="md-nav__icon md-icon"></span>
+            Code
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docs/code/2-4_center-out_vector_traversal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2-4_center-out_vector_traversal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docs/code/2-5_consecutive_character_groups/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2-5_consecutive_character_groups
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docs/code/3-1_reverse_words/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3-1_reverse_words
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docs/code/3-2_string_parsing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3-2_string_parsing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docs/code/3-3_time_calculation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3-3_time_calculation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docs/code/3-4_substring_search/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3-4_substring_search
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docs/code/4-1_nested_loops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4-1_nested_loops
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docs/code/4-2_uraveling_strings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4-2_uraveling_strings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docs/code/4-3_obstacle_game/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4-3_obstacle_game
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docs/code/4-4_handling_large_numbers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4-4_handling_large_numbers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docs/code/5-1_array_traversal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5-1_array_traversal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docs/code/5-2_string_manipulation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5-2_string_manipulation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docs/code/5-3_string_and_array_operations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5-3_string_and_array_operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docs/code/5-4_forest.traversal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5-4_forest.traversal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docs/code/5-5_array_manipulation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5-5_array_manipulation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -577,8 +1041,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_11">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
             <span class="md-nav__icon md-icon"></span>
             Modern cpp features
           </label>
@@ -744,20 +1208,62 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#using-cuda" class="md-nav__link">
+  <a href="#loop-over-half-the-elements" class="md-nav__link">
     <span class="md-ellipsis">
-      Using CUDA
+      Loop over half the elements
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#further-reading" class="md-nav__link">
+  <a href="#iterate-over-a-vector" class="md-nav__link">
     <span class="md-ellipsis">
-      Further Reading
+      Iterate over a vector
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Iterate over a vector">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-const-auto-element-vector" class="md-nav__link">
+    <span class="md-ellipsis">
+      for (const auto &amp;element : vector)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-auto-element-vector" class="md-nav__link">
+    <span class="md-ellipsis">
+      for (auto element : vector)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-auto-element-vector_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      for (auto &amp;element : vector)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-auto-it-vectorbegin-it-vectorend-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      for (auto it = vector.begin(); it != vector.end(); it++)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -779,39 +1285,59 @@
   
 
 
-<h1 id="cuda">CUDA</h1>
-<p>CUDA is a general-purpose parallel computing platform and programming
-model developed by NVIDIA to leverage the massive parallel processing
-power of GPUs. It allows developers to use C++ and other programming
-languages to solve complex computational problems more efficiently than
-on CPUs. CUDA's scalable programming model uses abstractions like thread
-group hierarchies, shared memories, and barrier synchronization to enable
-fine-grained and coarse-grained parallelism. This model allows CUDA
-programs to automatically scale across various GPU architectures,
-from high-performance devices to mainstream GPUs, by adjusting the
-number of multiprocessors and memory partitions.</p>
-<h2 id="using-cuda">Using CUDA</h2>
-<p>This repository contains several CUDA examples demonstrating various concepts:</p>
-<ol>
-<li><code>vector_add.cu</code>: Basic vector addition kernel</li>
-<li><code>matrix_multiply.cu</code>: Matrix multiplication using shared memory</li>
-<li><code>reduction.cu</code>: Parallel reduction using shared memory</li>
-<li><code>stream_example.cu</code>: Using CUDA streams for concurrent execution</li>
-<li><code>unified_memory.cu</code>: Using Unified Memory</li>
-</ol>
-<p>To compile and run these examples, use the provided Makefile:</p>
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>make
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>./vector_add
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>./matrix_multiply
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>./reduction
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>./stream_example
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>./unified_memory
+<h1 id="loops-in-c">Loops in C++</h1>
+<h2 id="loop-over-half-the-elements">Loop over half the elements</h2>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">some_vector</span><span class="p">;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">some_vector</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">some_vector</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="c1">// Do something with some_vector[i]</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="c1">// including the middle element if the size is odd</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">}</span>
 </span></code></pre></div>
-<h2 id="further-reading">Further Reading</h2>
-<ul>
-<li><a href="https://docs.nvidia.com/cuda/index.html">CUDA Toolkit Documentation</a></li>
-<li><a href="https://docs.nvidia.com/cuda/cuda-c-programming-guide/">CUDA C++ Programming Guide</a></li>
-</ul>
+<h2 id="iterate-over-a-vector">Iterate over a vector</h2>
+<h3 id="for-const-auto-element-vector"><code>for (const auto &amp;element : vector)</code></h3>
+<p>This uses a reference (<code>&amp;</code>) to avoid copying the elements.
+The constant qualifier (<code>const</code>) ensures that the elements
+are not modified. This is the efficient way to iterate over
+a vector since no additional memory is allocated.</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">some_vector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">};</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">element</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">some_vector</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">element</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">}</span>
+</span></code></pre></div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The <code>&amp;</code> in a variable declaration means that the variable is a reference to
+the object, not a copy of the object itself.</p>
+</div>
+<h3 id="for-auto-element-vector"><code>for (auto element : vector)</code></h3>
+<p>This creates a copy of each element in the vector. If the
+elements are large, this can be inefficient. Use a reference
+(<code>&amp;</code>) instead to avoid copying.</p>
+<h3 id="for-auto-element-vector_1"><code>for (auto &amp;element : vector)</code></h3>
+<p>This allows you to modify the elements of the vector.</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">some_vector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">};</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">element</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">some_vector</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">element</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">}</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Doubled vector: &quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 2 4 6 8 10</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>even</p>
+</div>
+<h3 id="for-auto-it-vectorbegin-it-vectorend-it"><code>for (auto it = vector.begin(); it != vector.end(); it++)</code></h3>
+<p>This is the traditional way to iterate over a vector by
+declaring an iterator (<code>it</code>) that starts at the beginning
+of the vector and increments until it reaches the end.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The <code>end()</code> function returns an iterator pointing to the
+element following the last element of the vector, <em>not</em> the
+last element itself. It is like the memory address one past
+the end of the vector and should not be dereferenced.</p>
+</div>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>
+</span></code></pre></div>
 
 
 
@@ -866,6 +1392,12 @@ number of multiprocessors and memory partitions.</p>
     
     
       <script src="../assets/javascripts/bundle.525ec568.min.js"></script>
+      
+        <script src="../js/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
       
     
   </body>
