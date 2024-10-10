@@ -1,4 +1,3 @@
 mkdocs
-mkdocs-macros-plugin
 markdown-callouts
 mkdocs-material
