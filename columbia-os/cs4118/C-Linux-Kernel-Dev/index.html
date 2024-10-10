@@ -13,23 +13,25 @@
       
       
       
+        <link rel="prev" href="../B-Sockets-ServerTesting/">
       
-        <link rel="next" href="a-tour-of-cpp/">
+      
+        <link rel="next" href="../F-Farfetchd/">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.40">
     
     
       
-        <title>C++ Sandbox</title>
+        <title>Linux Kernel Development - C++ Sandbox</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.8c3ca2c6.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8c3ca2c6.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -50,7 +52,7 @@
     
       <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#c-sandbox" class="md-skip">
+        <a href="#linux-kernel-development" class="md-skip">
           Skip to content
         </a>
       
@@ -92,7 +94,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="C++ Sandbox" class="md-header__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+    <a href="../../.." title="C++ Sandbox" class="md-header__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -112,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              C++ sandbox
+              Linux Kernel Development
             
           </span>
         </div>
@@ -225,7 +227,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="C++ Sandbox" class="md-nav__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+    <a href="../../.." title="C++ Sandbox" class="md-nav__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -252,30 +254,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    C++ sandbox
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -284,77 +266,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#build" class="md-nav__link">
-    <span class="md-ellipsis">
-      Build
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#test" class="md-nav__link">
-    <span class="md-ellipsis">
-      Test
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docs" class="md-nav__link">
-    <span class="md-ellipsis">
-      Docs
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Docs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resources
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#projects" class="md-nav__link">
-    <span class="md-ellipsis">
-      Projects
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -366,7 +277,7 @@
   
   
     <li class="md-nav__item">
-      <a href="a-tour-of-cpp/" class="md-nav__link">
+      <a href="../../../a-tour-of-cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -386,7 +297,7 @@
   
   
     <li class="md-nav__item">
-      <a href="algorithms/" class="md-nav__link">
+      <a href="../../../algorithms/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -406,7 +317,7 @@
   
   
     <li class="md-nav__item">
-      <a href="src_containers/" class="md-nav__link">
+      <a href="../../../src_containers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -426,7 +337,7 @@
   
   
     <li class="md-nav__item">
-      <a href="src_pimpl/" class="md-nav__link">
+      <a href="../../../src_pimpl/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -446,7 +357,7 @@
   
   
     <li class="md-nav__item">
-      <a href="time-complexity/" class="md-nav__link">
+      <a href="../../../time-complexity/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -501,7 +412,7 @@
   
   
     <li class="md-nav__item">
-      <a href="codesignal/2-5_consecutive_character_groups/" class="md-nav__link">
+      <a href="../../../codesignal/2-5_consecutive_character_groups/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -522,7 +433,7 @@
   
   
     <li class="md-nav__item">
-      <a href="codesignal/3-1_reverse_words/" class="md-nav__link">
+      <a href="../../../codesignal/3-1_reverse_words/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -543,7 +454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="codesignal/3-2_string_parsing/" class="md-nav__link">
+      <a href="../../../codesignal/3-2_string_parsing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -564,7 +475,7 @@
   
   
     <li class="md-nav__item">
-      <a href="codesignal/3-3_time_calculation/" class="md-nav__link">
+      <a href="../../../codesignal/3-3_time_calculation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -585,7 +496,7 @@
   
   
     <li class="md-nav__item">
-      <a href="codesignal/3-4_substring_search/" class="md-nav__link">
+      <a href="../../../codesignal/3-4_substring_search/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -606,7 +517,7 @@
   
   
     <li class="md-nav__item">
-      <a href="codesignal/4-1_nested_loops/" class="md-nav__link">
+      <a href="../../../codesignal/4-1_nested_loops/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -627,7 +538,7 @@
   
   
     <li class="md-nav__item">
-      <a href="codesignal/4-2_uraveling_strings/" class="md-nav__link">
+      <a href="../../../codesignal/4-2_uraveling_strings/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -648,7 +559,7 @@
   
   
     <li class="md-nav__item">
-      <a href="codesignal/4-3_obstacle_game/" class="md-nav__link">
+      <a href="../../../codesignal/4-3_obstacle_game/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -669,7 +580,7 @@
   
   
     <li class="md-nav__item">
-      <a href="codesignal/4-4_handling_large_numbers/" class="md-nav__link">
+      <a href="../../../codesignal/4-4_handling_large_numbers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -690,7 +601,7 @@
   
   
     <li class="md-nav__item">
-      <a href="codesignal/5-1_array_traversal/" class="md-nav__link">
+      <a href="../../../codesignal/5-1_array_traversal/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -711,7 +622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="codesignal/5-2_string_manipulation/" class="md-nav__link">
+      <a href="../../../codesignal/5-2_string_manipulation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -732,7 +643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="codesignal/5-3_string_and_array_operations/" class="md-nav__link">
+      <a href="../../../codesignal/5-3_string_and_array_operations/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -753,7 +664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="codesignal/5-4_forest_traversal/" class="md-nav__link">
+      <a href="../../../codesignal/5-4_forest_traversal/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -774,7 +685,7 @@
   
   
     <li class="md-nav__item">
-      <a href="codesignal/5-5_array_manipulation/" class="md-nav__link">
+      <a href="../../../codesignal/5-5_array_manipulation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -799,17 +710,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
         
           
           <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
@@ -823,7 +736,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Columbia os
@@ -837,7 +750,7 @@
   
   
     <li class="md-nav__item">
-      <a href="columbia-os/attribution/" class="md-nav__link">
+      <a href="../../attribution/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -855,17 +768,19 @@
                 
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2" checked>
         
           
           <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
@@ -879,7 +794,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_8_2">
             <span class="md-nav__icon md-icon"></span>
             Cs4118
@@ -893,7 +808,7 @@
   
   
     <li class="md-nav__item">
-      <a href="columbia-os/cs4118/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -949,7 +864,7 @@
   
   
     <li class="md-nav__item">
-      <a href="columbia-os/cs4118/A-Workflow/" class="md-nav__link">
+      <a href="../A-Workflow/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1013,7 +928,7 @@
   
   
     <li class="md-nav__item">
-      <a href="columbia-os/cs4118/B-Sockets-ServerTesting/" class="md-nav__link">
+      <a href="../B-Sockets-ServerTesting/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1039,17 +954,19 @@
                 
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2_4" checked>
         
           
           <label class="md-nav__link" for="__nav_8_2_4" id="__nav_8_2_4_label" tabindex="0">
@@ -1063,7 +980,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_2_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_2_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_8_2_4">
             <span class="md-nav__icon md-icon"></span>
             C Linux Kernel Dev
@@ -1074,10 +991,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="columbia-os/cs4118/C-Linux-Kernel-Dev/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Linux Kernel Development
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1086,6 +1023,95 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#kernel-module-makefile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kernel Module Makefile
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#top-level-kernel-makefile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Top-level Kernel Makefile
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Top-level Kernel Makefile">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preparing-for-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preparing for development
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-and-compilation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration and compilation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kernel-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kernel installation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kernel-code-style" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kernel Code Style
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debugging Techniques
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1141,7 +1167,7 @@
   
   
     <li class="md-nav__item">
-      <a href="columbia-os/cs4118/F-Farfetchd/" class="md-nav__link">
+      <a href="../F-Farfetchd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1220,7 +1246,7 @@
   
   
     <li class="md-nav__item">
-      <a href="examples/big_numbers/" class="md-nav__link">
+      <a href="../../../examples/big_numbers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1241,7 +1267,7 @@
   
   
     <li class="md-nav__item">
-      <a href="examples/distances/" class="md-nav__link">
+      <a href="../../../examples/distances/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1262,7 +1288,7 @@
   
   
     <li class="md-nav__item">
-      <a href="examples/qsort/" class="md-nav__link">
+      <a href="../../../examples/qsort/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1283,7 +1309,7 @@
   
   
     <li class="md-nav__item">
-      <a href="examples/strings/" class="md-nav__link">
+      <a href="../../../examples/strings/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1304,7 +1330,7 @@
   
   
     <li class="md-nav__item">
-      <a href="examples/time/" class="md-nav__link">
+      <a href="../../../examples/time/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1367,7 +1393,7 @@
   
   
     <li class="md-nav__item">
-      <a href="modern-cpp-features/" class="md-nav__link">
+      <a href="../../../modern-cpp-features/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1388,7 +1414,7 @@
   
   
     <li class="md-nav__item">
-      <a href="modern-cpp-features/CONTRIBUTING/" class="md-nav__link">
+      <a href="../../../modern-cpp-features/CONTRIBUTING/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1409,7 +1435,7 @@
   
   
     <li class="md-nav__item">
-      <a href="modern-cpp-features/CPP11/" class="md-nav__link">
+      <a href="../../../modern-cpp-features/CPP11/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1430,7 +1456,7 @@
   
   
     <li class="md-nav__item">
-      <a href="modern-cpp-features/CPP14/" class="md-nav__link">
+      <a href="../../../modern-cpp-features/CPP14/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1451,7 +1477,7 @@
   
   
     <li class="md-nav__item">
-      <a href="modern-cpp-features/CPP17/" class="md-nav__link">
+      <a href="../../../modern-cpp-features/CPP17/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1472,7 +1498,7 @@
   
   
     <li class="md-nav__item">
-      <a href="modern-cpp-features/CPP20/" class="md-nav__link">
+      <a href="../../../modern-cpp-features/CPP20/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1520,37 +1546,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#build" class="md-nav__link">
+  <a href="#kernel-module-makefile" class="md-nav__link">
     <span class="md-ellipsis">
-      Build
+      Kernel Module Makefile
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#test" class="md-nav__link">
+  <a href="#top-level-kernel-makefile" class="md-nav__link">
     <span class="md-ellipsis">
-      Test
+      Top-level Kernel Makefile
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docs" class="md-nav__link">
-    <span class="md-ellipsis">
-      Docs
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Docs">
+    <nav class="md-nav" aria-label="Top-level Kernel Makefile">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#resources" class="md-nav__link">
+  <a href="#preparing-for-development" class="md-nav__link">
     <span class="md-ellipsis">
-      Resources
+      Preparing for development
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-and-compilation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration and compilation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kernel-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kernel installation
     </span>
   </a>
   
@@ -1562,9 +1597,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#projects" class="md-nav__link">
+  <a href="#kernel-code-style" class="md-nav__link">
     <span class="md-ellipsis">
-      Projects
+      Kernel Code Style
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debugging Techniques
     </span>
   </a>
   
@@ -1588,34 +1632,125 @@
   
 
 
-<h1 id="c-sandbox">C++ sandbox</h1>
-<p>A collection of C++ code snippets and examples.</p>
-<h2 id="build">Build</h2>
-<p><a href="https://cmake.org/">CMake</a></p>
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mkdir<span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>cmake<span class="w"> </span>..<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>-j<span class="k">$(</span>nproc<span class="k">)</span>
+<h1 id="linux-kernel-development">Linux Kernel Development</h1>
+<p>This document is meant to supplement our <a href="https://cs4118.github.io/dev-guides/debian-kernel-compilation.html">compilation
+guide</a>,
+which goes over how to install a new kernel on your machine.</p>
+<h2 id="kernel-module-makefile">Kernel Module Makefile</h2>
+<p>More info in our <a href="https://cs4118.github.io/dev-guides/linux-modules.html">kernel module
+guide</a>, but for the sake
+of comparison, here it is again:</p>
+<div class="language-make highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">obj-m</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>hello.o
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nf">all</span><span class="o">:</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span>make<span class="w"> </span>-C<span class="w"> </span>/lib/modules/<span class="k">$(</span>shell<span class="w"> </span>uname<span class="w"> </span>-r<span class="k">)</span>/build<span class="w"> </span><span class="nv">M</span><span class="o">=</span><span class="k">$(</span>PWD<span class="k">)</span><span class="w"> </span>modules
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nf">clean</span><span class="o">:</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span>make<span class="w"> </span>-C<span class="w"> </span>/lib/modules/<span class="k">$(</span>shell<span class="w"> </span>uname<span class="w"> </span>-r<span class="k">)</span>/build<span class="w"> </span><span class="nv">M</span><span class="o">=</span><span class="k">$(</span>PWD<span class="k">)</span><span class="w"> </span>clean
 </span></code></pre></div>
-<h2 id="test">Test</h2>
-<p><a href="https://github.com/catchorg/Catch2">Catch2</a></p>
-<h2 id="docs">Docs</h2>
-<p><a href="https://www.mkdocs.org/">MkDocs</a></p>
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>mkdocs<span class="w"> </span>serve
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># open http:localhost:8000</span>
-</span></code></pre></div>
-<h3 id="resources">Resources</h3>
-<p>There are some cool guides included them as a submodules in this repo so
-they can be easily accessed and updated. The search plugin that comes with
-Material for MkDocs theme can be used to search through all the resources,
-even if they're excluded from the navbar.</p>
+<p>This Makefile is separate from the top-level kernel source Makefile we're about
+to work with. Here, we're adding to the <code>obj-m</code> "goal definition" (build object
+as module) and using a specialized Makefile located at <code>/lib/modules/$(shell
+uname -r)/build</code> to link our module into the kernel.</p>
+<h2 id="top-level-kernel-makefile">Top-level Kernel Makefile</h2>
+<p><code>linux/Makefile</code> is the only Makefile you'll be executing when developing with
+the kernel. At a high level, this Makefile is responsible for:</p>
 <ul>
-<li><a href="https://en.cppreference.com/w/">C++ Reference</a></li>
-<li><a href="https://github.com/AnthonyCalandra/modern-cpp-features">Modern C++ Features</a></li>
-<li><a href="https://www.cs.columbia.edu/~jae/3157/">Jae's class</a></li>
-<li><a href="https://www.geeksforgeeks.org/">GeeksforGeeks</a></li>
+<li>recursively calling Makefiles in subdirectories</li>
+<li>generating kernel configurations</li>
+<li>building and installing kernel images</li>
 </ul>
-<h2 id="projects">Projects</h2>
+<p>Here's an overview of the common operations you'll be doing with this Makefile.</p>
+<h3 id="preparing-for-development">Preparing for development</h3>
+<p>It's good practice to ensure you have a clean kernel source before beginning to
+development. Here's the cleaning options that this Makefile provides, as
+reported by <code>make help</code>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Cleaning targets:
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  clean       - Remove most generated files but keep the config and
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>                enough build support to build external modules
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>  mrproper    - Remove all generated files + config + various backup files
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  distclean.  - mrproper + remove editor backup and patch files
+</span></code></pre></div>
+<p><code>make mrproper</code> is usually sufficient for our purposes. Be warned that you'll
+have to completely rebuild the kernel after running this!</p>
+<h3 id="configuration-and-compilation">Configuration and compilation</h3>
+<p><code>linux/.config</code> is the kernel's configuration file. It lists a bunch of options
+that determine the properties of the kernel you're about to build. It also
+determines what code will be compiled and linked into the final kernel image.
+For example, if <code>CONFIG_SMP</code> is set, you're letting the kernel know that you
+have more than one processor so it can provide multi-processing functionality.</p>
+<p>There's a bunch of different ways to generate this configuration file. Here's
+the relevant options we have, as reported by <code>make help</code> in the top-level kernel
+directory:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Configuration targets:
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>  config          - Update current config utilising a line-oriented program
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>  menuconfig      - Update current config utilising a menu based program
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>  oldconfig       - Update current config utilising a provided .config as base
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>  localmodconfig  - Update current config disabling modules not loaded
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>  defconfig       - New config with default from ARCH supplied defconfig
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>  olddefconfig    - Same as oldconfig but sets new symbols to their
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>                    default value without prompting
+</span></code></pre></div>
+<p>Summarizing from our <a href="https://cs4118.github.io/dev-guides/debian-kernel-compilation.html">compilation
+guide</a>, we
+set up our kernel config in a couple of steps:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>make olddefconfig # Use current kernel&#39;s .config + ARCH defaults
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>make menuconfig   # Manually edit some configs
+</span></code></pre></div>
+<p>If you want to <strong>significantly</strong> reduce your build time, you can also set your
+config to skip unloaded modules during compilation:</p>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>yes<span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>make<span class="w"> </span>localmodconfig
+</span></code></pre></div>
+<p>As you're developing in the kernel, you might add additional source files that
+need to be compiled and linked in. Open up the directory's Makefile and add your
+desired object file to the <code>obj-y</code> goal definition, which is for "built-in"
+functionality (as opposed to kernel modules). For example, here's the relevant
+portion of <code>linux/kernel/Makefile</code>:</p>
+<div class="language-make highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">obj-y</span><span class="w">     </span><span class="o">=</span><span class="w"> </span>fork.o<span class="w"> </span>exec_domain.o<span class="w"> </span>panic.o<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">        </span>cpu.o<span class="w"> </span>exit.o<span class="w"> </span>softirq.o<span class="w"> </span>resource.o<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">        </span>sysctl.o<span class="w"> </span>sysctl_binary.o<span class="w"> </span>capability.o<span class="w"> </span>ptrace.o<span class="w"> </span>user.o<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">        </span>signal.o<span class="w"> </span>sys.o<span class="w"> </span>umh.o<span class="w"> </span>workqueue.o<span class="w"> </span>pid.o<span class="w"> </span>task_work.o<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">        </span>extable.o<span class="w"> </span>params.o<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">        </span>kthread.o<span class="w"> </span>sys_ni.o<span class="w"> </span>nsproxy.o<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">        </span>notifier.o<span class="w"> </span>ksysfs.o<span class="w"> </span>cred.o<span class="w"> </span>reboot.o<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">        </span>async.o<span class="w"> </span>range.o<span class="w"> </span>smpboot.o<span class="w"> </span>ucount.o
+</span></code></pre></div>
+<p>If you were adding a source file to <code>linux/kernel</code>, you'd add the object file
+target here.</p>
+<p>Once you're ready to compile your kernel, you run the following in the top-level
+source directory:</p>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>make<span class="w"> </span>-j<span class="w"> </span><span class="k">$(</span>nproc<span class="k">)</span>
+</span></code></pre></div>
+<p>This will compile your kernel across all available CPUs, as reported by <code>nproc</code>.
+Note that this top-level Makefile will recursively build source code in
+subdirectories for you!</p>
+<h3 id="kernel-installation">Kernel installation</h3>
+<p>Like in our <a href="https://cs4118.github.io/dev-guides/debian-kernel-compilation.html">compilation
+guide</a>, you
+run the following command once the compilation finishes:</p>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>make<span class="w"> </span>modules_install<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>make<span class="w"> </span>install
+</span></code></pre></div>
+<p>The first time you install a kernel, you must build <code>modules_install</code>. All
+subsequent times, <code>install</code> is sufficient.</p>
+<p>Finally, reboot and select the kernel version you just installed via the GRUB
+menu!</p>
+<h2 id="kernel-code-style">Kernel Code Style</h2>
+<p>The kernel source comes with a linter written in Perl (located at
+<code>linux/scripts/checkpatch.pl</code>).</p>
+<p>checkpatch will let you know about any stylistic errors and warnings that it
+finds in the codebase. You should get into the habit of running checkpatch and
+fixing what it suggests before major checkpoints.</p>
+<p>If you want a general overview of kernel code style, here's
+<a href="https://www.kernel.org/doc/html/v5.10/process/coding-style.html">one</a>. You can
+also find this in <code>linux/Documentation/process/coding-style.rst</code>.</p>
+<h2 id="debugging-techniques">Debugging Techniques</h2>
 <ul>
-<li>TCP client/server</li>
+<li>Take
+  <a href="https://docs.vmware.com/en/VMware-Fusion/12/com.vmware.fusion.using.doc/GUID-4C90933D-A31F-4A56-B5CA-58D3AE6E93CF.html">snapshots</a>
+  of your VM before installing software that may corrupt it.</li>
+<li>Use <code>printk/pr_info</code> to log messages to the kernel log buffer (viewable in
+  userspace with by running <code>sudo dmesg</code>)</li>
+<li>Set up a <a href="http://cs4118.github.io/freezer/#tips">serial port</a> to redirect log
+  buffer to your host machine (in case VM crashes before you can check it with
+  <code>dmesg</code>).</li>
 </ul>
 
 
@@ -1667,12 +1802,12 @@ even if they're excluded from the navbar.</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.525ec568.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.525ec568.min.js"></script>
       
-        <script src="js/katex.js"></script>
+        <script src="../../../js/katex.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       

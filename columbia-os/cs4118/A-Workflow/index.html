@@ -13,23 +13,25 @@
       
       
       
+        <link rel="prev" href="../">
       
-        <link rel="next" href="a-tour-of-cpp/">
+      
+        <link rel="next" href="../B-Sockets-ServerTesting/">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.40">
     
     
       
-        <title>C++ Sandbox</title>
+        <title>VM/Kernel Workflow - C++ Sandbox</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.8c3ca2c6.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8c3ca2c6.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -50,7 +52,7 @@
     
       <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#c-sandbox" class="md-skip">
+        <a href="#vmkernel-workflow" class="md-skip">
           Skip to content
         </a>
       
@@ -92,7 +94,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="C++ Sandbox" class="md-header__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+    <a href="../../.." title="C++ Sandbox" class="md-header__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -112,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              C++ sandbox
+              VM/Kernel Workflow
             
           </span>
         </div>
@@ -225,7 +227,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="C++ Sandbox" class="md-nav__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+    <a href="../../.." title="C++ Sandbox" class="md-nav__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -252,30 +254,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    C++ sandbox
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -284,77 +266,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#build" class="md-nav__link">
-    <span class="md-ellipsis">
-      Build
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#test" class="md-nav__link">
-    <span class="md-ellipsis">
-      Test
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docs" class="md-nav__link">
-    <span class="md-ellipsis">
-      Docs
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Docs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resources
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#projects" class="md-nav__link">
-    <span class="md-ellipsis">
-      Projects
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -366,7 +277,7 @@
   
   
     <li class="md-nav__item">
-      <a href="a-tour-of-cpp/" class="md-nav__link">
+      <a href="../../../a-tour-of-cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -386,7 +297,7 @@
   
   
     <li class="md-nav__item">
-      <a href="algorithms/" class="md-nav__link">
+      <a href="../../../algorithms/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -406,7 +317,7 @@
   
   
     <li class="md-nav__item">
-      <a href="src_containers/" class="md-nav__link">
+      <a href="../../../src_containers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -426,7 +337,7 @@
   
   
     <li class="md-nav__item">
-      <a href="src_pimpl/" class="md-nav__link">
+      <a href="../../../src_pimpl/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -446,7 +357,7 @@
   
   
     <li class="md-nav__item">
-      <a href="time-complexity/" class="md-nav__link">
+      <a href="../../../time-complexity/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -501,7 +412,7 @@
   
   
     <li class="md-nav__item">
-      <a href="codesignal/2-5_consecutive_character_groups/" class="md-nav__link">
+      <a href="../../../codesignal/2-5_consecutive_character_groups/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -522,7 +433,7 @@
   
   
     <li class="md-nav__item">
-      <a href="codesignal/3-1_reverse_words/" class="md-nav__link">
+      <a href="../../../codesignal/3-1_reverse_words/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -543,7 +454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="codesignal/3-2_string_parsing/" class="md-nav__link">
+      <a href="../../../codesignal/3-2_string_parsing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -564,7 +475,7 @@
   
   
     <li class="md-nav__item">
-      <a href="codesignal/3-3_time_calculation/" class="md-nav__link">
+      <a href="../../../codesignal/3-3_time_calculation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -585,7 +496,7 @@
   
   
     <li class="md-nav__item">
-      <a href="codesignal/3-4_substring_search/" class="md-nav__link">
+      <a href="../../../codesignal/3-4_substring_search/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -606,7 +517,7 @@
   
   
     <li class="md-nav__item">
-      <a href="codesignal/4-1_nested_loops/" class="md-nav__link">
+      <a href="../../../codesignal/4-1_nested_loops/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -627,7 +538,7 @@
   
   
     <li class="md-nav__item">
-      <a href="codesignal/4-2_uraveling_strings/" class="md-nav__link">
+      <a href="../../../codesignal/4-2_uraveling_strings/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -648,7 +559,7 @@
   
   
     <li class="md-nav__item">
-      <a href="codesignal/4-3_obstacle_game/" class="md-nav__link">
+      <a href="../../../codesignal/4-3_obstacle_game/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -669,7 +580,7 @@
   
   
     <li class="md-nav__item">
-      <a href="codesignal/4-4_handling_large_numbers/" class="md-nav__link">
+      <a href="../../../codesignal/4-4_handling_large_numbers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -690,7 +601,7 @@
   
   
     <li class="md-nav__item">
-      <a href="codesignal/5-1_array_traversal/" class="md-nav__link">
+      <a href="../../../codesignal/5-1_array_traversal/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -711,7 +622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="codesignal/5-2_string_manipulation/" class="md-nav__link">
+      <a href="../../../codesignal/5-2_string_manipulation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -732,7 +643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="codesignal/5-3_string_and_array_operations/" class="md-nav__link">
+      <a href="../../../codesignal/5-3_string_and_array_operations/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -753,7 +664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="codesignal/5-4_forest_traversal/" class="md-nav__link">
+      <a href="../../../codesignal/5-4_forest_traversal/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -774,7 +685,7 @@
   
   
     <li class="md-nav__item">
-      <a href="codesignal/5-5_array_manipulation/" class="md-nav__link">
+      <a href="../../../codesignal/5-5_array_manipulation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -799,17 +710,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
         
           
           <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
@@ -823,7 +736,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Columbia os
@@ -837,7 +750,7 @@
   
   
     <li class="md-nav__item">
-      <a href="columbia-os/attribution/" class="md-nav__link">
+      <a href="../../attribution/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -855,17 +768,19 @@
                 
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2" checked>
         
           
           <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
@@ -879,7 +794,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_8_2">
             <span class="md-nav__icon md-icon"></span>
             Cs4118
@@ -893,7 +808,7 @@
   
   
     <li class="md-nav__item">
-      <a href="columbia-os/cs4118/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -911,17 +826,19 @@
                 
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2_2" checked>
         
           
           <label class="md-nav__link" for="__nav_8_2_2" id="__nav_8_2_2_label" tabindex="0">
@@ -935,7 +852,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_2_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_2_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_8_2_2">
             <span class="md-nav__icon md-icon"></span>
             A Workflow
@@ -946,10 +863,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="columbia-os/cs4118/A-Workflow/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    VM/Kernel Workflow
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -958,6 +895,101 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-use-a-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Use a VM?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vm-setupworkflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      VM Setup/Workflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VM Setup/Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#working-on-your-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Working on your VM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Tools
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kernel-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kernel Workflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kernel Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#editor-enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Editor enhancements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Web Tools
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1013,7 +1045,7 @@
   
   
     <li class="md-nav__item">
-      <a href="columbia-os/cs4118/B-Sockets-ServerTesting/" class="md-nav__link">
+      <a href="../B-Sockets-ServerTesting/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1077,7 +1109,7 @@
   
   
     <li class="md-nav__item">
-      <a href="columbia-os/cs4118/C-Linux-Kernel-Dev/" class="md-nav__link">
+      <a href="../C-Linux-Kernel-Dev/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1141,7 +1173,7 @@
   
   
     <li class="md-nav__item">
-      <a href="columbia-os/cs4118/F-Farfetchd/" class="md-nav__link">
+      <a href="../F-Farfetchd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1220,7 +1252,7 @@
   
   
     <li class="md-nav__item">
-      <a href="examples/big_numbers/" class="md-nav__link">
+      <a href="../../../examples/big_numbers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1241,7 +1273,7 @@
   
   
     <li class="md-nav__item">
-      <a href="examples/distances/" class="md-nav__link">
+      <a href="../../../examples/distances/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1262,7 +1294,7 @@
   
   
     <li class="md-nav__item">
-      <a href="examples/qsort/" class="md-nav__link">
+      <a href="../../../examples/qsort/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1283,7 +1315,7 @@
   
   
     <li class="md-nav__item">
-      <a href="examples/strings/" class="md-nav__link">
+      <a href="../../../examples/strings/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1304,7 +1336,7 @@
   
   
     <li class="md-nav__item">
-      <a href="examples/time/" class="md-nav__link">
+      <a href="../../../examples/time/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1367,7 +1399,7 @@
   
   
     <li class="md-nav__item">
-      <a href="modern-cpp-features/" class="md-nav__link">
+      <a href="../../../modern-cpp-features/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1388,7 +1420,7 @@
   
   
     <li class="md-nav__item">
-      <a href="modern-cpp-features/CONTRIBUTING/" class="md-nav__link">
+      <a href="../../../modern-cpp-features/CONTRIBUTING/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1409,7 +1441,7 @@
   
   
     <li class="md-nav__item">
-      <a href="modern-cpp-features/CPP11/" class="md-nav__link">
+      <a href="../../../modern-cpp-features/CPP11/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1430,7 +1462,7 @@
   
   
     <li class="md-nav__item">
-      <a href="modern-cpp-features/CPP14/" class="md-nav__link">
+      <a href="../../../modern-cpp-features/CPP14/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1451,7 +1483,7 @@
   
   
     <li class="md-nav__item">
-      <a href="modern-cpp-features/CPP17/" class="md-nav__link">
+      <a href="../../../modern-cpp-features/CPP17/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1472,7 +1504,7 @@
   
   
     <li class="md-nav__item">
-      <a href="modern-cpp-features/CPP20/" class="md-nav__link">
+      <a href="../../../modern-cpp-features/CPP20/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1520,37 +1552,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#build" class="md-nav__link">
+  <a href="#why-use-a-vm" class="md-nav__link">
     <span class="md-ellipsis">
-      Build
+      Why Use a VM?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#test" class="md-nav__link">
+  <a href="#vm-setupworkflow" class="md-nav__link">
     <span class="md-ellipsis">
-      Test
+      VM Setup/Workflow
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docs" class="md-nav__link">
-    <span class="md-ellipsis">
-      Docs
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Docs">
+    <nav class="md-nav" aria-label="VM Setup/Workflow">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#resources" class="md-nav__link">
+  <a href="#working-on-your-vm" class="md-nav__link">
     <span class="md-ellipsis">
-      Resources
+      Working on your VM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Tools
     </span>
   </a>
   
@@ -1562,11 +1594,35 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#projects" class="md-nav__link">
+  <a href="#kernel-workflow" class="md-nav__link">
     <span class="md-ellipsis">
-      Projects
+      Kernel Workflow
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Kernel Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#editor-enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Editor enhancements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Web Tools
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1588,35 +1644,95 @@
   
 
 
-<h1 id="c-sandbox">C++ sandbox</h1>
-<p>A collection of C++ code snippets and examples.</p>
-<h2 id="build">Build</h2>
-<p><a href="https://cmake.org/">CMake</a></p>
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mkdir<span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>cmake<span class="w"> </span>..<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>-j<span class="k">$(</span>nproc<span class="k">)</span>
-</span></code></pre></div>
-<h2 id="test">Test</h2>
-<p><a href="https://github.com/catchorg/Catch2">Catch2</a></p>
-<h2 id="docs">Docs</h2>
-<p><a href="https://www.mkdocs.org/">MkDocs</a></p>
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>mkdocs<span class="w"> </span>serve
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># open http:localhost:8000</span>
-</span></code></pre></div>
-<h3 id="resources">Resources</h3>
-<p>There are some cool guides included them as a submodules in this repo so
-they can be easily accessed and updated. The search plugin that comes with
-Material for MkDocs theme can be used to search through all the resources,
-even if they're excluded from the navbar.</p>
+<h1 id="vmkernel-workflow">VM/Kernel Workflow</h1>
+<p>Before we get into the heavier assignments in this course, you should invest
+sometime into setting up a workflow and develop good coding habits.</p>
+<h2 id="why-use-a-vm">Why Use a VM?</h2>
 <ul>
-<li><a href="https://en.cppreference.com/w/">C++ Reference</a></li>
-<li><a href="https://github.com/AnthonyCalandra/modern-cpp-features">Modern C++ Features</a></li>
-<li><a href="https://www.cs.columbia.edu/~jae/3157/">Jae's class</a></li>
-<li><a href="https://www.geeksforgeeks.org/">GeeksforGeeks</a></li>
+<li>Hypervisor: Software responsible for managing VMs (e.g. creation, deletion,
+  resource allocation). In this class, we use VMware.</li>
+<li>Host machine: The hardware running the hypervisor (e.g. your personal laptop)</li>
+<li>
+<p>Virtual machine (VM): A computer system created by the hypervisor that shares
+  resources with the host machine. In this class, we virtualize Debian 11 (a
+  flavor of Linux). VMs adhere to sandbox properties:</p>
+</li>
+<li>
+<p>Isolate the work you'll be doing from the rest of the system</p>
+</li>
+<li>Be able to take snapshots of your development environment so that if it does
+    get corrupted, you can revert to a clean state</li>
 </ul>
-<h2 id="projects">Projects</h2>
+<p>Working on a VM can be preferable to working on your host machine (i.e.
+  "bare-metal"). You can virtualize other operating systems to test your
+  applications. You can work on potentially buggy/dangerous code without
+  compromising your host machine.</p>
 <ul>
-<li>TCP client/server</li>
+<li>Snapshot: A feature most hypervisors support. Capture the current running
+  state of the VM, stores it, and then allows you to revert to that state
+  sometime later. You should snapshot your VM before executing something that
+  can compromise the system.</li>
 </ul>
+<p>In this class, we will often be "hacking" the Linux kernel and attempting to
+boot into those hacked kernels. We need to use VMs since not all of us have a
+Linux host machine. Even if we did, we wouldn't want to ruin our host machines
+with our potentially buggy kernels.</p>
+<h2 id="vm-setupworkflow">VM Setup/Workflow</h2>
+<p>We've already written a series of guides for working on your VM.</p>
+<p>First and foremost, you should have a Debian VM installed already (see <a href="https://cs4118.github.io/dev-guides/debian-vm-setup.html">Debian
+VM Setup</a> for a guide
+on how to do this).</p>
+<h3 id="working-on-your-vm">Working on your VM</h3>
+<p>You have more options than simply working on the VM's graphical interface, which
+often feels clunky.</p>
+<p>The most common workflow involves SSHing into your VM, which we've written a
+<a href="https://cs4118.github.io/dev-guides/vm-ssh.html#ssh-into-your-local-vm">guide</a>
+for. This is a good option if you want to conserve processing power on your host
+machine and disable the VM's graphical interface.</p>
+<p>Alternatively, you can setup an IDE to SSH into your VM. One option is using
+Visual Studio Code, which we've written up some notes (below) on how to use.
+This is a nice alternative to command-line editors like vim/emacs if you're
+not familiar with them.</p>
+<h3 id="additional-tools">Additional Tools</h3>
+<p>If you do decide to work in a command-line environment, here are some tools
+we've used to streamline our workflow:</p>
+<ul>
+<li><code>bat</code>: A better version of <code>cat</code>
+  <a href="https://github.com/sharkdp/bat#on-ubuntu-using-most-recent-deb-packages">(installation)</a></li>
+<li><code>grep</code>: Pattern-match files (learn how to effectively use regexs to improve
+  search results). Even better, <code>ripgrep</code>.</li>
+<li>Reverse-i search: Efficiently search through bash history instead of retyping
+  long commands.</li>
+<li><code>tmux</code>: Terminal multiplexer. (e.g. open 2 panes for vim, 1 for <code>dmesg</code>, 1 for
+  running commands).</li>
+</ul>
+<h2 id="kernel-workflow">Kernel Workflow</h2>
+<h3 id="editor-enhancements">Editor enhancements</h3>
+<p>Before getting into hw4/supermom, please read through one of our kernel developer
+workflow guides. These explain how to set up either <code>vim</code> or VSCode for kernel
+development.</p>
+<ul>
+<li><a href="https://cs4118.github.io/dev-guides/vim-workflow.html">Vim workflow</a>: Here,
+  we offer a bunch of cool <code>vim</code> additions/tricks to help you develop more
+  efficiently while working on the kernel assignments. Note that this guide is
+  only relevant if you intend to work on the command-line using <code>vim</code>. One notable
+  mention here is <code>cscope</code>. This is a kernel-source navigator that works directly
+  in your terminal/vim session. This is far more powerful than using <code>grep</code> to
+  look for a symbol definition/use in the source-tree.</li>
+<li><a href="https://cs4118.github.io/dev-guides/vscode-workflow.html">VSCode workflow</a>:
+  In this guide, we explain how to configure autocomplete, formatting, and
+  various other features for working on the kernel while using VSCode. VSCode
+  is a very powerful editor, and being able to take advantage of its functionality
+  will make your life much easier.</li>
+</ul>
+<h3 id="web-tools">Web Tools</h3>
+<p>If you don't want to use <code>cscope</code>, there's an popular online kernel-source
+navigator: <a href="https://elixir.bootlin.com/linux/v5.10.158/source">bootlin</a>. Note
+that kernel version matters when you're navigating code – be sure you select the
+correct version.</p>
+<p>Like bootlin, you can look for symbols in the kernel-source and look for
+instances of where they are defined and used. However, bootlin doesn't index all
+symbols, so you might have better luck searching with <code>cscope</code>.</p>
 
 
 
@@ -1667,12 +1783,12 @@ even if they're excluded from the navbar.</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.525ec568.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.525ec568.min.js"></script>
       
-        <script src="js/katex.js"></script>
+        <script src="../../../js/katex.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
