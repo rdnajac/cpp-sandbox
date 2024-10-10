@@ -13,25 +13,25 @@
       
       
       
-        <link rel="prev" href="../src_pimpl/">
+        <link rel="prev" href="../bst/">
       
       
-        <link rel="next" href="../codesignal/2-5_consecutive_character_groups/">
+        <link rel="next" href="../http_hashmap/">
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.40">
     
     
       
-        <title>Time Complexity - C++ Sandbox</title>
+        <title>Hashmap - C++ Sandbox</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.8c3ca2c6.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8c3ca2c6.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -52,7 +52,7 @@
     
       <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#time-complexity" class="md-skip">
+        <a href="#hashmap" class="md-skip">
           Skip to content
         </a>
       
@@ -94,7 +94,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="C++ Sandbox" class="md-header__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+    <a href="../.." title="C++ Sandbox" class="md-header__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Time Complexity
+              Hashmap
             
           </span>
         </div>
@@ -227,7 +227,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="C++ Sandbox" class="md-nav__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+    <a href="../.." title="C++ Sandbox" class="md-nav__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -257,7 +257,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -277,7 +277,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../a-tour-of-cpp/" class="md-nav__link">
+      <a href="../../a-tour-of-cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -297,7 +297,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../algorithms/" class="md-nav__link">
+      <a href="../../algorithms/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -317,7 +317,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../src_containers/" class="md-nav__link">
+      <a href="../../src_containers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -337,7 +337,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../src_pimpl/" class="md-nav__link">
+      <a href="../../src_pimpl/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -354,30 +354,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Time Complexity
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../time-complexity/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -386,53 +366,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#big-o-notation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Big-O notation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#common-time-complexities" class="md-nav__link">
-    <span class="md-ellipsis">
-      Common time complexities
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#comparing-time-complexities" class="md-nav__link">
-    <span class="md-ellipsis">
-      Comparing time complexities
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -479,7 +412,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../codesignal/2-5_consecutive_character_groups/" class="md-nav__link">
+      <a href="../../codesignal/2-5_consecutive_character_groups/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -500,7 +433,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../codesignal/3-1_reverse_words/" class="md-nav__link">
+      <a href="../../codesignal/3-1_reverse_words/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -521,7 +454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../codesignal/3-2_string_parsing/" class="md-nav__link">
+      <a href="../../codesignal/3-2_string_parsing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -542,7 +475,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../codesignal/3-3_time_calculation/" class="md-nav__link">
+      <a href="../../codesignal/3-3_time_calculation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -563,7 +496,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../codesignal/3-4_substring_search/" class="md-nav__link">
+      <a href="../../codesignal/3-4_substring_search/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -584,7 +517,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../codesignal/4-1_nested_loops/" class="md-nav__link">
+      <a href="../../codesignal/4-1_nested_loops/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -605,7 +538,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../codesignal/4-2_uraveling_strings/" class="md-nav__link">
+      <a href="../../codesignal/4-2_uraveling_strings/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -626,7 +559,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../codesignal/4-3_obstacle_game/" class="md-nav__link">
+      <a href="../../codesignal/4-3_obstacle_game/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -647,7 +580,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../codesignal/4-4_handling_large_numbers/" class="md-nav__link">
+      <a href="../../codesignal/4-4_handling_large_numbers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -668,7 +601,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../codesignal/5-1_array_traversal/" class="md-nav__link">
+      <a href="../../codesignal/5-1_array_traversal/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -689,7 +622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../codesignal/5-2_string_manipulation/" class="md-nav__link">
+      <a href="../../codesignal/5-2_string_manipulation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -710,7 +643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../codesignal/5-3_string_and_array_operations/" class="md-nav__link">
+      <a href="../../codesignal/5-3_string_and_array_operations/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -731,7 +664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../codesignal/5-4_forest_traversal/" class="md-nav__link">
+      <a href="../../codesignal/5-4_forest_traversal/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -752,7 +685,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../codesignal/5-5_array_manipulation/" class="md-nav__link">
+      <a href="../../codesignal/5-5_array_manipulation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -815,7 +748,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../columbia-os/attribution/" class="md-nav__link">
+      <a href="../../columbia-os/attribution/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -871,7 +804,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../columbia-os/cs4118/" class="md-nav__link">
+      <a href="../../columbia-os/cs4118/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -927,7 +860,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../columbia-os/cs4118/A-Workflow/" class="md-nav__link">
+      <a href="../../columbia-os/cs4118/A-Workflow/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -991,7 +924,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../columbia-os/cs4118/B-Sockets-ServerTesting/" class="md-nav__link">
+      <a href="../../columbia-os/cs4118/B-Sockets-ServerTesting/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1055,7 +988,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../columbia-os/cs4118/C-Linux-Kernel-Dev/" class="md-nav__link">
+      <a href="../../columbia-os/cs4118/C-Linux-Kernel-Dev/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1119,7 +1052,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../columbia-os/cs4118/F-Farfetchd/" class="md-nav__link">
+      <a href="../../columbia-os/cs4118/F-Farfetchd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1160,17 +1093,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
         
           
           <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
@@ -1184,7 +1119,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             Containers
@@ -1198,7 +1133,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../containers/array/" class="md-nav__link">
+      <a href="../array/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1219,7 +1154,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../containers/bst/" class="md-nav__link">
+      <a href="../bst/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1237,10 +1172,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../containers/hashmap/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1249,6 +1193,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -1261,7 +1206,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../containers/http_hashmap/" class="md-nav__link">
+      <a href="../http_hashmap/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1282,7 +1227,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../containers/map/" class="md-nav__link">
+      <a href="../map/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1303,7 +1248,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../containers/strings/" class="md-nav__link">
+      <a href="../strings/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1324,7 +1269,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../containers/vector/" class="md-nav__link">
+      <a href="../vector/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1345,7 +1290,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../containers/vector_traversal/" class="md-nav__link">
+      <a href="../vector_traversal/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1408,7 +1353,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../examples/big_numbers/" class="md-nav__link">
+      <a href="../../examples/big_numbers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1429,7 +1374,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../examples/distances/" class="md-nav__link">
+      <a href="../../examples/distances/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1450,7 +1395,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../examples/qsort/" class="md-nav__link">
+      <a href="../../examples/qsort/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1471,7 +1416,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../examples/strings/" class="md-nav__link">
+      <a href="../../examples/strings/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1492,7 +1437,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../examples/time/" class="md-nav__link">
+      <a href="../../examples/time/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1555,7 +1500,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../modern-cpp-features/" class="md-nav__link">
+      <a href="../../modern-cpp-features/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1576,7 +1521,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../modern-cpp-features/CONTRIBUTING/" class="md-nav__link">
+      <a href="../../modern-cpp-features/CONTRIBUTING/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1597,7 +1542,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../modern-cpp-features/CPP11/" class="md-nav__link">
+      <a href="../../modern-cpp-features/CPP11/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1618,7 +1563,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../modern-cpp-features/CPP14/" class="md-nav__link">
+      <a href="../../modern-cpp-features/CPP14/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1639,7 +1584,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../modern-cpp-features/CPP17/" class="md-nav__link">
+      <a href="../../modern-cpp-features/CPP17/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1660,7 +1605,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../modern-cpp-features/CPP20/" class="md-nav__link">
+      <a href="../../modern-cpp-features/CPP20/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1701,41 +1646,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#big-o-notation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Big-O notation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#common-time-complexities" class="md-nav__link">
-    <span class="md-ellipsis">
-      Common time complexities
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#comparing-time-complexities" class="md-nav__link">
-    <span class="md-ellipsis">
-      Comparing time complexities
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1752,121 +1662,68 @@
   
 
 
-<h1 id="time-complexity">Time Complexity</h1>
-<p>Time complexity is a measure of the amount of time an algorithm takes to
-complete as a function of the size of the input. It is often expressed using
-big-O notation, which describes the upper bound of the time taken by an
-algorithm as a function of the size of the input.</p>
-<h2 id="big-o-notation">Big-O notation</h2>
-<p>Big-O notation describes the upper bound of the time taken by an algorithm as a
-function of the size of the input. It is used to describe the worst-case
-performance of an algorithm. For example, an algorithm with a time complexity
-of O(n) will take at most n steps to complete, where n is the size of the input.</p>
-<div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">{</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<h1 id="hashmap">Hashmap</h1>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unordered_map&gt;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span><span class="n">total</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">total</span><span class="p">;</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="p">}</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="c1">// Creating an unordered_map to store HTTP status codes and their meanings</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">http_status_codes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span><span class="p">{</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;OK&quot;</span><span class="p">},</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="p">{</span><span class="mi">404</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Not Found&quot;</span><span class="p">},</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">        </span><span class="p">{</span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Internal Server Error&quot;</span><span class="p">},</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">        </span><span class="p">{</span><span class="mi">301</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Moved Permanently&quot;</span><span class="p">},</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">        </span><span class="p">{</span><span class="mi">403</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Forbidden&quot;</span><span class="p">}</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="p">};</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="c1">// Using find() to access a specific HTTP status message</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">code_to_find</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">200</span><span class="p">;</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">http_status_codes</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">code_to_find</span><span class="p">);</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">it</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">http_status_codes</span><span class="p">.</span><span class="n">end</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;HTTP Status &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">code_to_find</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">second</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="c1">// Output: &quot;OK&quot;</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;HTTP Status code not found&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">    </span><span class="c1">// Using find() to access a nonexistent HTTP status code</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">nonexistent_code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">999</span><span class="p">;</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">it_nonexistent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">http_status_codes</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">nonexistent_code</span><span class="p">);</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">it_nonexistent</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">http_status_codes</span><span class="p">.</span><span class="n">end</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;HTTP Status &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">nonexistent_code</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">it_nonexistent</span><span class="o">-&gt;</span><span class="n">second</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;HTTP Status code not found&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="c1">// Output: &quot;HTTP Status code not found&quot;</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">    </span><span class="c1">// Looping over the unordered_map to display all HTTP status codes and their meanings</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">All HTTP Status Codes:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">pair</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">http_status_codes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;HTTP Status &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">pair</span><span class="p">.</span><span class="n">first</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">pair</span><span class="p">.</span><span class="n">second</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">    </span><span class="c1">// Additional member functions and operations</span>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">    </span><span class="c1">// Checking the size of the unordered_map</span>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Total number of HTTP status codes: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">http_status_codes</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">    </span><span class="c1">// Checking if a particular key exists</span>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">check_code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">403</span><span class="p">;</span>
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">http_status_codes</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">check_code</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;HTTP Status &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">check_code</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; exists.&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;HTTP Status &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">check_code</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; does not exist.&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>
+</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="w">    </span><span class="c1">// Inserting a new HTTP status code</span>
+</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="w">    </span><span class="n">http_status_codes</span><span class="p">[</span><span class="mi">418</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;I&#39;m a teapot&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Adding an HTTP status code for fun</span>
+</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Added HTTP Status 418: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">http_status_codes</span><span class="p">[</span><span class="mi">418</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>
+</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="w">    </span><span class="c1">// Erasing an HTTP status code</span>
+</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="w">    </span><span class="n">http_status_codes</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="mi">404</span><span class="p">);</span>
+</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Erased HTTP Status 404.&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>
+</span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a><span class="p">}</span>
 </span></code></pre></div>
-<p>The <code>sum</code> function has a time complexity of O(n) because it takes at most n
-steps to complete, where n is the input to the function.</p>
-<h2 id="common-time-complexities">Common time complexities</h2>
-<table>
-<thead>
-<tr>
-<th>Notation</th>
-<th>Name</th>
-<th>Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O(1)</td>
-<td>Constant time</td>
-<td>Accessing an element in an array by index (index arithmetic)</td>
-</tr>
-<tr>
-<td>O(log n)</td>
-<td>Logarithmic time</td>
-<td>Binary search (if the input is sorted)</td>
-</tr>
-<tr>
-<td>O(n)</td>
-<td>Linear time</td>
-<td>Finding the maximum element in an array (one-pass)</td>
-</tr>
-<tr>
-<td>O(n log n)</td>
-<td>Linearithmic time</td>
-<td>Quicksort, mergesort (average case)</td>
-</tr>
-<tr>
-<td>O(n^2)</td>
-<td>Quadratic time</td>
-<td>Bubble sort, selection sort (use of nested loops)</td>
-</tr>
-<tr>
-<td>O(2^n)</td>
-<td>Exponential time</td>
-<td>Recursive Fibonacci calculation</td>
-</tr>
-<tr>
-<td>O(n!)</td>
-<td>Factorial time</td>
-<td>Generating all permutations of a set</td>
-</tr>
-</tbody>
-</table>
-<h2 id="comparing-time-complexities">Comparing time complexities</h2>
-<p>The following table shows how the time complexity of different algorithms
-compares as the size of the input grows.</p>
-<table>
-<thead>
-<tr>
-<th>Input size</th>
-<th>O(log n)</th>
-<th>O(n)</th>
-<th>O(n log n)</th>
-<th>O(n^2)</th>
-<th>O(2^n)</th>
-<th>O(n!)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>10</td>
-<td>3</td>
-<td>10</td>
-<td>30</td>
-<td>100</td>
-<td>1024</td>
-<td>3628800</td>
-</tr>
-<tr>
-<td>100</td>
-<td>7</td>
-<td>100</td>
-<td>664</td>
-<td>10000</td>
-<td>1.27e+30</td>
-<td>9.33e+157</td>
-</tr>
-<tr>
-<td>1000</td>
-<td>10</td>
-<td>1000</td>
-<td>9965</td>
-<td>1000000</td>
-<td>1.07e+301</td>
-<td>4.02e+2567</td>
-</tr>
-</tbody>
-</table>
-<p>You get the idea.</p>
 
 
 
@@ -1917,12 +1774,12 @@ compares as the size of the input grows.</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.525ec568.min.js"></script>
+      <script src="../../assets/javascripts/bundle.525ec568.min.js"></script>
       
-        <script src="../js/katex.js"></script>
+        <script src="../../js/katex.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
