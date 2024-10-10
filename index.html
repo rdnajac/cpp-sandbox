@@ -301,26 +301,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#building-with-cmake" class="md-nav__link">
+  <a href="#build" class="md-nav__link">
     <span class="md-ellipsis">
-      Building with CMake
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Building with CMake">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#testing" class="md-nav__link">
-    <span class="md-ellipsis">
-      Testing
+      Build
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#test" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test
+    </span>
+  </a>
   
 </li>
       
@@ -348,21 +342,6 @@
       Resources
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Resources">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#c-resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      C++ Resources
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1088,26 +1067,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#building-with-cmake" class="md-nav__link">
+  <a href="#build" class="md-nav__link">
     <span class="md-ellipsis">
-      Building with CMake
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Building with CMake">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#testing" class="md-nav__link">
-    <span class="md-ellipsis">
-      Testing
+      Build
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#test" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test
+    </span>
+  </a>
   
 </li>
       
@@ -1136,21 +1109,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Resources">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#c-resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      C++ Resources
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
     </ul>
@@ -1173,29 +1131,24 @@
 
 <h1 id="c-sandbox">C++ sandbox</h1>
 <p>A collection of C++ code snippets and examples.</p>
-<h2 id="building-with-cmake">Building with CMake</h2>
-<p>This project uses CMake to build the examples. To build the project, run the
-following commands:</p>
+<h2 id="build">Build</h2>
+<p><a href="https://cmake.org/">CMake</a></p>
 <div class="language-sh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mkdir<span class="w"> </span>build
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>build
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>cmake<span class="w"> </span>..
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>make
 </span></code></pre></div>
-<h3 id="testing">Testing</h3>
-<p>We use <a href="https://github.com/catchorg/Catch2">Catch2</a> for testing. To run the
-tests, run the following command:</p>
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>
-</span></code></pre></div>
+<h2 id="test">Test</h2>
+<p><a href="https://github.com/catchorg/Catch2">Catch2</a></p>
 <h2 id="projects">Projects</h2>
 <ul>
 <li>TCP client/server</li>
-<li><code>std::chrono</code></li>
 </ul>
 <h2 id="docs"><code>docs/</code></h2>
 <p>Made with <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></p>
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>mkdocs<span class="w"> </span>serve
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>open<span class="w"> </span>http:localhost:8000
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>mkdocs<span class="w"> </span>serve
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>open<span class="w"> </span>http:localhost:8000
 </span></code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1209,13 +1162,11 @@ the ones I've found most helpful here and included them as a submodules
 in this repo so that they can be easily accessed and updated. The search
 plugin that comes with the Material for MkDocs theme can be used to search
 through all the resources at once, even if they're excluded from the nav.</p>
-<p>I found this cool repo called
-and I liked it so much, it's
-built along with the rest of the docs.</p>
-<h3 id="c-resources">C++ Resources</h3>
-<p><a href="https://github.com/AnthonyCalandra/modern-cpp-features">Modern C++ Features</a></p>
-<p>Access it <a href="resources/modern-cpp-features/README.md">here</a>.</p>
-<p>When in doubt, check out the <a href="https://en.cppreference.com/w/">C++ Reference</a>.</p>
+<ul>
+<li><a href="https://en.cppreference.com/w/">C++ Reference</a></li>
+<li><a href="https://github.com/AnthonyCalandra/modern-cpp-features">Modern C++ Features</a></li>
+<li>Access a copy of it <a href="docs/resources/modern-cpp-features/README.md">here</a>.</li>
+</ul>
 
 
 
