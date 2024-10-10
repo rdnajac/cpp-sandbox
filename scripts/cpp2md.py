@@ -1,3 +1,4 @@
+#! /usr/bin/env python3
 import os
 import sys
 import subprocess
@@ -23,12 +24,12 @@ def get_repo_root() -> str:
 REPO_ROOT = get_repo_root()
 DOCSDIR = os.path.join(REPO_ROOT, "docs")
 
+
 def to_title(filename: str) -> str:
     """
     Convert a filename to a title.
     2-5_consecutive_character_groups.cpp -> Consecutive Character Groups
     Drop the prefix, extension, replace underscores with spaces, and title-case the words.
-
 
     Args:
     filename (str): The filename to be converted.
@@ -36,9 +37,29 @@ def to_title(filename: str) -> str:
     Returns:
     str: The title derived from the filename.
     """
+    # Drop the extension
     filename = os.path.splitext(filename)[0]
-    title = " ".join([word.capitalize() for word in filename.split("_")[1:]])
+
+    # Find the start of the title by skipping over non-alpha characters
+    start = 0
+    while start < len(filename) and not filename[start].isalpha():
+        start += 1
+
+    # Replace underscores with spaces and capitalize words
+    title = " ".join(word.capitalize() for word in filename[start:].split("_"))
     return title
+
+
+def test_to_title():
+    CASES = [
+        ("2-5_consecutive_character_groups.cpp", "Consecutive Character Groups"),
+        ("containers.cpp", "Containers"),
+        ("123_example_file.txt", "Example File"),
+        ("--another_example.cpp", "Another Example"),
+    ]
+    for filename, expected in CASES:
+        assert to_title(filename) == expected
+    print("to_title passed")
 
 
 def create_markdown_file(cpp_file_path: str, output_folder: str) -> None:
@@ -81,10 +102,17 @@ def process_folder(input_folder: str) -> None:
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print(f"Usage: python {sys.argv[0]} <input_folder>")
+    if len(sys.argv) < 2:
+        print(f"Usage: python {sys.argv[0]} <input_folder1> [<input_folder2> ...]")
         sys.exit(1)
 
-    input_folder = sys.argv[1]
-    process_folder(input_folder)
+    # If the first argument is --test
+    if sys.argv[1] == "--test":
+        test_to_title()
+        sys.exit(0)
+
+    # Process each input folder provided
+    for input_folder in sys.argv[1:]:
+        process_folder(input_folder)
+
     print("Conversion completed.")

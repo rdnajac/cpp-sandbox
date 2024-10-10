@@ -34,12 +34,8 @@ jobs:
           restore-keys: |
             mkdocs-material-
       - run: pip install -r requirements.txt
-      - name: Add Codesignal practice problems to docs
-        run: python scripts/cpp2md.py src/1337cpp/codesignal
-      - name: Add example problems to docs
-        run: python scripts/cpp2md.py src/1337cpp/examples
-      - name: Add container code to docs
-        run: python scripts/cpp2md.py src/1337cpp/containers
+      - name: Add problems to docs
+        run: python scripts/cpp2md.py src/1337cpp/codesignal src/1337cpp/examples src/containers
       - name: List docs contents
         run: ls -R docs
       - run: mkdocs gh-deploy --force
