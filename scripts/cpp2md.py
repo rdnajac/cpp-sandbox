@@ -23,6 +23,23 @@ def get_repo_root() -> str:
 REPO_ROOT = get_repo_root()
 DOCSDIR = os.path.join(REPO_ROOT, "docs")
 
+def to_title(filename: str) -> str:
+    """
+    Convert a filename to a title.
+    2-5_consecutive_character_groups.cpp -> Consecutive Character Groups
+    Drop the prefix, extension, replace underscores with spaces, and title-case the words.
+
+
+    Args:
+    filename (str): The filename to be converted.
+
+    Returns:
+    str: The title derived from the filename.
+    """
+    filename = os.path.splitext(filename)[0]
+    title = " ".join([word.capitalize() for word in filename.split("_")[1:]])
+    return title
+
 
 def create_markdown_file(cpp_file_path: str, output_folder: str) -> None:
     """
@@ -37,9 +54,9 @@ def create_markdown_file(cpp_file_path: str, output_folder: str) -> None:
     output_file_path = os.path.join(output_folder, f"{filename}.md")
 
     with open(cpp_file_path, "r") as cpp_file:
-        cpp_content = cpp_file.read()
+        source_code = cpp_file.read()
 
-    markdown_content = f"# {filename}\n\n```cpp\n{cpp_content}\n```\n"
+    markdown_content = f"# {to_title(filename)}\n\n```cpp\n{source_code}\n```\n"
 
     with open(output_file_path, "w") as md_file:
         md_file.write(markdown_content)
