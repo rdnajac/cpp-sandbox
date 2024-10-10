@@ -3,6 +3,10 @@ site/
 scratch/
 build/
 cmake-build-debug/
+projects/
+.cache/
+.idea/
+
 
 # Prerequisites
 *.d

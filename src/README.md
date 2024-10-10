@@ -288,3 +288,35 @@ if (result.empty()) {
     return result;
 }
 ```
+
+## Check if a key is in an `unordered_map`
+
+```cpp
+// Using find() to access a book's title
+auto it = library_catalog.find("book1");
+if (it != library_catalog.end())
+    std::cout << it->second << std::endl; // Output: "A Tale of Two Cities"
+else
+    std::cout << "Key not found" << std::endl;
+
+// Using find() to access a nonexistent key
+auto it_nonexistent = library_catalog.find("book100");
+if (it_nonexistent != library_catalog.end())
+    std::cout << it_nonexistent->second << std::endl;
+else
+    std::cout << "Key not found" << std::endl; // Output: "Key not found"
+```
+
+## Lambda Functions
+
+A lambda function is an anonymous function that can capture variables from its
+surrounding scope. It is defined using the following syntax:
+
+```cpp
+[](const auto& a, const auto& b) {
+    return a.second < b.second;
+}
+```
+
+Here, the lambda function takes two arguments `a` and `b` and returns `true` if
+the `second` member of `a` is less than the `second` member of `b`.

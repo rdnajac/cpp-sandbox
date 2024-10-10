@@ -107,3 +107,40 @@ int main() {
     
     return 0;
 }
+
+#if 0
+int main() {
+    std::unordered_map<std::string, int> fruit_basket = {{"apples", 5}, {"bananas", 4}, {"oranges", 8}};
+    // An unordered_map representing our fruit basket
+
+    // Summing the values
+    int total_fruits = 0;
+    for (const auto& pair : fruit_basket) {
+        total_fruits += pair.second;
+    }
+
+    // Finding the maximum value
+    auto max_fruit = std::max_element(fruit_basket.begin(), fruit_basket.end(),
+        [](const auto& a, const auto& b) {
+            return a.second < b.second;
+        })->first;
+    
+    std::cout << "The fruit with the most quantity is: " << max_fruit << std::endl;
+    // It outputs: "The fruit with the most quantity is: oranges"
+
+    // Finding the minimum value
+    auto min_fruit = std::min_element(fruit_basket.begin(), fruit_basket.end(),
+        [](const auto& a, const auto& b) {
+            return a.second < b.second;
+        })->first;
+
+    std::cout << "The fruit with the least quantity is: " << min_fruit << std::endl;
+    // It outputs: "The fruit with the least quantity is: bananas"
+    // Calculating the average
+    double average_fruits = static_cast<double>(total_fruits) / fruit_basket.size();
+    std::cout << "The average number of each type of fruit in the basket is: " << average_fruits << std::endl;
+    // It outputs: "The average number of each type of fruit in the basket is: 5.67"
+
+    return 0;
+}
+#endif

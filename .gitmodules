@@ -2,8 +2,8 @@
 	path = docs/resources/modern-cpp-features
 	url = https://github.com/AnthonyCalandra/modern-cpp-features
 [submodule "gscs/cs4118"]
-	path = gscs/cs4118
+	path = projects/gscs/cs4118
 	url = https://github.com/rdnajac/cs4118
 [submodule "gscs/cs3157"]
-	path = gscs/cs3157
+	path = projects/gscs/cs3157
 	url = https://github.com/rdnajac/cs3157

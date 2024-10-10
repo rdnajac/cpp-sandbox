@@ -23,3 +23,22 @@ std::vector<int> iterateMiddleToEnd(std::vector<int>& numbers) {
 
     return newOrder;
 }
+
+std::vector<int> reverse_traverse(const std::vector<std::vector<int>>& matrix) {
+    int rows = matrix.size();
+    int cols = matrix[0].size();
+    std::vector<int> output;
+
+    for (int row = rows - 1; row >= 0; --row) {
+        for (int col = cols - 1; col >= 0; --col) {
+            output.push_back(matrix[row][col]);
+        }
+    }
+
+    return output;
+}
+
+std::vector<int> counterclockwiseTraversal(std::vector<int>& numbers) {
+    
+
+}

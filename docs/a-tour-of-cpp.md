@@ -74,6 +74,56 @@ Another example:
 for (auto& x : v) x *= 2;
 ```
 
+#### Accessing elements in a vector
+
+##### `for (const auto &element : vector)`
+
+This uses a reference (`&`) to avoid copying the elements.
+The constant qualifier (`const`) ensures that the elements
+are not modified. This is the efficient way to iterate over
+a vector since no additional memory is allocated.
+
+```cpp
+vector<int> some_vector = {1, 2, 3, 4, 5};
+for (const auto &element : some_vector) {
+    cout << element << endl;
+}
+```
+
+> [!IMPORTANT]
+> The `&` in a variable declaration means that the variable is a reference to
+> the object, not a copy of the object itself.
+
+##### `for (auto element : vector)`
+
+This creates a copy of each element in the vector. If the
+elements are large, this can be inefficient. Use a reference
+(`&`) instead to avoid copying.
+
+##### `for (auto &element : vector)`
+
+This allows you to modify the elements of the vector.
+
+```cpp
+vector<int> some_vector = {1, 2, 3, 4, 5};
+for (auto &element : some_vector) {
+    element *= 2;
+}
+cout << "Doubled vector: "; // 2 4 6 8 10
+```
+
+##### `for (auto it = vector.begin(); it != vector.end(); it++)`
+
+This is the traditional way to iterate over a vector by
+declaring an iterator (`it`) that starts at the beginning
+of the vector and increments until it reaches the end.
+
+> [!IMPORTANT]
+> The `end()` function returns an iterator pointing to the
+> element following the last element of the vector, _not_ the
+> last element itself. It is like the memory address one past
+> the end of the vector and should not be dereferenced.
+
 ## User-Defined Types
 
 - Use 'class' to hide representation and provide an interface.
@@ -82,7 +132,7 @@ for (auto& x : v) x *= 2;
 - Consider std::variant as a type-safe alternative to unions.
 - Use user-defined literals for expressive value specification.
 
-### Structures
+### `struct`
 
 Structures group related data elements:
 
@@ -93,7 +143,7 @@ struct DNASequence {
 };
 ```
 
-### Classes
+### `class`
 
 Classes extend structures by adding member functions:
 
@@ -118,7 +168,7 @@ std::cout << "DNA length: " << dna.length() << '\n';
 
 Jump ahead to [Classes](#classes) for more information.
 
-### Enumerations
+### `enum`
 
 Use strongly typed enumerations:
 
@@ -133,7 +183,7 @@ enum class Nucleotide {
 
 Nucleotide base = Nucleotide::A;
 
-### Unions
+### `union`
 
 Modern C++ prefers std::variant over unions:
 
@@ -145,7 +195,7 @@ genetic_info = DNA({Nucleotide::A, Nucleotide::T});
 genetic_info = "ATGC";  // Now contains a string
 ```
 
-### User-Defined Literals:/
+### User-Defined Literals:
 
 Define custom literals:
 
@@ -170,14 +220,10 @@ auto my_dna = "ATGC"_dna;
 
 ### Type Aliases
 
-Use 'using' for type aliases:
-
-using DNAStrand = std::vector<Nucleotide>;
+Use 'using' for type aliases: `using DNAStrand = std::vector<Nucleotide>;`
 
 > [!NOTE]
 > I don't like using these in C because they obscure the type of the variable.
-> However, I don't have enough experience with C++ to know if if this is best
-> practice.
 
 ## Modularity
 
@@ -186,6 +232,79 @@ should be separate. Where modules are supported (C++20), use them!
 
 > [!TIP]
 > Header files should emphasize logical structure.
+
+### Make Your Own `module `std`
+
+If an implementation does not currently support modules or lacks a standard module equivalent,
+we can revert to using traditional headers, which are widely available and standardized.
+The challenge lies in identifying the necessary headers to include.
+
+> [!CAUTION]
+> Modules deliberately don’t export macros.
+> If you need macros, use `#include` instead.
+
+#### `std.h` Header
+
+We can cram all the headers we want into a single header file, `std.h`, then include
+it in our source files, but `#include`ing so much can give very slow compiles [Stroustrup,2021b].
+
+#### `std` "Module"
+
+It includes all necessary headers in the global module fragment (before `export module std;`),
+then exports specific entities from the standard library.
+
+```cpp
+module;
+#include <iostream>
+#include <string>
+#include <vector>
+// ...
+
+export module std;
+export iostream;
+export string;
+export vector;
+// ...
+```
+
+#### Import a header unit
+
+```cpp
+export module std;
+
+export import "iostream";
+export import "string";
+export import "vector";
+// ...
+```
+
+> [!WARNING]
+> This approach has several drawbacks:
+>
+> - It treats each header as a separate module-like entity.
+> - It can inject names into the global namespace.
+> - It may leak macros, which regular modules don't do.
+>
+>   But it's still pretty cool.
+
+#### Actually defining the module
+
+File: `std.cppm` (or std.ixx)
+
+Command:
+
+```sh
+clang++ -std=c++20 -fmodules-ts -c std.cppm
+```
+
+Error:
+
+```console
+std.cppm:8:19: error: using declaration referring to 'cout' with module linkage cannot be exported
+```
+
+> [!WARNING]
+> It looks like we can't export `using` declarations on Apple clang version 15.0.0 (clang-1500.3.9.4)
 
 ### Namespaces
 
@@ -536,9 +655,29 @@ int sum(T... v)
 int x = sum(1, 2, 3, 4, 5);  // x becomes 15
 ```
 
+#### Lambda Functions
+
+```cpp
+[capture](parameters) -> return_type {
+    // function body
+}
+```
+
+| Capture Mode | Description                                             |
+| ------------ | ------------------------------------------------------- |
+| `[]`         | No capture                                              |
+| `[x]`        | Capture `x` by value                                    |
+| `[&x]`       | Capture `x` by reference                                |
+| `[=]`        | Capture all variables by value                          |
+| `[&]`        | Capture all variables by reference                      |
+| `[=, &x]`    | Capture all variables by value, except `x` by reference |
+| `[&, x]`     | Capture all variables by reference, except `x` by value |
+
 ## Concepts and Generic Programming
 
 ### Concepts
+
+###
 
 Concepts define requirements on template arguments,
 enabling better error messages and overload resolution.
@@ -616,10 +755,6 @@ int main() {
 Provides the most common fundamental data structures together with
 the fundamental algorithms used on them.
 
-> [!TIP]
-> There are no standard library modules for C++20, but check out
-> [Make Your Own `module std`](https://youtu.be/dQw4w9WgXcQ) for a workaround.
-
 ## Strings and Regular Expressions
 
 - strings
@@ -658,6 +793,25 @@ Use `push_back` to append to the end of a vector:
 v.push_back(7);
 ```
 
+### find
+
+```cpp
+void find_example() {
+  std::vector<int> v = {1, 2, 3, 4, 5};
+  // parameters:
+  // 1. begin iterator
+  // 2. end iterator
+  // 3. value to find
+  auto it = std::find(v.begin(), v.end(), 3);
+  if (it != v.end()) {
+    std::cout << "Found: " << *it << std::endl;
+  } else {
+    std::cout << "Not found" << std::endl;
+  }
+}
+
+```
+
 #### find and insert after
 
 Use `std::find` to find a value in a vector:
@@ -678,13 +832,108 @@ if (it != v.end()) {
 
 ## Algorithms
 
+In addition to the containers themselves, the standard library provides a set of
+algorithms that operate on them (like printing, searching, sorting, extracting,
+subsets, etc.). These algorithms are designed to be efficient
+and correct for all standard containers.
+
 ### Iterators
 
-Example:
+Iterators are objects that provide sequential access to container elements
+without exposing the underlying structure. Essential for efficient manipulation
+of data in C++ Standard Library containers.
 
-- use of predicates
-- algorithm overview
-- parallel algorithms
+1. Input Iterators: Read-only access.
+2. Output Iterators: Write-only access.
+3. Forward Iterators: Read and write, single-pass.
+4. Bidirectional Iterators: Move both forward and backward.
+5. Random-Access Iterators: Move to any element in constant time.
+
+#### Using Iterators with std::vector
+
+- Traversal: Use `begin()` to get an iterator to the first element and `end()` for the past-the-last element.
+- Incrementing and Dereferencing:
+  - `++it`: Move to the next element.
+  - `*it`: Access the value at the current iterator position.
+
+```cpp
+std::vector<int> numbers = {1, 2, 3, 4, 5};
+for (auto it = numbers.begin(); it != numbers.end(); ++it) {
+    std::cout << *it << " "; // Output: 1 2 3 4 5
+}
+```
+
+#### Modifying Elements with Iterators
+
+Modify vector elements directly via iterators:
+
+```cpp
+for (auto it = numbers.begin(); it != numbers.end(); ++it) {
+    *it *= 2; // Doubles each element
+}
+```
+
+#### Reverse Iterators
+
+Use `rbegin()` and `rend()` to traverse in reverse:
+
+```cpp
+for (auto rit = numbers.rbegin(); rit != numbers.rend(); ++rit) {
+    std::cout << *rit << " "; // Output: 5 4 3 2 1
+}
+```
+
+### STL Algorithms
+
+STL algorithms are a collection of functions provided by the Standard
+Template Library (STL) in C++. They perform common operations on sequences
+of data, saving time and effort by leveraging well-tested and optimized
+operations for tasks like searching, sorting, and transforming data.
+
+Commonly used STL algorithms include:
+
+- `std::for_each`: Applies a function to a range of elements.
+- `std::sort`: Sorts a range of elements.
+- `std::find`: Searches for a value in a range of elements.
+
+#### `std::for_each`
+
+```cpp
+std::for_each(InputIterator first, InputIterator last, Function fn);
+```
+
+- `InputIterator first`: An iterator pointing to the start of the range.
+- `InputIterator last`: An iterator pointing to one past the end of the range.
+- `Function fn`: A function or function object (often a lambda) to apply to the elements in the range.
+
+> [!IMPORTANT]
+> Lambda functions are a concise way to define small functions inline.
+> The syntax is `[] (parameters) { body }`.
+> where the `[]` captures variables from the enclosing scope and parameters are
+> passed to the lambda.
+
+````cpp
+
+
+#### `std::sort`
+
+```cpp
+std::sort(RandomAccessIterator first, RandomAccessIterator last);
+````
+
+- `RandomAccessIterator first`: An iterator pointing to the start of the range.
+- `RandomAccessIterator last`: An iterator pointing to one past the end of the
+  range.
+
+#### `std::find`
+
+```cpp
+std::find(InputIterator first, InputIterator last, const T& value);
+```
+
+- `InputIterator first`: An iterator pointing to the start of the range.
+- `InputIterator last`: An iterator pointing to one past the end of the range.
+- `const T& value`: The value to search for in the range.
 
 ## Ranges
 

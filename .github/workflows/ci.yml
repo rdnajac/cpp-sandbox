@@ -21,18 +21,8 @@ jobs:
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-      - name: Create symlinks for README files (up to 2 levels deep)
-        run: |
-          cd docs
-          ln -sf ../README.md index.md
-          for readme in ../*/README.md ../*/*/README.md; do
-            if [ -f "$readme" ]; then
-              dir=$(dirname "$readme")
-              rel_path=${dir#../}
-              link_name=$(echo "$rel_path" | tr '/' '_' | tr '[:upper:]' '[:lower:]').md
-              ln -sf "$readme" "$link_name"
-            fi
-          done
+      - name: Create symlinks for READMEs
+        run: bash scripts/symlink-readmes.sh
       - uses: actions/setup-python@v5
         with:
           python-version: 3.x
@@ -44,8 +34,8 @@ jobs:
           restore-keys: |
             mkdocs-material-
       - run: pip install -r requirements.txt
-      - name: Convert C++ files to Markdown
-        run: python scripts/convert.py src/codesignal docs
+      - name: Add Codesignal practice problems to docs
+        run: python scripts/convert.py src/1337cpp/codesignal docs
       - name: List docs contents
         run: ls -R docs
       - run: mkdocs gh-deploy --force
