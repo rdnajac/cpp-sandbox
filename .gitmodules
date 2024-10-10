@@ -7,3 +7,6 @@
 [submodule "gscs/cs3157"]
 	path = projects/gscs/cs3157
 	url = https://github.com/rdnajac/cs3157
+[submodule "docs/columbia-os/cs4118"]
+	path = docs/columbia-os/cs4118
+	url = https://github.com/rdnajac/cs4118

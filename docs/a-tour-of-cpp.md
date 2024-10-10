@@ -35,84 +35,52 @@ Stroustrup, B. (2022). A Tour of C++ (C++ In-Depth Series) (3rd ed.). Addison-We
 ## The Basics
 
 ```cpp
+#include <iostream>
+#include <vector>
 using namespace std;    // make names from std visible without std::
-```
 
-### Variables
+int main() {
+i   // Use `auto` to let the compiler deduce the type of a variable
+    auto i = 7;     // i is an int
+    auto d = 1.2;   // d is a double
+    auto qq {true}; // qq is a bool
 
-Use `auto` to let the compiler deduce the type of a variable
-unless there is a specific reason to specify the type.
+    // Use `const` and `constexpr` to define constants instead of `#define`
+    // because they have type and scope
+    const double pi = 3.14159;          // #define PI 3.14159
+    const double area(double radius) { return pi * radius * radius; }
+    // #define AREA(r) (PI*(r)*(r))
 
-```cpp
-auto i = 7;     // i is an int
-auto d = 1.2;   // d is a double
-auto qq {true}; // qq is a bool
-```
 
-### Constants
+    // a "range-`for`-statement" traverses a sequence in the simplest way:
+    vector<int> v = {0, 1, 2, 3, 4, 5};
+    for (auto x : v) cout << x << endl;
 
-Use `const` to define a constant. Use `constexpr` for a constant expression.
-For example:
-
-```cpp
-constexpr double square(double x) { return x*x; }
-```
-
-### Loops
-
-A "range-`for`-statement" traverses a sequence in the simplest way:
-
-```cpp
-int v[] = {0, 1, 2, 3, 4, 5};
-
-for (auto x : v) cout << x << '\n';
-```
-
-Another example:
-
-```cpp
-for (auto& x : v) x *= 2;
-```
-
-#### Accessing elements in a vector
-
-##### `for (const auto &element : vector)`
-
-This uses a reference (`&`) to avoid copying the elements.
-The constant qualifier (`const`) ensures that the elements
-are not modified. This is the efficient way to iterate over
-a vector since no additional memory is allocated.
-
-```cpp
-vector<int> some_vector = {1, 2, 3, 4, 5};
-for (const auto &element : some_vector) {
-    cout << element << endl;
+    return 0;
 }
 ```
 
-> [!IMPORTANT]
+### Accessing elements in a vector within a loop
+
+| Syntax                               | Description                                  |
+| ------------------------------------ | -------------------------------------------- |
+| `for (auto element : vector)`        | Creates a copy of each element in the vector |
+| `for (auto &element : vector)`       | Allows you to modify the elements of the     |
+| `for (const auto &element : vector)` | Efficient way to iterate over a vector       |
+| vector                               |
+
+> [!NOTE]
 > The `&` in a variable declaration means that the variable is a reference to
-> the object, not a copy of the object itself.
+> the object, not a copy of the object itself. The `const` qualifier ensures
+> that the elements are not modified.
 
-##### `for (auto element : vector)`
-
-This creates a copy of each element in the vector. If the
-elements are large, this can be inefficient. Use a reference
-(`&`) instead to avoid copying.
-
-##### `for (auto &element : vector)`
-
-This allows you to modify the elements of the vector.
+#### Using iterators
 
 ```cpp
-vector<int> some_vector = {1, 2, 3, 4, 5};
-for (auto &element : some_vector) {
-    element *= 2;
+for (auto it = vector.begin(); it != vector.end(); it++) {
+    cout << *it << endl;  // Dereference the iterator to get the value
 }
-cout << "Doubled vector: "; // 2 4 6 8 10
 ```
-
-##### `for (auto it = vector.begin(); it != vector.end(); it++)`
 
 This is the traditional way to iterate over a vector by
 declaring an iterator (`it`) that starts at the beginning
@@ -123,6 +91,8 @@ of the vector and increments until it reaches the end.
 > element following the last element of the vector, _not_ the
 > last element itself. It is like the memory address one past
 > the end of the vector and should not be dereferenced.
+
+Jump ahead to [Iterators](#iterators) for more information.
 
 ## User-Defined Types
 
@@ -233,79 +203,6 @@ should be separate. Where modules are supported (C++20), use them!
 > [!TIP]
 > Header files should emphasize logical structure.
 
-### Make Your Own `module `std`
-
-If an implementation does not currently support modules or lacks a standard module equivalent,
-we can revert to using traditional headers, which are widely available and standardized.
-The challenge lies in identifying the necessary headers to include.
-
-> [!CAUTION]
-> Modules deliberately don’t export macros.
-> If you need macros, use `#include` instead.
-
-#### `std.h` Header
-
-We can cram all the headers we want into a single header file, `std.h`, then include
-it in our source files, but `#include`ing so much can give very slow compiles [Stroustrup,2021b].
-
-#### `std` "Module"
-
-It includes all necessary headers in the global module fragment (before `export module std;`),
-then exports specific entities from the standard library.
-
-```cpp
-module;
-#include <iostream>
-#include <string>
-#include <vector>
-// ...
-
-export module std;
-export iostream;
-export string;
-export vector;
-// ...
-```
-
-#### Import a header unit
-
-```cpp
-export module std;
-
-export import "iostream";
-export import "string";
-export import "vector";
-// ...
-```
-
-> [!WARNING]
-> This approach has several drawbacks:
->
-> - It treats each header as a separate module-like entity.
-> - It can inject names into the global namespace.
-> - It may leak macros, which regular modules don't do.
->
->   But it's still pretty cool.
-
-#### Actually defining the module
-
-File: `std.cppm` (or std.ixx)
-
-Command:
-
-```sh
-clang++ -std=c++20 -fmodules-ts -c std.cppm
-```
-
-Error:
-
-```console
-std.cppm:8:19: error: using declaration referring to 'cout' with module linkage cannot be exported
-```
-
-> [!WARNING]
-> It looks like we can't export `using` declarations on Apple clang version 15.0.0 (clang-1500.3.9.4)
-
 ### Namespaces
 
 Namespaces help prevent name collisions and organize code:
@@ -333,6 +230,11 @@ Use namespaces to group related functionality and avoid polluting the global nam
 
 Modules (C++20) offer better encapsulation and faster compilation than header files:
 
+- Faster compilation (parsed once, not per translation unit)
+- No need for include guards
+- Better control over what's exported
+- Fewer macro-related issues
+
 ```cpp
 // genetics.ixx
 export module genetics;
@@ -351,12 +253,78 @@ import genetics;
 genetics::DNA myDNA;
 ```
 
-Benefits:
+#### Make Your Own `module std`
 
-- Faster compilation (parsed once, not per translation unit)
-- No need for include guards
-- Better control over what's exported
-- Fewer macro-related issues
+If an implementation does not currently support modules or lacks a standard module equivalent,
+we can revert to using traditional headers, which are widely available and standardized.
+The challenge lies in identifying the necessary headers to include.
+
+> [!CAUTION]
+> Modules deliberately don’t export macros.
+> If you need macros, use `#include` instead.
+
+##### `std.h` Header
+
+We can cram all the headers we want into a single header file, `std.h`, then include
+it in our source files, but `#include`ing so much can give very slow compiles [Stroustrup,2021b].
+
+##### `std` "Module"
+
+It includes all necessary headers in the global module fragment (before `export module std;`),
+then exports specific entities from the standard library.
+
+```cpp
+module;
+#include <iostream>
+#include <string>
+#include <vector>
+// ...
+
+export module std;
+export iostream;
+export string;
+export vector;
+// ...
+```
+
+##### Import a header unit
+
+```cpp
+export module std;
+
+export import "iostream";
+export import "string";
+export import "vector";
+// ...
+```
+
+> [!WARNING]
+> This approach has several drawbacks:
+>
+> - It treats each header as a separate module-like entity.
+> - It can inject names into the global namespace.
+> - It may leak macros, which regular modules don't do.
+>
+>   But it's still pretty cool.
+
+##### Actually defining the module
+
+File: `std.cppm` (or `std.ixx`)
+
+Command:
+
+```sh
+clang++ -std=c++20 -fmodules-ts -c std.cppm
+```
+
+Error:
+
+```console
+std.cppm:8:19: error: using declaration referring to 'cout' with module linkage cannot be exported
+```
+
+> [!WARNING]
+> It looks like we can't export `using` declarations on Apple clang version 15.0.0 (clang-1500.3.9.4)
 
 ## Error Handling
 
@@ -387,12 +355,6 @@ public:
 - assertions
 
 ## Classes
-
-Three important kinds of C++ classes are:
-
-- concrete types
-- abstract types
-- virtual functions
 
 ### Concrete Types
 
@@ -472,6 +434,12 @@ class Vector_container : public Container {
 
 > [!NOTE]
 > We use override to indicate that we are overriding a virtual function.
+
+### Virtual Functions
+
+A virtual function is a member function that can be overridden in a derived class.
+They are used to achieve polymorphism, where a pointer or reference to a base
+class can refer to objects of its derived classes.
 
 ## Essential Operations
 
@@ -657,11 +625,23 @@ int x = sum(1, 2, 3, 4, 5);  // x becomes 15
 
 #### Lambda Functions
 
+A lambda function is an anonymous function that can capture variables from its
+surrounding scope. It is defined using the following syntax:
+
 ```cpp
+// template
 [capture](parameters) -> return_type {
     // function body
 }
+
+// example
+[](const auto& a, const auto& b) {
+    return a.second < b.second;
+}
 ```
+
+Here, the lambda function takes two arguments `a` and `b` and returns `true` if
+the `second` member of `a` is less than the `second` member of `b`.
 
 | Capture Mode | Description                                             |
 | ------------ | ------------------------------------------------------- |
@@ -676,8 +656,6 @@ int x = sum(1, 2, 3, 4, 5);  // x becomes 15
 ## Concepts and Generic Programming
 
 ### Concepts
-
-###
 
 Concepts define requirements on template arguments,
 enabling better error messages and overload resolution.
@@ -750,16 +728,129 @@ int main() {
 }
 ```
 
-## Standard-Library
+## Standard Library
 
 Provides the most common fundamental data structures together with
 the fundamental algorithms used on them.
 
 ## Strings and Regular Expressions
 
-- strings
-- string views
-- regular expressions
+C++ has its own string type, `std::string`, which is a part of the standard
+library and is not the same as a `char*` we see in C.
+
+### Strings
+
+#### Initialization and Basic Operations
+
+```cpp
+string s = "hello";
+size_t len = s.length();
+char first = s[0];
+s += " world";  // concatenation, s = "hello world"
+
+// get a substring
+string sub = s.substr(1, 5);  // sub = "ello"
+```
+
+#### Conversions
+
+```cpp
+// use functions from <string>
+int num = stoi("123");
+string str = to_string(123);
+```
+
+> [!TIP]
+> These functions throw exceptions if the conversion fails.
+
+#### Splitting strings
+
+Use `std: istringstream` to split a whitespace-separated string into tokens:
+
+```cpp
+string s = "Hello, world!";
+istringstream iss(s);
+string token;
+while (iss >> token) {
+    cout << token << endl;
+}
+```
+
+Use `std::getline()` to split a string by another delimiter:
+
+```cpp
+string time = "12:34:56";
+int seconds = 10;
+stringstream ss(time);
+string item;
+vector<int> time_parts;
+
+while (getline(ss, item, ':')) {
+    time_parts.push_back(stoi(item));
+}
+```
+
+#### More string manipulations
+
+##### Formatting output
+
+Use an output string stream to concatenate strings.
+
+```cpp
+ostringstream oss;
+os << setfill('0') << setw(2) << hours << ":" << setw(2) <<
+minutes << ":" << setw(2) << seconds;
+string result = os.str();
+```
+
+> [!NOTE]
+> The `setfill()` and `setw()` manipulators from the `<iomanip>`
+> header are used to set the fill character and the width of the output field.
+
+##### Trimming whitespace
+
+Use the `std::string::find_first_not_of()` and
+`std::string::find_last_not_of()` functions to trim leading/trailing whitespace.
+
+```cpp
+// Trim any leading or trailing spaces
+t1.erase(0, t1.find_first_not_of(' '));
+t1.erase(t1.find_last_not_of(' ') + 1);
+```
+
+##### Find and Replace
+
+```cpp
+std::string replace_substring(const std::string& text, const std::string& old, const std::string& newSubstr) {
+    string result = text;
+    size_t pos = 0;
+
+    while ((pos = result.find(old, pos)) != std::string::npos) {
+        result.replace(pos, old.length(), newSubstr);
+        pos += newSubstr.length(); // Move past the new substring
+    }
+    return result;
+}
+```
+
+##### Reverse a string
+
+```cpp
+// reverse a string in place using two pointers
+for (auto i = 0; i < s.size() / 2; i++) {
+    swap(s[i], s[n - i - 1]);
+}
+
+// or use the reverse function
+reverse(s.begin(), s.end());
+
+// or use the reverse iterator with the constructor
+string reversed(s.rbegin(), s.rend());
+```
+
+### `std::string_view`
+
+### Regular Expressions in C++
 
 ## Input and Output
 
@@ -772,28 +863,35 @@ the fundamental algorithms used on them.
 
 ## Containers
 
-### vector
-
-#### insert
-
-Insert expects an iterator and a value to insert:
+### Vectors
 
 ```cpp
-v.insert(v.begin() + 2, 5); // insert 5 at position 2
+// reverse a vector
+reverse(vec.begin(), vec.end());
+
+// copy with simple assignment
+vector<int> vec_copy = vec;
+
+// append a vector to another vector
+vec1.insert(vec1.end(), vec2.begin(), vec2.end());
+
+// sort a vector
+sort(vec.begin(), vec.end());
+
+// sort a vector of pairs by the first element
+sort(vec.begin(), vec.end(), [](const pair<int, int>& a, const pair<int, int>& b) {
+    return a.first < b.first;
+});
+
+// Custom comparator
+sort(vec.begin(), vec.end(), [](int a, int b) { return a > b; });
+
+// binary search
+bool found = binary_search(vec.begin(), vec.end(), target);
+auto it = lower_bound(vec.begin(), vec.end(), target);
 ```
 
-Use `v.begin()` to get an iterator to the beginning of the vector,
-then add an offset to get the desired position.
-
-#### append to end
-
-Use `push_back` to append to the end of a vector:
-
-```cpp
-v.push_back(7);
-```
-
-### find
+#### find
 
 ```cpp
 void find_example() {
@@ -823,12 +921,55 @@ if (it != v.end()) {
 }
 ```
 
+### Maps and Sets
+
+```
+unordered_map<int, int> map;
+map[key] = value;
+if (map.count(key)) { /* key exists */ }
+
+unordered_set<int> set;
+set.insert(value);
+if (set.count(value)) { /* value exists */ }
+```
+
+### Queue
+
+```
+queue<int> q;
+q.push(1);
+int front = q.front();
+q.pop();
+```
+
+### Stack
+
+```
+stack<int> s;
+s.push(1);
+int top = s.top();
+s.pop();
+```
+
+### Priority Queue (Heap)
+
+```
+// Max heap
+priority_queue<int> maxHeap;
+
+// Min heap
+priority_queue<int, vector<int>, greater<int>> minHeap;
+
+maxHeap.push(1);
+int top = maxHeap.top();
+maxHeap.pop();
+```
+
 - `list`
 - `forward_list`
 - `map`
 - `unordered_map`
 - allocators
-- container overview
 
 ## Algorithms
 

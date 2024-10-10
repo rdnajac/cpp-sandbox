@@ -7,43 +7,35 @@ A collection of C++ code snippets and examples.
 [CMake](https://cmake.org/)
 
 ```sh
-mkdir build
-cd build
-cmake ..
-make
+mkdir build && cd build && cmake .. && make -j$(nproc)
 ```
 
 ## Test
 
 [Catch2](https://github.com/catchorg/Catch2)
 
-## Projects
+## Docs
 
-- TCP client/server
-
-## `docs/`
-
-Made with [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/)
+[MkDocs](https://www.mkdocs.org/)
 
 ```sh
 pip install -r requirements.txt
 mkdocs serve
-open http:localhost:8000
+# open http:localhost:8000
 ```
 
-> [!NOTE]
-> Each subdirectory in this repository contains a `README.md` file that is
-> symlinked to the `docs/` directory so that the markdown is compiled into
-> an HTML page that can be viewed in a browser with the rest of the docs.
+### Resources
 
-## Resources
-
-There are a lot of cool guides and resources out there and I've compiled
-the ones I've found most helpful here and included them as a submodules
-in this repo so that they can be easily accessed and updated. The search
-plugin that comes with the Material for MkDocs theme can be used to search
-through all the resources at once, even if they're excluded from the nav.
+There are some cool guides included them as a submodules in this repo so
+they can be easily accessed and updated. The search plugin that comes with
+Material for MkDocs theme can be used to search through all the resources,
+even if they're excluded from the navbar.
 
 - [C++ Reference](https://en.cppreference.com/w/)
 - [Modern C++ Features](https://github.com/AnthonyCalandra/modern-cpp-features)
-  - Access a copy of it [here](docs/resources/modern-cpp-features/README.md).
+- [Jae's class](https://www.cs.columbia.edu/~jae/3157/)
+- [GeeksforGeeks](https://www.geeksforgeeks.org/)
+
+## Projects
+
+- TCP client/server

@@ -1,5 +1,46 @@
 # Algorithms
 
+## Sorting
+
+### The C standard library's `qsort` function
+
+> The `qsort()` function is a modified partition-exchange sort, or quicksort.
+
+```c
+#include <stdlib.h>
+
+void
+qsort(void *base, size_t nel, size_t width,
+    int (*compar)(const void *, const void *));
+```
+
+#### `compar` function
+
+The `compar` function is a user-supplied function that returns an integer
+less than, equal to, or greater than zero if the first argument is
+considered to be respectively less than, equal to, or greater than the second.
+
+```c
+int compar(const void *a, const void *b)
+{
+    return *(int *)a - *(int *)b;
+}
+```
+
+Here, the `compar` function compares dereferenced pointers-to-integers
+and returns the difference between the two values. If the difference is
+negative, the first argument is considered less than the second. If the
+difference is zero, the two arguments are considered equal.
+
+> [!NOTE]
+> The time complexity of quicksort is O(n log n) on average, but O(n^2) in the
+> worst case. The space complexity is O(log n) on average, but O(n) in the worst case.
+
+### Sorting in C++
+
+The C++ standard library provides a `sort()` function that is implemented using
+a hybrid sorting algorithm, which often includes quicksort as one of its components.
+
 ## Manhatan Distance
 
 The Manhattan distance between two arrays, `a` and `b`, of size `n`,
@@ -85,5 +126,87 @@ std::pair<std::vector<int>, int> solution(const std::vector<int>& array1, const 
     // Apply the best rotation
     std::rotate(rotated.begin(), rotated.begin() + min_rotation, rotated.end());
     return std::make_pair(rotated, min_distance);
+}
+```
+
+## More Useful Algorithms
+
+### Two Pointers
+
+```cpp
+int left = 0, right = n - 1;
+while (left < right) {
+    // Process elements
+    left++;
+    right--;
+}
+```
+
+### Sliding Window
+
+```cpp
+int left = 0, right = 0;
+while (right < n) {
+    // Expand window
+    // Process window
+    while (condition) {
+        // Shrink window
+        left++;
+    }
+    right++;
+}
+```
+
+## Tree Traversal
+
+```cpp
+struct TreeNode {
+    int val;
+    TreeNode* left;
+    TreeNode* right;
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+};
+
+// DFS Traversal
+void dfs(TreeNode* root) {
+    if (root == nullptr) return;
+    // Process root->val
+    dfs(root->left);
+    dfs(root->right);
+}
+```
+
+### Depth-First Search (DFS)
+
+```cpp
+void dfs(vector<vector<int>>& graph, int node, vector<bool>& visited) {
+    if (visited[node]) return;
+    visited[node] = true;
+    // Process node
+    for (int neighbor : graph[node]) {
+        dfs(graph, neighbor, visited);
+    }
+}
+```
+
+### Breadth-First Search (BFS)
+
+```cpp
+void bfs(vector<vector<int>>& graph, int start) {
+    queue<int> q;
+    vector<bool> visited(graph.size(), false);
+    q.push(start);
+    visited[start] = true;
+    while (!q.empty()) {
+        int node = q.front();
+        q.pop();
+        // Process node
+        for (int neighbor : graph[node]) {
+            if (!visited[neighbor]) {
+                q.push(neighbor);
+                visited[neighbor] = true;
+            }
+        }
+    }
 }
 ```
