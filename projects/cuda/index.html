@@ -13,25 +13,25 @@
       
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../../modern-cpp-features/CPP20/">
       
       
-        <link rel="next" href="../B-Sockets-ServerTesting/">
+        <link rel="next" href="../galois/">
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.40">
     
     
       
-        <title>VM/Kernel Workflow - C++ Sandbox</title>
+        <title>CUDA - C++ Sandbox</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.8c3ca2c6.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8c3ca2c6.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -52,7 +52,7 @@
     
       <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#vmkernel-workflow" class="md-skip">
+        <a href="#cuda" class="md-skip">
           Skip to content
         </a>
       
@@ -94,7 +94,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="C++ Sandbox" class="md-header__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+    <a href="../.." title="C++ Sandbox" class="md-header__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              VM/Kernel Workflow
+              CUDA
             
           </span>
         </div>
@@ -227,7 +227,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="C++ Sandbox" class="md-nav__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+    <a href="../.." title="C++ Sandbox" class="md-nav__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -257,7 +257,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -277,7 +277,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../a-tour-of-cpp/" class="md-nav__link">
+      <a href="../../a-tour-of-cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -297,7 +297,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../algorithms/" class="md-nav__link">
+      <a href="../../algorithms/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -317,27 +317,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../projects_cuda/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    CUDA
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../src_containers/" class="md-nav__link">
+      <a href="../../containers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -357,7 +337,27 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../src_pimpl/" class="md-nav__link">
+      <a href="../../math/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Math in C++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pImpl/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -377,7 +377,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../time-complexity/" class="md-nav__link">
+      <a href="../../time-complexity/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -432,7 +432,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../codesignal/2-5_consecutive_character_groups/" class="md-nav__link">
+      <a href="../../codesignal/2-5_consecutive_character_groups/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -453,7 +453,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../codesignal/3-1_reverse_words/" class="md-nav__link">
+      <a href="../../codesignal/3-1_reverse_words/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -474,7 +474,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../codesignal/3-2_string_parsing/" class="md-nav__link">
+      <a href="../../codesignal/3-2_string_parsing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -495,7 +495,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../codesignal/3-3_time_calculation/" class="md-nav__link">
+      <a href="../../codesignal/3-3_time_calculation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -516,7 +516,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../codesignal/3-4_substring_search/" class="md-nav__link">
+      <a href="../../codesignal/3-4_substring_search/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -537,7 +537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../codesignal/4-1_nested_loops/" class="md-nav__link">
+      <a href="../../codesignal/4-1_nested_loops/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -558,7 +558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../codesignal/4-2_uraveling_strings/" class="md-nav__link">
+      <a href="../../codesignal/4-2_uraveling_strings/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -579,7 +579,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../codesignal/4-3_obstacle_game/" class="md-nav__link">
+      <a href="../../codesignal/4-3_obstacle_game/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -600,7 +600,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../codesignal/4-4_handling_large_numbers/" class="md-nav__link">
+      <a href="../../codesignal/4-4_handling_large_numbers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -621,7 +621,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../codesignal/5-1_array_traversal/" class="md-nav__link">
+      <a href="../../codesignal/5-1_array_traversal/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -642,7 +642,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../codesignal/5-2_string_manipulation/" class="md-nav__link">
+      <a href="../../codesignal/5-2_string_manipulation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -663,7 +663,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../codesignal/5-3_string_and_array_operations/" class="md-nav__link">
+      <a href="../../codesignal/5-3_string_and_array_operations/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -684,7 +684,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../codesignal/5-4_forest_traversal/" class="md-nav__link">
+      <a href="../../codesignal/5-4_forest_traversal/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -705,7 +705,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../codesignal/5-5_array_manipulation/" class="md-nav__link">
+      <a href="../../codesignal/5-5_array_manipulation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -730,36 +730,34 @@
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
         
           
           <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
             
   
   <span class="md-ellipsis">
-    Columbia os
+    Containers
   </span>
   
 
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
-            Columbia os
+            Containers
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -770,11 +768,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../attribution/" class="md-nav__link">
+      <a href="../../containers/array/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Columbia OS Dev Guide
+    Array
   </span>
   
 
@@ -783,43 +781,6 @@
   
 
               
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Cs4118
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_9_2">
-            <span class="md-nav__icon md-icon"></span>
-            Cs4118
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -828,11 +789,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../containers/bst/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    cs4118 Recitations
+    Bst
   </span>
   
 
@@ -841,222 +802,6 @@
   
 
               
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2_2" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_9_2_2" id="__nav_9_2_2_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    A Workflow
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_2_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_9_2_2">
-            <span class="md-nav__icon md-icon"></span>
-            A Workflow
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    VM/Kernel Workflow
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    VM/Kernel Workflow
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#why-use-a-vm" class="md-nav__link">
-    <span class="md-ellipsis">
-      Why Use a VM?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vm-setupworkflow" class="md-nav__link">
-    <span class="md-ellipsis">
-      VM Setup/Workflow
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="VM Setup/Workflow">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#working-on-your-vm" class="md-nav__link">
-    <span class="md-ellipsis">
-      Working on your VM
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#additional-tools" class="md-nav__link">
-    <span class="md-ellipsis">
-      Additional Tools
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#kernel-workflow" class="md-nav__link">
-    <span class="md-ellipsis">
-      Kernel Workflow
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Kernel Workflow">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#editor-enhancements" class="md-nav__link">
-    <span class="md-ellipsis">
-      Editor enhancements
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#web-tools" class="md-nav__link">
-    <span class="md-ellipsis">
-      Web Tools
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_9_2_3" id="__nav_9_2_3_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    B Sockets ServerTesting
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_2_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_2_3">
-            <span class="md-nav__icon md-icon"></span>
-            B Sockets ServerTesting
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -1065,11 +810,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../B-Sockets-ServerTesting/" class="md-nav__link">
+      <a href="../../containers/hashmap/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Sockets and Server Testing
+    Hashmap
   </span>
   
 
@@ -1078,49 +823,6 @@
   
 
               
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_9_2_4" id="__nav_9_2_4_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    C Linux Kernel Dev
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_2_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_2_4">
-            <span class="md-nav__icon md-icon"></span>
-            C Linux Kernel Dev
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -1129,11 +831,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../C-Linux-Kernel-Dev/" class="md-nav__link">
+      <a href="../../containers/http_hashmap/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Linux Kernel Development
+    Http Hashmap
   </span>
   
 
@@ -1142,49 +844,6 @@
   
 
               
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_9_2_5" id="__nav_9_2_5_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    F Farfetchd
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_2_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_2_5">
-            <span class="md-nav__icon md-icon"></span>
-            F Farfetchd
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -1193,11 +852,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../F-Farfetchd/" class="md-nav__link">
+      <a href="../../containers/map/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Understanding Page Tables in Linux
+    Map
   </span>
   
 
@@ -1207,17 +866,64 @@
 
               
             
-          </ul>
-        </nav>
-      
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../containers/strings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Strings
+  </span>
+  
+
+      </a>
     </li>
   
 
               
             
-          </ul>
-        </nav>
-      
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../containers/vector/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vector
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../containers/vector_traversal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vector Traversal
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1251,7 +957,7 @@
             
   
   <span class="md-ellipsis">
-    Containers
+    Examples
   </span>
   
 
@@ -1261,7 +967,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_10">
             <span class="md-nav__icon md-icon"></span>
-            Containers
+            Examples
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1272,11 +978,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../containers/array/" class="md-nav__link">
+      <a href="../../examples/big_numbers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Array
+    Big Numbers
   </span>
   
 
@@ -1293,11 +999,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../containers/bst/" class="md-nav__link">
+      <a href="../../examples/distances/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Bst
+    Distances
   </span>
   
 
@@ -1314,11 +1020,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../containers/hashmap/" class="md-nav__link">
+      <a href="../../examples/qsort/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Hashmap
+    Qsort
   </span>
   
 
@@ -1335,49 +1041,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../containers/http_hashmap/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Http Hashmap
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../containers/map/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Map
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../containers/strings/" class="md-nav__link">
+      <a href="../../examples/strings/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1398,11 +1062,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../containers/vector/" class="md-nav__link">
+      <a href="../../examples/time/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Vector
+    Time
   </span>
   
 
@@ -1419,11 +1083,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../containers/vector_traversal/" class="md-nav__link">
+      <a href="../../examples/transposition/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Vector Traversal
+    Transposition
   </span>
   
 
@@ -1461,7 +1125,7 @@
             
   
   <span class="md-ellipsis">
-    Examples
+    Modern cpp features
   </span>
   
 
@@ -1470,153 +1134,6 @@
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_11">
-            <span class="md-nav__icon md-icon"></span>
-            Examples
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../examples/big_numbers/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Big Numbers
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../examples/distances/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Distances
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../examples/qsort/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Qsort
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../examples/strings/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Strings
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../examples/time/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Time
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
-        
-          
-          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Modern cpp features
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_12">
             <span class="md-nav__icon md-icon"></span>
             Modern cpp features
           </label>
@@ -1629,7 +1146,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modern-cpp-features/" class="md-nav__link">
+      <a href="../../modern-cpp-features/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1650,7 +1167,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modern-cpp-features/CONTRIBUTING/" class="md-nav__link">
+      <a href="../../modern-cpp-features/CONTRIBUTING/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1671,7 +1188,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modern-cpp-features/CPP11/" class="md-nav__link">
+      <a href="../../modern-cpp-features/CPP11/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1692,7 +1209,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modern-cpp-features/CPP14/" class="md-nav__link">
+      <a href="../../modern-cpp-features/CPP14/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1713,7 +1230,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modern-cpp-features/CPP17/" class="md-nav__link">
+      <a href="../../modern-cpp-features/CPP17/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1734,11 +1251,155 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modern-cpp-features/CPP20/" class="md-nav__link">
+      <a href="../../modern-cpp-features/CPP20/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     C++20
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Projects
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            Projects
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    CUDA
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    CUDA
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cuda-c-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      CUDA C++ Programming
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Further Reading
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../galois/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Galois Field C++ library for Reed-Solomon Erasure Coding
   </span>
   
 
@@ -1782,77 +1443,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#why-use-a-vm" class="md-nav__link">
+  <a href="#cuda-c-programming" class="md-nav__link">
     <span class="md-ellipsis">
-      Why Use a VM?
+      CUDA C++ Programming
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#vm-setupworkflow" class="md-nav__link">
+  <a href="#further-reading" class="md-nav__link">
     <span class="md-ellipsis">
-      VM Setup/Workflow
+      Further Reading
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="VM Setup/Workflow">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#working-on-your-vm" class="md-nav__link">
-    <span class="md-ellipsis">
-      Working on your VM
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#additional-tools" class="md-nav__link">
-    <span class="md-ellipsis">
-      Additional Tools
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#kernel-workflow" class="md-nav__link">
-    <span class="md-ellipsis">
-      Kernel Workflow
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Kernel Workflow">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#editor-enhancements" class="md-nav__link">
-    <span class="md-ellipsis">
-      Editor enhancements
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#web-tools" class="md-nav__link">
-    <span class="md-ellipsis">
-      Web Tools
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1874,95 +1478,27 @@
   
 
 
-<h1 id="vmkernel-workflow">VM/Kernel Workflow</h1>
-<p>Before we get into the heavier assignments in this course, you should invest
-sometime into setting up a workflow and develop good coding habits.</p>
-<h2 id="why-use-a-vm">Why Use a VM?</h2>
+<h1 id="cuda">CUDA</h1>
+<p>CUDA is a general-purpose parallel computing platform and programming
+model developed by NVIDIA to leverage the massive parallel processing
+power of GPUs. CUDA's scalable programming model uses abstractions like
+thread group hierarchies, shared memories, and barrier synchronization
+to enable fine-grained and coarse-grained parallelism, allowing
+programs to automatically scale across various GPU architectures,
+by adjusting the number of multiprocessors and memory partitions.</p>
+<h2 id="cuda-c-programming">CUDA C++ Programming</h2>
 <ul>
-<li>Hypervisor: Software responsible for managing VMs (e.g. creation, deletion,
-  resource allocation). In this class, we use VMware.</li>
-<li>Host machine: The hardware running the hypervisor (e.g. your personal laptop)</li>
-<li>
-<p>Virtual machine (VM): A computer system created by the hypervisor that shares
-  resources with the host machine. In this class, we virtualize Debian 11 (a
-  flavor of Linux). VMs adhere to sandbox properties:</p>
-</li>
-<li>
-<p>Isolate the work you'll be doing from the rest of the system</p>
-</li>
-<li>Be able to take snapshots of your development environment so that if it does
-    get corrupted, you can revert to a clean state</li>
+<li><code>vector_add.cu</code></li>
+<li><code>matrix_mul.cu</code></li>
+<li><code>reduction.cu</code></li>
+<li><code>stream_example.cu</code></li>
+<li><code>unified_memory.cu</code></li>
 </ul>
-<p>Working on a VM can be preferable to working on your host machine (i.e.
-  "bare-metal"). You can virtualize other operating systems to test your
-  applications. You can work on potentially buggy/dangerous code without
-  compromising your host machine.</p>
+<h2 id="further-reading">Further Reading</h2>
 <ul>
-<li>Snapshot: A feature most hypervisors support. Capture the current running
-  state of the VM, stores it, and then allows you to revert to that state
-  sometime later. You should snapshot your VM before executing something that
-  can compromise the system.</li>
+<li><a href="https://docs.nvidia.com/cuda/index.html">CUDA Toolkit Documentation</a></li>
+<li><a href="https://docs.nvidia.com/cuda/cuda-c-programming-guide/">CUDA C++ Programming Guide</a></li>
 </ul>
-<p>In this class, we will often be "hacking" the Linux kernel and attempting to
-boot into those hacked kernels. We need to use VMs since not all of us have a
-Linux host machine. Even if we did, we wouldn't want to ruin our host machines
-with our potentially buggy kernels.</p>
-<h2 id="vm-setupworkflow">VM Setup/Workflow</h2>
-<p>We've already written a series of guides for working on your VM.</p>
-<p>First and foremost, you should have a Debian VM installed already (see <a href="https://cs4118.github.io/dev-guides/debian-vm-setup.html">Debian
-VM Setup</a> for a guide
-on how to do this).</p>
-<h3 id="working-on-your-vm">Working on your VM</h3>
-<p>You have more options than simply working on the VM's graphical interface, which
-often feels clunky.</p>
-<p>The most common workflow involves SSHing into your VM, which we've written a
-<a href="https://cs4118.github.io/dev-guides/vm-ssh.html#ssh-into-your-local-vm">guide</a>
-for. This is a good option if you want to conserve processing power on your host
-machine and disable the VM's graphical interface.</p>
-<p>Alternatively, you can setup an IDE to SSH into your VM. One option is using
-Visual Studio Code, which we've written up some notes (below) on how to use.
-This is a nice alternative to command-line editors like vim/emacs if you're
-not familiar with them.</p>
-<h3 id="additional-tools">Additional Tools</h3>
-<p>If you do decide to work in a command-line environment, here are some tools
-we've used to streamline our workflow:</p>
-<ul>
-<li><code>bat</code>: A better version of <code>cat</code>
-  <a href="https://github.com/sharkdp/bat#on-ubuntu-using-most-recent-deb-packages">(installation)</a></li>
-<li><code>grep</code>: Pattern-match files (learn how to effectively use regexs to improve
-  search results). Even better, <code>ripgrep</code>.</li>
-<li>Reverse-i search: Efficiently search through bash history instead of retyping
-  long commands.</li>
-<li><code>tmux</code>: Terminal multiplexer. (e.g. open 2 panes for vim, 1 for <code>dmesg</code>, 1 for
-  running commands).</li>
-</ul>
-<h2 id="kernel-workflow">Kernel Workflow</h2>
-<h3 id="editor-enhancements">Editor enhancements</h3>
-<p>Before getting into hw4/supermom, please read through one of our kernel developer
-workflow guides. These explain how to set up either <code>vim</code> or VSCode for kernel
-development.</p>
-<ul>
-<li><a href="https://cs4118.github.io/dev-guides/vim-workflow.html">Vim workflow</a>: Here,
-  we offer a bunch of cool <code>vim</code> additions/tricks to help you develop more
-  efficiently while working on the kernel assignments. Note that this guide is
-  only relevant if you intend to work on the command-line using <code>vim</code>. One notable
-  mention here is <code>cscope</code>. This is a kernel-source navigator that works directly
-  in your terminal/vim session. This is far more powerful than using <code>grep</code> to
-  look for a symbol definition/use in the source-tree.</li>
-<li><a href="https://cs4118.github.io/dev-guides/vscode-workflow.html">VSCode workflow</a>:
-  In this guide, we explain how to configure autocomplete, formatting, and
-  various other features for working on the kernel while using VSCode. VSCode
-  is a very powerful editor, and being able to take advantage of its functionality
-  will make your life much easier.</li>
-</ul>
-<h3 id="web-tools">Web Tools</h3>
-<p>If you don't want to use <code>cscope</code>, there's an popular online kernel-source
-navigator: <a href="https://elixir.bootlin.com/linux/v5.10.158/source">bootlin</a>. Note
-that kernel version matters when you're navigating code – be sure you select the
-correct version.</p>
-<p>Like bootlin, you can look for symbols in the kernel-source and look for
-instances of where they are defined and used. However, bootlin doesn't index all
-symbols, so you might have better luck searching with <code>cscope</code>.</p>
 
 
 
@@ -2013,12 +1549,12 @@ symbols, so you might have better luck searching with <code>cscope</code>.</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.525ec568.min.js"></script>
+      <script src="../../assets/javascripts/bundle.525ec568.min.js"></script>
       
-        <script src="../../../js/katex.js"></script>
+        <script src="../../js/katex.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
