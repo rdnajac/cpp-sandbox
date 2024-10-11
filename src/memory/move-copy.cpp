@@ -1,7 +1,7 @@
-#include <iostream>
-#include <vector>
-#include <utility> // for std::pair
 #include <algorithm> // for std::transform
+#include <iostream>
+#include <utility> // for std::pair
+#include <vector>
 
 /**
  * @brief Demonstrates move and copy operations with vectors in C++.
@@ -33,7 +33,7 @@ int main() {
 
     // Print pairs and their memory addresses
     std::cout << "Pairs (original, transformed):" << std::endl;
-    for (const auto& p : pairs) {
+    for (const auto &p : pairs) {
         std::cout << "Original: " << p.first << ", Transformed: " << p.second << std::endl;
     }
 
@@ -49,10 +49,9 @@ int main() {
 
     // Print moved pairs
     std::cout << "Moved pairs (original, transformed):" << std::endl;
-    for (const auto& p : moved_pairs) {
+    for (const auto &p : moved_pairs) {
         std::cout << "Original: " << p.first << ", Transformed: " << p.second << std::endl;
     }
 
     return 0;
 }
-

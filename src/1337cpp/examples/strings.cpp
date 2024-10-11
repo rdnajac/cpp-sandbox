@@ -1,18 +1,19 @@
-#include <iostream>
-#include <vector>
-#include <string>
 #include <algorithm> // for std::reverse
 #include <cctype>    // for std::isupper and std::tolower
+#include <iostream>
+#include <string>
+#include <vector>
 
 using namespace std;
 
 // Function to reverse specified words in the sentences
-std::vector<std::string> reverseWords(const std::vector<std::string>& sentences, const std::vector<std::string>& words) {
+std::vector<std::string> reverseWords(const std::vector<std::string> &sentences,
+                                      const std::vector<std::string> &words) {
     vector<string> result = sentences;
 
     for (size_t i = 0; i < sentences.size(); ++i) {
-        string& sentence = result[i];
-        const string& word = words[i];
+        string &sentence = result[i];
+        const string &word = words[i];
 
         // Reverse the word
         string reversed_word = word;
@@ -30,12 +31,13 @@ std::vector<std::string> reverseWords(const std::vector<std::string>& sentences,
 }
 
 // Function to reverse words and handle capitalization
-std::vector<std::string> reverseWordsWithCapitalization(const std::vector<std::string>& sentences, const std::vector<std::string>& words) {
+std::vector<std::string> reverseWordsWithCapitalization(const std::vector<std::string> &sentences,
+                                                        const std::vector<std::string> &words) {
     vector<string> result = sentences;
 
     for (size_t i = 0; i < sentences.size(); ++i) {
-        string& sentence = result[i];
-        const string& word = words[i];
+        string &sentence = result[i];
+        const string &word = words[i];
 
         // Reverse the word
         string reversed_word = word;
@@ -48,7 +50,8 @@ std::vector<std::string> reverseWordsWithCapitalization(const std::vector<std::s
         size_t pos = 0;
         while ((pos = sentence.find(word, pos)) != std::string::npos) {
             // Reset the first letter of the reversed word for each occurrence
-            reversed_word[0] = std::isupper(sentence[pos]) ? std::toupper(reversed_word[0]) : std::tolower(reversed_word[0]);
+            reversed_word[0] = std::isupper(sentence[pos]) ? std::toupper(reversed_word[0])
+                                                           : std::tolower(reversed_word[0]);
 
             // Replace the word with its reversed version
             sentence.replace(pos, word.length(), reversed_word);
@@ -58,7 +61,8 @@ std::vector<std::string> reverseWordsWithCapitalization(const std::vector<std::s
         pos = 0;
         while ((pos = sentence.find(capitalized_word, pos)) != std::string::npos) {
             // Reset the first letter of the reversed word for each occurrence
-            reversed_word[0] = std::isupper(sentence[pos]) ? std::toupper(reversed_word[0]) : std::tolower(reversed_word[0]);
+            reversed_word[0] = std::isupper(sentence[pos]) ? std::toupper(reversed_word[0])
+                                                           : std::tolower(reversed_word[0]);
 
             // Replace the word with its reversed version
             sentence.replace(pos, capitalized_word.length(), reversed_word);
@@ -77,17 +81,17 @@ int main() {
     // Call the first function
     vector<string> reversed_sentences = reverseWords(sentences, words);
     cout << "Reversed words output:\n";
-    for (const auto& sentence : reversed_sentences) {
+    for (const auto &sentence : reversed_sentences) {
         cout << sentence << endl;
     }
 
     // Call the second function
-    vector<string> capitalized_reversed_sentences = reverseWordsWithCapitalization(sentences, words);
+    vector<string> capitalized_reversed_sentences =
+        reverseWordsWithCapitalization(sentences, words);
     cout << "\nCapitalized reversed words output:\n";
-    for (const auto& sentence : capitalized_reversed_sentences) {
+    for (const auto &sentence : capitalized_reversed_sentences) {
         cout << sentence << endl;
     }
 
     return 0;
 }
-

@@ -12,12 +12,12 @@ std::string solution(std::string sentence) {
             word += c;
         }
     }
-    words.push_back(word);  // add the last word
+    words.push_back(word); // add the last word
 
     std::string result;
     for (std::string word : words) {
-        if (word.size() % 2 == 0) {  // confirms if the length of the word is even
-            for (int i = 1; i < word.size(); i += 2) {  // loop over odd-indexed characters
+        if (word.size() % 2 == 0) {                    // confirms if the length of the word is even
+            for (int i = 1; i < word.size(); i += 2) { // loop over odd-indexed characters
                 result += word[i];
             }
         }

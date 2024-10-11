@@ -1,11 +1,11 @@
-#include <vector>
 #include <iostream>
+#include <vector>
 
-int ParseAndMultiplyNumbers (std::string inputString) {
+int ParseAndMultiplyNumbers(std::string inputString) {
     std::string num;
     std::vector<int> numbers;
-    for (char ch: inputString) {
-        if(isdigit(ch)) {
+    for (char ch : inputString) {
+        if (isdigit(ch)) {
             num += ch;
         } else if (!num.empty()) {
             numbers.push_back(stoi(num));
@@ -15,9 +15,9 @@ int ParseAndMultiplyNumbers (std::string inputString) {
     if (!num.empty()) {
         numbers.push_back(stoi(num));
     }
-    
+
     int result = 1;
-    for(int number: numbers) {
+    for (int number : numbers) {
         result *= number;
     }
     return result;

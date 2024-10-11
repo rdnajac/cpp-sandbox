@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-int calculate_jump(const vector<int>& forest, int start, int direction) {
+int calculate_jump(const vector<int> &forest, int start, int direction) {
     int jump = 1;
 
     while ((direction * jump) + start >= 0 && (direction * jump) + start < forest.size()) {

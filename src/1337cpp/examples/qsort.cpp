@@ -1,11 +1,10 @@
-#include <iostream>
-#include <vector>
-#include <random>
 #include <algorithm>
+#include <iostream>
+#include <random>
+#include <vector>
 
 // Partition function
-template<typename T>
-size_t partition(std::vector<T>& arr, size_t low, size_t high) {
+template <typename T> size_t partition(std::vector<T> &arr, size_t low, size_t high) {
     T pivot = arr[high];
     size_t i = low;
 
@@ -20,20 +19,19 @@ size_t partition(std::vector<T>& arr, size_t low, size_t high) {
 }
 
 // Quicksort function
-template<typename T>
-void quickSort(std::vector<T>& arr, size_t low, size_t high) {
+template <typename T> void quickSort(std::vector<T> &arr, size_t low, size_t high) {
     if (low < high) {
         size_t pi = partition(arr, low, high);
 
-        if (pi > 0) quickSort(arr, low, pi - 1);
+        if (pi > 0)
+            quickSort(arr, low, pi - 1);
         quickSort(arr, pi + 1, high);
     }
 }
 
 // Function to print a vector
-template<typename T>
-void printVector(const std::vector<T>& vec) {
-    for (const auto& elem : vec) {
+template <typename T> void printVector(const std::vector<T> &vec) {
+    for (const auto &elem : vec) {
         std::cout << elem << ' ';
     }
     std::cout << '\n';

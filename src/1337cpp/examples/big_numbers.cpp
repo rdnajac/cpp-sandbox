@@ -1,12 +1,12 @@
-#include <iostream>
-#include <vector>
-#include <string>
 #include <algorithm>
+#include <iostream>
+#include <string>
+#include <vector>
 
 using namespace std;
 
 // Function to add two large numbers represented as strings
-std::string addLargeNumbers(const std::string& num1, const std::string& num2) {
+std::string addLargeNumbers(const std::string &num1, const std::string &num2) {
     int i = num1.size() - 1;
     int j = num2.size() - 1;
     int carry = 0;
@@ -28,7 +28,7 @@ std::string addLargeNumbers(const std::string& num1, const std::string& num2) {
 }
 
 // Function to subtract two large numbers represented as strings
-std::string subtractLargeNumbers(const std::string& num1, const std::string& num2) {
+std::string subtractLargeNumbers(const std::string &num1, const std::string &num2) {
     // Assume num1 >= num2 for simplicity
     int i = num1.size() - 1;
     int j = num2.size() - 1;
@@ -61,7 +61,7 @@ std::string subtractLargeNumbers(const std::string& num1, const std::string& num
 }
 
 // Function to multiply two large numbers represented as strings
-std::string multiplyLargeNumbers(const std::string& num1, const std::string& num2) {
+std::string multiplyLargeNumbers(const std::string &num1, const std::string &num2) {
     std::vector<int> product(num1.size() + num2.size(), 0);
 
     for (int i = num1.size() - 1; i >= 0; --i) {
@@ -110,4 +110,3 @@ int main() {
 
     return 0;
 }
-

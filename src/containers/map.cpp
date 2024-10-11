@@ -1,18 +1,18 @@
+#include "rng.hpp"   // Include RNG library
+#include "timer.hpp" // Include Timer library
+#include <algorithm>
 #include <iostream>
 #include <map>
 #include <string>
-#include <algorithm>
 #include <vector>
-#include "rng.hpp"  // Include RNG library
-#include "timer.hpp" // Include Timer library
 
 /**
  * @brief Processes a string and creates a map of characters to integers.
- * 
+ *
  * This function uses the following STL containers:
  * - std::map<char, int>: Associative container to store character frequencies and results
  * - std::string: Sequence container to store and process characters
- * 
+ *
  * @param s Input string.
  * @return Map of characters to integers.
  */
@@ -20,7 +20,7 @@ std::map<char, int> solution2(const std::string &s) {
     std::map<char, int> result;
     std::map<char, int> frequency;
 
-    Timer timer; // Create Timer instance
+    Timer timer;   // Create Timer instance
     timer.start(); // Start timing
 
     // Step 1: Count frequency of each character
@@ -57,14 +57,14 @@ class CharacterFrequencyMap {
 public:
     /**
      * @brief Inserts characters from a string into a frequency map.
-     * 
+     *
      * @param str The input string.
      * @return A map of character frequencies.
      */
     std::map<char, int> createFrequencyMap(const std::string &str) {
         std::map<char, int> freqMap;
 
-        Timer timer; // Create Timer instance
+        Timer timer;   // Create Timer instance
         timer.start(); // Start timing
 
         for (char c : str) {
@@ -82,7 +82,7 @@ public:
 void testCharacterFrequencyMap() {
     CharacterFrequencyMap freqMap;
     std::string input = "hello world";
-    
+
     auto result = freqMap.createFrequencyMap(input);
     std::cout << "Character Frequency Map Test:\nInput: " << input << "\nOutput:\n";
     for (const auto &pair : result) {
@@ -104,7 +104,7 @@ int main() {
     for (const auto &pair : exampleOutput) {
         std::cout << pair.first << ": " << pair.second << "\n";
     }
-    
+
     return 0;
 }
 

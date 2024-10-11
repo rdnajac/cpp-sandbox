@@ -4,14 +4,14 @@
 int solution(std::vector<int> numbers, int obstacle) {
     int position = 0;
     int moves = 0;
-    while (position < numbers.size()){
+    while (position < numbers.size()) {
         if (numbers[position] == obstacle) {
             return position;
         }
         moves++;
         position += numbers[position];
-   }
-   return moves;
+    }
+    return moves;
 }
 
 int main() {

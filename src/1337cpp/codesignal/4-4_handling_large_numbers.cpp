@@ -7,8 +7,8 @@ std::string addLargeNumbers(std::string num1, std::string num2) {
     int j = num2.size() - 1;
     int carry = 0;
     std::vector<char> result;
-    
-    while(i >= 0 || j >= 0 || carry) {
+
+    while (i >= 0 || j >= 0 || carry) {
         int n1 = (i >= 0) ? num1[i] - '0' : 0;
         int n2 = (j >= 0) ? num2[j] - '0' : 0;
         int current = n1 + n2 + carry;
@@ -19,7 +19,7 @@ std::string addLargeNumbers(std::string num1, std::string num2) {
         j--;
     }
 
-    std::reverse(result.begin(),result.end());
+    std::reverse(result.begin(), result.end());
     return std::string(result.begin(), result.end());
 }
 

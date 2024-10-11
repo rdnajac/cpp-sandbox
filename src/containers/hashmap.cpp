@@ -1,22 +1,21 @@
 #include <iostream>
-#include <unordered_map>
 #include <string>
+#include <unordered_map>
 
 int main() {
     // Creating an unordered_map to store HTTP status codes and their meanings
-    std::unordered_map<int, std::string> http_status_codes = {
-        {200, "OK"},
-        {404, "Not Found"},
-        {500, "Internal Server Error"},
-        {301, "Moved Permanently"},
-        {403, "Forbidden"}
-    };
+    std::unordered_map<int, std::string> http_status_codes = {{200, "OK"},
+                                                              {404, "Not Found"},
+                                                              {500, "Internal Server Error"},
+                                                              {301, "Moved Permanently"},
+                                                              {403, "Forbidden"}};
 
     // Using find() to access a specific HTTP status message
     int code_to_find = 200;
     auto it = http_status_codes.find(code_to_find);
     if (it != http_status_codes.end()) {
-        std::cout << "HTTP Status " << code_to_find << ": " << it->second << std::endl; // Output: "OK"
+        std::cout << "HTTP Status " << code_to_find << ": " << it->second
+                  << std::endl; // Output: "OK"
     } else {
         std::cout << "HTTP Status code not found" << std::endl;
     }
@@ -25,14 +24,16 @@ int main() {
     int nonexistent_code = 999;
     auto it_nonexistent = http_status_codes.find(nonexistent_code);
     if (it_nonexistent != http_status_codes.end()) {
-        std::cout << "HTTP Status " << nonexistent_code << ": " << it_nonexistent->second << std::endl;
+        std::cout << "HTTP Status " << nonexistent_code << ": " << it_nonexistent->second
+                  << std::endl;
     } else {
-        std::cout << "HTTP Status code not found" << std::endl; // Output: "HTTP Status code not found"
+        std::cout << "HTTP Status code not found"
+                  << std::endl; // Output: "HTTP Status code not found"
     }
 
     // Looping over the unordered_map to display all HTTP status codes and their meanings
     std::cout << "\nAll HTTP Status Codes:\n";
-    for (const auto& pair : http_status_codes) {
+    for (const auto &pair : http_status_codes) {
         std::cout << "HTTP Status " << pair.first << ": " << pair.second << std::endl;
     }
 
@@ -58,4 +59,3 @@ int main() {
 
     return 0;
 }
-

@@ -1,7 +1,7 @@
-#include <sstream>
-#include <vector>
 #include <iomanip>
 #include <iostream>
+#include <sstream>
+#include <vector>
 
 std::string time_adder(std::string time, int seconds) {
     std::vector<int> time_parts;
@@ -17,9 +17,10 @@ std::string time_adder(std::string time, int seconds) {
     total_seconds %= 3600;
     int minutes = total_seconds / 60;
     seconds = total_seconds % 60;
-  
+
     std::ostringstream os;
-    os << std::setfill('0') << std::setw(2) << hours << ":" << std::setw(2) << minutes << ":" << std::setw(2) << seconds;
+    os << std::setfill('0') << std::setw(2) << hours << ":" << std::setw(2) << minutes << ":"
+       << std::setw(2) << seconds;
     return os.str();
 }
 

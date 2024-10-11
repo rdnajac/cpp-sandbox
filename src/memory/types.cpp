@@ -1,26 +1,26 @@
-#include <string>
-#include <sstream>
-#include <vector>
 #include <cctype>
 #include <iostream>
+#include <sstream>
+#include <string>
+#include <vector>
 
 /**
  * @brief Transforms a given string based on certain rules.
- * 
+ *
  * This function takes a string containing words and numbers separated by dashes ('-').
  * - If a segment is a number between 1 and 26, it is converted to the corresponding
  *   lowercase letter (1 -> 'a', 2 -> 'b', ..., 26 -> 'z').
  * - If a segment is a single lowercase letter, it is converted to its position in the
  *   alphabet (e.g., 'a' -> "1", 'b' -> "2").
- * 
+ *
  * The segments are then combined back into a string, with segments separated by dashes.
- * 
+ *
  * @param s The input string to be transformed.
  * @return A new string with the transformations applied.
  */
-std::string solution(const std::string& s) {
-    std::stringstream ss(s); ///< String stream to parse the input string
-    std::string word; ///< Variable to hold each segment
+std::string solution(const std::string &s) {
+    std::stringstream ss(s);            ///< String stream to parse the input string
+    std::string word;                   ///< Variable to hold each segment
     std::vector<std::string> new_words; ///< Vector to store transformed segments
 
     // Process each segment of the input string
@@ -45,7 +45,7 @@ std::string solution(const std::string& s) {
             result += "-"; // Add dash between segments
         }
     }
-    
+
     return result; // Return the transformed string
 }
 

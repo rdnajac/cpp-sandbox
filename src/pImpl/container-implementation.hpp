@@ -2,11 +2,10 @@
 #define CONTAINER_IMPLEMENTATION_HPP_
 
 #include "container.hpp"
-#include <vector>
 #include <algorithm>
+#include <vector>
 
-template <typename T>
-class GenericContainerImpl : public GenericContainer<T> {
+template <typename T> class GenericContainerImpl : public GenericContainer<T> {
 public:
     // Adds an item to the container and returns the new size.
     size_t Add(T value) override;
@@ -20,5 +19,4 @@ private:
     std::vector<T> container_; // Underlying container to store items.
 };
 
-#endif  // CONTAINER_IMPLEMENTATION_HPP_
-
+#endif // CONTAINER_IMPLEMENTATION_HPP_

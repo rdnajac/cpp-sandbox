@@ -1,11 +1,12 @@
 #include <algorithm>
+#include <cmath>
 #include <iostream>
 #include <string>
-#include <vector>
 #include <utility>
-#include <cmath>
+#include <vector>
 
-std::pair<std::string, std::vector<int>> solution(std::string inputString, std::vector<int> numbers) {
+std::pair<std::string, std::vector<int>> solution(std::string inputString,
+                                                  std::vector<int> numbers) {
     std::string result = "";
     int sum_so_far = 0;
     size_t i = 0;
@@ -23,7 +24,7 @@ int main() {
     std::pair<std::string, std::vector<int>> result = solution("books", {10, 20, 30, 50, 100});
     std::cout << result.first << std::endl;
     std::vector<int> numbers = result.second;
-    for(int value : numbers) {
+    for (int value : numbers) {
         std::cout << value << " ";
     }
     return 0;

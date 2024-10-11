@@ -1,5 +1,5 @@
-#include <iostream>
 #include <climits> // For INT_MIN
+#include <iostream>
 #include <vector>
 
 int solution(std::vector<int> arrayA, std::vector<int> arrayB, int sizeA, int sizeB) {
@@ -7,7 +7,7 @@ int solution(std::vector<int> arrayA, std::vector<int> arrayB, int sizeA, int si
     int indexB = -1;
     bool in_arrayA = true;
     int max_value = INT_MIN;
-    
+
     while (true) {
         if (in_arrayA) {
             indexB = arrayA[indexA];
@@ -30,7 +30,8 @@ int main() {
     int sizeA = arrayA.size();
     int sizeB = arrayB.size();
 
-    std::cout << "Maximum value encountered in arrayB: " << solution(arrayA, arrayB, sizeA, sizeB) << std::endl;
+    std::cout << "Maximum value encountered in arrayB: " << solution(arrayA, arrayB, sizeA, sizeB)
+              << std::endl;
 
     return 0;
 }

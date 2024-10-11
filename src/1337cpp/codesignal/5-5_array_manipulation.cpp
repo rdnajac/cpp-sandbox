@@ -9,9 +9,9 @@ int solution(vector<int> balloons) {
         steps += 1;
         vector<int> new_balloons = balloons;
         for (int i = 0; i < n; ++i) {
-            int share = balloons[i] / 2;  // Balloons to share
-            new_balloons[i] -= share;  // Decrease balloons of current house
-            new_balloons[(i + 1) % n] += share;  // Increase balloons of next house
+            int share = balloons[i] / 2;        // Balloons to share
+            new_balloons[i] -= share;           // Decrease balloons of current house
+            new_balloons[(i + 1) % n] += share; // Increase balloons of next house
         }
         if (new_balloons == balloons) {
             break;

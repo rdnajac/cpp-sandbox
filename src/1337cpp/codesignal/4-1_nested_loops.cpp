@@ -1,11 +1,11 @@
 #include <iostream>
 #include <vector>
 
-std::vector<std::pair<int,int>> solution(std::vector<int> vec1, std::vector<int> vec2) {
-    std::vector<std::pair<int,int>> result;
-    for(auto i : vec1){
-        for(auto j : vec2){
-            if(i < j){
+std::vector<std::pair<int, int>> solution(std::vector<int> vec1, std::vector<int> vec2) {
+    std::vector<std::pair<int, int>> result;
+    for (auto i : vec1) {
+        for (auto j : vec2) {
+            if (i < j) {
                 result.push_back({i, j});
             }
         }

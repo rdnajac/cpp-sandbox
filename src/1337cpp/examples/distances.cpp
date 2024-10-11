@@ -1,34 +1,35 @@
-#include <vector>
 #include <algorithm>
+#include <cmath>
+#include <iostream>
 #include <limits>
 #include <numeric>
-#include <iostream>
-#include <cmath>
+#include <vector>
 
 // Function to compute the Manhattan distance
-int manhattanDistance(const std::vector<int>& a, const std::vector<int>& b) {
-    return std::inner_product(a.begin(), a.end(), b.begin(), 0, 
-                              std::plus<>(), [](int x, int y) { return std::abs(x - y); });
+int manhattanDistance(const std::vector<int> &a, const std::vector<int> &b) {
+    return std::inner_product(a.begin(), a.end(), b.begin(), 0, std::plus<>(),
+                              [](int x, int y) { return std::abs(x - y); });
 }
 
 // Function to compute the Hamming distance
-int hammingDistance(const std::vector<int>& a, const std::vector<int>& b) {
+int hammingDistance(const std::vector<int> &a, const std::vector<int> &b) {
     if (a.size() != b.size()) {
         throw std::invalid_argument("Vectors must be of the same length");
     }
-    return std::inner_product(a.begin(), a.end(), b.begin(), 0,
-                              std::plus<>(), [](int x, int y) { return x != y ? 1 : 0; });
+    return std::inner_product(a.begin(), a.end(), b.begin(), 0, std::plus<>(),
+                              [](int x, int y) { return x != y ? 1 : 0; });
 }
 
 // Function to compute the Euclidean distance
-double euclideanDistance(const std::vector<int>& a, const std::vector<int>& b) {
-    double sum = std::inner_product(a.begin(), a.end(), b.begin(), 0.0,
-                                     std::plus<>(), [](int x, int y) { return std::pow(x - y, 2); });
+double euclideanDistance(const std::vector<int> &a, const std::vector<int> &b) {
+    double sum = std::inner_product(a.begin(), a.end(), b.begin(), 0.0, std::plus<>(),
+                                    [](int x, int y) { return std::pow(x - y, 2); });
     return std::sqrt(sum);
 }
 
 // Function to find the optimal rotation of array1 to minimize Manhattan distance to array2
-std::pair<std::vector<int>, int> solution(const std::vector<int>& array1, const std::vector<int>& array2) {
+std::pair<std::vector<int>, int> solution(const std::vector<int> &array1,
+                                          const std::vector<int> &array2) {
     int n = array1.size();
     std::vector<int> rotated = array1;
     int min_distance = std::numeric_limits<int>::max();

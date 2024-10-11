@@ -6,8 +6,7 @@
 /**
  * `GenericContainer` interface.
  */
-template <typename T>
-class GenericContainer {
+template <typename T> class GenericContainer {
 public:
     /**
      * Should add the specified value to the container
@@ -25,5 +24,4 @@ public:
     virtual ~GenericContainer() = default;
 };
 
-#endif  // CONTAINER_HPP_
-
+#endif // CONTAINER_HPP_
