@@ -1,3 +1,7 @@
+---
+render_macros: true
+---
+
 # A Tour of C++
 
 During my time at Columbia University, I had the privilege of taking
@@ -34,47 +38,22 @@ Stroustrup, B. (2022). A Tour of C++ (C++ In-Depth Series) (3rd ed.). Addison-We
 
 ## The Basics
 
-```cpp
-#include <iostream>
-#include <vector>
-using namespace std;    // make names from std visible without std::
-
-int main() {
-i   // Use `auto` to let the compiler deduce the type of a variable
-    auto i = 7;     // i is an int
-    auto d = 1.2;   // d is a double
-    auto qq {true}; // qq is a bool
-
-    // Use `const` and `constexpr` to define constants instead of `#define`
-    // because they have type and scope
-    const double pi = 3.14159;          // #define PI 3.14159
-    const double area(double radius) { return pi * radius * radius; }
-    // #define AREA(r) (PI*(r)*(r))
-
-
-    // a "range-`for`-statement" traverses a sequence in the simplest way:
-    vector<int> v = {0, 1, 2, 3, 4, 5};
-    for (auto x : v) cout << x << endl;
-
-    return 0;
-}
-```
+{{ source_code('src/basics.cpp') }}
 
 ### Accessing elements in a vector within a loop
 
 | Syntax                               | Description                                  |
 | ------------------------------------ | -------------------------------------------- |
 | `for (auto element : vector)`        | Creates a copy of each element in the vector |
-| `for (auto &element : vector)`       | Allows you to modify the elements of the     |
+| `for (auto &element : vector)`       | Allows you to modify the elements            |
 | `for (const auto &element : vector)` | Efficient way to iterate over a vector       |
-| vector                               |
 
 > [!NOTE]
 > The `&` in a variable declaration means that the variable is a reference to
 > the object, not a copy of the object itself. The `const` qualifier ensures
 > that the elements are not modified.
 
-#### Using iterators
+### Using iterators to access elements in a vector
 
 ```cpp
 for (auto it = vector.begin(); it != vector.end(); it++) {
@@ -82,39 +61,35 @@ for (auto it = vector.begin(); it != vector.end(); it++) {
 }
 ```
 
-This is the traditional way to iterate over a vector by
-declaring an iterator (`it`) that starts at the beginning
-of the vector and increments until it reaches the end.
-
-> [!IMPORTANT]
-> The `end()` function returns an iterator pointing to the
-> element following the last element of the vector, _not_ the
-> last element itself. It is like the memory address one past
-> the end of the vector and should not be dereferenced.
+The `end()` function returns an iterator pointing to the element
+following the last element of the vector, _not_ the last element
+itself. It is like the memory address one past the end of the
+vector and should not be dereferenced.
 
 Jump ahead to [Iterators](#iterators) for more information.
 
 ### Character conversion
 
-whats the conveersunon ising - '1'?
-
 ```cpp
-char ch = 'a';
-int i = ch;  // i becomes 97
+char ch = 'a';      // the ASCII value of 'a' is 97
+int i = ch;         // i becomes 97
 
-char c = '1';
-int i = c - '0';  // i becomes 1
+char c = '1';       // the ASCII value of '1' is 49
+int i = c - '0';    // i becomes 1
 
-int j = 1;
-char c = j + '0';  // c becomes '1'
+int j = 1;          // what does the char value 1 look like?
+char c = j + '0';   // c becomes '1'
 ```
+
+> [!TIP]
+> You can always check `man ascii` to view the ASCII table.
 
 ## User-Defined Types
 
-- Use 'class' to hide representation and provide an interface.
-- Use 'struct' to group related data without hiding.
-- Prefer 'enum class' over plain enums.
-- Consider std::variant as a type-safe alternative to unions.
+- Use `class` to hide representation and provide an interface.
+- Use `struct` to group related data without hiding.
+- Prefer `enum class` over plain enums.
+- Consider `std::variant` as a type-safe alternative to unions.
 - Use user-defined literals for expressive value specification.
 
 ### `struct`
@@ -164,13 +139,13 @@ enum class Nucleotide {
     G, // Guanine
     C  // Cytosine
 };
-```
 
 Nucleotide base = Nucleotide::A;
+```
 
 ### `union`
 
-Modern C++ prefers std::variant over unions:
+Modern C++ prefers `std::variant` over unions.
 
 ```cpp
 #include <variant>
@@ -207,8 +182,7 @@ auto my_dna = "ATGC"_dna;
 
 Use 'using' for type aliases: `using DNAStrand = std::vector<Nucleotide>;`
 
-> [!NOTE]
-> I don't like using these in C because they obscure the type of the variable.
+I don't like using these in C because they obscure the type of the variable.
 
 ## Modularity
 

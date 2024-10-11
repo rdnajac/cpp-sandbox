@@ -5,6 +5,7 @@ build/
 cmake-build-debug/
 .cache/
 .idea/
+__pycache__/
 
 
 # Prerequisites
@@ -41,3 +42,4 @@ cmake-build-debug/
 *.app
 
 *.dSYM/
+**/a.out

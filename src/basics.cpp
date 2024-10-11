@@ -1,7 +1,3 @@
-#if __cplusplus < 201103L /* C++11 */
-#error "This compiler does not support C++11 or later"
-#endif
-
 #include <iostream>
 #include <vector>
 
@@ -10,7 +6,6 @@ using namespace std; // Make names from std visible without std::
 vector<int> v = {0, 1, 2, 3, 4, 5}; // Define a vector of integers
 
 // C++11 gives us the 'auto' keyword for type deduction and
-// `constexpr` for compile-time evaluation
 auto i = 7;    // 'i' is an int
 auto d = 1.2;  // 'd' is a double
 auto qq{true}; // 'qq' is a bool (note the `{}` initialization)
@@ -19,11 +14,6 @@ auto qq{true}; // 'qq' is a bool (note the `{}` initialization)
 const double pi = 3.14159; // Define a constant value
 // TODO: this is incorrect...
 // constexpr double area(double radius) { return pi * radius * radius; }
-
-// Lambda function to calculate area using the defined area function
-#if __cplusplus >= 201402L /* C++14 */
-auto lambda = [](auto radius) { return pi * radius * radius; };
-#endif
 
 #if __cplusplus >= 201703L /* C++17 */
 #include <any>
@@ -41,23 +31,18 @@ std::span<int> sp(v); // Non-owning reference to a contiguous sequence of ints
 
 int main() {
     // C++11 also gives us range-based for loops
-    for (auto x : v)
-        cout << x << " ";
+    for (auto x : v) cout << x << " ";
 
-// Using the lambda to calculate area for each radius
 #if __cplusplus >= 201402L /* C++14 */
-    cout << "Areas of circles with radius values:" << endl;
-    for (auto radius : v) {
-        cout << "Radius: " << radius << ", Area: " << lambda(radius)
-             << endl; // Call area function directly
+    for (auto radius : v) { // C++14 generic lambda expressions
+        cout << "radius: " << radius << ", area: " 
+            << [radius] () { return pi * radius * radius; }() << endl;
     }
 #endif
 
 #if __cplusplus >= 202002L /* C++20 */
     cout << "Span: ";
-    for (auto x : sp)
-        cout << x << " ";
+    for (auto x : sp) cout << x << " ";
 #endif
-
     return 0;
 }
