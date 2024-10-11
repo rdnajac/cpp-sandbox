@@ -21,8 +21,6 @@ jobs:
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-      - name: Create symlinks for READMEs
-        run: bash scripts/symlink-readmes.sh
       - uses: actions/setup-python@v5
         with:
           python-version: 3.x
