@@ -1,3 +1,9 @@
 [submodule "docs/resources/modern-cpp-features"]
 	path = docs/resources/modern-cpp-features
 	url = https://github.com/AnthonyCalandra/modern-cpp-features
+[submodule "projects/galois"]
+	path = projects/galois
+	url = git@github.com:rdnajac/galois
+[submodule "projects/cuda"]
+	path = projects/cuda
+	url = git@github.com:rdnajac/cuda
