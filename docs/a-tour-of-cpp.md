@@ -94,6 +94,21 @@ of the vector and increments until it reaches the end.
 
 Jump ahead to [Iterators](#iterators) for more information.
 
+### Character conversion
+
+whats the conveersunon ising - '1'?
+
+```cpp
+char ch = 'a';
+int i = ch;  // i becomes 97
+
+char c = '1';
+int i = c - '0';  // i becomes 1
+
+int j = 1;
+char c = j + '0';  // c becomes '1'
+```
+
 ## User-Defined Types
 
 - Use 'class' to hide representation and provide an interface.
@@ -165,7 +180,7 @@ genetic_info = DNA({Nucleotide::A, Nucleotide::T});
 genetic_info = "ATGC";  // Now contains a string
 ```
 
-### User-Defined Literals:
+### User-Defined Literals
 
 Define custom literals:
 
@@ -255,8 +270,9 @@ genetics::DNA myDNA;
 
 #### Make Your Own `module std`
 
-If an implementation does not currently support modules or lacks a standard module equivalent,
-we can revert to using traditional headers, which are widely available and standardized.
+If an implementation does not currently support modules or lacks a standard
+module equivalent, we can revert to using traditional headers, which are
+widely available and standardized.
 The challenge lies in identifying the necessary headers to include.
 
 > [!CAUTION]
@@ -270,8 +286,8 @@ it in our source files, but `#include`ing so much can give very slow compiles [S
 
 ##### `std` "Module"
 
-It includes all necessary headers in the global module fragment (before `export module std;`),
-then exports specific entities from the standard library.
+It includes all necessary headers in the global module fragment (before
+`export module std;`), then exports specific entities from the standard library.
 
 ```cpp
 module;
@@ -532,15 +548,6 @@ bool operator!=(const Vector& a, const Vector& b)
 }
 ```
 
-### User-Defined Literals
-
-```cpp
-constexpr complex<double> operator""i(long double d)
-{
-    return {0,d};  // complex is a literal type
-}
-```
-
 ## Templates
 
 `<T>`
@@ -682,7 +689,7 @@ T sum(std::vector<T> const& v) {
 Generic programming allows writing algorithms that
 work with any type satisfying certain requirements.
 
-```
+```cpp
 template<typename Iter, typename T>
 Iter find(Iter first, Iter last, const T& value) {
     while (first != last && *first != value) ++first;
@@ -695,7 +702,8 @@ auto it = find(v.begin(), v.end(), 3);
 
 ### Variadic Templates
 
-Variadic templates allow functions and classes to accept any number of arguments of any type.
+Variadic templates allow functions and classes to accept
+any number of arguments of any type.
 
 ```cpp
 template<typename T>
@@ -714,7 +722,8 @@ print(1, "hello", 3.14);
 
 ### Template Compilation Model
 
-Templates are compiled when instantiated, which happens in the translation unit where they are used. This requires template definitions to be available in headers.
+Templates are compiled when instantiated, which happens in the translation unit
+where they are used, requiring template definitions to be available in headers.
 
 ```cpp
 // mylibrary.h
@@ -727,6 +736,11 @@ int main() {
     auto result = square(5);
 }
 ```
+
+> [!WARNING]
+> You cannot define a template in a .cpp file and then use it in another .cpp
+> file. The definition must be available at the point of instantiation.
+> A workaround is to explicitly instantiate the template for the types you need.
 
 ## Standard Library
 
@@ -1036,6 +1050,9 @@ Commonly used STL algorithms include:
 - `std::for_each`: Applies a function to a range of elements.
 - `std::sort`: Sorts a range of elements.
 - `std::find`: Searches for a value in a range of elements.
+- `std::transform`: Applies a function to each element in a range and stores the
+  result in another range.
+- `std::accumulate`: Computes the sum of a range of elements.
 
 #### `std::for_each`
 
@@ -1053,14 +1070,11 @@ std::for_each(InputIterator first, InputIterator last, Function fn);
 > where the `[]` captures variables from the enclosing scope and parameters are
 > passed to the lambda.
 
-````cpp
-
-
 #### `std::sort`
 
 ```cpp
 std::sort(RandomAccessIterator first, RandomAccessIterator last);
-````
+```
 
 - `RandomAccessIterator first`: An iterator pointing to the start of the range.
 - `RandomAccessIterator last`: An iterator pointing to one past the end of the
@@ -1075,6 +1089,73 @@ std::find(InputIterator first, InputIterator last, const T& value);
 - `InputIterator first`: An iterator pointing to the start of the range.
 - `InputIterator last`: An iterator pointing to one past the end of the range.
 - `const T& value`: The value to search for in the range.
+
+In practice:
+
+```cpp
+if (library_catalog.find(book_id) != library_catalog.end()) {
+    std::cout << "Book found!" << '\n';
+} else {
+    std::cout << "Book not found!" << '\n';
+}
+```
+
+#### `std::transform`
+
+```cpp
+std::transform(InputIterator1 first1, InputIterator1 last1, InputIterator2
+first2, OutputIterator result, BinaryOperation op);
+```
+
+#### `std::accumulate`
+
+The STL also provides `std::multplies` for multiplication and `std::divides` for
+division.
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <numeric>  // For std::accumulate
+
+int main() {
+    std::vector<int> data = {1, 2, 3, 4, 5};
+
+    int sum = std::accumulate(data.begin(), data.end(), 0);
+    std::cout << "Sum: " << sum << '\n';  // Sum: 15
+
+    int product = std::accumulate(data.begin(), data.end(), 1,
+            std::multiplies<int>());
+    std::cout << "Product: " << product << '\n';  // Product: 120
+
+    // Using std::accumulate with a lambda expression
+    int sum_of_squares = std::accumulate(data.begin(), data.end(), 0, [](int sum, int val) {
+            return sum + val * val;
+            });
+    std::cout << "Sum of Squares: " << sum_of_squares << '\n';  // Sum of Squares: 55
+
+    std::vector<int> data2 = {6, 7, 8, 9, 10};
+
+    // Combining two vectors element-wise and accumulating the result
+    int combined_sum = std::accumulate(data.begin(), data.end(), 0, [&data2, i = 0](int sum, int val) mutable {
+            return sum + val + data2[i++];
+            });
+    std::cout << "Combined Sum: " << combined_sum << '\n';  // Combined Sum: 55
+
+    // append data2 to data
+    data.insert(data.end(), data2.begin(), data2.end());
+
+    // Use std::accumulate with a lambda expression to sum even numbers
+    int sum_of_evens = std::accumulate(data.begin(), data.end(), 0, [](int sum, int val) {
+        return sum + ((val % 2 == 0) ? val : 0);
+    });
+
+    int weighted_sum = std::accumulate(data.begin(), data.end(), 0, [&weights, i = 0](int sum, int val) mutable {
+            return sum + val * weights[i++];
+            });
+
+    return 0;
+}
+```
 
 ## Ranges
 

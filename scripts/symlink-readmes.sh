@@ -1,6 +1,6 @@
 #!/bin/bash
 ## Create symlinks for READMEs in the docs directory
-
+#
 # Navigate to the docs directory
 cd docs || exit
 
@@ -8,7 +8,7 @@ cd docs || exit
 ln -sf ../README.md index.md
 
 # Create symlinks for other READMEs
-for readme in ../src/README.md ../src/*/README.md ../projects/README.md ../projects/*/README.md; do
+for readme in ../src/*/README.md; do
   if [ -f "$readme" ]; then
     dir=$(dirname "$readme")
     rel_path=${dir#../}
@@ -17,3 +17,13 @@ for readme in ../src/README.md ../src/*/README.md ../projects/README.md ../proje
   fi
 done
 
+# Add project files
+mkdir -p projects
+for readme in ../projects/*/README.md; do
+  if [ -f "$readme" ]; then
+    dir=$(dirname "$readme")
+    rel_path=${dir#../}
+    link_name=$(echo "$rel_path" | tr '/' '_' | tr '[:upper:]' '[:lower:]').md
+    ln -sf "$readme" "projects/${link_name}"
+  fi
+done
