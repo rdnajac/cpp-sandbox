@@ -37,4 +37,6 @@ std::vector<int> reverse_traverse(const std::vector<std::vector<int>> &matrix) {
     return output;
 }
 
-std::vector<int> counterclockwiseTraversal(std::vector<int> &numbers) {}
+// std::vector<int> counterclockwiseTraversal(std::vector<int> &numbers) {}
+
+int main() { return 0; }

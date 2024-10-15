@@ -25,7 +25,7 @@ public:
 };
 
 // Overload operator + for Complex
-Complex operator+(const Complex& c1, const Complex& c2) {
+Complex operator+(const Complex &c1, const Complex &c2) {
     Complex result;
     result.a = c1.a + c2.a;
     result.b = c1.b + c2.b;
@@ -33,7 +33,7 @@ Complex operator+(const Complex& c1, const Complex& c2) {
 }
 
 // Overload operator << for Complex
-ostream& operator<<(ostream& os, const Complex& c) {
+ostream &operator<<(ostream &os, const Complex &c) {
     os << c.a << "+i" << c.b;
     return os;
 }

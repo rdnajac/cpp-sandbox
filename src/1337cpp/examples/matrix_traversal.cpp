@@ -1,5 +1,5 @@
-#include <vector>
 #include <iostream>
+#include <vector>
 
 std::vector<int> pathTraverse(std::vector<std::vector<int>> &grid, int startRow, int startCol) {
     int rows = grid.size();
@@ -10,22 +10,20 @@ std::vector<int> pathTraverse(std::vector<std::vector<int>> &grid, int startRow,
         std::cerr << "Invalid input" << std::endl;
         return {};
     }
-        
+
     // Define all four possible directions of movement
-    std::vector<std::pair<int, int>> directions = {
-        {1, 0}, {-1, 0}, {0, -1}, {0, 1}
-    };
+    std::vector<std::pair<int, int>> directions = {{1, 0}, {-1, 0}, {0, -1}, {0, 1}};
 
     // Start with the value at the starting cell
-    std::vector<int> visited = { grid[startRow][startCol] };
+    std::vector<int> visited = {grid[startRow][startCol]};
 
     while (true) {
-        // Initialize the current maximum as negative one 
+        // Initialize the current maximum as negative one
         int currMax = -1;
         int nextRow = -1, nextCol = -1;
 
         // Loop over each adjacent cell in all the directions
-        for (const auto& dir : directions) {
+        for (const auto &dir : directions) {
             // Calculate the new cell's row and column indices
             int newRow = startRow + dir.first;
             int newCol = startCol + dir.second;
@@ -44,7 +42,7 @@ std::vector<int> pathTraverse(std::vector<std::vector<int>> &grid, int startRow,
             }
         }
 
-        // If we don't have any valid cell to visit, break from the loop  
+        // If we don't have any valid cell to visit, break from the loop
         if (currMax <= grid[startRow][startCol]) {
             break;
         }
@@ -57,16 +55,12 @@ std::vector<int> pathTraverse(std::vector<std::vector<int>> &grid, int startRow,
         visited.push_back(currMax);
     }
 
-    // Return the list of visited cells' values    
+    // Return the list of visited cells' values
     return visited;
 }
 
 int main() {
-    std::vector<std::vector<int>> grid = {
-        {1, 2, 3},
-        {4, 5, 6},
-        {7, 8, 9}
-    };
+    std::vector<std::vector<int>> grid = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
     std::vector<int> res = pathTraverse(grid, 1, 1);
     for (int i = 0; i < res.size(); ++i) {
         std::cout << res[i] << ' ';
@@ -78,8 +72,8 @@ int main() {
 
 #if 0
 #include <iostream>
-#include <vector>
 #include <tuple>
+#include <vector>
 
 /**
  * Function to find the next higher adjacent position in the mountain matrix.

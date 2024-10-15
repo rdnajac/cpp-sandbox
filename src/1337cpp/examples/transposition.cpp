@@ -13,12 +13,13 @@ std::vector<std::vector<int>> transposedMatrix(const std::vector<std::vector<int
 
 // transpose over secondary diagonal
 // in an NxN matrix, the secondary diagonal is from (0, N-1) to (N-1, 0)
-std::vector<std::vector<int>> reflectOverSecondaryDiagonal(const std::vector<std::vector<int>>& matrix) {
+std::vector<std::vector<int>>
+reflectOverSecondaryDiagonal(const std::vector<std::vector<int>> &matrix) {
     size_t size = matrix.size();
     std::vector<std::vector<int>> new_matrix(size, std::vector<int>(size, 0));
-    for (size_t i = 0; i < size; ++i) 
-        for (size_t j = 0; j < size; j++) 
-            new_matrix[i][j] = matrix[size-j-1][size-i-1];
+    for (size_t i = 0; i < size; ++i)
+        for (size_t j = 0; j < size; j++)
+            new_matrix[i][j] = matrix[size - j - 1][size - i - 1];
     return new_matrix;
 }
 

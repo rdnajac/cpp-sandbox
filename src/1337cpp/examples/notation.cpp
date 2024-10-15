@@ -1,5 +1,5 @@
-#include <iostream>
 #include <iomanip>
+#include <iostream>
 using namespace std;
 
 int main() {
@@ -12,7 +12,8 @@ int main() {
     cout << hex << left << showbase << nouppercase << (long long)A << endl;
 
     // Output for B: formatted to 2 decimal places, right justified
-    cout << dec << right << setw(15) << setfill('_') << showpos << fixed << setprecision(2) << B << endl;
+    cout << dec << right << setw(15) << setfill('_') << showpos << fixed << setprecision(2) << B
+         << endl;
 
     // Output for C: scientific notation with 9 decimal places
     cout << scientific << uppercase << noshowpos << setprecision(9) << C << endl;

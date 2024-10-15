@@ -11,5 +11,5 @@ endmacro()
 
 add_all_subdirectories()
 
-add_executable(${PROJECT_NAME} main.cpp)
-add_executable(qsort qsort.cpp)
+# add_executable(${PROJECT_NAME} main.cpp)
+# add_executable(qsort qsort.cpp)

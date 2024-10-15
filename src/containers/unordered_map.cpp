@@ -1,7 +1,7 @@
 #include <iostream>
-#include <vector>
-#include <unordered_map>
 #include <limits>
+#include <unordered_map>
+#include <vector>
 
 /**
  * @brief Demonstrates the use of std::unordered_map in C++.
@@ -21,7 +21,7 @@
  * @param vec The vector of integers.
  * @return The integer that minimizes the maximum block size when removed.
  */
-int minimal_max_block(const std::vector<int>& vec) {
+int minimal_max_block(const std::vector<int> &vec) {
     std::unordered_map<int, int> last_occurrence;
     std::unordered_map<int, int> max_block_sizes;
 
@@ -43,7 +43,7 @@ int minimal_max_block(const std::vector<int>& vec) {
     }
 
     // Handle tail blocks
-    for (const auto& entry : last_occurrence) {
+    for (const auto &entry : last_occurrence) {
         int num = entry.first;
         int pos = entry.second;
         int block_size = vec.size() - pos - 1; // Tail block size
@@ -53,7 +53,7 @@ int minimal_max_block(const std::vector<int>& vec) {
     // Find the number with the smallest maximum block size
     int min_num = -1;
     int min_block_size = std::numeric_limits<int>::max();
-    for (const auto& entry : max_block_sizes) {
+    for (const auto &entry : max_block_sizes) {
         if (entry.second < min_block_size) {
             min_block_size = entry.second;
             min_num = entry.first;
@@ -72,7 +72,7 @@ int minimal_max_block(const std::vector<int>& vec) {
  * @param vec The vector of integers.
  * @return The integer that minimizes the maximum block size when removed.
  */
-int minimal_max_block_bruteforce(const std::vector<int>& vec) {
+int minimal_max_block_bruteforce(const std::vector<int> &vec) {
     int min_max_block_size = std::numeric_limits<int>::max();
     int min_num = -1;
 
@@ -81,10 +81,10 @@ int minimal_max_block_bruteforce(const std::vector<int>& vec) {
         unique_elements[num]++;
     }
 
-    for (const auto& entry : unique_elements) {
+    for (const auto &entry : unique_elements) {
         int num = entry.first;
         std::vector<int> indices;
-        
+
         // Collect indices of the current number
         for (size_t i = 0; i < vec.size(); ++i) {
             if (vec[i] == num) {

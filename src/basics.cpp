@@ -31,18 +31,20 @@ std::span<int> sp(v); // Non-owning reference to a contiguous sequence of ints
 
 int main() {
     // C++11 also gives us range-based for loops
-    for (auto x : v) cout << x << " ";
+    for (auto x : v)
+        cout << x << " ";
 
-#if __cplusplus >= 201402L /* C++14 */
+#if __cplusplus >= 201402L  /* C++14 */
     for (auto radius : v) { // C++14 generic lambda expressions
-        cout << "radius: " << radius << ", area: " 
-            << [radius] () { return pi * radius * radius; }() << endl;
+        cout << "radius: " << radius << ", area: " << [radius]() { return pi * radius * radius; }()
+             << endl;
     }
 #endif
 
 #if __cplusplus >= 202002L /* C++20 */
     cout << "Span: ";
-    for (auto x : sp) cout << x << " ";
+    for (auto x : sp)
+        cout << x << " ";
 #endif
     return 0;
 }

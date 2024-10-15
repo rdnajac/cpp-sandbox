@@ -1,5 +1,5 @@
-#include <iostream>
 #include <algorithm>
+#include <iostream>
 #include <vector>
 
 int main() {
@@ -14,7 +14,7 @@ int main() {
 
     // Output the results
     std::cout << "Sorted vector: ";
-    for (const auto& num : v) {
+    for (const auto &num : v) {
         std::cout << num << " ";
     }
     std::cout << std::endl;

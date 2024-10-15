@@ -20,11 +20,11 @@
  * @param list2 The second vector of integers.
  * @return A vector containing the common elements.
  */
-std::vector<int> common_elements(const std::vector<int>& list1, const std::vector<int>& list2) {
+std::vector<int> common_elements(const std::vector<int> &list1, const std::vector<int> &list2) {
     std::unordered_set<int> set1(list1.begin(), list1.end());
     std::vector<int> common;
 
-    for (const int& num : list2) {
+    for (const int &num : list2) {
         if (set1.find(num) != set1.end()) {
             common.push_back(num);
         }
@@ -42,14 +42,16 @@ int main() {
     my_set.insert(3); // No effect, 3 is already present
 
     std::cout << "Contents of the unordered_set after insertions: ";
-    for (const int& elem : my_set) {
+    for (const int &elem : my_set) {
         std::cout << elem << " "; // Order may vary
     }
     std::cout << std::endl;
 
     // Membership Check
-    std::cout << "Does the set contain 3? " << (my_set.find(3) != my_set.end() ? "Yes" : "No") << std::endl; // O(1)
-    std::cout << "Does the set contain 7? " << (my_set.find(7) != my_set.end() ? "Yes" : "No") << std::endl; // O(1)
+    std::cout << "Does the set contain 3? " << (my_set.find(3) != my_set.end() ? "Yes" : "No")
+              << std::endl; // O(1)
+    std::cout << "Does the set contain 7? " << (my_set.find(7) != my_set.end() ? "Yes" : "No")
+              << std::endl; // O(1)
 
     // Size
     std::cout << "Size of the unordered_set: " << my_set.size() << std::endl; // O(1)
@@ -57,7 +59,7 @@ int main() {
     // Removal
     my_set.erase(2); // Average time complexity: O(1)
     std::cout << "Contents after removing 2: ";
-    for (const int& elem : my_set) {
+    for (const int &elem : my_set) {
         std::cout << elem << " "; // Order may vary
     }
     std::cout << std::endl;
@@ -72,7 +74,7 @@ int main() {
     std::vector<int> result = common_elements(list1, list2);
 
     std::cout << "Common elements between list1 and list2: ";
-    for (const int& elm : result) {
+    for (const int &elm : result) {
         std::cout << elm << " "; // Output: 2 3 5 13 21
     }
     std::cout << std::endl;

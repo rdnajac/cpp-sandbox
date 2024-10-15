@@ -1,9 +1,11 @@
+#include <algorithm>
 #include <iostream>
 #include <vector>
-#include <algorithm>
 using namespace std;
 
-#define FAST_IO ios_base::sync_with_stdio(false); cin.tie(NULL);
+#define FAST_IO                                                                                    \
+    ios_base::sync_with_stdio(false);                                                              \
+    cin.tie(NULL);
 
 int main() {
     FAST_IO;

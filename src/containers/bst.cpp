@@ -93,7 +93,6 @@ private:
         if (node == nullptr)
             return;
 
-        // Swap the left and right children
         std::swap(node->left, node->right);
 
         // Recursively invert the children
@@ -107,100 +106,105 @@ public:
 
     /**
      * @brief Inserts a value into the BST.
-     *
      * @param value The value to insert.
      */
     void insert(int value) { root = insertHelper(root, value); }
 
     /**
      * @brief Performs in-order traversal of the BST.
-     *
      * Outputs the values in ascending order.
      */
     void inOrderTraversal() {
+        cout << "In-Order Traversal: ";
         inOrderTraversal(root);
         cout << endl; // Print a newline after traversal
     }
 
     /**
      * @brief Performs pre-order traversal of the BST.
-     *
      * Outputs the values in pre-order.
      */
     void preOrderTraversal() {
+        cout << "Pre-Order Traversal: ";
         preOrderTraversal(root);
-        cout << endl; // Print a newline after traversal
+        cout << endl;
     }
 
     /**
      * @brief Performs post-order traversal of the BST.
-     *
      * Outputs the values in post-order.
      */
     void postOrderTraversal() {
+        cout << "Post-Order Traversal: ";
         postOrderTraversal(root);
-        cout << endl; // Print a newline after traversal
+        cout << endl;
     }
 
     /**
      * @brief Performs breadth-first traversal of the BST.
-     *
      * Outputs the values level by level.
      */
     void breadthFirstTraversal() {
         cout << "Breadth-First Traversal: ";
-        breadthFirstTraversal(root); // Call the helper function with root
-        cout << endl;                // Print a newline after traversal
+        breadthFirstTraversal(root);
+        cout << endl;
     }
 
     /**
      * @brief Inverts the BST.
-     *
      * This swaps the left and right children of all nodes.
      */
     void invert() { invert(root); }
 
     /**
      * @brief Generates a random BST with N nodes.
-     *
      * @param n The number of nodes to generate.
      */
     void generateRandomBST(int n) {
         RandomNumberGenerator rng; // Create RNG instance
-        Timer timer;               // Create Timer instance
-        timer.start();             // Start timing
+        // Timer timer;               // Create Timer instance
 
-        for (int i = 0; i < n; ++i) {
-            insert(rng.getRandomNumber() % 100); // Insert random numbers, limited to 0-99
-        }
+        // timer.start();
+        for (int i = 0; i < n; ++i)
+            insert(rng.getRandomNumber() % 100);
 
-        timer.logTime("Generate Random BST Time"); // Log the processing time
+        // timer.logTime("Generate Random BST Time");
+        // timer.printResults();
     }
+
+    // Helper function to print the tree in a pretty format
+    void prettyPrintHelper(Node *node, string prefix, bool isLeft) {
+        if (node == nullptr)
+            return;
+
+        cout << prefix;
+        cout << (isLeft ? "├── " : "└── "); // Use different symbols for left and right children
+        cout << node->data << endl;
+
+        prettyPrintHelper(node->left, prefix + (isLeft ? "│   " : "    "), true);
+        prettyPrintHelper(node->right, prefix + (isLeft ? "│   " : "    "), false);
+    }
+
+    // Public function to start pretty printing from the root
+    void prettyPrint() { prettyPrintHelper(root, "", false); }
 };
 
-// Main function
 int main() {
     BinarySearchTree bst;
 
-    // Generate and display a random BST with 10 nodes
-    bst.generateRandomBST(10);
+    int size = 13;
+    cout << "Generating a random BST with " << size << " nodes..." << endl;
+    bst.generateRandomBST(size);
+    bst.prettyPrint();
 
-    cout << "In-order traversal of the Random BST: ";
     bst.inOrderTraversal();
-
-    cout << "Pre-order traversal of the Random BST: ";
     bst.preOrderTraversal();
-
-    cout << "Post-order traversal of the Random BST: ";
     bst.postOrderTraversal();
 
     cout << "Inverting the BST..." << endl;
     bst.invert();
 
-    cout << "In-order traversal after inversion: ";
     bst.inOrderTraversal();
-
-    cout << "Breadth-first traversal after inversion: ";
     bst.breadthFirstTraversal();
 
     return 0;
