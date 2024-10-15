@@ -10,7 +10,7 @@
 cd docs || exit
 
 # Create a symlink for the main README.md
-ln -sf ../README.md index.md
+#ln -sf ../README.md index.md
 
 # Function to create symlinks for README.md files
 readme2index() {
