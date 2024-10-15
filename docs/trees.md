@@ -1,14 +1,25 @@
 # Trees in Data Structures and Algorithms
 
-Trees are hierarchical data structures that are widely used in computer science for organizing and representing data efficiently. They consist of nodes connected by edges, with a special node called the root at the top of the hierarchy.
+Trees are hierarchical data structures consisting of nodes connected by edges.
+
+- **root**: The topmost node in a tree.
+- **parent**: A node that has child nodes.
+- **child**: A node directly connected to another node when moving away from the
+  root.
+- **leaf**: A node with no children.
+- **subtree**: A tree consisting of a node and all its descendants.
+- **level**: The level of a node is the number of edges on the path from the root
+  node to that node.
+- **height**: The height of a tree is the max level of any node in the tree.
 
 ## Binary Trees
 
-A binary tree is a tree data structure in which each node has at most two children, referred to as the left child and the right child.
+A binary tree is a tree data structure in which each node has at most two
+children, referred to as the left child and the right child.
 
 ### Basic Structure
 
-```
+```cpp
 struct TreeNode {
     int val;
     TreeNode* left;
@@ -19,11 +30,17 @@ struct TreeNode {
 
 ## Tree Traversals
 
-Tree traversals are methods of visiting all nodes in a tree in a specific order. The three main types of traversals for binary trees are pre-order, in-order, and post-order.
+Tree traversals are methods of visiting all nodes in a tree in a specific order.
+
+- Pre-order Traversal
+- In-order Traversal
+- Post-order Traversal
 
 ### Pre-order Traversal
 
-In pre-order traversal, we visit the root node first, then the left subtree, and finally the right subtree.
+1. Visit the root.
+2. Traverse the left subtree.
+3. Traverse the right subtree.
 
 ```cpp
 void preorderTraversal(TreeNode* root) {
