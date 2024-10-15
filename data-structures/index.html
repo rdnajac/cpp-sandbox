@@ -13,25 +13,25 @@
       
       
       
-        <link rel="prev" href="../2-5_consecutive_character_groups/">
+        <link rel="prev" href="../containers/">
       
       
-        <link rel="next" href="../3-2_string_parsing/">
+        <link rel="next" href="../math/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.40">
     
     
       
-        <title>Reverse Words - C++ Sandbox</title>
+        <title>Data Structures - C++ Sandbox</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.8c3ca2c6.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.8c3ca2c6.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -52,7 +52,7 @@
     
       <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#reverse-words" class="md-skip">
+        <a href="#data-structures" class="md-skip">
           Skip to content
         </a>
       
@@ -94,7 +94,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="C++ Sandbox" class="md-header__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+    <a href=".." title="C++ Sandbox" class="md-header__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Reverse Words
+              Data Structures
             
           </span>
         </div>
@@ -227,7 +227,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="C++ Sandbox" class="md-nav__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
+    <a href=".." title="C++ Sandbox" class="md-nav__button md-logo" aria-label="C++ Sandbox" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -257,7 +257,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -277,7 +277,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../a-tour-of-cpp/" class="md-nav__link">
+      <a href="../a-tour-of-cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -297,7 +297,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algorithms/" class="md-nav__link">
+      <a href="../algorithms/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -317,7 +317,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../containers/" class="md-nav__link">
+      <a href="../containers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -334,10 +334,30 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../data-structures/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Data Structures
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -346,6 +366,155 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Reference
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#array" class="md-nav__link">
+    <span class="md-ellipsis">
+      Array
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Array">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-array-eg-stdvector" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamic Array (e.g., std::vector)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linked-list-eg-stdlist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linked List (e.g., std::list)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stack-eg-stdstack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stack (e.g., std::stack)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#queue-eg-stdqueue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Queue (e.g., std::queue)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hash-table-eg-stdunordered_map" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hash Table (e.g., std::unordered_map)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#heap-eg-stdpriority_queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Heap (e.g., std::priority_queue)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trees
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trees">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#binary-search-tree-bst" class="md-nav__link">
+    <span class="md-ellipsis">
+      Binary Search Tree (BST)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#red-black-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      Red-Black Tree
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avl-adelson-velsky-and-landis-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      AVL (Adelson-Velsky and Landis) Tree
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c-stl-containers-and-common-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      C++ STL Containers and Common Operations
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -357,7 +526,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../math/" class="md-nav__link">
+      <a href="../math/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -377,7 +546,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pImpl/" class="md-nav__link">
+      <a href="../pImpl/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -397,7 +566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sorting/" class="md-nav__link">
+      <a href="../sorting/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -417,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../time-complexity/" class="md-nav__link">
+      <a href="../time-complexity/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -437,7 +606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../trees/" class="md-nav__link">
+      <a href="../trees/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -454,19 +623,17 @@
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
         
           
           <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
@@ -480,7 +647,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_11">
             <span class="md-nav__icon md-icon"></span>
             Codesignal
@@ -494,7 +661,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2-5_consecutive_character_groups/" class="md-nav__link">
+      <a href="../codesignal/2-5_consecutive_character_groups/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -512,19 +679,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../codesignal/3-1_reverse_words/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -533,7 +691,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -546,7 +703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../3-2_string_parsing/" class="md-nav__link">
+      <a href="../codesignal/3-2_string_parsing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -567,7 +724,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../3-3_time_calculation/" class="md-nav__link">
+      <a href="../codesignal/3-3_time_calculation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -588,7 +745,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../3-4_substring_search/" class="md-nav__link">
+      <a href="../codesignal/3-4_substring_search/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -609,7 +766,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-1_nested_loops/" class="md-nav__link">
+      <a href="../codesignal/4-1_nested_loops/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -630,7 +787,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-2_uraveling_strings/" class="md-nav__link">
+      <a href="../codesignal/4-2_uraveling_strings/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -651,7 +808,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-3_obstacle_game/" class="md-nav__link">
+      <a href="../codesignal/4-3_obstacle_game/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -672,7 +829,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-4_handling_large_numbers/" class="md-nav__link">
+      <a href="../codesignal/4-4_handling_large_numbers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -693,7 +850,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../5-1_array_traversal/" class="md-nav__link">
+      <a href="../codesignal/5-1_array_traversal/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -714,7 +871,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../5-2_string_manipulation/" class="md-nav__link">
+      <a href="../codesignal/5-2_string_manipulation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -735,7 +892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../5-3_string_and_array_operations/" class="md-nav__link">
+      <a href="../codesignal/5-3_string_and_array_operations/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -756,7 +913,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../5-4_forest_traversal/" class="md-nav__link">
+      <a href="../codesignal/5-4_forest_traversal/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -777,7 +934,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../5-5_array_manipulation/" class="md-nav__link">
+      <a href="../codesignal/5-5_array_manipulation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -840,7 +997,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../containers/array/" class="md-nav__link">
+      <a href="../containers/array/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -861,7 +1018,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../containers/bst/" class="md-nav__link">
+      <a href="../containers/bst/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -882,7 +1039,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../containers/deque/" class="md-nav__link">
+      <a href="../containers/deque/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -903,7 +1060,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../containers/hashmap/" class="md-nav__link">
+      <a href="../containers/hashmap/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -924,7 +1081,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../containers/http_hashmap/" class="md-nav__link">
+      <a href="../containers/http_hashmap/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -945,7 +1102,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../containers/map/" class="md-nav__link">
+      <a href="../containers/map/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -966,7 +1123,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../containers/strings/" class="md-nav__link">
+      <a href="../containers/strings/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -987,7 +1144,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../containers/unordered_map/" class="md-nav__link">
+      <a href="../containers/unordered_map/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1008,7 +1165,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../containers/unordered_set/" class="md-nav__link">
+      <a href="../containers/unordered_set/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1029,7 +1186,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../containers/vector/" class="md-nav__link">
+      <a href="../containers/vector/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1050,7 +1207,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../containers/vector_traversal/" class="md-nav__link">
+      <a href="../containers/vector_traversal/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1113,7 +1270,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/big_numbers/" class="md-nav__link">
+      <a href="../examples/big_numbers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1134,7 +1291,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/bounds/" class="md-nav__link">
+      <a href="../examples/bounds/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1155,7 +1312,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/distances/" class="md-nav__link">
+      <a href="../examples/distances/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1176,7 +1333,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/factorial/" class="md-nav__link">
+      <a href="../examples/factorial/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1197,7 +1354,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/gameboard/" class="md-nav__link">
+      <a href="../examples/gameboard/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1218,7 +1375,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/matrix_traversal/" class="md-nav__link">
+      <a href="../examples/matrix_traversal/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1239,7 +1396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/notation/" class="md-nav__link">
+      <a href="../examples/notation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1260,7 +1417,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/stream_iterators/" class="md-nav__link">
+      <a href="../examples/stream_iterators/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1281,7 +1438,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/strings/" class="md-nav__link">
+      <a href="../examples/strings/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1302,7 +1459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/time/" class="md-nav__link">
+      <a href="../examples/time/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1323,7 +1480,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/transposition/" class="md-nav__link">
+      <a href="../examples/transposition/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1386,7 +1543,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modern-cpp-features/" class="md-nav__link">
+      <a href="../modern-cpp-features/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1407,7 +1564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modern-cpp-features/CONTRIBUTING/" class="md-nav__link">
+      <a href="../modern-cpp-features/CONTRIBUTING/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1428,7 +1585,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modern-cpp-features/CPP11/" class="md-nav__link">
+      <a href="../modern-cpp-features/CPP11/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1449,7 +1606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modern-cpp-features/CPP14/" class="md-nav__link">
+      <a href="../modern-cpp-features/CPP14/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1470,7 +1627,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modern-cpp-features/CPP17/" class="md-nav__link">
+      <a href="../modern-cpp-features/CPP17/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1491,7 +1648,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modern-cpp-features/CPP20/" class="md-nav__link">
+      <a href="../modern-cpp-features/CPP20/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1554,7 +1711,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../projects/cuda/" class="md-nav__link">
+      <a href="../projects/cuda/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1575,7 +1732,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../projects/galois/" class="md-nav__link">
+      <a href="../projects/galois/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1616,6 +1773,143 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Reference
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#array" class="md-nav__link">
+    <span class="md-ellipsis">
+      Array
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Array">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-array-eg-stdvector" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamic Array (e.g., std::vector)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linked-list-eg-stdlist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linked List (e.g., std::list)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stack-eg-stdstack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stack (e.g., std::stack)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#queue-eg-stdqueue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Queue (e.g., std::queue)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hash-table-eg-stdunordered_map" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hash Table (e.g., std::unordered_map)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#heap-eg-stdpriority_queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Heap (e.g., std::priority_queue)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trees
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trees">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#binary-search-tree-bst" class="md-nav__link">
+    <span class="md-ellipsis">
+      Binary Search Tree (BST)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#red-black-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      Red-Black Tree
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avl-adelson-velsky-and-landis-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      AVL (Adelson-Velsky and Landis) Tree
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c-stl-containers-and-common-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      C++ STL Containers and Common Operations
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1632,42 +1926,277 @@
   
 
 
-<h1 id="reverse-words">Reverse Words</h1>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;algorithm&gt;</span><span class="c1"> //for std::reverse</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="c1">  //for std::cout and std::endl</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sstream&gt;</span><span class="c1">   //for std::istringstream and std::ostringstream</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span><span class="c1">    //for std::vector</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">reverseWords</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">input_str</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">words</span><span class="p">;</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">istringstream</span><span class="w"> </span><span class="n">iss</span><span class="p">(</span><span class="n">input_str</span><span class="p">);</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="p">;</span><span class="w"> </span><span class="n">iss</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">s</span><span class="p">;)</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">        </span><span class="n">words</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">reversed_words</span><span class="p">;</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">word</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">words</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">reverse</span><span class="p">(</span><span class="n">word</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">word</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="n">reversed_words</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">word</span><span class="p">);</span>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ostringstream</span><span class="w"> </span><span class="n">oss</span><span class="p">;</span>
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span><span class="n">oss</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">reversed_words</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w"> </span><span class="c1">// add first word</span>
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
-</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">reversed_words</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
-</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">        </span><span class="n">oss</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">reversed_words</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"> </span><span class="c1">// add the remaining words with space</span>
-</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>
-</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">oss</span><span class="p">.</span><span class="n">str</span><span class="p">();</span>
-</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="p">}</span>
-</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>
-</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">    </span><span class="c1">// Call the function</span>
-</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">reverseWords</span><span class="p">(</span><span class="s">&quot;Hello neat cpp_lovers_123&quot;</span><span class="p">)</span>
-</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="c1">// prints: &#39;olleH taen 321_srevol_ppc&#39;</span>
-</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="p">}</span>
-</span></code></pre></div>
+<h1 id="data-structures">Data Structures</h1>
+<p>Understanding these data structures is crucial for efficient algorithm design and problem-solving.
+Each structure has its strengths and ideal use cases.</p>
+<h2 id="quick-reference">Quick Reference</h2>
+<table>
+<thead>
+<tr>
+<th>Data Structure</th>
+<th>Insert</th>
+<th>Delete</th>
+<th>Search</th>
+<th>Space</th>
+<th>Description</th>
+<th>Important Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Array</td>
+<td><span class="arithmatex">\(O(1)\)</span> or <span class="arithmatex">\(O(n)\)</span></td>
+<td><span class="arithmatex">\(O(n)\)</span></td>
+<td><span class="arithmatex">\(O(n)\)</span></td>
+<td><span class="arithmatex">\(O(n)\)</span></td>
+<td>Contiguous memory locations</td>
+<td>Fast access, fixed size (static arrays)</td>
+</tr>
+<tr>
+<td>Dynamic Array</td>
+<td><span class="arithmatex">\(O(1)\)</span> amortized</td>
+<td><span class="arithmatex">\(O(n)\)</span></td>
+<td><span class="arithmatex">\(O(n)\)</span></td>
+<td><span class="arithmatex">\(O(n)\)</span></td>
+<td>Resizable array</td>
+<td>Occasional <span class="arithmatex">\(O(n)\)</span> insert due to resizing</td>
+</tr>
+<tr>
+<td>Linked List</td>
+<td><span class="arithmatex">\(O(1)\)</span></td>
+<td><span class="arithmatex">\(O(1)\)</span></td>
+<td><span class="arithmatex">\(O(n)\)</span></td>
+<td><span class="arithmatex">\(O(n)\)</span></td>
+<td>Chain of nodes</td>
+<td>Efficient insertion/deletion, poor random access</td>
+</tr>
+<tr>
+<td>Stack</td>
+<td><span class="arithmatex">\(O(1)\)</span></td>
+<td><span class="arithmatex">\(O(1)\)</span></td>
+<td><span class="arithmatex">\(O(n)\)</span></td>
+<td><span class="arithmatex">\(O(n)\)</span></td>
+<td>LIFO structure</td>
+<td>Constant time push/pop operations</td>
+</tr>
+<tr>
+<td>Queue</td>
+<td><span class="arithmatex">\(O(1)\)</span></td>
+<td><span class="arithmatex">\(O(1)\)</span></td>
+<td><span class="arithmatex">\(O(n)\)</span></td>
+<td><span class="arithmatex">\(O(n)\)</span></td>
+<td>FIFO structure</td>
+<td>Constant time enqueue/dequeue operations</td>
+</tr>
+<tr>
+<td>Hash Table</td>
+<td><span class="arithmatex">\(O(1)\)</span> average</td>
+<td><span class="arithmatex">\(O(1)\)</span> average</td>
+<td><span class="arithmatex">\(O(1)\)</span> average</td>
+<td><span class="arithmatex">\(O(n)\)</span></td>
+<td>Key-value pairs</td>
+<td>Potential <span class="arithmatex">\(O(n)\)</span> worst-case for collisions</td>
+</tr>
+<tr>
+<td>Min/Max Heap</td>
+<td><span class="arithmatex">\(O(\log n)\)</span></td>
+<td><span class="arithmatex">\(O(\log n)\)</span></td>
+<td><span class="arithmatex">\(O(n)\)</span></td>
+<td><span class="arithmatex">\(O(n)\)</span></td>
+<td>Tree-based structure</td>
+<td>Efficient for priority queues</td>
+</tr>
+<tr>
+<td>Binary Search Tree</td>
+<td><span class="arithmatex">\(O(\log n)\)</span> average</td>
+<td><span class="arithmatex">\(O(\log n)\)</span> average</td>
+<td><span class="arithmatex">\(O(\log n)\)</span> average</td>
+<td><span class="arithmatex">\(O(n)\)</span></td>
+<td>Ordered binary tree</td>
+<td>Potential <span class="arithmatex">\(O(n)\)</span> worst-case for unbalanced trees</td>
+</tr>
+<tr>
+<td>Red-Black Tree</td>
+<td><span class="arithmatex">\(O(\log n)\)</span></td>
+<td><span class="arithmatex">\(O(\log n)\)</span></td>
+<td><span class="arithmatex">\(O(\log n)\)</span></td>
+<td><span class="arithmatex">\(O(n)\)</span></td>
+<td>Self-balancing BST</td>
+<td>Guaranteed <span class="arithmatex">\(O(\log n)\)</span> operations</td>
+</tr>
+<tr>
+<td>AVL Tree</td>
+<td><span class="arithmatex">\(O(\log n)\)</span></td>
+<td><span class="arithmatex">\(O(\log n)\)</span></td>
+<td><span class="arithmatex">\(O(\log n)\)</span></td>
+<td><span class="arithmatex">\(O(n)\)</span></td>
+<td>Strictly balanced BST</td>
+<td>More balanced than Red-Black, but costlier updates</td>
+</tr>
+</tbody>
+</table>
+<h2 id="array">Array</h2>
+<ul>
+<li>Pros: Fast access, cache-friendly</li>
+<li>Cons: Fixed size (for static arrays), expensive insertion/deletion</li>
+<li>Use when: Fast access is crucial, size is known and fixed</li>
+</ul>
+<h3 id="dynamic-array-eg-stdvector">Dynamic Array (e.g., <code>std::vector</code>)</h3>
+<ul>
+<li>Pros: Flexible size, still allows fast access</li>
+<li>Cons: Occasional costly resizing operations</li>
+<li>Use when: Size may vary, but random access is still important</li>
+</ul>
+<h2 id="linked-list-eg-stdlist">Linked List (e.g., <code>std::list</code>)</h2>
+<ul>
+<li>Types: Singly linked, doubly linked, circular</li>
+<li>Pros: Efficient insertion/deletion, dynamic size</li>
+<li>Cons: Poor random access, extra memory for pointers</li>
+<li>Use when: Frequent insertions/deletions, size is unknown or changes frequently</li>
+</ul>
+<h2 id="stack-eg-stdstack">Stack (e.g., <code>std::stack</code>)</h2>
+<ul>
+<li>LIFO (Last In, First Out) principle</li>
+<li>Operations: push, pop, top</li>
+<li>Use when: Need to track function calls, undo mechanisms, expression evaluation</li>
+</ul>
+<h2 id="queue-eg-stdqueue">Queue (e.g., <code>std::queue</code>)</h2>
+<ul>
+<li>FIFO (First In, First Out) principle</li>
+<li>Operations: enqueue, dequeue, front</li>
+<li>Use when: Managing tasks, breadth-first search, buffering</li>
+</ul>
+<h2 id="hash-table-eg-stdunordered_map">Hash Table (e.g., <code>std::unordered_map</code>)</h2>
+<p>Also called a hash map, it stores key-value pairs based on the hash value of the
+key. A clever hashing algorithm can reduce the time complexity of certain problems.</p>
+<ul>
+<li>Pros: Very fast average-case operations</li>
+<li>Cons: Potential for collisions, may require resizing</li>
+<li>Use when: Fast lookups are crucial, keys are hashable</li>
+</ul>
+<h2 id="heap-eg-stdpriority_queue">Heap (e.g., <code>std::priority_queue</code>)</h2>
+<p>A heap is a specialized tree-based data structure that satisfies the heap
+property. It is commonly used to implement priority queues, a data structure
+that returns the element with the highest (or lowest) priority.</p>
+<ul>
+<li>Types: Min-heap, max-heap</li>
+<li>Pros: Efficient for priority queue operations</li>
+<li>Cons: Not suitable for searching for arbitrary elements</li>
+<li>Use when: Need to repeatedly remove the smallest/largest element</li>
+</ul>
+<h2 id="trees">Trees</h2>
+<p>A tree is a hierarchical data structure consisting of nodes connected by edges.</p>
+<h3 id="binary-search-tree-bst">Binary Search Tree (BST)</h3>
+<ul>
+<li>Pros: Maintains sorted order, efficient operations when balanced</li>
+<li>Cons: Can become unbalanced, leading to worst-case <span class="arithmatex">\(O(n)\)</span> operations</li>
+<li>Use when: Need sorted data with fast insertions/deletions</li>
+</ul>
+<h3 id="red-black-tree">Red-Black Tree</h3>
+<ul>
+<li>Self-balancing BST</li>
+<li>Pros: Guarantees <span class="arithmatex">\(O(\log n)\)</span> operations, less rigid balance than AVL trees</li>
+<li>Cons: Complex implementation</li>
+<li>Use when: Need guaranteed performance for a mix of operations</li>
+</ul>
+<h3 id="avl-adelson-velsky-and-landis-tree">AVL (Adelson-Velsky and Landis) Tree</h3>
+<ul>
+<li>Strictly balanced BST</li>
+<li>Pros: More rigidly balanced than Red-Black trees, faster lookups</li>
+<li>Cons: More rotations during insertion/deletion than Red-Black trees</li>
+<li>Use when: Lookups are more frequent than insertions/deletions</li>
+</ul>
+<h2 id="c-stl-containers-and-common-operations">C++ STL Containers and Common Operations</h2>
+<table>
+<thead>
+<tr>
+<th>Container</th>
+<th>Insert</th>
+<th>Delete</th>
+<th>Search</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vector</td>
+<td><span class="arithmatex">\(O(1)\)</span> amortized</td>
+<td><span class="arithmatex">\(O(n)\)</span></td>
+<td><span class="arithmatex">\(O(n)\)</span></td>
+<td>Dynamic array implementation</td>
+</tr>
+<tr>
+<td>list</td>
+<td><span class="arithmatex">\(O(1)\)</span></td>
+<td><span class="arithmatex">\(O(1)\)</span></td>
+<td><span class="arithmatex">\(O(n)\)</span></td>
+<td>Doubly linked list</td>
+</tr>
+<tr>
+<td>deque</td>
+<td><span class="arithmatex">\(O(1)\)</span> amortized</td>
+<td><span class="arithmatex">\(O(n)\)</span></td>
+<td><span class="arithmatex">\(O(n)\)</span></td>
+<td>Double-ended queue</td>
+</tr>
+<tr>
+<td>set</td>
+<td><span class="arithmatex">\(O(\log n)\)</span></td>
+<td><span class="arithmatex">\(O(\log n)\)</span></td>
+<td><span class="arithmatex">\(O(\log n)\)</span></td>
+<td>Red-Black Tree implementation</td>
+</tr>
+<tr>
+<td>multiset</td>
+<td><span class="arithmatex">\(O(\log n)\)</span></td>
+<td><span class="arithmatex">\(O(\log n)\)</span></td>
+<td><span class="arithmatex">\(O(\log n)\)</span></td>
+<td>Allows duplicates</td>
+</tr>
+<tr>
+<td>map</td>
+<td><span class="arithmatex">\(O(\log n)\)</span></td>
+<td><span class="arithmatex">\(O(\log n)\)</span></td>
+<td><span class="arithmatex">\(O(\log n)\)</span></td>
+<td>Red-Black Tree implementation</td>
+</tr>
+<tr>
+<td>unordered_set</td>
+<td><span class="arithmatex">\(O(1)\)</span> average</td>
+<td><span class="arithmatex">\(O(1)\)</span> average</td>
+<td><span class="arithmatex">\(O(1)\)</span> average</td>
+<td>Hash table implementation</td>
+</tr>
+<tr>
+<td>unordered_map</td>
+<td><span class="arithmatex">\(O(1)\)</span> average</td>
+<td><span class="arithmatex">\(O(1)\)</span> average</td>
+<td><span class="arithmatex">\(O(1)\)</span> average</td>
+<td>Hash table implementation</td>
+</tr>
+<tr>
+<td>priority_queue</td>
+<td><span class="arithmatex">\(O(\log n)\)</span></td>
+<td><span class="arithmatex">\(O(\log n)\)</span></td>
+<td><span class="arithmatex">\(O(1)\)</span> for max/min</td>
+<td>Heap implementation</td>
+</tr>
+<tr>
+<td>stack</td>
+<td><span class="arithmatex">\(O(1)\)</span></td>
+<td><span class="arithmatex">\(O(1)\)</span></td>
+<td>N/A</td>
+<td>Adapter container</td>
+</tr>
+<tr>
+<td>queue</td>
+<td><span class="arithmatex">\(O(1)\)</span></td>
+<td><span class="arithmatex">\(O(1)\)</span></td>
+<td>N/A</td>
+<td>Adapter container</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -1718,12 +2247,12 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.525ec568.min.js"></script>
+      <script src="../assets/javascripts/bundle.525ec568.min.js"></script>
       
-        <script src="../../js/katex.js"></script>
+        <script src="../js/katex.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
