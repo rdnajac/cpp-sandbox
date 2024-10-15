@@ -30,8 +30,7 @@ jobs:
         with:
           key: mkdocs-material-${{ env.cache_id }}
           path: .cache
-          restore-keys: |
-            mkdocs-material-
+          restore-keys: mkdocs-material-
       - run: pip install -r requirements.txt
       - name: Add problems to docs
         run: python scripts/cpp2md.py src/1337cpp/codesignal src/1337cpp/examples src/containers
