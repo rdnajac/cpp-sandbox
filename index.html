@@ -3389,8 +3389,15 @@ Now that I have graduated, I've decided to compile all of my notes into a
 comprehensive guide. This document serves as an easy reference to accompany the
 repository of code snippets and examples I have been developing.</p>
 <h2 id="attribution">Attribution</h2>
-<p>The material in this document is based on concepts and information from:
-Stroustrup, B. (2022). A Tour of C++ (C++ In-Depth Series) (3rd ed.). Addison-Wesley Professional.</p>
+<p>The material on this page is based on concepts and information from:</p>
+<p>Stroustrup, B. (2022). <a href="https://isocpp.org/tour">A Tour of C++</a>
+(C++ In-Depth Series) (3rd ed.). Addison-Wesley Professional.</p>
+<p>Check out the <a href="https://github.com/AnthonyCalandra/modern-cpp-features">Modern C++ Features</a>
+included in the repository as a git submodule and supplement to this guide.
+(Click the link on the side bar to see it rendered in the same style as this guide).
+The original repository maintained by <a href="https://anthony-calandra.com/">Anthony Calandra</a>
+is more comprehensive and has the support of a community of contributors, but
+I wanted to try my hand at creating a similar resource from scratch.</p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ol>
 <li><a href="#the-basics">The Basics</a></li>
@@ -3692,7 +3699,8 @@ it in our source files, but <code>#include</code>ing so much can give very slow 
 </span></code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>It looks like we can't export <code>using</code> declarations on Apple clang version 15.0.0 (clang-1500.3.9.4)</p>
+<p>Turns out we can't export <code>using</code> declarations
+on Apple clang version 15.0.0 (clang-1500.3.9.4).</p>
 </div>
 <h2 id="error-handling">Error Handling</h2>
 <h3 id="exceptions">Exceptions</h3>
