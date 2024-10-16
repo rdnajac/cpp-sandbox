@@ -2,29 +2,29 @@
 
 A collection of C++ code snippets and examples.
 
-## Build
+Check out the [website](https://rdnajac.tech/cpp-sandbox/) for more information.
 
-[CMake](https://cmake.org/)
+## Build with [CMake](https://cmake.org/)
 
 ```sh
 mkdir build && cd build && cmake .. && make -j$(nproc)
 ```
 
-## Test
+## Test with [Catch2](https://github.com/catchorg/Catch2)
 
-[Catch2](https://github.com/catchorg/Catch2)
+```sh
+./build/test/test
+```
 
-## Docs
-
-[MkDocs](https://www.mkdocs.org/)
+## Documentation with [MkDocs](https://www.mkdocs.org/)
 
 ```sh
 pip install -r requirements.txt
 mkdocs serve
-# open http:localhost:8000
+# open localhost:8000
 ```
 
-### Resources
+## Resources
 
 There are some cool guides included them as a submodules in this repo so
 they can be easily accessed and updated. The search plugin that comes with
@@ -32,10 +32,5 @@ Material for MkDocs theme can be used to search through all the resources,
 even if they're excluded from the navbar.
 
 - [C++ Reference](https://en.cppreference.com/w/)
-- [Modern C++ Features](https://github.com/AnthonyCalandra/modern-cpp-features)
-- [Jae's class](https://www.cs.columbia.edu/~jae/3157/)
 - [GeeksforGeeks](https://www.geeksforgeeks.org/)
-
-## Projects
-
-- TCP client/server
+- [Modern C++ Features](https://github.com/AnthonyCalandra/modern-cpp-features)
