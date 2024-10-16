@@ -4,7 +4,9 @@
 
 ### Summation
 
-$$ \sum\_{i=0}^{N} 2x_i $$
+$$
+\sum_{i=0}^{N} 2x_i
+$$
 
 ```cpp
 for (int i = 0; i < N; i++) {
@@ -14,7 +16,9 @@ for (int i = 0; i < N; i++) {
 
 ### Product
 
-$$ \prod\_{i=1}^{N} x_i $$
+$$
+\prod_{i=1}^{N} x_i
+$$
 
 ```cpp
 for (int i = 1; i <= N; i++) {

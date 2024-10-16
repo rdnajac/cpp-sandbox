@@ -12,8 +12,17 @@ repository of code snippets and examples I have been developing.
 
 ## Attribution
 
-The material in this document is based on concepts and information from:
-Stroustrup, B. (2022). A Tour of C++ (C++ In-Depth Series) (3rd ed.). Addison-Wesley Professional.
+The material on this page is based on concepts and information from:
+
+Stroustrup, B. (2022). [A Tour of C++](https://isocpp.org/tour)
+(C++ In-Depth Series) (3rd ed.). Addison-Wesley Professional.
+
+Check out the [Modern C++ Features](https://github.com/AnthonyCalandra/modern-cpp-features)
+included in the repository as a git submodule and supplement to this guide.
+(Click the link on the side bar to see it rendered in the same style as this guide).
+The original repository maintained by [Anthony Calandra](https://anthony-calandra.com/)
+is more comprehensive and has the support of a community of contributors, but
+I wanted to try my hand at creating a similar resource from scratch.
 
 ## Table of Contents
 
@@ -314,7 +323,8 @@ std.cppm:8:19: error: using declaration referring to 'cout' with module linkage 
 ```
 
 > [!WARNING]
-> It looks like we can't export `using` declarations on Apple clang version 15.0.0 (clang-1500.3.9.4)
+> Turns out we can't export `using` declarations
+> on Apple clang version 15.0.0 (clang-1500.3.9.4).
 
 ## Error Handling
 

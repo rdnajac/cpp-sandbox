@@ -2,7 +2,12 @@
 
 ## Sorting
 
-### The C standard library's `qsort` function
+For a more in-depth look at sorting algorithms, see the
+[Sorting Algorithms](sorting.md) page.
+
+### Quick Sort
+
+The C standard library's `qsort` function
 
 > The `qsort()` function is a modified partition-exchange sort, or quicksort.
 
